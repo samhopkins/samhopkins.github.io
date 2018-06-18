@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Clustering and Robust Moment Estimation via SoS Proofs</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Clustering and Robust Moment Estimation via SoS Proofs</h1>
+</section>
+
+<section class="slide level1">
+
+<p>(loading loading loading – advance slide)</p>
+<p><span class="math inline">\(\newcommand{\P}{\mathbb{P}}\)</span> <span class="math inline">\(\newcommand{\R}{\mathbb{R}}\)</span> <span class="math inline">\(\newcommand{\e}{\varepsilon}\)</span> <span class="math inline">\(\newcommand{\cD}{\mathcal{D}}\)</span> <span class="math inline">\(\newcommand{\poly}{\text{poly}}\)</span> <span class="math inline">\(\newcommand{\cN}{\mathcal{N}}\)</span> <span class="math inline">\(\newcommand{\tensor}{\otimes}\)</span> <span class="math inline">\(\newcommand{\E}{\mathop{\mathbb{E}}}\)</span> <span class="math inline">\(\renewcommand{\hat}{\widehat}\)</span></p>
+</section>
+<section id="clustering-and-robust-moment-estimation-via-sos-proofs" class="slide level1">
+<h1>Clustering and Robust Moment Estimation via SoS Proofs</h1>
+<p><span class="blue"><em>Mixture Models, Robustness, and Sum of Squares Proofs</em></span><br />
+Sam Hopkins (Cornell University, UC Berkeley)<br />
+Jerry Li (MIT, Simons Institute, Microsoft Research)</p>
+<p><span class="blue"><em>Robust Moment Estimation and Improved Clustering via Sum of Squares</em></span> Pravesh Kothari (IAS/Princeton, CMU)<br />
+Jacob Steinhardt (UC Berkeley)<br />
+David Steurer (ETH Zurich)</p>
+<p><em>(This talk presents the union of results from two papers.)</em></p>
+</section>
+<section id="moment-estimation" class="slide level1">
+<h1>Moment Estimation</h1>
+<p>Unknown distribution <span class="math inline">\(\cD\)</span> on <span class="math inline">\(\R^d\)</span> with some bounded moments</p>
+<p><strong>Goal:</strong> given samples <span class="math inline">\(x_1,\ldots,x_n \sim \cD\)</span>, estimate</p>
+<p><span class="math display">\[\begin{align*}
+&amp; \text{mean: } \mu = \E_{x \sim \cD} x\\
+&amp; \text{higher moments: } \Sigma = \E_{x \sim \cD} xx^\top, \E_{x \sim \cD} x^{\tensor 4}, \ldots
+\end{align*}\]</span></p>
+<div class="fragment">
+<p><strong>Easy: empirical mean, empirical covariance, etc.</strong> <span class="math display">\[
+\frac 1n \sum_{i \leq n} x_i, \frac 1n \sum_{i \leq n} x_i x_i^\top, \ldots
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Require <span class="math inline">\(\poly(d)\)</span>-many samples, computable in <span class="math inline">\(\poly(d)\)</span> time, excellent convergence guarantees</p>
+</div>
+</section>
+<section id="what-if-only-a-subset-of-the-data-are-good" class="slide level1">
+<h1>What if Only a Subset of the Data are Good?</h1>
+<p>Unknown distribution <span class="math inline">\(\cD\)</span> on <span class="math inline">\(\R^d\)</span> with some bounded moments</p>
+<p>Still get <span class="math inline">\(x_1,\ldots,x_n \in \R^d\)</span>, but <strong>only an <span class="blue">unknown</span></strong> <span class="math inline">\(\alpha\)</span><strong>-fraction are from</strong> <span class="math inline">\(\cD\)</span>.<br />
+<span class="magenta">Can you still estimate moments of <span class="math inline">\(\cD\)</span>?</span></p>
+<div class="fragment">
+<p><strong>Robust Statistics:</strong> <span class="math inline">\(\alpha = 1-\e\)</span>, remaining <span class="math inline">\(\e\)</span> fraction <em>chosen adversarially</em><br />
+<em>(Recent explosion of work starting with [DKK+16, LRV16])</em></p>
+<p><strong>Mixture Models:</strong> <span class="math inline">\(\alpha = 1/k\)</span>, mixture of <span class="math inline">\(k\)</span> distributions <span class="math inline">\(\cD_1,\ldots,\cD_k\)</span><br />
+<em>(Dates back to Pearson, 1890s)</em></p>
+<p><strong>List Learning:</strong> common generalization [CSV16]</p>
+</div>
+<div class="fragment">
+<blockquote>
+<p><strong>These works:</strong> new polynomial-time technique for <span class="blue">estimating mean and higer moments</span> when <span class="blue">only a subset</span> of data comes from <span class="math inline">\(\cD\)</span>, under <span class="blue">mild conditions on <span class="math inline">\(\cD\)</span></span></p>
+</blockquote>
+</div>
+</section>
+<section id="agenda" class="slide level1">
+<h1>Agenda</h1>
+<ol type="1">
+<li>Robust moment estimation (informal)</li>
+<li>Main result for mixture models</li>
+<li>Algorithm and analysis for mixture models</li>
+</ol>
+</section>
+<section id="robust-moment-estimation" class="slide level1">
+<h1>Robust Moment Estimation</h1>
+<p>Unknown <span class="math inline">\(\cD\)</span> on <span class="math inline">\(\R^d\)</span>, receive <span class="math inline">\(x_1,\ldots,x_n \in \R^d\)</span> which are <span class="blue"><span class="math inline">\(\e\)</span>-corrupted</span>.</p>
+<p>Models <em>data poisoning</em>, <em>model misspecification</em>, and more</p>
+<p><img data-src="eps-corrupted-small.png" /></p>
+</section>
+<section id="robust-moment-estimation-1" class="slide level1">
+<h1>Robust Moment Estimation</h1>
+<p>Unknown <span class="math inline">\(\cD\)</span> on <span class="math inline">\(\R^d\)</span>, receive <span class="math inline">\(x_1,\ldots,x_n \in \R^d\)</span> which are <span class="blue"><span class="math inline">\(\e\)</span>-corrupted</span>.</p>
+<p>“Obvious” algorithms for estimating the <span class="blue">mean <span class="math inline">\(\mu\)</span></span> (outlier removal, etc) have error growing with <span class="math inline">\(d\)</span>. (e.g. <span class="blue"><span class="math inline">\(\|\hat{\mu} - \mu\| \leq O(\e \sqrt d)\)</span></span>)</p>
+<div class="fragment">
+<p><strong>Recent breakthrough:</strong> first <em>poly-time, dimension-independent</em> guarantees for robust mean estimation, for distributions with bounded second moments [DKK+16, LRV16]. (e.g. <span class="blue"><span class="math inline">\(\|\hat{\mu} - \mu\| \leq O(\sqrt \e)\)</span></span>)</p>
+</div>
+<div class="fragment">
+<p><span class="magenta"><strong>Sometimes you need more than the mean!</strong></span></p>
+<blockquote>
+<p><strong>Kothari-Steinhardt-Steurer (this talk):</strong> first <em>poly-time</em> algorithms to estimate higher moments with <em>dimension-independent error</em><br />
+<span class="blue"><em>Automatic robustification of moment-method algorithms!</em></span></p>
+</blockquote>
+</div>
+<div class="fragment">
+<p><strong>Application:</strong> robust <span class="blue">independent component analysis</span>, via <span class="math inline">\(4\)</span>th moments</p>
+</div>
+</section>
+<section id="agenda-1" class="slide level1">
+<h1>Agenda</h1>
+<ol type="1">
+<li><del>Robust moment estimation (informal)</del></li>
+<li>Main result for mixture models</li>
+<li>Algorithm and analysis for mixture models</li>
+</ol>
+</section>
+<section id="mixture-models" class="slide level1">
+<h1>Mixture Models</h1>
+<p>Unknown distributions <span class="math inline">\(\cD_1,\ldots,\cD_k\)</span> on <span class="math inline">\(\R^d\)</span> with means <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span></p>
+<p>Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} D_i\)</span></p>
+<p><strong>Goal:</strong> estimate <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span> and cluster the samples, in time/samples <span class="math inline">\(\poly(d,k)\)</span></p>
+<div class="fragment">
+<p>Dates to 1890s – Pearson <em>invented method of moments</em> to separate <span class="math inline">\(2\)</span> Gaussians in one dimension.</p>
+<p>Standard generative model for clustering problems, heterogeneous data (implemented in e.g. sklearn)</p>
+</div>
+<div class="fragment">
+<blockquote>
+<p>For this talk, focus for simplicity on <span class="blue">Gaussian</span> <span class="math inline">\(\cD\)</span> (“Gaussian Mixture Model”)<br />
+<em>Results extend to strongly log-concave distributions, products, and more, algorithms are <span class="magenta">distribution-agnostic</span></em></p>
+</blockquote>
+</div>
+</section>
+<section class="slide level1">
+
+<p>Gaussians <span class="math inline">\(\cN_1(\mu_1,\Sigma_i),\ldots,\cN_k(\mu_k,\Sigma_k)\)</span> on <span class="math inline">\(\R^d\)</span> with <span class="math inline">\(\Sigma_i \preceq I\)</span>.<br />
+Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cN(\mu_i,\Sigma_i)\)</span><br />
+<strong>Goal:</strong> estimate <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span> and cluster the samples, in time/samples <span class="math inline">\(\poly(d,k)\)</span></p>
+<div class="fragment">
+<p><strong>Moitra-Valiant:</strong> <span class="math inline">\(k\)</span> Gaussians on <span class="math inline">\(\R\)</span> can act like one Gaussian (<span class="math inline">\(2^{-\Omega(k)}\)</span>-close in TV dist.)</p>
+<p><img data-src="info-issue.png" /></p>
+</div>
+</section>
+<section class="slide level1">
+
+<p><strong>Separation Assumption:</strong> <span class="math inline">\(\|\mu_i - \mu_j\| \geq \Delta\)</span> for some <span class="math inline">\(\Delta &gt; 0\)</span></p>
+<p><img data-src="delta-separated.png" /></p>
+</section>
+<section class="slide level1">
+
+<p>Gaussians <span class="math inline">\(\cN_1(\mu_1,\Sigma_i),\ldots,\cN_k(\mu_k,\Sigma_k)\)</span> on <span class="math inline">\(\R^d\)</span> with <span class="math inline">\(\Sigma_i \preceq I\)</span> and <span class="math inline">\(\|\mu_i - \mu_j\| \geq \Delta\)</span>.<br />
+Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cN(\mu_i,\Sigma_i)\)</span><br />
+<strong>Goal:</strong> estimate <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span> and cluster the samples, in time/samples <span class="math inline">\(\poly(d,k)\)</span></p>
+<p><span class="magenta"><strong>For which <span class="math inline">\(\Delta &gt; 0\)</span> is this possible?</strong></span></p>
+<hr>
+<div class="fragment">
+<p><strong>Radius of clusters:</strong> <span class="math inline">\(\sqrt d\)</span>, so greedy works if <span class="math inline">\(\Delta \gg \sqrt{d}\)</span></p>
+<p><strong>Information-theoretic limit:</strong> If <span class="math inline">\(\Delta &lt; o(\sqrt{\log k})\)</span>, impossible with <span class="math inline">\(\poly(d,k)\)</span> samples [RV17]</p>
+</div>
+<div class="fragment">
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th><span class="math inline">\(\Delta\)</span></th>
+<th>Authors/Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spectral</td>
+<td><span class="math inline">\(\e \sqrt d\)</span></td>
+<td>Dasgupta ’99</td>
+</tr>
+<tr class="even">
+<td>EM</td>
+<td><span class="math inline">\(d^{1/4}\)</span></td>
+<td>Dasgupta-Schulman ’01</td>
+</tr>
+<tr class="odd">
+<td>PCA+EM</td>
+<td><span class="math inline">\(\min(d,k)^{1/4}\)</span></td>
+<td>Vempala-Wang ’02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide level1">
+
+<p>Gaussians <span class="math inline">\(\cN_1(\mu_1,\Sigma_i),\ldots,\cN_k(\mu_k,\Sigma_k)\)</span> on <span class="math inline">\(\R^d\)</span> with <span class="math inline">\(\Sigma_i \preceq I\)</span> and <span class="math inline">\(\|\mu_i - \mu_j\| \geq \Delta\)</span>.<br />
+Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cN(\mu_i,\Sigma_i)\)</span><br />
+<strong>Goal:</strong> estimate <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span> and cluster the samples, in time/samples <span class="math inline">\(\poly(d,k)\)</span></p>
+<p><span class="magenta"><strong>For which <span class="math inline">\(\Delta &gt; 0\)</span> is this possible?</strong></span></p>
+<hr>
+<h2 id="simplified-comparison">Simplified Comparison</h2>
+<p>When <span class="math inline">\(d \approx k\)</span>, best prev. guarantees captured by <strong>greedy</strong> with observation that when <span class="math inline">\(\Delta \gg d^{1/4}\)</span>, whp <span class="math display">\[
+\min_{ij \text{ in diff clusters}} \|x_i - x_j\| \gg \max_{ij \text{ in same cluster}} \|x_i - x_j\|
+\]</span></p>
+<p><strong><span class="math inline">\(d^{1/4}\)</span> barrier has stood for 15+ years</strong></p>
+<div class="fragment">
+<p><span class="blue"><strong>These works: first polynomial-time improvement on greedy, open for almost 20 years</strong></span></p>
+<p><em>Similar result for spherical Gaussians by [DKS18], next talk</em></p>
+</div>
+</section>
+<section class="slide level1">
+
+<p>Gaussians <span class="math inline">\(\cN_1(\mu_1,\Sigma_i),\ldots,\cN_k(\mu_k,\Sigma_k)\)</span> on <span class="math inline">\(\R^d\)</span> with <span class="math inline">\(\Sigma_i \preceq I\)</span> and <span class="math inline">\(\|\mu_i - \mu_j\| \geq \Delta\)</span>.<br />
+Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cN(\mu_i,\Sigma_i)\)</span><br />
+<strong>Goal:</strong> estimate <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span> and cluster the samples, in time/samples <span class="math inline">\(\poly(d,k)\)</span></p>
+<p><span class="magenta"><strong>For which <span class="math inline">\(\Delta &gt; 0\)</span> is this possible?</strong></span></p>
+<hr>
+<blockquote>
+<p><strong>Theorem:</strong> For every <span class="math inline">\(\varepsilon &gt; 0\)</span>, <span class="math inline">\(\Delta = k^{\varepsilon}\)</span>, can recover <span class="math inline">\(\mu_i\)</span>’s (and cluster) up to <span class="math inline">\(1/\poly(k)\)</span> error in time <span class="math inline">\((dk)^{O(1/\varepsilon^2)}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Theorem:</strong> If <span class="math inline">\(\Delta = C\sqrt{ \log k}\)</span>, can recover <span class="math inline">\(\mu_i\)</span>’s (and cluster) up to <span class="math inline">\(1/\poly(k)\)</span> error in time <span class="math inline">\((dk)^{O(\log k)}\)</span>, for a universal constant <span class="math inline">\(C\)</span>.</p>
+</blockquote>
+</section>
+<section id="agenda-2" class="slide level1">
+<h1>Agenda</h1>
+<ol type="1">
+<li><del>Robust moment estimation (informal)</del></li>
+<li><del>Main result for mixture models</del></li>
+<li>Algorithm and analysis for mixture models</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<p><span class="blue">Main technique: <strong>algorithms from simple identifiability proofs</strong></span></p>
+<p>Simplify setting: assume covariances <span class="math inline">\(\Sigma_i = I\)</span> (“spherical”)</p>
+<blockquote>
+<p><strong>Identifiability:</strong> For <span class="math inline">\(\Delta \geq k^\e\)</span> and typical <span class="math inline">\(x_1,\ldots,x_n \sim \cN(\mu_i, I)\)</span>, if <span class="math inline">\(v_1,\ldots,v_k\)</span> such that <span class="math display">\[
+\Pr_{\frac 1k \sum \cN(v_i,I)} (x_1,\ldots,x_n) \approx \Pr_{\frac 1k \sum \cN(\mu_i,I)} (x_1,\ldots,x_n)
+\]</span> then <span class="math inline">\(\{v_1,\ldots,v_k\} \approx \{\mu_1,\ldots,\mu_k\}\)</span>.<br />
+<span class="magenta">i.e. <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span> are information-theoretically recoverable</span></p>
+</blockquote>
+<div class="fragment">
+<p><span class="center"><strong>Sum of Squares method: turns a sufficiently-simple proof of identifiability into a polynomial-time semidefinite programming algorithm to find <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span></strong></span></p>
+<p>Now well-established, captures algorithms for matrix completion, sparse vector problems, dictionary learning, component analysis problems, tensor problems, and more</p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="algorithm-outline">Algorithm outline</h2>
+<p>If <span class="math inline">\(\e &gt; 0\)</span>, separation is <span class="math inline">\(\Delta &gt; k^{\e}\)</span> and have <span class="math inline">\(n \geq k^{O(1)} d^{O(1/\e)}\)</span> samples.</p>
+<p><strong>Input:</strong> <span class="math inline">\(x_1,\ldots,x_n \in \R^d\)</span></p>
+<div class="fragment">
+<ol type="1">
+<li><p>Solve an <span class="math inline">\(n^{O(1/\e)}\)</span>-size semidefinite program (from Sum of Squares hierarchy) designed to find a subset of <span class="math inline">\(n/k\)</span> samples with <em>bounded <span class="math inline">\(O(1/\e)\)</span>-th empirical moments</em></p></li>
+<li><p>SDP solution is (nearly) integral (trivial rounding finds clusters and means)</p></li>
+</ol>
+<hr>
+</div>
+<div class="fragment">
+<p><strong>Analysis outline:</strong></p>
+<ol type="1">
+<li><p>Dual of the SDP <span class="math inline">\(=\)</span> a restricted proof system (“the degree <span class="math inline">\(O(1/\e)\)</span> SoS proof system”), captures inequalities like <em>Cauchy-Schwarz</em>, <em>Holder’s</em>, <em>triangle inequality</em></p></li>
+<li><p>Identifiability proof simple enough to be phrased in this proof system <span class="math inline">\(\rightarrow\)</span> near-integrality of clustering SDP</p></li>
+</ol>
+</div>
+</section>
+<section class="slide level1">
+
+<p>Any subset of <span class="math inline">\(n/k\)</span> samples w. bounded <span class="math inline">\(1/\e\)</span> moments is nearly a true cluster (whose mean is nearly a <span class="math inline">\(\mu_i\)</span>). <span class="magenta"><strong>Proof using only Holder and triangle ineq’s:</strong></span></p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><img data-src="proof-by-picture-small.png" /></p>
+</div><div class="column" style="width:30%;">
+<p><span class="red">red</span> = putative cluster <span class="red"><span class="math inline">\(S\)</span></span></p>
+<p><span class="fragment">If a <span class="math inline">\(1/k^2\)</span>-fraction of <span class="red"><span class="math inline">\(S\)</span></span> is in clusters <span class="math inline">\(2,\ldots,k\)</span></span></p>
+<p><span class="fragment">then <span class="math inline">\(10/\e\)</span>-th empirical moment <span class="math inline">\(\frac 1 {|S|} \sum_{i \in S} (x_i - \mu(S))^{10/\e}\)</span> of <span class="red"><span class="math inline">\(S\)</span></span> is at least <span class="math display">\[
+\frac 1 {k^2} \Omega(\Delta)^{10/\e} \geq k^8
+\]</span></span></p>
+<p><span class="fragment">while <em>true</em> clusters are <em>subgaussian</em> – <span class="math inline">\((10/\e)\)</span>-th moment is at most <span class="math inline">\((10/\e)^{10/2\e}\)</span>.</span></p>
+</div>
+</div>
+</section>
+<section class="slide level1">
+
+</section>
+<section id="thanks-questions" class="slide level1">
+<h1>Thanks! Questions?</h1>
+</section>
+<section class="slide level1">
+
+<h2 id="high-dimensional-estimation-tasks">High-Dimensional Estimation Tasks</h2>
+<p><strong>Parameters:</strong> <span class="math inline">\(\theta \in \R^K\)</span><br />
+<strong>Samples:</strong> <span class="math inline">\(X_1,\ldots,X_n \sim \P(X \, | \, \theta)\)</span> with <span class="math inline">\(X_i \in \R^d\)</span></p>
+<div class="fragment">
+<p><strong>Goal:</strong> estimate <span class="math inline">\(\theta\)</span> by <span class="math inline">\(\widehat{\theta}(X_1,\ldots,X_n)\)</span> <em>via computationally-efficient algorithm</em>.</p>
+<p><strong>Challenge:</strong> traditional statistical approaches (max-likelihood, etc.) often exponential in (at least) one of <span class="math inline">\(d,K,n\)</span>.</p>
+</div>
+<div class="fragment">
+<p><strong>Example (known in ancient Greece, India, etc.):</strong> estimate <span class="math inline">\(\mu \in \R^d\)</span> from <span class="math inline">\(X_1,\ldots,X_n \sim \cD\)</span>, mean of <span class="math inline">\(\cD\)</span> is <span class="math inline">\(\mu\)</span> <span class="blue">(use empirical mean)</span></p>
+</div>
+<div class="fragment">
+<p><strong>Example (Pearson, 1890s):</strong> estimate <span class="math inline">\(\mu_1,\ldots,\mu_k \in \R^d\)</span> from <span class="math inline">\(X_1,\ldots,X_n \sim \frac 1k \sum_{i \in [k]} \cD_i\)</span>, mean of <span class="math inline">\(\cD_i\)</span> is <span class="math inline">\(\mu_i\)</span>.<br />
+<span class="blue">(clustering, moment methods, dimension reduction, …)</span></p>
+</div>
+<h2 id="robust-high-dimensional-estimation-tasks">Robust High-Dimensional Estimation Tasks</h2>
+<p><strong>Parameters:</strong> <span class="math inline">\(\theta \in \R^K\)</span><br />
+<strong>Samples:</strong> <span class="math inline">\(X_1,\ldots,X_n \sim \P(X \, | \, \theta)\)</span> with <span class="math inline">\(X_i \in \R^d\)</span></p>
+<p><strong>Adversary:</strong> replace <span class="math inline">\(X_1,\ldots,X_n\)</span> with <span class="math inline">\(Y_1,\ldots,Y_n\)</span>, with <span class="math inline">\(Y_i = X_i\)</span> for at least <span class="math inline">\((1-\e)n\)</span> samples</p>
+<div class="fragment">
+<p><strong>Goal:</strong> estimate <span class="math inline">\(\theta\)</span> by <span class="math inline">\(\widehat{\theta}(Y_1,\ldots,Y_n)\)</span> <em>via computationally-efficient algorithm</em>.</p>
+<p><strong>Challenge:</strong> even for very simple estimation tasks like <span class="blue"><em>mean estimation</em></span>, the obvious estimators/algorithms incur <em>dimension-dependent error</em>.</p>
+</div>
+<div class="fragment">
+<p><strong>Example:</strong> estimate mean of <span class="math inline">\(\cN(\mu, I)\)</span> from <span class="math inline">\(\e\)</span>-corrputed samples<br />
+<span class="blue">after removing “obvious outliers”, empirical mean still poor: adversary can achieve <span class="math inline">\(\|\widehat{\mu} - \mu\| \approx \e \sqrt d\)</span></span></p>
+<p>First <em>poly time, dimension-independent</em> guarantees very recent [DKK+16, LRV16].</p>
+</div>
+<div class="fragment">
+<p><strong>Example (Pearson, 1890s):</strong> estimate <span class="math inline">\(\mu_1,\ldots,\mu_k \in \R^d\)</span> from <span class="math inline">\(X_1,\ldots,X_n \sim \frac 1k \sum_{i \in [k]} \cD_i\)</span>, mean of <span class="math inline">\(\cD_i\)</span> is <span class="math inline">\(\mu_i\)</span>.<br />
+<span class="blue">(clustering, moment methods, dimension reduction, …)</span></p>
+<p><span class="magenta center"><strong>complex estimation tasks only get harder</strong></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="main-contribution">Main Contribution</h2>
+<p><span class="center"><strong>A new algorithm-design technique for high-dimensional estimation.</strong></span></p>
+<div class="fragment">
+<blockquote>
+<p><strong>New algorithms for:</strong></p>
+<ul>
+<li>clustering, learning mixture models</li>
+<li>robust mean estimation</li>
+<li>robust higher-moment estimation</li>
+<li>robust independent component analysis</li>
+<li>list-decodable learning</li>
+</ul>
+</blockquote>
+</div>
+<div class="fragment">
+<blockquote>
+<p><strong>Estimate empirical mean/moments of a “good” subset of samples.</strong><br />
+<em>Robust estimation:</em> <span class="blue">good subset = uncorrupted samples</span><br />
+<em>Clustering/mixture models:</em> <span class="blue">good subset = a single cluster</span></p>
+</blockquote>
+</div>
+<div class="fragment">
+<p>Uses the <em>sum of squares method (SoS)</em> to turn <span class="magenta">simple identifiability proofs into efficient semidefinite-programming-based algorithms</span>.</p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="agenda-3">Agenda</h2>
+<ol type="1">
+<li>Overview of results</li>
+<li>Zoom in on simple case – <strong>well-separated mixtures of Gaussians</strong></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<blockquote>
+<p><strong>Mixture models:</strong> Can cluster and estimate means of a mixture of <span class="math inline">\(k\)</span> <span class="blue"><strong>unknown</strong></span> <span class="math inline">\(d\)</span>-dimensional distributions <span class="math inline">\(\cD_i\)</span> with <span class="math inline">\(\poly(k,d)\)</span> time/samples, so long as</p>
+<p><em>Separation:</em> <span class="math inline">\(\|\mu_i - \mu_j\| \geq k^{\e}\)</span><br />
+<em>Bounded moments:</em> <span class="math inline">\(\cD_i\)</span> has <span class="math inline">\(O(1/\e)\)</span> subgaussian moments, and this has a simple (SoS) proof</p>
+<p><span class="magenta">ex: strongly <span class="math inline">\(\log\)</span>-concave distributions, rotations product distributions with <span class="math inline">\(O(1/\e)\)</span> subgaussian moments</span></p>
+<p>First tight guarantees for distributions with bounded <span class="math inline">\(O(1/\e)\)</span> moments; <strong>approaches information-theoretic optimality for Gaussian mixtures.</strong></p>
+</blockquote>
+</section>
+<section class="slide level1">
+
+<p><strong>Moment tensor:</strong> <span class="math inline">\(r\)</span>-th moment <span class="math inline">\(M_r\)</span> of a distribution <span class="math inline">\(\cD\)</span> has entries <span class="math inline">\((M_r)_{i_1,\ldots,i_r} = \E_{X \sim \cD} X_{i_1} \cdot \ldots \cdot X_{i_r}\)</span>.<br />
+<span class="blue">(<span class="math inline">\(r=2\)</span> is the covariance matrix)</span></p>
+<div class="fragment">
+<blockquote>
+<p><strong>Robust moment estimation:</strong> Given an <span class="math inline">\(\e\)</span>-corrupted set of <span class="math inline">\(d^{O(t)}\)</span> samples from unknown <span class="math inline">\(d\)</span>-dimensional distribution <span class="math inline">\(\cD\)</span>, can estimate <span class="math inline">\(r\)</span>-th moment tensor <span class="math inline">\(M_r\)</span> of <span class="math inline">\(\cD\)</span> in <em>injective tensor norm</em> (high-order analogue of spectral norm)</p>
+<p><span class="math display">\[\max_{u \in \R^d} \langle \widehat{M_r} - M_r, u^{\otimes r} \rangle \leq \e^{1-\tfrac r t} \cdot O(t^{r/2})\]</span></p>
+<p>if <span class="math inline">\(\cD\)</span> has bounded <span class="math inline">\(t\)</span>-th moments and this has a simple (SoS) proof.</p>
+<p><strong>First dimension-independent guarantees for robust higher-moment estimation beyond Gaussians</strong></p>
+</blockquote>
+</div>
+</section>
+<section class="slide level1">
+
+<blockquote>
+<p><strong>Application: Robust Independent Component Analysis</strong></p>
+<p><strong>Parameters:</strong> <span class="math inline">\(a_1,\ldots,a_d \in \R^d\)</span>. Let <span class="math inline">\(A = (a_1,\ldots, a_d)\)</span> nonsingular<br />
+<strong>Samples:</strong> <span class="math inline">\(X = AY\)</span> with <span class="math inline">\(Y \sim \cD\)</span> for unknown, non-Gaussian <span class="math inline">\(\cD\)</span></p>
+<p><strong>Goal:</strong> estimate <span class="math inline">\(a_1,\ldots,a_n\)</span></p>
+<p><strong>Classic alg</strong> (orthogonal case): estimate <span class="math inline">\(\E X^{\otimes 4} \approx \sum_{i \in [n]} a_i^{\otimes 4}\)</span> from samples, apply tensor decomposition</p>
+<p><span class="blue"><strong>Robust <span class="math inline">\(4\)</span>-th moment estimation automatically robust-ifies this algorithm</strong></span></p>
+</blockquote>
+</section>
+<section class="slide level1">
+
+<h2 id="mixture-models-1">Mixture Models</h2>
+<p><strong>Parameters:</strong> cluster centers <span class="math inline">\(\mu_1,\ldots,\mu_k \in \R^d\)</span><br />
+<strong>Samples:</strong> <span class="math inline">\(X_1,\ldots,X_n \sim \frac 1k \sum_{i \leq k} \cD_i\)</span> where <span class="math inline">\(\E_{X \sim \cD_i} = \mu_i\)</span>.</p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Display a presentation progress bar
+        progress: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
