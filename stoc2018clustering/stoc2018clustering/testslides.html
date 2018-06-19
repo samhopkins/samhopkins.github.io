@@ -44,7 +44,7 @@
 <h1>Clustering and Robust Moment Estimation via SoS Proofs</h1>
 <p><span class="blue"><em>Mixture Models, Robustness, and Sum of Squares Proofs</em></span><br />
 Sam Hopkins (Cornell University, UC Berkeley)<br />
-Jerry Li (MIT, Simons Institute, Microsoft Research)</p>
+Jerry Li (MIT)</p>
 <p><span class="blue"><em>Robust Moment Estimation and Improved Clustering via Sum of Squares</em></span> Pravesh Kothari (IAS/Princeton, CMU)<br />
 Jacob Steinhardt (UC Berkeley)<br />
 David Steurer (ETH Zurich)</p>
@@ -106,10 +106,16 @@ David Steurer (ETH Zurich)</p>
 <div class="fragment">
 <p><strong>Recent breakthrough:</strong> first <em>poly-time, dimension-independent</em> guarantees for robust mean estimation, for distributions with bounded second moments [DKK+16, LRV16]. (e.g. <span class="blue"><span class="math inline">\(\|\hat{\mu} - \mu\| \leq O(\sqrt \e)\)</span></span>)</p>
 </div>
-<div class="fragment">
+</section>
+<section id="robust-moment-estimation-2" class="slide level1">
+<h1>Robust Moment Estimation</h1>
+<p>Unknown <span class="math inline">\(\cD\)</span> on <span class="math inline">\(\R^d\)</span>, receive <span class="math inline">\(x_1,\ldots,x_n \in \R^d\)</span> which are <span class="blue"><span class="math inline">\(\e\)</span>-corrupted</span>.</p>
+<p>“Obvious” algorithms for estimating the <span class="blue">mean <span class="math inline">\(\mu\)</span></span> (outlier removal, etc) have error growing with <span class="math inline">\(d\)</span>. (e.g. <span class="blue"><span class="math inline">\(\|\hat{\mu} - \mu\| \leq O(\e \sqrt d)\)</span></span>)</p>
 <p><span class="magenta"><strong>Sometimes you need more than the mean!</strong></span></p>
+<div class="fragment">
+<p>Existing results limited to Gaussian/<span class="math inline">\(4\)</span>-wise independent dist’ns, covariance estimation [DKK+16, LRV16]</p>
 <blockquote>
-<p><strong>Kothari-Steinhardt-Steurer (this talk):</strong> first <em>poly-time</em> algorithms to estimate higher moments with <em>dimension-independent error</em><br />
+<p><strong>Kothari-Steinhardt-Steurer (this talk):</strong> first <em>poly-time</em> algorithms to estimate higher moments with <em>dimension-independent error</em>, non-Gaussian/<span class="math inline">\(k\)</span>-wise indep. distributions<br />
 <span class="blue"><em>Automatic robustification of moment-method algorithms!</em></span></p>
 </blockquote>
 </div>
@@ -128,7 +134,7 @@ David Steurer (ETH Zurich)</p>
 <section id="mixture-models" class="slide level1">
 <h1>Mixture Models</h1>
 <p>Unknown distributions <span class="math inline">\(\cD_1,\ldots,\cD_k\)</span> on <span class="math inline">\(\R^d\)</span> with means <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span></p>
-<p>Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} D_i\)</span></p>
+<p>Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cD_i\)</span></p>
 <p><strong>Goal:</strong> estimate <span class="math inline">\(\mu_1,\ldots,\mu_k\)</span> and cluster the samples, in time/samples <span class="math inline">\(\poly(d,k)\)</span></p>
 <div class="fragment">
 <p>Dates to 1890s – Pearson <em>invented method of moments</em> to separate <span class="math inline">\(2\)</span> Gaussians in one dimension.</p>
@@ -209,7 +215,7 @@ Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x
 \]</span></p>
 <p><strong><span class="math inline">\(d^{1/4}\)</span> barrier has stood for 15+ years</strong></p>
 <div class="fragment">
-<p><span class="blue"><strong>These works: first polynomial-time improvement on greedy, open for almost 20 years</strong></span></p>
+<p><span class="blue"><strong>These works: first polynomial-time improvement on greedy / greedy+PCA</strong></span></p>
 <p><em>Similar result for spherical Gaussians by [DKS18], next talk</em></p>
 </div>
 </section>
@@ -274,15 +280,15 @@ Get <span class="math inline">\(n\)</span> samples <span class="math inline">\(x
 
 <p>Any subset of <span class="math inline">\(n/k\)</span> samples w. bounded <span class="math inline">\(1/\e\)</span> moments is nearly a true cluster (whose mean is nearly a <span class="math inline">\(\mu_i\)</span>). <span class="magenta"><strong>Proof using only Holder and triangle ineq’s:</strong></span></p>
 <div class="columns">
-<div class="column" style="width:70%;">
+<div class="column" style="width:60%;">
 <p><img data-src="proof-by-picture-small.png" /></p>
-</div><div class="column" style="width:30%;">
+</div><div class="column" style="width:40%;">
 <p><span class="red">red</span> = putative cluster <span class="red"><span class="math inline">\(S\)</span></span></p>
-<p><span class="fragment">If a <span class="math inline">\(1/k^2\)</span>-fraction of <span class="red"><span class="math inline">\(S\)</span></span> is in clusters <span class="math inline">\(2,\ldots,k\)</span></span></p>
-<p><span class="fragment">then <span class="math inline">\(10/\e\)</span>-th empirical moment <span class="math inline">\(\frac 1 {|S|} \sum_{i \in S} (x_i - \mu(S))^{10/\e}\)</span> of <span class="red"><span class="math inline">\(S\)</span></span> is at least <span class="math display">\[
-\frac 1 {k^2} \Omega(\Delta)^{10/\e} \geq k^8
+<p><span class="fragment">If a <span class="math inline">\(1/k^2\)</span>-fraction of <span class="red"><span class="math inline">\(S\)</span></span> is in cluster <span class="math inline">\(2\)</span></span></p>
+<p><span class="fragment">then <span class="math inline">\(10/\e\)</span>-th empirical moment <span class="blue"><span class="math inline">\(\frac 1 {|S|} \sum_{i \in S} \langle x_i - \mu(S), \mu_2 - \mu(S) \rangle^{10/\e}\)</span></span> of <span class="red"><span class="math inline">\(S\)</span></span> is at least <span class="math display">\[
+\frac 1 {k^2} \cdot [\Omega(\Delta)]^{10/\e} \geq k^8
 \]</span></span></p>
-<p><span class="fragment">while <em>true</em> clusters are <em>subgaussian</em> – <span class="math inline">\((10/\e)\)</span>-th moment is at most <span class="math inline">\((10/\e)^{10/2\e}\)</span>.</span></p>
+<p><span class="fragment">while <em>true</em> clusters are <em>subgaussian</em> – <span class="math inline">\((10/\e)\)</span>-th moment is at most <span class="math inline">\((10/\e)^{10/2\e}\)</span> in every direction.</span></p>
 </div>
 </div>
 </section>

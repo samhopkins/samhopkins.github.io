@@ -24,7 +24,7 @@ $\renewcommand{\hat}{\widehat}$
 
 [*Mixture Models, Robustness, and Sum of Squares Proofs*]{.blue}\
 Sam Hopkins (Cornell University, UC Berkeley)\
-Jerry Li (MIT, Simons Institute, Microsoft Research)
+Jerry Li (MIT)
 
 [*Robust Moment Estimation and Improved Clustering via Sum of Squares*]{.blue}
 Pravesh Kothari (IAS/Princeton, CMU)\
@@ -111,11 +111,20 @@ Unknown $\cD$ on $\R^d$, receive $x_1,\ldots,x_n \in \R^d$ which are [$\e$-corru
 
 **Recent breakthrough:** first *poly-time, dimension-independent* guarantees for robust mean estimation, for distributions with bounded second moments [DKK+16, LRV16]. (e.g. [$\|\hat{\mu} - \mu\| \leq O(\sqrt \e)$]{.blue})
 
-. . .
+# Robust Moment Estimation
+
+Unknown $\cD$ on $\R^d$, receive $x_1,\ldots,x_n \in \R^d$ which are [$\e$-corrupted]{.blue}.
+
+"Obvious" algorithms for estimating the [mean $\mu$]{.blue}  (outlier removal, etc) have error growing with $d$. (e.g. [$\|\hat{\mu} - \mu\| \leq O(\e \sqrt d)$]{.blue})
+
 
 [**Sometimes you need more than the mean!**]{.magenta}
 
->**Kothari-Steinhardt-Steurer (this talk):** first *poly-time* algorithms to estimate higher moments with *dimension-independent error*\
+. . .
+
+Existing results limited to Gaussian/$4$-wise independent dist'ns, covariance estimation [DKK+16, LRV16]
+
+>**Kothari-Steinhardt-Steurer (this talk):** first *poly-time* algorithms to estimate higher moments with *dimension-independent error*, non-Gaussian/$k$-wise indep. distributions \
 >[*Automatic robustification of moment-method algorithms!*]{.blue}
 
 . . .
@@ -136,7 +145,7 @@ Unknown $\cD$ on $\R^d$, receive $x_1,\ldots,x_n \in \R^d$ which are [$\e$-corru
 
 Unknown distributions $\cD_1,\ldots,\cD_k$ on $\R^d$ with means $\mu_1,\ldots,\mu_k$
 
-Get $n$ samples $x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} D_i$
+Get $n$ samples $x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cD_i$
 
 **Goal:** estimate $\mu_1,\ldots,\mu_k$ and cluster the samples, in time/samples $\poly(d,k)$
 
@@ -214,7 +223,7 @@ $$
 
 . . .
 
-[**These works: first polynomial-time improvement on greedy, open for almost 20 years**]{.blue}
+[**These works: first polynomial-time improvement on greedy / greedy+PCA**]{.blue}
 
 *Similar result for spherical Gaussians by [DKS18], next talk*
 
@@ -292,24 +301,23 @@ Any subset of $n/k$ samples w. bounded $1/\e$ moments is nearly a true cluster (
 
 
 :::::::::::::: {.columns}
-::: {.column width="70%"}
+::: {.column width="60%"}
 ![](proof-by-picture-small.png)
 :::
-::: {.column width="30%"}
+::: {.column width="40%"}
 
 [red]{.red} = putative cluster [$S$]{.red}
 
-[If a $1/k^2$-fraction of [$S$]{.red} is in clusters $2,\ldots,k$]{.fragment}
+[If a $1/k^2$-fraction of [$S$]{.red} is in cluster $2$]{.fragment}
 
 
-
-[then $10/\e$-th empirical moment $\frac 1 {|S|} \sum_{i \in S} (x_i - \mu(S))^{10/\e}$ of [$S$]{.red} is at least
+[then $10/\e$-th empirical moment [$\frac 1 {|S|} \sum_{i \in S} \langle x_i - \mu(S), \mu_2 - \mu(S) \rangle^{10/\e}$]{.blue} of [$S$]{.red} is at least
 $$
-\frac 1 {k^2} \Omega(\Delta)^{10/\e} \geq k^8
+\frac 1 {k^2} \cdot [\Omega(\Delta)]^{10/\e} \geq k^8
 $$]{.fragment}
 
 
-[while *true* clusters are *subgaussian* -- $(10/\e)$-th moment is at most $(10/\e)^{10/2\e}$.]{.fragment}
+[while *true* clusters are *subgaussian* -- $(10/\e)$-th moment is at most $(10/\e)^{10/2\e}$ in every direction.]{.fragment}
 :::
 ::::::::::::::
 
