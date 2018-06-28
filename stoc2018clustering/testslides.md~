@@ -76,7 +76,8 @@ Still get $x_1,\ldots,x_n \in \R^d$, but **only an [unknown]{.blue} $\alpha$-fra
 
 $\alpha = 1/k$, mixture of $k$ distributions $\cD_1,\ldots,\cD_k$
 
-Standard generative model for *clustering* and *heterogeneous data*
+Standard generative model for clustering and heterogeneous data. *Dates to Pearson, 1890s.*
+
 ![](mixtures-small.png)
 
 ---
@@ -86,6 +87,7 @@ Standard generative model for *clustering* and *heterogeneous data*
 $\alpha = 1-\e$, remaining $\e$ fraction *chosen adversarially*
 
 Models *data poisoning*, *model misspecification*, and more
+*(Recent explosion of work starting with [DKK+16, LRV16])*
 
 ![](eps-corrupted-small.png)
 
@@ -93,141 +95,65 @@ Models *data poisoning*, *model misspecification*, and more
 
 ---
 
-### Contributions
+# Contributions
 
 New polynomial-time technique for [estimating mean and higer moments]{.blue} when [only a subset]{.blue} of data comes from $\cD$, under [mild conditions on $\cD$]{.blue}.
 
-<hr>
-
 . . .
 
-[**In this talk**]{.center}
+**New algorithm for [mixture models]{.blue} for well-separated distributions**\
 
-**New algorithm for learning [mixtures]{.blue} of well-separated distributions**\
-
-**New algorithm for mean and higher-moment estimation from [$\e$-corrupted samples]{.blue}**
+[**New algorithm for mean and higher-moment estimation from [$\e$-corrupted samples**]{.blue}
 -- application: automatic robustification of moment-method algorithms
 
-<hr>
+. . .
+
+New algorithm for [list Learning]{.blue}, a common generalization of mixture models and $\e$-corrupted estimation [CSV16]
 
 . . .
 
-[**Cut for time**]{.center}
+> Our algorithms are [distribution-agnostic]{.magenta} and work for *any distribution with **certifiably** bounded moments*.\
+[log-concave distributions, affine transforms of products, and more]{.blue}
 
-New algorithm for [list learning]{.blue}, a common generalization of mixture models and $\e$-corrupted estimation [BBV08,CSV17]
-
-. . .
-
-> Our algorithms are [distribution-agnostic]{.magenta} and work for *any distribution with **certifiably** bounded moments*: 
-[log-concave, affine transforms of products,&hellip;]{.blue}
 
 
 ---
 
 # Agenda
 
-1. Mixture models -- history and results
-2. Robust moment estimation -- history and results
+1. Robust moment estimation (informal)
+2. Main result for mixture models
 3. Algorithm and analysis for mixture models
 
 ---
 
-### Mixture Models
+# Robust Moment Estimation
 
-![](mixtures-small.png)
 
 ---
 
-### Mixture Models
-
-1890s: Pearson *invents method of moments* to learn mixture of $k=2$ Gaussians in $d=1$ dimension.
-
-. . .
-
-
-
-**Our setting:** $d,k$ large, want alg using $\poly(d,k)$ samples/time
-
-**$\Delta$-Separation assumption:** $\|\mu_i - \mu_j\| \geq \Delta$ for some $\Delta > 0$.
-
-[**For which $\Delta > 0$ is this possible?**]{.magenta .center}
-
-:::::::::::::: {.columns}
-::: {.column width="45%"}
-![](delta-separated.png)
-:::
-::: {.column width="45%}
-
->[One way around [Moitra-Valient] obstacle: $k$ Gaussians can require $2^{-\Omega(k)}$ samples]{.fragment .small}
->[![](info-issue.png)]{.fragment}
-
-:::
-::::::::::::::
-
----
-
-### Mixture Models -- Previous Results and Our Contribution
-
-Rest of talk: $\cD_i$ Gaussian, for simplicity, covariances $\Sigma \preceq I$, uniform mixture.
-
-$\Delta$                      Algorithm                               Reference
---------                      ---------                               ---------
-$10\sqrt{d}$                  greedy                                  [folklore]
-$0.01\sqrt{d}$                spectral                                [D99]
-$d^{1/4}$                     EM (captured by greedy)                 [DS'01]
-$\min(d,k)^{1/4}$             PCA+EM/greedy                           [VW02]
-[$o(\sqrt{ \log k})$]{.red}   [(need $\gg \poly(d,k)$ samples)]{.red} [RV17]
-[**$k^{\e}$**]{.blue}         [**sum of squares**]{.blue}             [our works]
-
-. . .
-
-*Similar result for spherical Gaussians by [DKS18], next talk*
-
->**Theorem 1:** For every $\varepsilon > 0$, $\Delta = k^{\varepsilon}$, can recover $\mu_i$'s (and cluster) up to $1/\poly(k)$ error in time $d^{O(1)}k^{O(1/\varepsilon)}$.
-
----
-
-### Mixture Models -- Previous Results and Our Contribution
-
-Rest of talk: $\cD_i$ Gaussian, for simplicity, covariances $\Sigma \preceq I$, uniform mixture.
-
-$\Delta$                      Algorithm                               Reference
---------                      ---------                               ---------
-$10\sqrt{d}$                  greedy                                  [folklore]
-$0.01\sqrt{d}$                spectral                                [D99]
-$d^{1/4}$                     EM (captured by greedy)                 [DS'01]
-$\min(d,k)^{1/4}$             PCA+EM/greedy                           [VW02]
-[$o(\sqrt{ \log k})$]{.red}   [(need $\gg \poly(d,k)$ samples)]{.red} [RV17]
-[**$k^{\e}$**]{.blue}         [**sum of squares**]{.blue}             [our works]
-
-*Similar result for spherical Gaussians by [DKS18], next talk*
-
->**Theorem 2:** If $\Delta = C\sqrt{ \log k}$, can recover $\mu_i$'s (and cluster) up to $1/\poly(k)$ error in time $d^{O(1)}k^{O(\log k)}$, for a universal constant $C$.
-
----
-
-### Robust Moment Estimation
+# Robust Moment Estimation
 
 Unknown $\cD$ on $\R^d$, receive $x_1,\ldots,x_n \in \R^d$ which are [**$\e$-corrupted**]{.red}.
 
-"Obvious" algorithms for estimating the [mean $\mu$]{.blue}  (outlier removal, etc) have error growing with $d$. (e.g. [$\|\hat{\mu} - \mu\| \leq O(\e \sqrt d)$]{.blue})\
-Ex. $\cN(0,I)$:
-
-[![Gaussian example](sqrt-d-small.png)]{.center}
-
----
-
-Tukey, 1960: Dimension-independent error but not poly-time
-
-Similar problems (learning halfspaces, PCA with adversarial corruptions), poly time [XCS10, ABL14]
-
-**Recent breakthrough:** first *poly-time, dimension-independent* guarantees for robust mean estimation, for distributions with bounded second moments [DKK+16, LRV16]. (e.g. [$\|\hat{\mu} - \mu\| \leq O(\sqrt \e)$]{.blue})
-
-<hr>
+"Obvious" algorithms for estimating the [mean $\mu$]{.blue}  (outlier removal, etc) have error growing with $d$. (e.g. [$\|\hat{\mu} - \mu\| \leq O(\e \sqrt d)$]{.blue})
 
 . . .
 
-**Higher moments:** Existing results limited to covariance estimation for Gaussian/$4$-wise independent dist'ns [DKK+17, SCV18]
+**Recent breakthrough:** first *poly-time, dimension-independent* guarantees for robust mean estimation, for distributions with bounded second moments [DKK+16, LRV16]. (e.g. [$\|\hat{\mu} - \mu\| \leq O(\sqrt \e)$]{.blue})
+
+# Robust Moment Estimation
+
+Unknown $\cD$ on $\R^d$, receive $x_1,\ldots,x_n \in \R^d$ which are [**$\e$-corrupted**]{.red}.
+
+"Obvious" algorithms for estimating the [mean $\mu$]{.blue}  (outlier removal, etc) have error growing with $d$. (e.g. [$\|\hat{\mu} - \mu\| \leq O(\e \sqrt d)$]{.blue})
+
+
+[**Sometimes you need more than the mean!**]{.magenta}
+
+. . .
+
+Existing results limited to Gaussian/$4$-wise independent dist'ns, covariance estimation [DKK+16, LRV16]
 
 >**Kothari-Steinhardt-Steurer (this talk):** first *poly-time* algorithms to estimate higher moments with *dimension-independent error*, non-Gaussian/$k$-wise indep. distributions \
 >[*Automatic robustification of moment-method algorithms!*]{.blue}
@@ -238,7 +164,122 @@ Similar problems (learning halfspaces, PCA with adversarial corruptions), poly t
 
 ---
 
-## Opening the hood...(back to mixture models)
+# Agenda
+
+1. ~~Robust moment estimation (informal)~~
+2. Main result for mixture models
+3. Algorithm and analysis for mixture models
+
+---
+
+# Mixture Models
+
+Unknown distributions $\cD_1,\ldots,\cD_k$ on $\R^d$ with means $\mu_1,\ldots,\mu_k$
+
+Get $n$ samples $x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cD_i$
+
+**Goal:** estimate $\mu_1,\ldots,\mu_k$ and cluster the samples, in time/samples $\poly(d,k)$
+
+. . .
+
+Dates to 1890s -- Pearson *invented method of moments* to separate $2$ Gaussians in one dimension.
+
+Standard generative model for clustering problems, heterogeneous data (implemented in e.g. sklearn)
+
+. . .
+
+>For this talk, focus for simplicity on [Gaussian]{.blue} $\cD$ ("Gaussian Mixture Model")\
+> *Results extend to strongly log-concave distributions, products, and more, algorithms are [distribution-agnostic]{.magenta}*
+
+---
+
+Gaussians $\cN_1(\mu_1,\Sigma_i),\ldots,\cN_k(\mu_k,\Sigma_k)$ on $\R^d$ with $\Sigma_i \preceq I$.\
+Get $n$ samples $x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cN(\mu_i,\Sigma_i)$\
+**Goal:** estimate $\mu_1,\ldots,\mu_k$ and cluster the samples, in time/samples $\poly(d,k)$
+
+. . .
+
+**Moitra-Valiant:** $k$ Gaussians on $\R$ can act like one Gaussian ($2^{-\Omega(k)}$-close in TV dist.)
+
+![](info-issue.png)
+
+---
+
+**Separation Assumption:** $\|\mu_i - \mu_j\| \geq \Delta$ for some $\Delta > 0$
+
+![](delta-separated.png)
+
+---
+
+Gaussians $\cN_1(\mu_1,\Sigma_i),\ldots,\cN_k(\mu_k,\Sigma_k)$ on $\R^d$ with $\Sigma_i \preceq I$ and $\|\mu_i - \mu_j\| \geq \Delta$.\
+Get $n$ samples $x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cN(\mu_i,\Sigma_i)$\
+**Goal:** estimate $\mu_1,\ldots,\mu_k$ and cluster the samples, in time/samples $\poly(d,k)$
+
+[**For which $\Delta > 0$ is this possible?**]{.magenta}
+
+<hr>
+
+. . .
+
+**Radius of clusters:** $\sqrt d$, so greedy works if $\Delta \gg \sqrt{d}$
+
+**Information-theoretic limit:** If $\Delta < o(\sqrt{\log k})$, impossible with $\poly(d,k)$ samples [RV17]
+
+. . .
+
+Method         $\Delta$          Authors/Year
+------         --------          ----
+Spectral       $\e \sqrt d$      Dasgupta '99
+EM             $d^{1/4}$         Dasgupta-Schulman '01
+PCA+EM         $\min(d,k)^{1/4}$ Vempala-Wang '02
+
+---
+
+Gaussians $\cN_1(\mu_1,\Sigma_i),\ldots,\cN_k(\mu_k,\Sigma_k)$ on $\R^d$ with $\Sigma_i \preceq I$ and $\|\mu_i - \mu_j\| \geq \Delta$.\
+Get $n$ samples $x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cN(\mu_i,\Sigma_i)$\
+**Goal:** estimate $\mu_1,\ldots,\mu_k$ and cluster the samples, in time/samples $\poly(d,k)$
+
+[**For which $\Delta > 0$ is this possible?**]{.magenta}
+
+<hr>
+
+## Simplified Comparison
+
+When $d \approx k$, best prev. guarantees captured by **greedy** with observation that when $\Delta \gg d^{1/4}$, whp
+$$
+\min_{ij \text{ in diff clusters}} \|x_i - x_j\| \gg \max_{ij \text{ in same cluster}} \|x_i - x_j\|
+$$
+
+**$d^{1/4}$ barrier has stood for 15+ years**
+
+. . .
+
+[**These works: first polynomial-time improvement on greedy / greedy+PCA**]{.blue}
+
+*Similar result for spherical Gaussians by [DKS18], next talk*
+
+---
+
+Gaussians $\cN_1(\mu_1,\Sigma_i),\ldots,\cN_k(\mu_k,\Sigma_k)$ on $\R^d$ with $\Sigma_i \preceq I$ and $\|\mu_i - \mu_j\| \geq \Delta$.\
+Get $n$ samples $x_1,\ldots,x_n \sim \frac 1k \sum_{i \leq k} \cN(\mu_i,\Sigma_i)$\
+**Goal:** estimate $\mu_1,\ldots,\mu_k$ and cluster the samples, in time/samples $\poly(d,k)$
+
+[**For which $\Delta > 0$ is this possible?**]{.magenta}
+
+<hr>
+
+>**Theorem:** For every $\varepsilon > 0$, $\Delta = k^{\varepsilon}$, can recover $\mu_i$'s (and cluster) up to $1/\poly(k)$ error in time $(dk)^{O(1/\varepsilon^2)}$.
+
+>**Theorem:** If $\Delta = C\sqrt{ \log k}$, can recover $\mu_i$'s (and cluster) up to $1/\poly(k)$ error in time $(dk)^{O(\log k)}$, for a universal constant $C$.
+
+
+---
+
+# Agenda
+
+1. ~~Robust moment estimation (informal)~~
+2. ~~Main result for mixture models~~
+3. Algorithm and analysis for mixture models
 
 ---
 
@@ -246,7 +287,7 @@ Similar problems (learning halfspaces, PCA with adversarial corruptions), poly t
 
 Simplify setting: assume covariances $\Sigma_i = I$ ("spherical")
 
->**Identifiability:** For $\Delta \geq k^\e$ and typical $x_1,\ldots,x_n \sim \sum \cN(\mu_i, I)$, if $v_1,\ldots,v_k$ such that
+>**Identifiability:** For $\Delta \geq k^\e$ and typical $x_1,\ldots,x_n \sim \cN(\mu_i, I)$, if $v_1,\ldots,v_k$ such that
 $$
   \Pr_{\frac 1k \sum \cN(v_i,I)} (x_1,\ldots,x_n) \approx \Pr_{\frac 1k \sum \cN(\mu_i,I)} (x_1,\ldots,x_n)
 $$
@@ -270,23 +311,7 @@ If $\e > 0$, separation is $\Delta > k^{\e}$ and have $n \geq k^{O(1)} d^{O(1/\e
 
 . . .
 
-1. Solve an $n^{O(1/\e)}$-size semidefinite program (from Sum of Squares hierarchy) designed to find a subset $S$ of $n/k$ samples with *bounded $O(1/\e)$-th empirical moments*
-
-$$
-\forall \|v\|=1, \, \frac 1 {|S|} \sum_{i \in S} \langle x_i- \mu(S), v \rangle^{10/\e} \leq O_\e(1)
-$$
-
----
-
-## Algorithm outline
-
-If $\e > 0$, separation is $\Delta > k^{\e}$ and have $n \geq k^{O(1)} d^{O(1/\e)}$ samples.
-
-**Input:** $x_1,\ldots,x_n \in \R^d$
-
-
-1. Solve an $n^{O(1/\e)}$-size semidefinite program (from Sum of Squares hierarchy) designed to find a subset $S$ of $n/k$ samples with *bounded $O(1/\e)$-th empirical moments*
-
+1. Solve an $n^{O(1/\e)}$-size semidefinite program (from Sum of Squares hierarchy) designed to find a subset of $n/k$ samples with *bounded $O(1/\e)$-th empirical moments*
 
 2. SDP solution is (nearly) integral (trivial rounding finds clusters and means)
 
@@ -302,10 +327,8 @@ If $\e > 0$, separation is $\Delta > k^{\e}$ and have $n \geq k^{O(1)} d^{O(1/\e
 
 ---
 
-Any subset of $n/k$ samples w. bounded $1/\e$ moments is nearly a true cluster (whose mean is nearly a $\mu_i$). [**Proof using only Holder and triangle ineq's:**]{.magenta}\
-[Recall $\Delta = k^\epsilon$]{.green}
+Any subset of $n/k$ samples w. bounded $1/\e$ moments is nearly a true cluster (whose mean is nearly a $\mu_i$). [**Proof using only Holder and triangle ineq's:**]{.magenta}
 
-Since *true* clusters are *subgaussian* -- $(10/\e)$-th moment is at most $O_\e(1)$ in every direction.
 
 
 :::::::::::::: {.columns}
@@ -318,24 +341,18 @@ Since *true* clusters are *subgaussian* -- $(10/\e)$-th moment is at most $O_\e(
 
 [If a $1/k^2$-fraction of [$S$]{.red} is in cluster $2$]{.fragment}
 
+
 [then $10/\e$-th empirical moment [$\frac 1 {|S|} \sum_{i \in S} \langle x_i - \mu(S), \mu_2 - \mu(S) \rangle^{10/\e}$]{.blue} of [$S$]{.red} is at least
 $$
-\frac 1 {k^2} \cdot [\Omega(\Delta)]^{10/\e} \geq k^8 >> O_\e(1)
+\frac 1 {k^2} \cdot [\Omega(\Delta)]^{10/\e} \geq k^8
 $$]{.fragment}
 
 
+[while *true* clusters are *subgaussian* -- $(10/\e)$-th moment is at most $(10/\e)^{10/2\e}$ in every direction.]{.fragment}
 :::
 ::::::::::::::
 
 ---
-
-## Recap
-
-New algorithm design technique, using Sum of Squares SDPs, for moment estimation when not all data comes from $\cD$.
-
-First improvement in separation for **Gaussian mixtures models** in 15 years.
-
-Automatic robustification of moment-method algorithms.
 
 
 ---
