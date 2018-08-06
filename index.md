@@ -1,30 +1,30 @@
 ![](sam_headshot_informal.jpg){.headshot}
 
 # Samuel Hopkins
-**PhD Candidate, Cornell University**\
-*(graduating May 2018)*
 
-*algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, hardness of approximation*
+*algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, and hardness of approximation.*
+
+I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, where I am hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](http://people.eecs.berkeley.edu/~luca/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory) under [David Steurer](http://www.dsteurer.org/)'s watchful eyes.
 
 [CV (pdf)](cv.pdf)
 
-Supported by a Microsoft PhD Fellowship, an NSF Graduate Research Fellowship, and a Cornell University Fellowship.
 
 ### Events
-  + November 2017: Theory seminar, University of Washington
-  + November 2017: Banff workshop on approximation algorithms
-  + October 2017: FOCS 2017
-  + August 2017: Oberwolfach workshop on sum of squares and proof complexity
-  + June 2017: Sum of Squares workshop, STOC 2017
-  + June 2017 -- September 2017: Research internship at Microsoft Research New England
-  + May 2017: Stanford theory seminar
-  + May 2017: Toyota Technological Institute Young Researcher Seminar
-  + May 2017: KTH Stockholm theory seminar
-  + April 2017: Cornell theory seminar
+  + November 2018: [Workshop](https://simons.berkeley.edu/data-science-2018-2) on high-dimensional statistics at Simons Institute
+  + August 2018: [Workshop](http://www.iliasdiakonikolas.org/tti-robust.html) on robust statistics at TTIC
 
 
 ### Publications
-#### 2017+
+
+#### 2018+
+**Statistical Inference and Sum of Squares Method.** *Dissertation.* [pdf](thesis.pdf)
+
+**A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* In submission.
+
+**Mixture Models, Robustness, and Sum of Squares Proofs.** *Samuel B. Hopkins, Jerry Li.* STOC 2018. [arxiv](https://arxiv.org/abs/1711.07454) [talk 1 (BIRS)](http://www.birs.ca/events/2017/5-day-workshops/17w5133/videos/watch/201711151031-Hopkins.html) [talk 2 (STOC)](https://dl.acm.org/ft_gateway.cfm?id=3188748&type=mp4&path=%2F3190000%2F3188748%2F7B-1%2Emp4)
+
+
+#### 2017
 **The power of SoS for detecting hidden structures.** *Samuel B. Hopkins, Pravesh K. Kothari, Aaron Potechin, Prasad Raghavendra, Tselil Schramm, David Steurer.* FOCS 2017. [arxiv](https://arxiv.org/abs/1710.05017)
 
 **Efficient Bayesian estimation from few samples: community detection and related problems.** *Samuel B. Hopkins, David Steurer.* FOCS 2017. [arxiv](https://arxiv.org/abs/1710.00264)
@@ -42,7 +42,13 @@ Supported by a Microsoft PhD Fellowship, an NSF Graduate Research Fellowship, an
 #### 2013
 **Kolmogorov Complexity, Circuits, and the Strength of Formal Theories of Arithmetic** *Eric Allender, George Davie, Luke Friedman, Samuel B. Hopkins, Iddo Tzameret.* Chicago Journal of Theoretical Computer Science. [eccc](https://eccc.weizmann.ac.il/report/2012/028/)
 
+### Notes
+
+Currently I am supported by the Miller Fellowship at UC Berkeley. In the past, I have received support from by Microsoft PhD Fellowship, an NSF Graduate Research Fellowship, and a Cornell University Fellowship.
+
+I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http://web.mit.edu/shopkins/)?
+
 
 ### Contact
-324 Gates Hall\
-*samhop at cs dot cornell dot edu*
+6th Floor, Soda Hall\
+*hopkins at berkeley.edu*
