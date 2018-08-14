@@ -61,9 +61,9 @@ Offers a method to design *efficient algorithms* based on *simple identifiabilit
 
 Yesterday we saw:
 
-If $X = \{x_1,\ldots,x_m\}$ are $\e$-corrupted from a distribution $\cD$ with mean $\mu$, variance $1$, whp there are degree $O(1)$ polynomials $s_i(w,X',g), q_j(w,X',g)$ such that
+If $X = \{x_1,\ldots,x_m\}$ are $\e$-corrupted from a distribution $\cD$ with mean $\mu$, variance $1$, whp there are degree $O(1)$ polynomials $s_i(w,X',\mu',g), q_j(w,X',\mu',g)$ such that
 
-[$O(\e) - (\mu - \mu)^2 = \sum s_i^2 + \sum q_j p_j$]{.blue}
+[$O(\e) - (\mu - \mu')^2 = \sum s_i^2 + \sum q_j p_j$]{.blue}
 
 . . .
 
@@ -73,9 +73,9 @@ where $p_1=0,\ldots,p_m=0$ enforce
 
 [$w_i(X_i - X_i')$]{.magenta}
 
-[$\mu = \frac 1 {(1-\e)m} \sum w_i X_i'$]{.magenta}
+[$\mu' = \frac 1 {(1-\e)m} \sum w_i X_i'$]{.magenta}
 
-[$\sum w_i(X_i - \mu)^2 + g^2 =1$]{.magenta}
+[$\sum w_i(X_i - \mu')^2 + g^2 =1$]{.magenta}
 
 **This is an SoS identifiability proof**
 

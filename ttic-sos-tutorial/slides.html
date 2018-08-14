@@ -72,14 +72,14 @@
 <section class="slide level1">
 
 <p>Yesterday we saw:</p>
-<p>If <span class="math inline">\(X = \{x_1,\ldots,x_m\}\)</span> are <span class="math inline">\(\e\)</span>-corrupted from a distribution <span class="math inline">\(\cD\)</span> with mean <span class="math inline">\(\mu\)</span>, variance <span class="math inline">\(1\)</span>, whp there are degree <span class="math inline">\(O(1)\)</span> polynomials <span class="math inline">\(s_i(w,X&#39;,g), q_j(w,X&#39;,g)\)</span> such that</p>
-<p><span class="blue"><span class="math inline">\(O(\e) - (\mu - \mu)^2 = \sum s_i^2 + \sum q_j p_j\)</span></span></p>
+<p>If <span class="math inline">\(X = \{x_1,\ldots,x_m\}\)</span> are <span class="math inline">\(\e\)</span>-corrupted from a distribution <span class="math inline">\(\cD\)</span> with mean <span class="math inline">\(\mu\)</span>, variance <span class="math inline">\(1\)</span>, whp there are degree <span class="math inline">\(O(1)\)</span> polynomials <span class="math inline">\(s_i(w,X&#39;,\mu&#39;,g), q_j(w,X&#39;,\mu&#39;,g)\)</span> such that</p>
+<p><span class="blue"><span class="math inline">\(O(\e) - (\mu - \mu&#39;)^2 = \sum s_i^2 + \sum q_j p_j\)</span></span></p>
 <div class="fragment">
 <p>where <span class="math inline">\(p_1=0,\ldots,p_m=0\)</span> enforce</p>
 <p><span class="magenta"><span class="math inline">\(w_i^2 = w_i\)</span> and <span class="math inline">\(\sum w_i = (1-\e)m\)</span></span></p>
 <p><span class="magenta"><span class="math inline">\(w_i(X_i - X_i&#39;)\)</span></span></p>
-<p><span class="magenta"><span class="math inline">\(\mu = \frac 1 {(1-\e)m} \sum w_i X_i&#39;\)</span></span></p>
-<p><span class="magenta"><span class="math inline">\(\sum w_i(X_i - \mu)^2 + g^2 =1\)</span></span></p>
+<p><span class="magenta"><span class="math inline">\(\mu&#39; = \frac 1 {(1-\e)m} \sum w_i X_i&#39;\)</span></span></p>
+<p><span class="magenta"><span class="math inline">\(\sum w_i(X_i - \mu&#39;)^2 + g^2 =1\)</span></span></p>
 <p><strong>This is an SoS identifiability proof</strong></p>
 </div>
 </section>
@@ -298,8 +298,9 @@
 
 <h3 id="which-distributions-have-certifiably-bounded-moments">Which distributions have certifiably bounded moments?</h3>
 <p>Known: Poincare (with dimension-independent constant), hence strongly log-concave</p>
-<p>The frontier: log-concave (implied by KLS conjecture via Poincare)</p>
+<p>The frontier: log-concave (implied by KLS conjecture via Poincare?)</p>
 <p>Moonshot: subgaussian?? (probably too broad)</p>
+<p><span class="blue">Open problem: prove a hardness result for some subgaussian distribution</span></p>
 </section>
 <section class="slide level1">
 
