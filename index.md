@@ -42,6 +42,13 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 #### 2013
 **Kolmogorov Complexity, Circuits, and the Strength of Formal Theories of Arithmetic** *Eric Allender, George Davie, Luke Friedman, Samuel B. Hopkins, Iddo Tzameret.* Chicago Journal of Theoretical Computer Science. [eccc](https://eccc.weizmann.ac.il/report/2012/028/)
 
+
+### Other Writing
+Blog posts I wrote on clustering and learning high-dimensional mixture models using the SoS method (originally appeared on [Windows on Theory](https://windowsontheory.org/). [pdf](clustering.pdf)
+
+Notes on tensor decomposition using the SoS method (originally notes for a guest lecture at Stanford). [pdf](tensor-decomp-notes.pdf)
+
+
 ### Notes
 
 Currently I am supported by the Miller Fellowship at UC Berkeley. In the past, I have received support from by Microsoft PhD Fellowship, an NSF Graduate Research Fellowship, and a Cornell University Fellowship.
