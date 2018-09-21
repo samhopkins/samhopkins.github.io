@@ -17,7 +17,9 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 ### Publications
 
 #### 2018+
-**Statistical Inference and Sum of Squares Method.** *Dissertation.* [pdf](thesis.pdf)
+**Sub-Gaussian Mean Estimation in Polynomial Time.** *Samuel B. Hopkins.* *Manuscript.* [arxiv](https://arxiv.org/abs/1809.07425)
+
+**Statistical Inference and Sum of Squares Method.** *Samuel B. Hopkins.* *Dissertation.* [pdf](thesis.pdf)
 
 **A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* In submission.
 
