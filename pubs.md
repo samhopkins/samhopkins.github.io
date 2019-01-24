@@ -8,15 +8,18 @@
 ### Publications
 
 
-#### 2018+
+#### 2019+
 
 **Sum of Squares Meets Program Obfuscation, Revisited.** *Boaz Barak, Samuel B. Hopkins, Aayush Jain, Pravesh Kothari, Amit Sahai.* In submission. [eprint](https://eprint.iacr.org/2018/1237)
 
 **Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Major Revision, Annals of Statistics. [arxiv](https://arxiv.org/abs/1809.07425) [talk 1 (Simons Institute)](https://www.youtube.com/watch?v=_E096DMEkRo&t=1447s)
 
-**Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* Dissertation. [pdf](thesis.pdf)
-
 **A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* Manuscript.
+
+
+#### 2018
+
+**Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* Dissertation. [pdf](thesis.pdf)
 
 **Mixture Models, Robustness, and Sum of Squares Proofs.** *Samuel B. Hopkins, Jerry Li.* STOC 2018. [arxiv](https://arxiv.org/abs/1711.07454) [talk 1 (BIRS)](http://www.birs.ca/events/2017/5-day-workshops/17w5133/videos/watch/201711151031-Hopkins.html) [talk 2 (STOC)](https://dl.acm.org/ft_gateway.cfm?id=3188748&type=mp4&path=%2F3190000%2F3188748%2F7B-1%2Emp4)
 
