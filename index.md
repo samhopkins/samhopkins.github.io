@@ -13,7 +13,7 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 
 For more, see [all publications](pubs.html)
 
-**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Major Revision, Annals of Statistics. [arxiv](https://arxiv.org/abs/1809.07425) [talk (Simons Institute)](https://www.youtube.com/watch?v=_E096DMEkRo&t=1447s)
+**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (Simons Institute)](https://www.youtube.com/watch?v=_E096DMEkRo&t=1447s)
 
 **Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* *Dissertation.* [pdf](thesis.pdf)
 
