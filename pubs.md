@@ -10,9 +10,9 @@
 
 #### 2019+
 
-**How Hard Is Robust Mean Estimation?** *Samuel B. Hopkins, Jerry Li.* In submission. [arxiv](https://arxiv.org/abs/1903.07870)
+**How Hard Is Robust Mean Estimation?** *Samuel B. Hopkins, Jerry Li.* COLT 2019. [arxiv](https://arxiv.org/abs/1903.07870)
 
-**A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* Manuscript.
+**A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* COLT 2019.
 
 **Sum of Squares Meets Program Obfuscation, Revisited.** *Boaz Barak, Samuel B. Hopkins, Aayush Jain, Pravesh Kothari, Amit Sahai.* Eurocrypt 2019. [eprint](https://eprint.iacr.org/2018/1237)
 
