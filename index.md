@@ -13,7 +13,7 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 
 For more, see [all publications](pubs.html)
 
-**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (Simons Institute)](https://www.youtube.com/watch?v=_E096DMEkRo&t=1447s)
+**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
 
 **Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* *Dissertation.* [pdf](thesis.pdf)
 
@@ -29,17 +29,19 @@ For more, see [all publications](pubs.html)
 
 
 
-### Other Writing
+### Other Writing, Videos
 Blog posts I wrote on clustering and learning high-dimensional mixture models using the SoS method (originally appeared on [Windows on Theory](https://windowsontheory.org/). [pdf](clustering.pdf)
 
 Notes on tensor decomposition using the SoS method (originally notes for a guest lecture at Stanford). [pdf](tensor-decomp-notes.pdf)
+
+A short general-audience video about my research. [youtube](https://www.youtube.com/watch?v=wvdNs4keEys)
 
 
 ### Notes
 
 Currently I am supported by the Miller Fellowship at UC Berkeley. In the past, I have received support from by Microsoft PhD Fellowship, an NSF Graduate Research Fellowship, and a Cornell University Fellowship.
 
-I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http://web.mit.edu/shopkins/)?
+I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http://www-users.math.umn.edu/~shopkins/)
 
 
 ### Contact
