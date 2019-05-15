@@ -20,7 +20,7 @@
 
 #### 2018
 
-**Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* Dissertation. [pdf](thesis.pdf)
+**Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* Dissertation. Recipient of **Cornell CS Doctoral Dissertation Award**. [pdf](thesis.pdf)
 
 **Mixture Models, Robustness, and Sum of Squares Proofs.** *Samuel B. Hopkins, Jerry Li.* STOC 2018. [arxiv](https://arxiv.org/abs/1711.07454) [talk 1 (BIRS)](http://www.birs.ca/events/2017/5-day-workshops/17w5133/videos/watch/201711151031-Hopkins.html) [talk 2 (STOC)](https://dl.acm.org/ft_gateway.cfm?id=3188748&type=mp4&path=%2F3190000%2F3188748%2F7B-1%2Emp4)
 
