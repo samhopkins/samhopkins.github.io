@@ -10,11 +10,13 @@
 
 #### 2019+
 
-**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* In submission. [arxiv](https://arxiv.org/abs/1906.11366)
+**Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* Manuscript.
+
+**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* In submission. [arxiv](https://arxiv.org/abs/1906.11366) [code](https://github.com/twistedcubic/que-outlier-detection)
 
 **How Hard Is Robust Mean Estimation?** *Samuel B. Hopkins, Jerry Li.* COLT 2019. [arxiv](https://arxiv.org/abs/1903.07870)
 
-**A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* COLT 2019.
+**A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* COLT 2019. [proceedings version](http://proceedings.mlr.press/v99/hopkins19b.html)
 
 **Sum of Squares Meets Program Obfuscation, Revisited.** *Boaz Barak, Samuel B. Hopkins, Aayush Jain, Pravesh Kothari, Amit Sahai.* Eurocrypt 2019. [eprint](https://eprint.iacr.org/2018/1237)
 
