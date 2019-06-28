@@ -10,6 +10,8 @@
 
 #### 2019+
 
+**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* In submission. [arxiv](https://arxiv.org/abs/1906.11366)
+
 **How Hard Is Robust Mean Estimation?** *Samuel B. Hopkins, Jerry Li.* COLT 2019. [arxiv](https://arxiv.org/abs/1903.07870)
 
 **A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* COLT 2019.

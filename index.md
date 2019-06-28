@@ -13,6 +13,8 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 
 For more, see [all publications](pubs.html)
 
+**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* In submission. [arxiv](https://arxiv.org/abs/1906.11366)
+
 **Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
 
 **Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* *Dissertation.* Recipient of **Cornell CS Doctoral Dissertation Award**. [pdf](thesis.pdf)
