@@ -12,7 +12,7 @@
 
 **Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* Manuscript.
 
-**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* In submission. [arxiv](https://arxiv.org/abs/1906.11366) [code](https://github.com/twistedcubic/que-outlier-detection)
+**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* Neurips 2019, Spotlight Presentation. [arxiv](https://arxiv.org/abs/1906.11366) [code](https://github.com/twistedcubic/que-outlier-detection)
 
 **How Hard Is Robust Mean Estimation?** *Samuel B. Hopkins, Jerry Li.* COLT 2019. [arxiv](https://arxiv.org/abs/1903.07870)
 

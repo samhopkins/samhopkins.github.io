@@ -15,7 +15,7 @@ For more, see [all publications](pubs.html)
 
 **Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* Manuscript.
 
-**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* In submission. [arxiv](https://arxiv.org/abs/1906.11366) [code](https://github.com/twistedcubic/que-outlier-detection)
+**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* NeurIPS 2019, Spotlight Presentation. [arxiv](https://arxiv.org/abs/1906.11366) [code](https://github.com/twistedcubic/que-outlier-detection)
 
 **Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
 
@@ -39,6 +39,8 @@ Blog posts I wrote on clustering and learning high-dimensional mixture models us
 Notes on tensor decomposition using the SoS method (originally notes for a guest lecture at Stanford). [pdf](tensor-decomp-notes.pdf)
 
 A short general-audience video about my research. [youtube](https://www.youtube.com/watch?v=wvdNs4keEys)
+
+Slides from a high-level introduction to SoS for cryptographers, from this [workshop](https://crypto.iacr.org/2019/affevents/nrc/page.html). [slides (pptx)](crypto-2019-talk.pptx)
 
 
 ### Notes
