@@ -1,0 +1,518 @@
+<p>(loading loading loading -- advance slide)</p>
+<p><span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span> <span class="math inline"></span></p>
+<hr />
+<h1 id="mean-estimation-with-sub-gaussian-rates-in-polynomial-time">mean estimation with sub-gaussian rates in polynomial time</h1>
+<p>[<strong>sam hopkins (miller fellow, uc berkeley)</strong>]{.center .blue}</p>
+<hr />
+<h2 id="estimating-the-mean-of-a-random-vector">estimating the mean of a random vector</h2>
+<div class="incremental">
+<blockquote>
+<p><strong>input:</strong> <span class="math inline">$X_1,\ldots,X_n \in \R^d$</span> independent copies of <span class="math inline"><em>X</em></span><br />
+<strong>output:</strong> estimator <span class="math inline">$\hat{\mu}(X_1,\ldots,X_n)$</span> of <span class="math inline">$\mu = \E X$</span>.</p>
+</blockquote>
+<p>for this talk assume <strong>isotropic:</strong> [<span class="math inline">$\E (X - \mu)(X - \mu)^\top = I$</span>]{.blue}</p>
+</div>
+<div class="incremental">
+<hr>
+<p>[<strong>obvious &quot;algorithm&quot; -- the empirical mean</strong>]{.center}</p>
+<p><em>empirical mean:</em> [<span class="math inline">$\overline{\mu} = \tfrac 1 n \sum X_i$</span>]{.blue}</p>
+<p><em>mean square error:</em> <span class="math inline">$\E \| \overline{\mu} - \mu \|^2 = \frac 1 n \E \|X - \mu\|^2 = \frac d n$</span></p>
+</div>
+<div class="incremental">
+<hr>
+<p>[<strong>what about the tail?</strong>]{.center .magenta}</p>
+<hr />
+</div>
+<h2 id="tail-of-the-empirical-mean">tail of the empirical mean</h2>
+<p>first, <span class="math inline"><em>d</em> = 1</span>. [how small is <span class="math inline">$\Pr(| \overline{\mu} - \mu | &gt; t)$</span>?]{.magenta}</p>
+<div class="incremental">
+<p><em>confidence interval (c.i.):</em> <span class="math inline">$\Pr(| \overline{\mu} - \mu | &gt; t) \leq \delta$</span> implies <span class="math inline"><em>δ</em></span>-c.i. of width <span class="math inline"><em>t</em></span></p>
+</div>
+<div class="incremental">
+<hr>
+<p><br /><span class="math display">$$\underbrace{X \sim \cN(\mu,1)}_{\text{strong (gaussian) assumption}} \Rightarrow \underbrace{\Pr( |\overline{\mu} - \mu| &gt; t ) \leq \exp(-t^2 n)}_{\text{thin (gaussian) tail}}$$</span><br /></p>
+<p><br /><span class="math display">$$\underbrace{X \text{ has } \E (X - \mu)^2 \leq 1}_{\text{weak (2nd moment) assumption}} \Rightarrow \underbrace{\Pr (| \overline{\mu} - \mu| &gt; t) \leq \frac 1 {t^2 n}}_{\text{fat tail}}$$</span><br /></p>
+</div>
+<div class="incremental">
+<p>[<img src="confidence-2.PNG" />]{.center}</p>
+<hr />
+</div>
+<h2 id="heavy-tails">heavy tails</h2>
+<p>only assume <span class="math inline">$\E X, \E X^2$</span> are finite.</p>
+<div class="scratch-preview">
+<iframe allowtransparenncy="true" width="800" height="400" src="gaussian_pdf.html" frameborder="0">
+</iframe>
+</div>
+<p>also occur in high dimensions: corruptions, power laws in large networks, etc.</p>
+<hr />
+<h2 id="beyond-the-empirical-mean">beyond the empirical mean</h2>
+<p>recall: i.i.d. samples <span class="math inline"><em>X</em><sub>1</sub>, …, <em>X</em><sub><em>n</em></sub></span> of <span class="math inline"><em>X</em></span>, try to estimate <span class="math inline">$\mu = \E X$</span></p>
+<p>[<strong>how confident can you be?</strong>]{.magenta} [is there an estimator <span class="math inline">$\hat{\mu}$</span> with <span class="math inline">$\Pr( |\hat{\mu} - \mu| &gt; t ) \leq \exp(-\Omega(t^2 n))$</span> when <span class="math inline"><em>X</em></span> is heavy-tailed?]{.fragment}</p>
+<div class="incremental">
+<p>no. [<strong>but you can fake it!</strong>]{.fragment .red}</p>
+</div>
+<div class="incremental">
+<hr>
+<p><strong>theorem (old):</strong></p>
+<p>for every <span class="math inline"><em>t</em></span>, exists <span class="math inline">$\hat{\mu}_t$</span> such that <span class="math inline">$\Pr( | \hat{\mu}_t - \mu | &gt; t ) \leq \exp(-\Omega(t^2 n))$</span></p>
+<p>and <span class="math inline">$\hat{\mu}_t$</span> is poly-time computable</p>
+</div>
+<div class="incremental">
+<hr>
+<p>[<strong>can estimate <span class="math inline"><em>μ</em></span> as if <span class="math inline"><em>X</em></span> were Gaussian, even if only <span class="math inline">$\E X, \E X^2$</span> exist</strong>]{.magenta .center}</p>
+</div>
+<div class="incremental">
+<p>[<strong>what happens for <span class="math inline"><em>d</em> &gt; 1</span>?</strong>]{.red .center}</p>
+<hr />
+</div>
+<h2 id="tail-of-the-empirical-mean-high-dimensions">tail of the empirical mean, high dimensions</h2>
+<p>same story, now with added curse of dimensionality</p>
+<div class="incremental">
+<hr>
+<p><strong>gaussian case:</strong></p>
+<p><span class="math inline">$X \sim \cN(\mu, I) \Rightarrow \Pr( \|\overline{\mu} - \mu\| &gt; t + \underbrace{\sqrt{d/n}}_{\approx \E \|\overline{\mu} - \mu \| } ) \leq \underbrace{\exp(-t^2 n)}_{d\text{-independent subgaussian tail}}$</span></p>
+</div>
+<div class="incremental">
+<hr>
+<p><strong>heavy-tailed case:</strong></p>
+<p>covariance <span class="math inline">$I \Rightarrow \Pr( \|\overline{\mu} - \mu\| &gt; t ) \leq \underbrace{\frac d {t^2 n}}_{d\text{-dependent fat tail}}$</span></p>
+<hr />
+</div>
+<h2 id="beyond-the-empirical-mean-high-dimensions">beyond the empirical mean, high dimensions</h2>
+<p><span class="math inline">$X \sim \cN(\mu, I) \Rightarrow \Pr( \|\overline{\mu} - \mu\| &gt; t + \underbrace{\sqrt{d/n}}_{\approx \E \|\overline{\mu} - \mu \| } ) \leq \underbrace{\exp(-t^2 n)}_{d\text{-independent subgaussian tail}}$</span></p>
+<div class="incremental">
+<hr>
+<p><strong>theorem (lugosi-mendelson, 2018):</strong></p>
+<p>for every <span class="math inline"><em>t</em></span>, exists <span class="math inline">$\hat{\mu}_t$</span> such that</p>
+<p><br /><span class="math display">$$\Pr \left ( \| \hat{\mu}_t - \mu \| &gt; O \left (t + \sqrt{d/n} \right )  \right )\leq \exp(-t^2 n)$$</span><br /></p>
+<p>assuming only <span class="math inline">$\E(X-\mu)(X-\mu)^\top = I$</span>.</p>
+<p>[new <strong>combinatorial</strong> notion of <strong>high-dimensional median</strong>]{.fragment}[, appears to require <span class="math inline">exp(<em>d</em>)</span> time]{.fragment}</p>
+</div>
+<div class="incremental">
+<hr>
+<p>[<strong>theorem (this work):</strong> same, but <span class="math inline">$\hat{\mu}_t$</span> is <strong>computable in time <span class="math inline"><em>O</em>(<em>d</em><em>n</em>)+(<em>d</em><em>t</em>)<sup><em>O</em>(1)</sup></span></strong>]{.magenta}</p>
+<hr />
+</div>
+<h2 id="prior-work">prior work</h2>
+<p>covariance <span class="math inline"><em>I</em></span>, <span class="math inline"><em>n</em></span> samples</p>
+<div class="incremental">
+<p>(disclaimer: &quot;tail&quot; not strictly accurate because one estimator <span class="math inline">$\hat{\mu}_t$</span> for each <span class="math inline"><em>t</em></span>)</p>
+</div>
+<div class="incremental">
+<p><br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">estimator</th>
+<th align="left">dim.</th>
+<th align="left">tail</th>
+<th align="left">time</th>
+<th align="left">ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">empirical mean</td>
+<td align="left">any</td>
+<td align="left"><span class="math inline"><em>d</em>/<em>t</em><sup>2</sup><em>n</em></span></td>
+<td align="left">poly</td>
+<td align="left">folklore</td>
+</tr>
+<tr class="even">
+<td align="left">(many)</td>
+<td align="left"><span class="math inline">1</span></td>
+<td align="left"><span class="math inline">exp(−<em>t</em><sup>2</sup><em>n</em>)</span></td>
+<td align="left">poly</td>
+<td align="left">(many)</td>
+</tr>
+<tr class="odd">
+<td align="left">geometric median</td>
+<td align="left">any</td>
+<td align="left"><span class="math inline">exp(−<em>t</em><sup>2</sup><em>n</em>/<em>d</em>)</span></td>
+<td align="left">poly</td>
+<td align="left">[[Minsker 13, Hsu-Sabato 13]]{.small}</td>
+</tr>
+<tr class="even">
+<td align="left">tournament median</td>
+<td align="left">any</td>
+<td align="left"><span class="math inline">exp(−<em>t</em><sup>2</sup><em>n</em>)</span></td>
+<td align="left">exp</td>
+<td align="left">[[Lugosi-Mendelson 18]]{.small}</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>median-sdp</strong></td>
+<td align="left"><strong>any</strong></td>
+<td align="left"><strong><span class="math inline">exp(−<em>t</em><sup>2</sup><em>n</em>)</span></strong></td>
+<td align="left"><strong>poly</strong></td>
+<td align="left"><strong>this work</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<h2 id="main-theorem">main theorem</h2>
+<p><strong>theorem:</strong> given <span class="math inline"><em>X</em><sub>1</sub>, …, <em>X</em><sub><em>n</em></sub>, <em>δ</em></span>, can find <span class="math inline">$\hat{\mu}$</span> such that</p>
+<p><br /><span class="math display">$$
+\Pr \left ( \left \| \hat{\mu} - \mu \right \| &gt; C \left ( \sqrt{\frac{d}{n}} + \sqrt{\frac{\log(1/\delta)}{n}} \right ) \right ) \leq \delta \, ,
+$$</span><br /></p>
+<div class="incremental">
+<p><br />
+i.e. if <span class="math inline"><em>δ</em> = exp(−<em>t</em><sup>2</sup><em>n</em>)</span>,</p>
+<p><br /><span class="math display">$$ \Pr \left ( \left \| \hat{\mu} - \mu \right \| &gt; C \left ( \sqrt{\frac dn } + t \right ) \right ) \leq \exp(-t^2 n)$$</span><br /></p>
+</div>
+<div class="incremental">
+<p><br />
+in time <span class="math inline"><em>O</em>(<em>n</em><em>d</em>)+(<em>d</em>log(1/<em>δ</em>))<sup><em>O</em>(1)</sup></span>.</p>
+</div>
+<div class="incremental">
+<p><strong>main innovation:</strong> new semidefinite programming (sdp) algorithm for high-dimensional median, based on sum of squares method (sos).</p>
+<p>[<strong>sos familiarity is not a prerequisite for this talk.</strong>]{.magenta}</p>
+<hr />
+</div>
+<h2 id="agenda">agenda</h2>
+<p><br />
+<br />
+<br />
+<br />
+1. the <span class="math inline"><em>d</em> = 1</span> case: median of means 2. lugosi and mendelson's median 3. median-sdp</p>
+<hr />
+<h2 id="median-of-means-in-one-dimension">median of means in one dimension</h2>
+<p>[[nemirovsky-yudin, jerrum-valiant-vazirani, alon-matias-szegedy]]{.cite}</p>
+<p><br />
+<br />
+<span class="math inline"><em>X</em><sub>1</sub>, …, <em>X</em><sub><em>n</em></sub></span> i.i.d. copies of <span class="math inline"><em>X</em></span> with <span class="math inline">$\E X = \mu$</span> and <span class="math inline">$\E (X - \mu)^2 = 1$</span></p>
+<p>empirical mean <span class="math inline"><em>δ</em></span>-c.i. width <span class="math inline">$O\Paren{ \sqrt{\frac{1}{n\delta}}}$</span></p>
+<p>median of means <span class="math inline"><em>δ</em></span>-c.i. width <span class="math inline">$O \Paren{ \sqrt{\frac{\log(1/\delta)}{n}}}$</span></p>
+<div class="incremental">
+<p>[<strong><span class="math inline">1/<em>δ</em></span> becomes <span class="math inline">log(1/<em>δ</em>)</span></strong>]{.magenta}</p>
+<hr />
+<div class="figure">
+<img src="diagram.PNG" />
+
+</div>
+<hr />
+<ol style="list-style-type: decimal">
+<li>[oblivously assign samples to <span class="math inline"><em>k</em></span> buckets of size <span class="math inline"><em>n</em>/<em>k</em></span>, with <span class="math inline"><em>k</em> = <em>Θ</em>(log(1/<em>δ</em>))</span>.]{.fragment}</li>
+<li>[reduce variance -- let <span class="math inline">$Z_i = \tfrac kn \sum_{j \text{ in $i$-th bucket}} X_i$</span>]{.fragment}</li>
+<li>[binomial tail for free -- let <span class="math inline">$\hat{\mu} =$</span> any median (quantile) of <span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub></span>]{.fragment}</li>
+</ol>
+<p>[<img src="median-of-means-1.svg" />]{.fragment}<br />
+[<img src="median-of-means-2.svg" />]{.fragment}<br />
+[<img src="median-of-means-3.svg" />]{.fragment}</p>
+<hr />
+<p><br />
+<br />
+<br />
+<br />
+<br />
+<strong>key insight: <em>number of outliers</em> concentrates even when <em>sum of outliers</em> does not.</strong></p>
+<hr />
+<h3 id="analysis-part-1">analysis, part 1</h3>
+<p><span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub></span> are bucketed averages, <span class="math inline">$\E Z = \mu$</span> and <span class="math inline">$\E(Z - \mu)^2 = \tfrac kn$</span></p>
+<p><strong>def:</strong> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span> &quot;inlier&quot; if <span class="math inline">|<em>Z</em><sub><em>i</em></sub> − <em>μ</em>|≤<em>r</em></span></p>
+<div class="incremental">
+<p>at least <span class="math inline">2<em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>'s inliers <span class="math inline">→</span> <span class="math inline">|median(<em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub>)−<em>μ</em>|≤<em>r</em></span></p>
+</div>
+<div class="incremental">
+<p><br />
+<br />
+<img src="medgood.PNG" /></p>
+<hr />
+</div>
+<h3 id="analysis-part-2">analysis, part 2</h3>
+<p><span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub></span> are bucketed averages, <span class="math inline">$\E Z = \mu$</span> and <span class="math inline">$\E(Z - \mu)^2 = \tfrac kn$</span></p>
+<p><strong>def:</strong> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span> &quot;inlier&quot; if <span class="math inline">|<em>Z</em><sub><em>i</em></sub> − <em>μ</em>|≤<em>r</em></span></p>
+<p>at least <span class="math inline">2<em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>'s inliers <span class="math inline">→</span> <span class="math inline">|median(<em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub>)−<em>μ</em>|≤<em>r</em></span></p>
+<hr>
+<p>choose <span class="math inline"><em>r</em></span> such that each <span class="math inline"><em>Z</em><sub><em>i</em></sub></span> is good <strong>with probability <span class="math inline">0.99</span></strong></p>
+<p><span class="math inline">$r = O(\sqrt{k/n})$</span> by chebyshev</p>
+<div class="incremental">
+<hr>
+<p><strong>num. of inliers is binomially-distributed</strong> <span class="math inline">Pr(more than <em>k</em>/3 outliers)≤exp(−<em>Ω</em>(<em>k</em>)) = <em>δ</em></span>.</p>
+<div class="figure">
+<img src="binom_tail.svg" />
+
+</div>
+<hr />
+</div>
+<h3 id="median-of-means-in-higher-dimensions----first-attempt">median of means in higher dimensions -- first attempt</h3>
+<p><strong>recall gaussian case:</strong></p>
+<p><span class="math inline">$X \sim \cN(\mu, I) \Rightarrow \Pr( \|\overline{\mu} - \mu\| &gt; t + \sqrt{d/n} ) \leq \exp(-t^2 n)$</span></p>
+<p>i.e. <span class="math inline"><em>δ</em></span>-c.i. radius <span class="math inline">$O\Paren{\sqrt{\frac dn} + \sqrt{\frac {\log 1/\delta} n}}$</span></p>
+<div class="incremental">
+<p><strong>goal:</strong> match this, only assume <span class="math inline">$\E (X - \mu)(X - \mu) = I$</span></p>
+</div>
+<div class="incremental">
+<hr>
+<p><strong>buckets:</strong> <span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub></span> with <span class="math inline">$\E Z = \mu$</span> and <span class="math inline">$\E (Z - \mu)(Z-\mu)^\top = \Gamma = \tfrac kn I$</span></p>
+</div>
+<div class="incremental">
+<p><strong>problem:</strong> can have <span class="math inline">$\|Z_i - \mu\| \approx \sqrt{k d/n}$</span> for most <span class="math inline"><em>Z</em><sub><em>i</em></sub></span></p>
+</div>
+<div class="incremental">
+<p>[result: <strong>dimension-dependent</strong> tail <span class="math inline">exp(−<em>t</em><sup>2</sup><em>n</em>/<em>d</em>)</span>]{.red}</p>
+<p>[i.e. <span class="math inline"><em>δ</em></span>-c.i. radius <span class="math inline">$O\Paren{\sqrt{\frac{ d \log(1/\delta)}{n}}}$</span>]{.red .fragment}</p>
+<hr />
+<p>[<img src="high-dim-bad.PNG" />]{.center}</p>
+<hr />
+</div>
+</div>
+<h2 id="lugosi-and-mendelsons-median">lugosi and mendelson's median</h2>
+<div class="incremental">
+<p>[cannot ask for <span class="math inline">2<em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>'s to be non-outliers]{.magenta}</p>
+</div>
+<div class="incremental">
+<p>[instead, ask for every direction to have at most <span class="math inline"><em>k</em>/3</span> outliers!]{.magenta}</p>
+<hr />
+<div class="figure">
+<img src="outlier-directions-1.svg" />
+
+</div>
+<hr />
+<div class="figure">
+<img src="outlier-directions-2.svg" />
+
+</div>
+<hr />
+<div class="figure">
+<img src="outlier-directions-3.svg" />
+
+</div>
+<hr />
+</div>
+<h2 id="lugosi-and-mendelsons-estimator">lugosi and mendelson's estimator</h2>
+<p><strong>input:</strong> <span class="math inline"><em>X</em><sub>1</sub>, …, <em>X</em><sub><em>n</em></sub>, <em>δ</em></span></p>
+<div class="incremental">
+<p><strong>buckets:</strong> bucketed means <span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub></span> for <span class="math inline"><em>k</em> = log(1/<em>δ</em>)</span></p>
+</div>
+<div class="incremental">
+<p><strong>goodness:</strong> <span class="math inline"><em>x</em></span> is <span class="math inline"><em>r</em></span>-good if in all directions <span class="math inline"><em>u</em></span>, for at least <span class="math inline">2<em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>,</p>
+<p><span class="math inline">$|\iprod{Z_i,u} - \iprod{x,u}| \leq r$</span></p>
+</div>
+<div class="incremental">
+<p>[<strong>alternative interpretation:</strong> <span class="math inline"><em>x</em></span> is <span class="math inline"><em>r</em></span>-good implies <span class="math inline"><em>x</em></span> has dist. at most <span class="math inline"><em>r</em></span> to a median in every direction]{.cyan}</p>
+<hr />
+<div class="figure">
+<img src="shift-to-median-1.svg" />
+
+</div>
+<hr />
+<div class="figure">
+<img src="shift-to-median-2.svg" />
+
+</div>
+<hr />
+</div>
+<h2 id="main-lemma-for-lugosi-mendelson-estimator">main lemma for lugosi-mendelson estimator</h2>
+<p>remember: <span class="math inline"><em>X</em><sub>1</sub>, …, <em>X</em><sub><em>n</em></sub></span> samples in <span class="math inline"><em>k</em> = <em>Θ</em>(log(1/<em>δ</em>))</span> buckets, <span class="math inline"><em>Z</em><sub><em>i</em></sub></span> is mean in <span class="math inline"><em>i</em></span>-th bucket.</p>
+<p><br />
+[<strong>lemma:</strong> If <span class="math inline">$r \gg \sqrt{d / n} + \sqrt{\log(1/\delta) / n}$</span> then w.p. <span class="math inline">1 − <em>δ</em></span>, <span class="math inline"><em>μ</em></span> is <span class="math inline"><em>r</em></span>-good]{.blue}</p>
+<p>[furthermore, any two points <span class="math inline"><em>x</em>, <em>y</em></span> having this property also satisfy <span class="math inline">∥<em>x</em> − <em>y</em>∥≤2<em>r</em></span>]{.fragment .magenta}</p>
+<p><br />
+. . .</p>
+<p><strong>algorithm:</strong> output <span class="math inline"><em>x</em></span> of &quot;best goodness&quot;</p>
+<div class="incremental">
+<p>[<strong>running time??</strong>]{.center .red}</p>
+<hr />
+</div>
+<h2 id="median-sdp">median sdp</h2>
+<p>(almost) a convex (sdp) relaxation of the set of <span class="math inline"><em>r</em></span>-good <span class="math inline"><em>x</em></span>'s</p>
+<div class="incremental">
+<p>with enough constraints that [each step of the lugosi-mendelson analysis also applies to the sdp]{.magenta} (the heart of the &quot;proofs to algorithms&quot; SoS method)</p>
+</div>
+<div class="incremental">
+<p><strong><span class="math inline">poly(<em>d</em>, <em>k</em>)</span> constraints enough to capture all important properties of integral solutions.</strong></p>
+<hr />
+<p>[<br /><span class="math display">$$
+\{ x \, : \, \text{ for all $u$, at most $k/3$ $Z_i$'s have $|\iprod{Z_i,u} - \iprod{x,u}| &gt; r$} \}
+$$</span><br />]{.blue}</p>
+<p>[how would you know if you found such a good <span class="math inline"><em>x</em></span>?]{.blue .center}</p>
+<p><br />
+[<strong>lemma 1:</strong> if <span class="math inline">$r \gg \sqrt{d / n} + \sqrt{\log(1/\delta) / n}$</span> then w.p. <span class="math inline">1 − <em>δ</em></span>,]{.fragment}</p>
+<p>[for every unit vector <span class="math inline">$u \in \R^d$</span>]{.fragment}</p>
+<p>[exist at most <span class="math inline"><em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>'s s.t. <span class="math inline">$|\iprod{Z_i, u} - \iprod{\mu,u}| &gt; r$</span>.]{.fragment}</p>
+<p>[i.e. <span class="math inline"><em>μ</em></span> is <span class="math inline"><em>r</em></span>-good]{.fragment}</p>
+<p><br />
+[<strong>lemma 2:</strong> if <span class="math inline"><em>x</em>, <em>y</em></span> are <span class="math inline"><em>r</em></span>-good then <span class="math inline">∥<em>x</em> − <em>y</em>∥≤2<em>r</em></span>]{.fragment}</p>
+<hr />
+<p>[<br /><span class="math display">$$
+\{ x \, : \, \text{ for all $u$, at most $k/3$ $Z_i$'s have $|\iprod{Z_i,u} - \iprod{x,u}| &gt; r$} \}
+$$</span><br />]{.blue}</p>
+<p>[how would you know if you found such a good <span class="math inline"><em>x</em></span>?]{.blue .center}</p>
+<p><br />
+[<strong>algorithmic lemma 1:</strong> if <span class="math inline">$r \gg \sqrt{d / n} + \sqrt{\log(1/\delta) / n}$</span> w.p. <span class="math inline">1 − <em>δ</em></span> there is a <em>certificate</em> <span class="math inline"><em>M</em><sub><em>μ</em></sub></span>]{.fragment}</p>
+<p>[which <em>proves</em> that for every unit vector <span class="math inline">$u \in \R^d$</span>]{.fragment}</p>
+<p>[exist at most <span class="math inline"><em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>'s s.t. <span class="math inline">$|\iprod{Z_i, u} - \iprod{\mu,u}| &gt; r$</span>.]{.fragment}</p>
+<p><br />
+[<strong>algorithmic lemma 2:</strong> there is a polynomial-time algorithm which finds <span class="math inline"><em>x</em></span> such that <span class="math inline">∥<em>x</em> − <em>y</em>∥≤2<em>r</em></span> if <span class="math inline"><em>y</em></span> has a certificate <span class="math inline"><em>M</em><sub><em>y</em></sub></span>.]{.fragment}</p>
+</div>
+<div class="incremental">
+<p><br />
+[<br /><span class="math display">$$
+\{ (x,M_x) \, : \, \text{ $M_x$ proves for all $u$, at most $k/3$ $Z_i$'s have $|\iprod{Z_i,u} - \iprod{x,u}| &gt; r$} \}
+$$</span><br />]{.blue}</p>
+<hr />
+</div>
+<h2 id="certifying-goodness">certifying goodness</h2>
+<p><strong>change of notation:</strong> <span class="math inline"><em>Z</em></span> has mean <span class="math inline"><em>μ</em></span> and covariance <span class="math inline"><em>I</em></span> (<span class="math inline"><em>X</em></span> has disappeared)</p>
+<blockquote>
+<p><strong>problem:</strong> given <span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub>, <em>r</em></span> [<em>and</em> <span class="math inline"><em>x</em></span>]{.magenta}, [certify]{.blue} that for all unit <span class="math inline"><em>u</em></span>, at most <span class="math inline"><em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>'s have <span class="math inline">$\iprod{Z_i,u} - \iprod{x,u} &gt; r$</span>.</p>
+<p><strong>goal:</strong> certification succeeds w.p. at least <span class="math inline">1 − exp(−<em>k</em>/10)</span> when <span class="math inline">$r \gg \sqrt{d / k} + 1$</span> [<em>and <span class="math inline"><em>x</em> = <em>μ</em></span></em>]{.magenta}</p>
+</blockquote>
+<p>(if <span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub></span> are bucketed means of <span class="math inline"><em>X</em><sub>1</sub>, …, <em>X</em><sub><em>n</em></sub></span> and <span class="math inline"><em>k</em> = <em>C</em>log(1/<em>δ</em>)</span>, recover previous setting.)</p>
+<div class="incremental">
+<p>[<strong>what is certification?</strong>]{.blue}</p>
+</div>
+<div class="incremental">
+<p>[algorithm takes <span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub>, <em>r</em>, <em>x</em></span>, outputs &quot;yes&quot; or &quot;I don't know&quot;]{.blue}</p>
+</div>
+<div class="incremental">
+<p>[output is yes <span class="math inline">→</span> for all unit <span class="math inline"><em>u</em></span>, at most <span class="math inline"><em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>'s have <span class="math inline">$\iprod{Z_i,u} &gt; \iprod{x,u} + r$</span>]{.blue}</p>
+<hr />
+<div class="figure">
+<img src="outlier-directions-4.svg" />
+
+</div>
+<hr />
+<h3 id="the-goodness-certification-sdp">the goodness certification sdp</h3>
+<p>start with a quadratic program in <span class="math inline"><em>b</em> = <em>b</em><sub>1</sub>, …, <em>b</em><sub><em>k</em></sub>, <em>u</em> = <em>u</em><sub>1</sub>, …, <em>u</em><sub><em>d</em></sub></span>:</p>
+<p><br /><span class="math display">$$\max_{u,b} \sum b_i \text{ such that } b_i^2 = b_i, \|u\|^2 = 1, \text{ and } b_i \iprod{Z_i,u} \geq b_i (\iprod{\mu,u} + r)$$</span><br /></p>
+<div class="incremental">
+<p><br />
+[relax <span class="math inline">(<em>b</em>, <em>u</em>)(<em>b</em>, <em>u</em>)<sup>⊤</sup></span> to block PSD matrix]{.magenta .center}</p>
+<p>[<br /><span class="math display">$$\left ( \begin{array}{cc} B &amp; W \\ W^\top &amp; U \end{array} \right ) $$</span><br />]{.magenta}</p>
+</div>
+<div class="incremental">
+<p><br />
+</p>
+[
+
+<p>]{.blue .center}</p>
+<hr />
+</div>
+</div>
+<h2 id="glimpse-of-the-analysis">glimpse of the analysis</h2>
+<p><strong>goal:</strong> if <span class="math inline">$r \gg \sqrt{d / k} + 1$</span> then w.p. <span class="math inline">1 − <em>e</em><sup>−<em>k</em>/10</sup></span>,</p>
+<p><br /><span class="math display"><em>S</em><em>D</em><em>P</em>(<em>Z</em><sub>1</sub>, …<em>Z</em><sub><em>k</em></sub>, <em>μ</em>)≤<em>k</em>/3</span><br /></p>
+<p>[then <strong>dual solution</strong> is a (degree <span class="math inline">2</span> sos) proof <span class="math inline"><em>M</em><sub><em>μ</em></sub></span>]{.fragment .red}</p>
+<p><br />
+. . .</p>
+<p>[<strong>expectation:</strong> <span class="math inline">$\E SDP(Z_1,\ldots,Z_k,\mu) \leq k/6$</span>]{.blue}</p>
+<p>[<em>proof step 1:</em> relate <span class="math inline"><em>S</em><em>D</em><em>P</em>(<em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub>, <em>μ</em>)</span> to <span class="math inline">2 → 1</span> norm of a random matrix]{.blue}</p>
+<div class="incremental">
+<p>[<em>proof step 2:</em> Grothendieck's inequality for sdp approximation of <span class="math inline">2 → 1</span> norm]{.blue}</p>
+<p><br />
+. . .</p>
+<p>[<strong>concentration:</strong> <span class="math inline">$\Pr ( SDP(Z_1,\ldots,Z_k,\mu) - \E SDP(Z_1,\ldots,Z_k,\mu) &gt; k/6 ) &lt; e^{-k/10}$</span>]{.magenta}</p>
+<p>[<em>proof sketch:</em> <span class="math inline"><em>S</em><em>D</em><em>P</em>(<em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub>, <em>μ</em>)</span> satisfies a <strong>bounded differences</strong> property -- pays at most <span class="math inline">1</span> per outlier.]{.magenta}</p>
+<hr />
+</div>
+<h2 id="proof-insights">proof insights</h2>
+<p>[<strong>sdp and robust matrix norms:</strong>]{.center}</p>
+<p>usual norms of <span class="math inline"><em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub></span> are bad, e.g. <span class="math inline">$\left \| \sum_{i =1}^k Z_i Z_i^\top \right \| = \|(Z_1,\ldots,Z_k)^\top\|_{2 \rightarrow 2}^2$</span></p>
+<p>sdps can handle less outlier-sensitive norms, e.g. <span class="math inline">∥(<em>Z</em><sub>1</sub>, …, <em>Z</em><sub><em>k</em></sub>)<sup>⊤</sup>∥<sub>2 → 1</sub></span></p>
+<div class="incremental">
+<p><br />
+<br />
+[<strong>sdps and stability:</strong>]{.center}</p>
+<p>unlike norms and averages, SDP can move by $ 1$ even if <span class="math inline"><em>Z</em><sub><em>i</em></sub></span> moves by <span class="math inline">10<sup>10</sup></span>.</p>
+<p>SDPs can concentrate better than norms and averages</p>
+<hr />
+<p><strong>algorithmic Lemma 1:</strong> If <span class="math inline">$r \gg \sqrt{\Tr \Sigma / n} + \sqrt{\|\Sigma\| \log(1/\delta) / n}$</span> w.p. <span class="math inline">1 − <em>δ</em></span> there is a <em>certificate</em> <span class="math inline"><em>M</em><sub><em>μ</em></sub></span></p>
+<p>which <em>proves</em> that for every unit vector <span class="math inline">$u \in \R^d$</span></p>
+<p>exist at most <span class="math inline"><em>k</em>/3</span> <span class="math inline"><em>Z</em><sub><em>i</em></sub></span>'s s.t. <span class="math inline">$|\iprod{Z_i,u} - \iprod{\mu,u}| &gt; r$</span></p>
+<p><br />
+[<strong>algorithmic lemma 2:</strong> there is a polynomial-time algorithm which finds <span class="math inline"><em>x</em></span> such that <span class="math inline">∥<em>x</em> − <em>y</em>∥≤2<em>r</em></span> if <span class="math inline"><em>y</em></span> has a certificate <span class="math inline"><em>M</em><sub><em>y</em></sub></span>.]{.fragment}</p>
+<p><br />
+[prove in degree 8 SoS that <span class="math inline">(<em>x</em>, <em>M</em><sub><em>x</em></sub>),(<em>y</em>, <em>M</em><sub><em>y</em></sub>)</span> must have <span class="math inline">∥<em>x</em> − <em>y</em>∥≤2<em>r</em></span>, get an algorithm for free.]{.blue .fragment}</p>
+<hr />
+</div>
+<h2 id="conclusion">conclusion</h2>
+<p><strong>main theorem:</strong> first polynomial-time estimator for heavy-tailed estimation [matching empirical mean's performance in Gaussian setting]{.magenta}</p>
+<div class="incremental">
+<p><strong>open problem:</strong> is there a <em>practical algorithm</em> whose <em>empirical</em> performance improves on state-of-the-art for heavy-tailed estimation?</p>
+</div>
+<div class="incremental">
+<p><br />
+[<strong>thanks!</strong>]{.center}</p>
+<hr />
+</div>
+<h2 id="confidence-intervals">Confidence Intervals</h2>
+<div class="figure">
+<img src="confidence_interval.svg" />
+
+</div>
+<hr />
+<h2 id="confidence-intervals-non-asymptotics-gaussians">Confidence Intervals / Non-Asymptotics: Gaussians</h2>
+<p>If <span class="math inline">$X_1,\ldots,X_n \sim \cN(\mu, \Sigma)$</span> then [<span class="math inline">$\overline{\mu} = \frac 1 n \sum_{i=1}^n X_i \sim \cN(\mu, \Sigma / n)$</span>]{.blue}</p>
+<div class="incremental">
+<p><span class="math inline"><em>δ</em></span> confidence interval radius: [<span class="math inline">$\sqrt{\frac{\Tr \Sigma}{n}} + \sqrt{\frac{2 \|\Sigma\| \log(1/\delta)}{n}}$</span>]{.blue}</p>
+</div>
+<div class="incremental">
+<p><br />
+[<strong>Consider <span class="math inline"><em>Σ</em> = <em>I</em>, <em>μ</em> = 0</span></strong>]{.center}</p>
+</div>
+<div class="incremental">
+<p><span class="math inline">$\overline{\mu} \sim \cN(0, I/n)$</span>, so <span class="math inline">$\|\overline{\mu}\|^2 = \sum_{i=1}^d g_i^2 \approx \frac{d \pm \sqrt{d \log (1/\delta)}}{n}$</span> [<strong>norm of std. Gaus.</strong>]{.red}</p>
+<p><br />
+. . .</p>
+<p>[<span class="math inline">$\|\overline{\mu}\| = \sqrt{\sum_{i=1}^d g_i^2} \approx \sqrt{\frac d n } \cdot \Paren{1 \pm \frac {\sqrt{\log 1/\delta}} {\sqrt d}} = \sqrt{\frac dn} + \sqrt{\frac{1 \cdot \log(1/\delta)}{n}}$</span>]{.magenta}</p>
+<hr />
+</div>
+<h2 id="heavy-tails-1">Heavy Tails</h2>
+<p>Only assume <span class="math inline">$\mu = \E X$</span> and <span class="math inline">$\Sigma = \E(X - \mu)(X - \mu)^\top$</span> are finite.</p>
+<div class="scratch-preview">
+<iframe allowtransparenncy="true" width="800" height="400" src="gaussian_pdf.html" frameborder="0">
+</iframe>
+</div>
+<p>Heavy tails do occur in high dimensions: corruptions, power laws in large networks, etc.</p>
+<hr />
+<h2 id="heavy-tails-and-the-empirical-mean">Heavy Tails and the Empirical Mean</h2>
+<p>[<span class="math inline">$\Tr \Sigma = \E \|X - \mu\|^2$</span> and <span class="math inline">∥<em>Σ</em>∥=</span> magnitude of principal component.]{.center}</p>
+<div class="incremental">
+<p>[<strong>Sub-Gaussian <span class="math inline"><em>X</em></span></strong>]{.center}</p>
+<p><br /><span class="math display">$$r_\delta = \sqrt{\frac{\Tr \Sigma}{n}} + \sqrt{\frac{2 \|\Sigma\| \log(1/\delta)}{n}}$$</span><br /></p>
+</div>
+<div class="incremental">
+<p>[[<span class="math inline">$1/\sqrt{n}$</span> rate]{.cyan}, [<span class="math inline">$\sqrt{\log 1/\delta}$</span> tail bound,]{.fragment .blue} [<span class="math inline">$\sqrt{\log 1/\delta}$</span> multiplies <span class="math inline">$\sqrt{\|\Sigma\|}$</span>]{.fragment .magenta}]{.center}</p>
+</div>
+<div class="incremental">
+<p>[<strong>Heavy-tailed <span class="math inline"><em>X</em></span></strong>]{.center}</p>
+<p><br /><span class="math display">$$ r_\delta = \sqrt{\frac{\Tr \Sigma}{n \delta}} $$</span><br /></p>
+</div>
+<div class="incremental">
+<p>[<span class="math inline">$1/\sqrt{n}$</span> rate]{.cyan}<br />
+[<span class="math inline">$\sqrt{1/\delta}$</span> tail bound [<strong>crisis of confidence</strong>]{.right}]{.fragment .blue}<br />
+[<span class="math inline">$\sqrt{1/\delta}$</span> multiplies <span class="math inline">$\sqrt{\Tr \Sigma}$</span> [<strong>curse of dimensionality</strong>]{.right}]{.fragment .magenta}</p>
+<hr />
+<p>For which r.v.'s <span class="math inline"><em>X</em></span> can <span class="math inline">$\E X$</span> be estimated with [<strong>sub-Gaussian-like confidence intervals</strong>]{.blue}?</p>
+</div>
+<div class="incremental">
+<p>[[<strong>Only need bounded 2nd moments!</strong>]{.red} [[Lugosi-Mendelson 18]]{.grey} ]{.center}</p>
+</div>
+<div class="incremental">
+<p>[But if <span class="math inline">$X \in \R^d$</span>, it takes <span class="math inline">exp(<em>d</em>)</span> time to compute]{.center}</p>
+</div>
+<div class="incremental">
+<p><br />
+<br />
+For which r.v.'s <span class="math inline"><em>X</em></span> is there a [<strong>polynomial-time computable</strong>]{.magenta} and [<strong>sub-Gaussian</strong>]{.blue} estimator?</p>
+</div>
+<div class="incremental">
+<p>[<strong>This work: only need bounded 2nd moments!</strong>]{.center .red}</p>
+<hr />
+</div>
+<h2 id="main-theorem-1">Main Theorem</h2>
+<blockquote>
+<p><strong>Theorem:</strong> Given <span class="math inline"><em>X</em><sub>1</sub>, …, <em>X</em><sub><em>n</em></sub>, <em>δ</em></span>, can find <span class="math inline">$\hat{\mu}$</span> such that</p>
+<p><br /><span class="math display">$$
+\Pr \left \{ \left \| \hat{\mu} - \mu \right \| &gt; C \left ( \sqrt{\frac{\Tr \Sigma}{n}} + \sqrt{\frac{\|\Sigma\| \log(1/\delta)}{n}} \right ) \right \} \leq \delta \, .
+$$</span><br /></p>
+<p>in time <span class="math inline"><em>O</em>(<em>n</em><em>d</em>)+(<em>d</em>log(1/<em>δ</em>))<sup><em>O</em>(1)</sup></span>.</p>
+</blockquote>
+<div class="incremental">
+<p><br />
+<br />
+</p>
+</div>

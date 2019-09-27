@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Sub-Gaussian Mean Estimation in Polynomial Time</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Sub-Gaussian Mean Estimation in Polynomial Time</h1>
+</section>
+
+<section class="slide level1">
+
+<p>(loading loading loading – advance slide)</p>
+<p><span class="math inline">\(\newcommand{\R}{\mathbb{R}}\)</span> <span class="math inline">\(\newcommand{\e}{\varepsilon}\)</span> <span class="math inline">\(\newcommand{\cD}{\mathcal{D}}\)</span> <span class="math inline">\(\newcommand{\poly}{\text{poly}}\)</span> <span class="math inline">\(\newcommand{\cN}{\mathcal{N}}\)</span> <span class="math inline">\(\newcommand{\tensor}{\otimes}\)</span> <span class="math inline">\(\newcommand{\E}{\mathop{\mathbb{E}}}\)</span> <span class="math inline">\(\renewcommand{\hat}{\widehat}\)</span> <span class="math inline">\(\newcommand{\iprod}[1]{\langle #1 \rangle}\)</span> <span class="math inline">\(\newcommand{\pE}{\tilde{\mathbb{E}}}\)</span> <span class="math inline">\(\newcommand{\Paren}[1]{\left ( #1 \right )}\)</span> <span class="math inline">\(\newcommand{\N}{\mathbb{N}}\)</span> <span class="math inline">\(\newcommand{\Tr}{\text{Tr}}\)</span></p>
+</section>
+<section id="mean-estimation-with-sub-gaussian-rates-in-polynomial-time" class="slide level1">
+<h1>Mean Estimation with Sub-Gaussian Rates in Polynomial Time</h1>
+<p><span class="center blue"><strong>Sam Hopkins (Miller Fellow, UC Berkeley)</strong></span></p>
+</section>
+<section class="slide level1">
+
+<h2 id="estimating-the-mean-of-a-random-vector">estimating the mean of a random vector</h2>
+<div class="fragment">
+<blockquote>
+<p><strong>input:</strong> <span class="math inline">\(X_1,\ldots,X_n \in \R^d\)</span> independent copies of <span class="math inline">\(X\)</span><br />
+<strong>output:</strong> estimator <span class="math inline">\(\hat{\mu}(X_1,\ldots,X_n)\)</span> of <span class="math inline">\(\mu = \E X\)</span>.</p>
+</blockquote>
+<p>for this talk assume <strong>isotropic:</strong> <span class="blue"><span class="math inline">\(\E (X - \mu)(X - \mu)^\top = I\)</span></span></p>
+</div>
+<div class="fragment">
+<hr>
+<p><span class="center"><em>obvious “algorithm” – the empirical mean</em></span></p>
+<p><em>empirical mean:</em> <span class="blue"><span class="math inline">\(\overline{\mu} = \tfrac 1 n \sum X_i\)</span></span></p>
+<p><em>mean square error:</em> <span class="math inline">\(\E \| \overline{\mu} - \mu \|^2 = \frac 1 n \E \|X - \mu\|^2 = \frac d n\)</span></p>
+</div>
+<div class="fragment">
+<hr>
+<p><span class="center magenta"><strong>what about the tail?</strong></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="tail-of-the-empirical-mean">tail of the empirical mean</h2>
+<p><span class="blue"><strong>Classical:</strong> mean square error <span class="math inline">\(\E \|\hat{\mu} - \mu\|^2\)</span></span></p>
+<p><span class="blue">Minimized by empirical mean <span class="math inline">\(\overline{\mu} = \tfrac 1 n \sum X_i\)</span>, if <span class="math inline">\(\E XX^\top\)</span> exists</span></p>
+<div class="fragment">
+<p><span class="blue">Asymptotic: if <span class="math inline">\(n \rightarrow \infty\)</span>, distribution of <span class="math inline">\(\overline{\mu} - \mu\)</span> is Gaussian</span></p>
+</div>
+<div class="fragment">
+<p><span class="magenta"><strong>This talk:</strong> confidence intervals and nonasymptotic bounds</span></p>
+<p><span class="magenta">Goal: for every <span class="math inline">\(n \in \N\)</span> and <span class="math inline">\(\delta &gt; 0\)</span> a <strong>radius</strong> <span class="math inline">\(r_\delta\)</span> such that</span></p>
+<p><span class="magenta"><span class="math display">\[ \Pr \{ \|\hat{\mu} - \mu\| &gt; r_\delta \} \leq \delta \]</span></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="confidence-intervals">Confidence Intervals</h2>
+<p><img data-src="confidence_interval.svg" /></p>
+</section>
+<section class="slide level1">
+
+<h2 id="confidence-intervals-non-asymptotics-gaussians">Confidence Intervals / Non-Asymptotics: Gaussians</h2>
+<p>If <span class="math inline">\(X_1,\ldots,X_n \sim \cN(\mu, \Sigma)\)</span> then <span class="blue"><span class="math inline">\(\overline{\mu} = \frac 1 n \sum_{i=1}^n X_i \sim \cN(\mu, \Sigma / n)\)</span></span></p>
+<div class="fragment">
+<p><span class="math inline">\(\delta\)</span> confidence interval radius: <span class="blue"><span class="math inline">\(\sqrt{\frac{\Tr \Sigma}{n}} + \sqrt{\frac{2 \|\Sigma\| \log(1/\delta)}{n}}\)</span></span></p>
+</div>
+<div class="fragment">
+<p><br />
+</p>
+<p><span class="center"><strong>Consider <span class="math inline">\(\Sigma = I, \mu = 0\)</span></strong></span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\overline{\mu} \sim \cN(0, I/n)\)</span>, so <span class="math inline">\(\|\overline{\mu}\|^2 = \sum_{i=1}^d g_i^2 \approx \frac{d \pm \sqrt{d \log (1/\delta)}}{n}\)</span> <span class="red"><strong>norm of std. Gaus.</strong></span></p>
+<p><br />
+</p>
+</div>
+<div class="fragment">
+<p><span class="magenta"><span class="math inline">\(\|\overline{\mu}\| = \sqrt{\sum_{i=1}^d g_i^2} \approx \sqrt{\frac d n } \cdot \Paren{1 \pm \frac {\sqrt{\log 1/\delta}} {\sqrt d}} = \sqrt{\frac dn} + \sqrt{\frac{1 \cdot \log(1/\delta)}{n}}\)</span></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="heavy-tails">Heavy Tails</h2>
+<p>Only assume <span class="math inline">\(\mu = \E X\)</span> and <span class="math inline">\(\Sigma = \E(X - \mu)(X - \mu)^\top\)</span> are finite.</p>
+<div class="scratch-preview">
+<iframe allowtransparenncy="true" width="800" height="400" src="gaussian_pdf.html" frameborder="0">
+</iframe>
+</div>
+<p>Heavy tails do occur in high dimensions: corruptions, power laws in large networks, etc.</p>
+</section>
+<section class="slide level1">
+
+<h2 id="heavy-tails-and-the-empirical-mean">Heavy Tails and the Empirical Mean</h2>
+<p><span class="center"><span class="math inline">\(\Tr \Sigma = \E \|X - \mu\|^2\)</span> and <span class="math inline">\(\|\Sigma\|=\)</span> magnitude of principal component.</span></p>
+<div class="fragment">
+<p><span class="center"><strong>Sub-Gaussian <span class="math inline">\(X\)</span></strong></span></p>
+<p><span class="math display">\[r_\delta = \sqrt{\frac{\Tr \Sigma}{n}} + \sqrt{\frac{2 \|\Sigma\| \log(1/\delta)}{n}}\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="center"><span class="cyan"><span class="math inline">\(1/\sqrt{n}\)</span> rate</span>, <span class="fragment blue"><span class="math inline">\(\sqrt{\log 1/\delta}\)</span> tail bound,</span> <span class="fragment magenta"><span class="math inline">\(\sqrt{\log 1/\delta}\)</span> multiplies <span class="math inline">\(\sqrt{\|\Sigma\|}\)</span></span></span></p>
+</div>
+<div class="fragment">
+<p><span class="center"><strong>Heavy-tailed <span class="math inline">\(X\)</span></strong></span></p>
+<p><span class="math display">\[ r_\delta = \sqrt{\frac{\Tr \Sigma}{n \delta}} \]</span></p>
+</div>
+<div class="fragment">
+<p><span class="cyan"><span class="math inline">\(1/\sqrt{n}\)</span> rate</span><br />
+<span class="fragment blue"><span class="math inline">\(\sqrt{1/\delta}\)</span> tail bound <span class="right"><strong>crisis of confidence</strong></span></span><br />
+<span class="fragment magenta"><span class="math inline">\(\sqrt{1/\delta}\)</span> multiplies <span class="math inline">\(\sqrt{\Tr \Sigma}\)</span> <span class="right"><strong>curse of dimensionality</strong></span></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<p>For which r.v.’s <span class="math inline">\(X\)</span> can <span class="math inline">\(\E X\)</span> be estimated with <span class="blue"><strong>sub-Gaussian-like confidence intervals</strong></span>?</p>
+<div class="fragment">
+<p><span class="center"><span class="red"><strong>Only need bounded 2nd moments!</strong></span> <span class="grey">[Lugosi-Mendelson 18]</span></span></p>
+</div>
+<div class="fragment">
+<p><span class="center">But if <span class="math inline">\(X \in \R^d\)</span>, it takes <span class="math inline">\(\exp(d)\)</span> time to compute</span></p>
+</div>
+<div class="fragment">
+<p><br />
+<br />
+</p>
+<p>For which r.v.’s <span class="math inline">\(X\)</span> is there a <span class="magenta"><strong>polynomial-time computable</strong></span> and <span class="blue"><strong>sub-Gaussian</strong></span> estimator?</p>
+</div>
+<div class="fragment">
+<p><span class="center red"><strong>This work: only need bounded 2nd moments!</strong></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="main-theorem">Main Theorem</h2>
+<blockquote>
+<p><strong>Theorem:</strong> Given <span class="math inline">\(X_1,\ldots,X_n,\delta\)</span>, can find <span class="math inline">\(\hat{\mu}\)</span> such that</p>
+<p><span class="math display">\[
+\Pr \left \{ \left \| \hat{\mu} - \mu \right \| &gt; C \left ( \sqrt{\frac{\Tr \Sigma}{n}} + \sqrt{\frac{\|\Sigma\| \log(1/\delta)}{n}} \right ) \right \} \leq \delta \, .
+\]</span></p>
+<p>in time <span class="math inline">\(O(nd) + (d \log(1/\delta))^{O(1)}\)</span>.</p>
+</blockquote>
+<div class="fragment">
+<p><br />
+<br />
+</p>
+<p><strong>Main innovation:</strong> new semidefinite programming (SDP) algorithm for high-dimensional median, based on sum of squares method (SoS).</p>
+<p><span class="magenta"><strong>SoS familiarity is not a prerequisite for this talk.</strong></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="prior-work">Prior Work</h2>
+<p>covariance <span class="math inline">\(\Sigma\)</span>, <span class="math inline">\(n\)</span> samples, confidence <span class="math inline">\(1-\delta\)</span></p>
+<div class="fragment">
+<p><span class="blue"><span class="math inline">\(\text{good} = O \Paren{\sqrt{\frac{\Tr \Sigma}{n}} + \sqrt{\frac{\|\Sigma\| \log(1/\delta)}{n}}}\)</span></span></p>
+</div>
+<div class="fragment">
+<p><span class="magenta"><span class="math inline">\(\text{curse} = O \Paren{\sqrt{\frac{\Tr \Sigma \log(1/\delta) }{n}}}\)</span> <span class="right">sub-Gaussian, dimension <strong>dependent</strong> tail</span></span></p>
+</div>
+<div class="fragment">
+<p><span class="red"><span class="math inline">\(\text{both} = O \Paren{\sqrt{\frac{\Tr \Sigma}{\delta n}}}\)</span> <span class="right"><strong>heavy</strong>, dimension <strong>dependent</strong> tail</span></span></p>
+</div>
+<div class="fragment">
+<table>
+<thead>
+<tr class="header">
+<th>Estimator</th>
+<th>Dimension</th>
+<th><span class="math inline">\(r_\delta\)</span></th>
+<th>Time</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>empirical mean</td>
+<td>any</td>
+<td><span class="red">both</span></td>
+<td>poly</td>
+<td>folklore</td>
+</tr>
+<tr class="even">
+<td>(many)</td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="blue">good</span></td>
+<td>poly</td>
+<td>(many)</td>
+</tr>
+<tr class="odd">
+<td>geometric median</td>
+<td>any</td>
+<td><span class="magenta">curse</span></td>
+<td>poly</td>
+<td><span class="small">[Minsker 13, Hsu-Sabato 13]</span></td>
+</tr>
+<tr class="even">
+<td>tournament median</td>
+<td>any</td>
+<td><span class="blue">good</span></td>
+<td>exp</td>
+<td><span class="small">[Lugosi-Mendelson 18]</span></td>
+</tr>
+<tr class="odd">
+<td><strong>median-SDP</strong></td>
+<td><strong>any</strong></td>
+<td><span class="blue"><strong>good</strong></span></td>
+<td><strong>poly</strong></td>
+<td><strong>this work</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="agenda">Agenda</h2>
+<ol type="1">
+<li>The <span class="math inline">\(d=1\)</span> case: median of means</li>
+<li>The Lugosi-Mendelson estimator</li>
+<li>median-SDP</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<h2 id="median-of-means-d1">Median of Means: <span class="math inline">\(d=1\)</span></h2>
+<p><span class="cite">[Nemirovsky-Yudin, Jerrum-Valiant-Vazirani, Alon-Matias-Szegedy]</span></p>
+<p><br />
+</p>
+<p><span class="math inline">\(X_1,\ldots,X_n\)</span> i.i.d. copies of <span class="math inline">\(X\)</span> with <span class="math inline">\(\E X = \mu, \E (X - \mu)^2 = \sigma^2\)</span>.</p>
+<p><br />
+</p>
+<div class="fragment">
+<p><span class="blue">Empirical mean: <span class="math inline">\(r_\delta = O \Paren{ \sqrt{\frac{\sigma^2}{n\delta}}}\)</span>.</span></p>
+<p><br />
+</p>
+</div>
+<div class="fragment">
+<p><span class="magenta">Median of means: <span class="math inline">\(r_\delta = O \Paren{ \sqrt{\frac{\sigma^2 \log(1/\delta)}{n}}}\)</span>.</span></p>
+<p><br />
+</p>
+<p><span class="cyan"><strong><span class="math inline">\(1/\delta\)</span> becomes <span class="math inline">\(\log(1/\delta)\)</span></strong></span> <span class="red">no more crisis of confidence</span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<p><img data-src="diagram.PNG" /></p>
+</section>
+<section class="slide level1">
+
+<ol type="1">
+<li><span class="fragment">oblivously assign samples to <span class="math inline">\(k\)</span> buckets of size <span class="math inline">\(n/k\)</span>, with <span class="math inline">\(k = \Theta(\log(1/\delta))\)</span>.</span></li>
+<li><span class="fragment">reduce variance – <span class="cyan">let <span class="math inline">\(Z_i = \tfrac kn \sum_{i \text{ in $j$-th bucket}} X_i\)</span></span></span></li>
+<li><span class="fragment">binomial tail for free – <span class="cyan">let <span class="math inline">\(\hat{\mu} =\)</span> any median of <span class="math inline">\(Z_1,\ldots,Z_k\)</span></span></span></li>
+</ol>
+<p><span class="fragment"><img data-src="median-of-means-1.svg" /></span><br />
+<span class="fragment"><img data-src="median-of-means-2.svg" /></span><br />
+<span class="fragment"><img data-src="median-of-means-3.svg" /></span></p>
+</section>
+<section class="slide level1">
+
+<p><br />
+<br />
+<br />
+<br />
+<br />
+</p>
+<p><strong>Key insight: <em>number of outliers</em> concentrates even when <em>sum of outliers</em> does not.</strong></p>
+</section>
+<section class="slide level1">
+
+<h3 id="analysis-d1">Analysis: <span class="math inline">\(d=1\)</span></h3>
+<p><span class="math inline">\(Z_1,\ldots,Z_k\)</span> are bucketed averages, <span class="math inline">\(\E Z = \mu\)</span> and <span class="math inline">\(\E(Z - \mu)^2 = \tfrac kn \cdot \sigma^2\)</span></p>
+<p><span class="blue">At least <span class="math inline">\(2k/3\)</span> <span class="math inline">\(Z_i\)</span>’s have <span class="math inline">\(|Z_i - \mu| &lt; r\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(|\text{median}(Z_1,\ldots,Z_k) - \mu| \leq r\)</span>.</span></p>
+<div class="fragment">
+<p><br />
+<br />
+</p>
+<p><img data-src="medgood.PNG" /></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h3 id="analysis-d1-1">Analysis: <span class="math inline">\(d=1\)</span></h3>
+<p><span class="math inline">\(Z_1,\ldots,Z_k\)</span> are bucketed averages, <span class="math inline">\(\E Z = \mu\)</span> and <span class="math inline">\(\E(Z - \mu)^2 = \tfrac kn \cdot \sigma^2\)</span></p>
+<p><span class="blue">At least <span class="math inline">\(2k/3\)</span> <span class="math inline">\(Z_i\)</span>’s have <span class="math inline">\(|Z_i - \mu| &lt; r\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(|\text{median}(Z_1,\ldots,Z_k) - \mu| \leq r\)</span>.</span></p>
+<p><span class="magenta"><strong>Chebyshev on each bucket:</strong> <span class="math display">\[\Pr(|Z_i - \mu| &gt; r) \leq \frac{\text{Var}(Z_i)}{r^2} = \frac{\tfrac kn \cdot \sigma^2}{r^2}\]</span></span></p>
+<p><strong>Buckets form binomial distribution:</strong> <span class="math inline">\(\Pr(\text{more than } k/3 \text{ $Z_i$&#39;s have } |Z_i - \mu| \gg \sqrt{k\sigma^2/n}) \leq \exp(-\Omega(k)) = \delta\)</span>.</p>
+<p><img data-src="binom_tail.svg" /></p>
+<div class="fragment">
+<p><span class="cyan">So <span class="math inline">\(| \text{median}(Z_1,\ldots,Z_k) - \mu | \leq O\Paren{\sqrt{ k \sigma^2/n}} = O\Paren{\sqrt{ \sigma^2 \log(1/\delta)/n}}\)</span></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h3 id="median-of-means-in-higher-dimensions">Median of means in higher dimensions</h3>
+<p><strong>Goal:</strong> estimator with <span class="math inline">\(r_\delta = O \Paren{\sqrt{\Tr \Sigma / n} + \sqrt{\|\Sigma\| \log(1/\delta)/n}}\)</span></p>
+<div class="fragment">
+<p><strong>Buckets:</strong> <span class="math inline">\(Z_1,\ldots,Z_k\)</span> with <span class="math inline">\(\E Z = \mu\)</span> and <span class="math inline">\(\E (Z - \mu)(Z-\mu)^\top = \Gamma = \tfrac kn \Sigma\)</span>.</p>
+<p><br />
+</p>
+</div>
+<div class="fragment">
+<p><span class="magenta center"><strong>What happens with probability <span class="math inline">\(1-e^{-k/10}\)</span> ?</strong></span></p>
+<p><br />
+</p>
+</div>
+<div class="fragment">
+<p><strong><span class="math inline">\(d=1\)</span>:</strong> <span class="blue">at least <span class="math inline">\(\tfrac 23 k\)</span> <span class="math inline">\(Z_i\)</span>’s have <span class="math inline">\(|Z_i - \mu| \leq 10 \sqrt{\text{Var}(Z)}\)</span></span></p>
+<p><br />
+</p>
+</div>
+<div class="fragment">
+<p><strong><span class="math inline">\(d &gt; 1\)</span>:</strong> <span class="blue">at least <span class="math inline">\(\tfrac 23 k\)</span> <span class="math inline">\(Z_i\)</span>’s have</span> <span class="red"><span class="math inline">\(\|Z_i - \mu \| \leq 10 \sqrt{\Tr \Gamma} = 10 \sqrt{\E \|Z - \mu\|^2}\)</span></span></p>
+</div>
+<div class="fragment">
+<p><br />
+</p>
+<p><span class="cyan">Result: <strong>dimension-dependent</strong> rate <span class="math inline">\(r_\delta = O\Paren{\sqrt{\frac{\Tr \Sigma \log(1/\delta)}{n}}}\)</span>.</span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="lugosi-and-mendelsons-median">Lugosi and Mendelson’s median</h2>
+<div class="fragment">
+<p><span class="magenta">Cannot ask for <span class="math inline">\(2k/3\)</span> <span class="math inline">\(Z_i\)</span>’s to be non-outliers</span></p>
+</div>
+<div class="fragment">
+<p><span class="magenta">Instead, ask for every direction to have at most <span class="math inline">\(k/3\)</span> outliers!</span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<p><img data-src="outlier-directions-1.svg" /></p>
+</section>
+<section class="slide level1">
+
+<p><img data-src="outlier-directions-2.svg" /></p>
+</section>
+<section class="slide level1">
+
+<p><img data-src="outlier-directions-3.svg" /></p>
+</section>
+<section class="slide level1">
+
+<h2 id="lugosi-and-mendelsons-estimator">Lugosi and Mendelson’s estimator</h2>
+<p><strong>Input:</strong> <span class="math inline">\(X_1,\ldots,X_n,\delta\)</span></p>
+<div class="fragment">
+<p><strong>Buckets:</strong> bucketed means <span class="math inline">\(Z_1,\ldots,Z_k\)</span> for <span class="math inline">\(k = \log(1/\delta)\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>Output <span class="math inline">\(\hat{\mu}\)</span>:</strong> any <span class="math inline">\(x\)</span> such that in all directions <span class="math inline">\(u\)</span>, for at least <span class="math inline">\(2k/3\)</span> <span class="math inline">\(Z_i\)</span></p>
+<p><span class="math display">\[\iprod{Z_i,u}  - \iprod{x,u} \leq r\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="cyan"><strong>Alternative interpretation:</strong> if max value is <span class="math inline">\(r\)</span> then <span class="math inline">\(\hat{\mu}\)</span> has distance at most <span class="math inline">\(r\)</span> to being a median in every direction.</span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<p><img data-src="shift-to-median-1.svg" /></p>
+</section>
+<section class="slide level1">
+
+<p><img data-src="shift-to-median-2.svg" /></p>
+</section>
+<section class="slide level1">
+
+<h2 id="main-lemma-for-lugosi-mendelson-estimator">Main lemma for Lugosi-Mendelson estimator</h2>
+<p>Remember: <span class="math inline">\(X_1,\ldots,X_n\)</span> samples in <span class="math inline">\(k = \Theta( \log(1/\delta))\)</span> buckets, <span class="math inline">\(Z_i\)</span> is mean in <span class="math inline">\(i\)</span>-th bucket.</p>
+<p><br />
+</p>
+<p><span class="blue"><strong>Lemma:</strong> If <span class="math inline">\(r \gg \sqrt{\Tr \Sigma / n} + \sqrt{\|\Sigma\| \log(1/\delta) / n}\)</span> then w.p. <span class="math inline">\(1-\delta\)</span>,</span></p>
+<p><span class="fragment blue">for every unit vector <span class="math inline">\(u \in \R^d\)</span></span></p>
+<p><span class="fragment blue">exist at most <span class="math inline">\(k/3\)</span> <span class="math inline">\(Z_i\)</span>’s s.t. <span class="math inline">\(\iprod{Z_i, u} &gt; \iprod{\mu, u} + r\)</span>.</span></p>
+<p><span class="fragment magenta">Furthermore, any two points <span class="math inline">\(x,y\)</span> having this property also satisfy <span class="math inline">\(\|x - y\| \leq 2r\)</span></span></p>
+<p><br />
+<br />
+</p>
+<div class="fragment">
+<p><strong>But no obvious algorithm!</strong></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="median-sdp">Median SDP</h2>
+<p>(Almost) a convex (SDP) relaxation of:</p>
+<p><span class="blue"><span class="math display">\[
+\{ x \, : \, \text{ for all $u$, at most $k/3$ $Z_i$&#39;s have $\iprod{Z_i,u} &gt; \iprod{x,u} + r$} \}
+\]</span></span></p>
+<div class="fragment">
+<p>with enough constraints that <span class="magenta">each step of the Lugosi-Mendelson analysis also applies to the SDP</span> (the heart of the “proofs to algorithms” SoS method)</p>
+</div>
+<div class="fragment">
+<p><strong><span class="math inline">\(\text{poly}(d,k)\)</span> constraints enough to capture all important properties of integral solutions.</strong></p>
+</div>
+</section>
+<section class="slide level1">
+
+<p><span class="blue"><span class="math display">\[
+\{ x \, : \, \text{ for all $u$, at most $k/3$ $Z_i$&#39;s have $\iprod{Z_i,u} &gt; \iprod{x,u} + r$} \}
+\]</span></span></p>
+<p><span class="blue center">How would you know if you found such <span class="math inline">\(x\)</span>?</span></p>
+<p><br />
+</p>
+<p><span class="fragment"><strong>Lemma 1:</strong> If <span class="math inline">\(r \gg \sqrt{\Tr \Sigma / n} + \sqrt{\|\Sigma\| \log(1/\delta) / n}\)</span> then w.p. <span class="math inline">\(1-\delta\)</span>,</span></p>
+<p><span class="fragment">for every unit vector <span class="math inline">\(u \in \R^d\)</span></span></p>
+<p><span class="fragment">exist at most <span class="math inline">\(k/3\)</span> <span class="math inline">\(Z_i\)</span>’s s.t. <span class="math inline">\(\iprod{Z_i, u} &gt; \iprod{\mu, u} + r\)</span>.</span></p>
+<p><br />
+</p>
+<p><span class="fragment"><strong>Lemma 2:</strong> Furthermore, any two points <span class="math inline">\(x,y\)</span> having this property also satisfy <span class="math inline">\(\|x - y\| \leq 2r\)</span></span></p>
+</section>
+<section class="slide level1">
+
+<p><span class="blue"><span class="math display">\[
+\{ x \, : \, \text{ for all $u$, at most $k/3$ $Z_i$&#39;s have $\iprod{Z_i,u} &gt; \iprod{x,u} + r$} \}
+\]</span></span></p>
+<p><span class="blue center">How would you know if you found such <span class="math inline">\(x\)</span>?</span></p>
+<p><br />
+</p>
+<p><span class="fragment"><strong>Algorithmic Lemma 1:</strong> If <span class="math inline">\(r \gg \sqrt{\Tr \Sigma / n} + \sqrt{\|\Sigma\| \log(1/\delta) / n}\)</span> w.p. <span class="math inline">\(1-\delta\)</span> there is a <em>certificate</em> <span class="math inline">\(M_\mu\)</span></span></p>
+<p><span class="fragment">which <em>proves</em> that for every unit vector <span class="math inline">\(u \in \R^d\)</span></span></p>
+<p><span class="fragment">exist at most <span class="math inline">\(k/3\)</span> <span class="math inline">\(Z_i\)</span>’s s.t. <span class="math inline">\(\iprod{Z_i, u} &gt; \iprod{\mu, u} + r\)</span>.</span></p>
+<p><br />
+</p>
+<p><span class="fragment"><strong>Algorithmic Lemma 2:</strong> there is a polynomial-time algorithm which finds <span class="math inline">\(x\)</span> such that <span class="math inline">\(\|x - y\| \leq 2r\)</span> if <span class="math inline">\(y\)</span> has a certificate <span class="math inline">\(M_y\)</span>.</span></p>
+<div class="fragment">
+<p><br />
+</p>
+<p><span class="blue"><span class="math display">\[
+\{ (x,M_x) \, : \, \text{ $M_x$ proves for all $u$, at most $k/3$ $Z_i$&#39;s have $\iprod{Z_i,u} &gt; \iprod{x,u} + r$} \}
+\]</span></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="certifying-the-median">Certifying the median</h2>
+<p><strong>Change of notation:</strong> <span class="math inline">\(Z\)</span> has mean <span class="math inline">\(\mu\)</span> and covariance <span class="math inline">\(\Sigma\)</span> (<span class="math inline">\(X\)</span> has disappeared)</p>
+<blockquote>
+<p><strong>Problem:</strong> given <span class="math inline">\(Z_1,\ldots,Z_k,r\)</span> <span class="magenta"><em>and</em> <span class="math inline">\(x\)</span></span>, <span class="blue">certify</span> that for all unit <span class="math inline">\(u\)</span>, at most <span class="math inline">\(k/3\)</span> <span class="math inline">\(Z_i\)</span>’s have <span class="math inline">\(\iprod{Z_i,u} &gt; \iprod{\mu,u} + r\)</span>.</p>
+<p><strong>Goal:</strong> certification succeeds w.p. at least <span class="math inline">\(1 - \exp(-k/10)\)</span> when <span class="math inline">\(r = C\Paren{\sqrt{\Tr \Sigma / k} + \sqrt{\|\Sigma\|}}\)</span> <span class="magenta"><em>and <span class="math inline">\(x = \mu\)</span></em></span></p>
+</blockquote>
+<p>(If <span class="math inline">\(Z_1,\ldots,Z_k\)</span> are bucketed means of <span class="math inline">\(X_1,\ldots,X_n\)</span> and <span class="math inline">\(k = C \log(1/\delta)\)</span>, recover previous setting.)</p>
+<div class="fragment">
+<p><span class="blue"><strong>What is certification?</strong></span></p>
+</div>
+<div class="fragment">
+<p><span class="blue">Algorithm takes <span class="math inline">\(Z_1,\ldots,Z_k,r,x\)</span>, outputs “yes” or “I don’t know”</span></p>
+</div>
+<div class="fragment">
+<p><span class="blue">output is yes <span class="math inline">\(\rightarrow\)</span> for all unit <span class="math inline">\(u\)</span>, at most <span class="math inline">\(k/3\)</span> <span class="math inline">\(Z_i\)</span>’s have <span class="math inline">\(\iprod{Z_i,u} &gt; \iprod{x,u} + r\)</span></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<p><img data-src="outlier-directions-4.svg" /></p>
+</section>
+<section class="slide level1">
+
+<h3 id="the-median-certification-sdp">The Median Certification SDP</h3>
+<p>Start with a quadratic program in <span class="math inline">\(b = b_1,\ldots,b_k, u = u_1,\ldots,u_d\)</span>:</p>
+<p><span class="math display">\[\max_{u,b} \sum b_i \text{ such that } b_i^2 = b_i, \|u\|^2 = 1, \text{ and } b_i \iprod{Z_i,u} \geq b_i (\iprod{\mu,u} + r)\]</span></p>
+<div class="fragment">
+<p><br />
+</p>
+<p><span class="magenta center">Relax <span class="math inline">\((b,u)(b,u)^\top\)</span> to block PSD matrix</span></p>
+<p><span class="magenta"><span class="math display">\[\left ( \begin{array}{cc} B &amp; W \\ W^\top &amp; U \end{array} \right ) \]</span></span></p>
+</div>
+<div class="fragment">
+<p><br />
+</p>
+<p><span class="blue center"><span class="math display">\[\begin{align}
+SDP(Z_1,\ldots,Z_k,\mu)  = &amp; \max \, \text{Tr} B \text{ such that} \\
+&amp; B_{ii} \leq 1 \\
+&amp; \Tr U = 1 \\
+&amp; \iprod{Z_i, W_i} \geq \iprod{\mu, W_i} + r B_{ii}
+\end{align}\]</span></span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="glimpse-of-the-analysis">Glimpse of the analysis</h2>
+<p><strong>Goal:</strong> if <span class="math inline">\(r \gg \Paren{\sqrt{\Tr \Sigma / k} + \sqrt{\|\Sigma\|}}\)</span> then w.p. <span class="math inline">\(1-e^{-k/10}\)</span>,</p>
+<p><span class="math display">\[SDP(Z_1,\ldots Z_k, \mu) \leq k/3\]</span></p>
+<p><span class="fragment red">Then <strong>dual solution</strong> is a (degree <span class="math inline">\(2\)</span> SoS) proof <span class="math inline">\(M_\mu\)</span></span></p>
+<p><br />
+</p>
+<div class="fragment">
+<p><span class="blue"><strong>Expectation:</strong> <span class="math inline">\(\E SDP(Z_1,\ldots,Z_k,\mu) \leq k/6\)</span></span></p>
+<p><span class="blue"><em>proof step 1:</em> relate <span class="math inline">\(SDP(Z_1,\ldots,Z_k,\mu)\)</span> to <span class="math inline">\(2 \rightarrow 1\)</span> norm of a random matrix</span></p>
+</div>
+<div class="fragment">
+<p><span class="blue"><em>proof step 2:</em> Grothendieck’s inequality for SDP approximation of <span class="math inline">\(2 \rightarrow 1\)</span> norm</span></p>
+<p><br />
+</p>
+</div>
+<div class="fragment">
+<p><span class="magenta"><strong>Concentration:</strong> <span class="math inline">\(\Pr ( SDP(Z_1,\ldots,Z_k,\mu) - \E SDP(Z_1,\ldots,Z_k,\mu) &gt; k/6 ) &lt; e^{-k/10}\)</span></span></p>
+<p><span class="magenta"><em>proof sketch:</em> <span class="math inline">\(SDP(Z_1,\ldots,Z_k,\mu)\)</span> satisfies a <strong>bounded differences</strong> property – pays at most <span class="math inline">\(1\)</span> per outlier.</span></p>
+</div>
+</section>
+<section class="slide level1">
+
+<h2 id="proof-insights">Proof insights</h2>
+<p><span class="center"><strong>SDPs and robust matrix norms:</strong></span></p>
+<p>usual norms of <span class="math inline">\(Z_1,\ldots,Z_k\)</span> are bad, e.g. <span class="math inline">\(\left \| \sum_{i =1}^k Z_i Z_i^\top \right \| = \|(Z_1,\ldots,Z_k)^\top\|_{2 \rightarrow 2}^2\)</span></p>
+<p>SDP can handle less outlier-sensitive norms, e.g. <span class="math inline">\(\| (Z_1,\ldots,Z_k)^\top \|_{2 \rightarrow 1}\)</span></p>
+<div class="fragment">
+<p><br />
+<br />
+</p>
+<p><span class="center"><strong>SDPs and stability:</strong></span></p>
+<p>unlike norms and averages, SDP can move by $ 1$ even if <span class="math inline">\(Z_i\)</span> moves by <span class="math inline">\(10^{10}\)</span>.</p>
+<p>SDPs can concentrate better than norms and averages</p>
+</div>
+</section>
+<section class="slide level1">
+
+<p><strong>Algorithmic Lemma 1:</strong> If <span class="math inline">\(r \gg \sqrt{\Tr \Sigma / n} + \sqrt{\|\Sigma\| \log(1/\delta) / n}\)</span> w.p. <span class="math inline">\(1-\delta\)</span> there is a <em>certificate</em> <span class="math inline">\(M_\mu\)</span></p>
+<p>which <em>proves</em> that for every unit vector <span class="math inline">\(u \in \R^d\)</span></p>
+<p>exist at most <span class="math inline">\(k/3\)</span> <span class="math inline">\(Z_i\)</span>’s s.t. <span class="math inline">\(\iprod{Z_i, u} &gt; \iprod{\mu, u} + r\)</span>.</p>
+<p><br />
+</p>
+<p><span class="fragment"><strong>Algorithmic Lemma 2:</strong> there is a polynomial-time algorithm which finds <span class="math inline">\(x\)</span> such that <span class="math inline">\(\|x - y\| \leq 2r\)</span> if <span class="math inline">\(y\)</span> has a certificate <span class="math inline">\(M_y\)</span>.</span></p>
+<p><br />
+</p>
+<p><span class="blue fragment">Prove in degree 8 SoS that <span class="math inline">\((x,M_x), (y,M_y)\)</span> must have <span class="math inline">\(\|x-y\| \leq 2r\)</span>, get an algorithm for free.</span></p>
+</section>
+<section class="slide level1">
+
+<h2 id="conclusion">Conclusion</h2>
+<p><strong>Main theorem:</strong> first polynomial-time estimator for heavy-tailed estimation <span class="magenta">matching empirical mean’s performance in Gaussian setting</span></p>
+<div class="fragment">
+<p><strong>Open problem:</strong> is there a <em>practical algorithm</em> whose <em>empirical</em> performance improves on state-of-the-art for heavy-tailed estimation?</p>
+</div>
+<div class="fragment">
+<p><br />
+</p>
+<p><span class="center"><strong>Thanks!</strong></span></p>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Display a presentation progress bar
+        progress: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        chalboard: {
+           src: "chalkboard.json",
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true },
+          { src: 'plugin/chalkboard/chalkboard.js' },
+        ]
+
+        keyboard: {
+	    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+	    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+	    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+	     8: function() { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+	    68: function() { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+	},
+      });
+    </script>
+    </body>
+</html>
