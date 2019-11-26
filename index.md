@@ -13,7 +13,9 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 
 For more, see [all publications](pubs.html)
 
-**Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* Manuscript.
+**Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* In submission. [arxiv](https://arxiv.org/abs/1911.10304)
+
+**Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* In submission.
 
 **Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* NeurIPS 2019, Spotlight Presentation. [arxiv](https://arxiv.org/abs/1906.11366) [code](https://github.com/twistedcubic/que-outlier-detection)
 
