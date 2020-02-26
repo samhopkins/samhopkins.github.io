@@ -2,17 +2,22 @@
 
 # Samuel Hopkins
 
-*algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, and hardness of approximation.*
+*algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles.*
 
 
 ### Publications
 
 
-#### 2019+
+#### 2020+
 
-**Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* In submission. [arxiv](https://arxiv.org/abs/1911.10304)
+**Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* Manuscript. [arxiv](https://arxiv.org/abs/1911.10304)
 
-**Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* In submission. [arxiv](https://arxiv.org/abs/1912.11071)
+**Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* STOC 2020. [arxiv](https://arxiv.org/abs/1912.11071)
+
+**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
+
+
+#### 2019
 
 **Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* Neurips 2019, Spotlight Presentation. [arxiv](https://arxiv.org/abs/1906.11366) [code](https://github.com/twistedcubic/que-outlier-detection)
 
@@ -21,8 +26,6 @@
 **A Robust Spectral Algorithm for Overcomplete Tensor Decomposition.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi.* COLT 2019. [proceedings version](http://proceedings.mlr.press/v99/hopkins19b.html)
 
 **Sum of Squares Meets Program Obfuscation, Revisited.** *Boaz Barak, Samuel B. Hopkins, Aayush Jain, Pravesh Kothari, Amit Sahai.* Eurocrypt 2019. [eprint](https://eprint.iacr.org/2018/1237)
-
-**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk 1 (Simons Institute)](https://www.youtube.com/watch?v=_E096DMEkRo&t=1447s)
 
 #### 2018
 
