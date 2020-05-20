@@ -4,7 +4,7 @@
 
 *algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles*
 
-I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, where I am hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](http://people.eecs.berkeley.edu/~luca/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory) under [David Steurer](http://www.dsteurer.org/)'s watchful eyes.
+I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, where I am hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](http://people.eecs.berkeley.edu/~luca/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory), advised by [David Steurer](http://www.dsteurer.org/).
 
 **In the 2021-2022 academic year I will join MIT as an Assistant Professor in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/).**
 
