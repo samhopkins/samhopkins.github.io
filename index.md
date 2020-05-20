@@ -6,6 +6,8 @@
 
 I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, where I am hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](http://people.eecs.berkeley.edu/~luca/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory) under [David Steurer](http://www.dsteurer.org/)'s watchful eyes.
 
+**In the 2021-2022 academic year I will join MIT as an Assistant Professor in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/).**
+
 [CV (pdf)](cv.pdf)
 
 
@@ -13,7 +15,9 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 
 For more, see [all publications](pubs.html)
 
-**Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* Manuscript. [arxiv](https://arxiv.org/abs/1911.10304)
+**Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* In submission. [arxiv](https://arxiv.org/abs/2005.06417)
+
+**Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* In submission. [arxiv](https://arxiv.org/abs/1911.10304)
 
 **Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* STOC 2020. [arxiv](https://arxiv.org/abs/1912.11071)
 
