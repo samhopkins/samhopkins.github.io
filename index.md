@@ -8,6 +8,8 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 
 **In the 2021-2022 academic year I will join MIT as an Assistant Professor in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/).**
 
+If you are interested in working with me as a PhD student, please [apply](https://www.eecs.mit.edu/academics-admissions/graduate-program/admissions) to MIT's EECS PhD program!
+
 [CV (pdf)](cv.pdf)
 
 
@@ -15,9 +17,10 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 
 For more, see [all publications](pubs.html)
 
-**Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* In submission. [arxiv](https://arxiv.org/abs/2005.06417)
 
-**Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* In submission. [arxiv](https://arxiv.org/abs/1911.10304)
+**Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* FOCS 2020. [arxiv](https://arxiv.org/abs/2005.06417) (Conference version to be merged with [this](https://arxiv.org/abs/2005.02970) paper.)
+
+**Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* FOCS 2020. [arxiv](https://arxiv.org/abs/1911.10304)
 
 **Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* STOC 2020. [arxiv](https://arxiv.org/abs/1912.11071)
 
@@ -47,6 +50,10 @@ Notes on tensor decomposition using the SoS method (originally notes for a guest
 A short general-audience video about my research. [youtube](https://www.youtube.com/watch?v=wvdNs4keEys)
 
 Slides from a high-level introduction to SoS for cryptographers, from this [workshop](https://crypto.iacr.org/2019/affevents/nrc/page.html). [slides (pptx)](crypto-2019-talk.pptx)
+
+### Service
+
+PC Member: RANDOM 2020, ITCS 2021
 
 
 ### Notes
