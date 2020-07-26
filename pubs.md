@@ -14,7 +14,7 @@
 
 **Robust and Heavy-Tailed Mean Estimation Made Simple, via Regret Minimization.** *Samuel B. Hopkins, Jerry Li, Fred Zhang.* In submission.
 
-**Smoothed Complexity of 2-Player Nash Equilibria.** *Shant Boodaghians, Joshua Brakensiek, Samuel B. Hopkins, Aviad Rubenstein.* FOCS 2020.
+**Smoothed Complexity of 2-Player Nash Equilibria.** *Shant Boodaghians, Joshua Brakensiek, Samuel B. Hopkins, Aviad Rubenstein.* FOCS 2020. [arxiv](https://arxiv.org/abs/2007.10857)
 
 **Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* FOCS 2020. [arxiv](https://arxiv.org/abs/2005.06417) (Conference version to be merged with [this](https://arxiv.org/abs/2005.02970) paper.)
 
