@@ -1,8 +1,8 @@
-![](sam_headshot_informal.jpg){.headshot}
+![](sam_headshot_nature.jpg){.headshot}
 
-# Samuel Hopkins
+# Sam Hopkins
 
-*algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles*
+*algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles. he/him.*
 
 I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, where I am hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](http://people.eecs.berkeley.edu/~luca/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory), advised by [David Steurer](http://www.dsteurer.org/).
 
@@ -12,10 +12,9 @@ If you are interested in working with me as a PhD student, please [apply](https:
 
 [CV (pdf)](cv.pdf)
 
-
 ### Selected Publications
 
-For more, see [all publications](pubs.html)
+For more, see [all publications](pubs.html).
 
 
 **Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* FOCS 2020. [arxiv](https://arxiv.org/abs/2005.06417) (Conference version to be merged with [this](https://arxiv.org/abs/2005.02970) paper.)
@@ -60,7 +59,15 @@ PC Member: RANDOM 2020, ITCS 2021
 
 Currently I am supported by the Miller Fellowship at UC Berkeley. In the past, I have received support from by Microsoft PhD Fellowship, an NSF Graduate Research Fellowship, and a Cornell University Fellowship.
 
-I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http://www-users.math.umn.edu/~shopkins/)
+I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http://www-users.math.umn.edu/~shopkins/)?
+
+
+### Not Math
+
+[I](pics/tongue.jpg) [like](pics/mtdiablo.jpg) [bikes](pics/snow.jpg).
+
+Also, [Ollie](pics/bun.jpg) [pics](http://www.instagram.com/ollie_west_).
+
 
 
 ### Contact
