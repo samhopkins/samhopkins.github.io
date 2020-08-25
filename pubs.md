@@ -1,18 +1,12 @@
-![](sam_headshot_informal.jpg){.headshot}
+# Sam Hopkins
 
-# Samuel Hopkins
-
-*algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles.*
-
-
-### Publications
-
+#### [Home](index.html) [Publications](pubs.html)
 
 #### 2020+
 
 **Estimating Rank-One Spikes from Heavy-Tailed Noise via Self-Avoiding Walks.** *Jingqiu Ding, Samuel B. Hopkins, David Steurer.* In submission.
 
-**Robust and Heavy-Tailed Mean Estimation Made Simple, via Regret Minimization.** *Samuel B. Hopkins, Jerry Li, Fred Zhang.* In submission.
+**Robust and Heavy-Tailed Mean Estimation Made Simple, via Regret Minimization.** *Samuel B. Hopkins, Jerry Li, Fred Zhang.* In submission. [arxiv](https://arxiv.org/abs/2007.15839)
 
 **Smoothed Complexity of 2-Player Nash Equilibria.** *Shant Boodaghians, Joshua Brakensiek, Samuel B. Hopkins, Aviad Rubenstein.* FOCS 2020. [arxiv](https://arxiv.org/abs/2007.10857)
 

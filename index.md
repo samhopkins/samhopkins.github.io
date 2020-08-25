@@ -2,6 +2,8 @@
 
 # Sam Hopkins
 
+#### [Home](index.html) [Publications](pubs.html)
+
 *algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles. he/him.*
 
 I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, where I am hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](http://people.eecs.berkeley.edu/~luca/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory), advised by [David Steurer](http://www.dsteurer.org/).
