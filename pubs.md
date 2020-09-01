@@ -4,7 +4,7 @@
 
 #### 2020+
 
-**Estimating Rank-One Spikes from Heavy-Tailed Noise via Self-Avoiding Walks.** *Jingqiu Ding, Samuel B. Hopkins, David Steurer.* In submission.
+**Estimating Rank-One Spikes from Heavy-Tailed Noise via Self-Avoiding Walks.** *Jingqiu Ding, Samuel B. Hopkins, David Steurer.* In submission. [arxiv](https://arxiv.org/abs/2008.13735)
 
 **Robust and Heavy-Tailed Mean Estimation Made Simple, via Regret Minimization.** *Samuel B. Hopkins, Jerry Li, Fred Zhang.* In submission. [arxiv](https://arxiv.org/abs/2007.15839)
 
