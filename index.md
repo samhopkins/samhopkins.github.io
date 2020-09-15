@@ -14,20 +14,17 @@ If you are interested in working with me as a PhD student, please [apply](https:
 
 [CV (pdf)](cv.pdf)
 
-### Selected Publications
+### Selected/Recent Publications
 
 For more, see [all publications](pubs.html).
 
-**Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* Manuscript. [arxiv](https://arxiv.org/pdf/2009.06107.pdf)
-
+**Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* Manuscript. [arxiv](https://arxiv.org/abs/2009.06107)
 
 **Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* FOCS 2020. [arxiv](https://arxiv.org/abs/2005.06417) (Conference version to be merged with [this](https://arxiv.org/abs/2005.02970) paper.)
 
 **Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* FOCS 2020. [arxiv](https://arxiv.org/abs/1911.10304)
 
 **Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* STOC 2020. [arxiv](https://arxiv.org/abs/1912.11071)
-
-**Quantum Entropy Scoring for Fast Robust Mean Estimation and Improved Outlier Detection.** *Yihe Dong, Samuel B. Hopkins, Jerry Li.* NeurIPS 2019, Spotlight Presentation. [arxiv](https://arxiv.org/abs/1906.11366) [code](https://github.com/twistedcubic/que-outlier-detection)
 
 **Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
 
