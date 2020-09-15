@@ -18,6 +18,8 @@ If you are interested in working with me as a PhD student, please [apply](https:
 
 For more, see [all publications](pubs.html).
 
+**Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* Manuscript. [arxiv](https://arxiv.org/pdf/2009.06107.pdf)
+
 
 **Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* FOCS 2020. [arxiv](https://arxiv.org/abs/2005.06417) (Conference version to be merged with [this](https://arxiv.org/abs/2005.02970) paper.)
 
