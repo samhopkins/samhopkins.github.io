@@ -41,8 +41,10 @@ For more, see [all publications](pubs.html).
 **Fast spectral algorithms from sum-of-squares proofs: tensor decomposition and planted sparse vectors.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi, David Steurer.* STOC 2016. [arxiv](https://arxiv.org/abs/1512.02337) [slides (pptx)](stoc-2016-talk.pptx)
 
 
-
 ### Other Writing, Videos
+
+[Advice](fellowship_advice.html) on applying for fellowships.
+
 Blog posts I wrote on clustering and learning high-dimensional mixture models using the SoS method (originally appeared on [Windows on Theory](https://windowsontheory.org/). [pdf](clustering.pdf)
 
 Notes on tensor decomposition using the SoS method (originally notes for a guest lecture at Stanford). [pdf](tensor-decomp-notes.pdf)
