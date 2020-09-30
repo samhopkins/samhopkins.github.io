@@ -6,9 +6,9 @@
 
 **Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* Manuscript. [arxiv](https://arxiv.org/abs/2009.06107)
 
-**Estimating Rank-One Spikes from Heavy-Tailed Noise via Self-Avoiding Walks.** *Jingqiu Ding, Samuel B. Hopkins, David Steurer.* In submission. [arxiv](https://arxiv.org/abs/2008.13735)
+**Estimating Rank-One Spikes from Heavy-Tailed Noise via Self-Avoiding Walks.** *Jingqiu Ding, Samuel B. Hopkins, David Steurer.* NeurIPS 2020, Spotlight. [arxiv](https://arxiv.org/abs/2008.13735)
 
-**Robust and Heavy-Tailed Mean Estimation Made Simple, via Regret Minimization.** *Samuel B. Hopkins, Jerry Li, Fred Zhang.* In submission. [arxiv](https://arxiv.org/abs/2007.15839)
+**Robust and Heavy-Tailed Mean Estimation Made Simple, via Regret Minimization.** *Samuel B. Hopkins, Jerry Li, Fred Zhang.* NeurIPS 2020. [arxiv](https://arxiv.org/abs/2007.15839)
 
 **Smoothed Complexity of 2-Player Nash Equilibria.** *Shant Boodaghians, Joshua Brakensiek, Samuel B. Hopkins, Aviad Rubenstein.* FOCS 2020. [arxiv](https://arxiv.org/abs/2007.10857)
 
