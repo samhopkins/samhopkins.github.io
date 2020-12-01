@@ -12,7 +12,7 @@ I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http:/
 
 If you are interested in working with me as a PhD student, please [apply](https://www.eecs.mit.edu/academics-admissions/graduate-program/admissions) to MIT's EECS PhD program!
 
-[CV (pdf)](cv.pdf)
+[CV (pdf)](cv.pdf) [Google Scholar](https://scholar.google.com/citations?user=E_a3VB4AAAAJ&hl=en) [YouTube](https://www.youtube.com/channel/UC0SsR6PPN3SuO7IzFc1Bhfg)
 
 ### Selected/Recent Publications
 
