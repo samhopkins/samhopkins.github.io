@@ -4,7 +4,9 @@
 
 #### 2020+
 
-**Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* Manuscript. [arxiv](https://arxiv.org/abs/2009.06107)
+**Counterexamples to New Circular Security Assumptions Underlying iO.** *Samuel B. Hopkins, Aayush Jain, Rachel Lin.* Crypto 2021. [slides](lattice-reunion-talk.pdf)
+
+**Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* COLT 2021. [arxiv](https://arxiv.org/abs/2009.06107)
 
 **Estimating Rank-One Spikes from Heavy-Tailed Noise via Self-Avoiding Walks.** *Jingqiu Ding, Samuel B. Hopkins, David Steurer.* NeurIPS 2020, Spotlight. [arxiv](https://arxiv.org/abs/2008.13735)
 
