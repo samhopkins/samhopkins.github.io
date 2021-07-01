@@ -2,11 +2,13 @@
 
 #### [Home](index.html) [Publications](pubs.html)
 
-#### 2020+
+#### 2021+
 
-**Counterexamples to New Circular Security Assumptions Underlying iO.** *Samuel B. Hopkins, Aayush Jain, Rachel Lin.* Crypto 2021. [slides](lattice-reunion-talk.pdf)
+**Counterexamples to New Circular Security Assumptions Underlying iO.** *Samuel B. Hopkins, Aayush Jain, Rachel Lin.* Crypto 2021. [eprint](https://eprint.iacr.org/2021/889) [slides](lattice-reunion-talk.pdf)
 
 **Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* COLT 2021. [arxiv](https://arxiv.org/abs/2009.06107)
+
+#### 2021+
 
 **Estimating Rank-One Spikes from Heavy-Tailed Noise via Self-Avoiding Walks.** *Jingqiu Ding, Samuel B. Hopkins, David Steurer.* NeurIPS 2020, Spotlight. [arxiv](https://arxiv.org/abs/2008.13735)
 
