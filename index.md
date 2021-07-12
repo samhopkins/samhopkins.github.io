@@ -45,6 +45,8 @@ For more, see [all publications](pubs.html).
 
 [Advice](fellowship_advice.html) on applying for fellowships.
 
+[Advice](grad_advice.html) on PhD applications.
+
 Blog posts I wrote on clustering and learning high-dimensional mixture models using the SoS method (originally appeared on [Windows on Theory](https://windowsontheory.org/). [pdf](clustering.pdf)
 
 Notes on tensor decomposition using the SoS method (originally notes for a guest lecture at Stanford). [pdf](tensor-decomp-notes.pdf)
