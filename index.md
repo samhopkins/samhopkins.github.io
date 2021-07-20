@@ -26,7 +26,7 @@ For more, see [all publications](pubs.html).
 
 **Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* STOC 2020. [arxiv](https://arxiv.org/abs/1912.11071)
 
-**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
+**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, 2020. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
 
 **Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* *Dissertation.* Recipient of **Cornell CS Doctoral Dissertation Award**. [pdf](thesis.pdf)
 

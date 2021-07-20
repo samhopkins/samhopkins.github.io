@@ -8,7 +8,7 @@
 
 **Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* COLT 2021. [arxiv](https://arxiv.org/abs/2009.06107)
 
-#### 2021+
+#### 2020
 
 **Estimating Rank-One Spikes from Heavy-Tailed Noise via Self-Avoiding Walks.** *Jingqiu Ding, Samuel B. Hopkins, David Steurer.* NeurIPS 2020, Spotlight. [arxiv](https://arxiv.org/abs/2008.13735)
 
@@ -23,7 +23,7 @@
 
 **Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* STOC 2020. [arxiv](https://arxiv.org/abs/1912.11071)
 
-**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, to appear. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
+**Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, 2020. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
 
 
 #### 2019
