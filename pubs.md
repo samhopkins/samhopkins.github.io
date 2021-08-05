@@ -6,7 +6,7 @@
 
 **Counterexamples to New Circular Security Assumptions Underlying iO.** *Samuel B. Hopkins, Aayush Jain, Rachel Lin.* Crypto 2021. [eprint](https://eprint.iacr.org/2021/889) [slides](lattice-reunion-talk.pdf)
 
-**Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* COLT 2021. [arxiv](https://arxiv.org/abs/2009.06107)
+**Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* COLT 2021. *Best paper runner-up*. [arxiv](https://arxiv.org/abs/2009.06107)
 
 #### 2020
 
