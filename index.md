@@ -1,4 +1,4 @@
-![](sam_headshot_nature.jpg){.headshot}
+![](sam_headshot_new.jpg){.headshot}
 
 # Sam Hopkins
 
