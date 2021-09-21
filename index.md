@@ -57,7 +57,7 @@ Slides from a high-level introduction to SoS for cryptographers, from this [work
 
 ### Service
 
-PC Member: RANDOM 2020, ITCS 2021
+PC Member: RANDOM 2020, ITCS 2021, STOC 2022
 
 
 ### Notes
@@ -69,9 +69,11 @@ I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http:
 
 ### Not Math
 
+[Where](restaurants.html) to eat in Berkeley or Ithaca
+
 [I](pics/tongue.jpg) [like](pics/mtdiablo.jpg) [bikes](pics/snow.jpg).
 
-Also, [Ollie](pics/bun.jpg) [pics](http://www.instagram.com/ollie_west_).
+
 
 
 
