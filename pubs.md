@@ -2,11 +2,15 @@
 
 #### [Home](index.html) [Publications](pubs.html)
 
-#### 2021+
+#### 2022+
+
+**Efficient Mean Estimation with Pure Differential Privacy via a Sum-of-Squares Exponential Mechanism.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid.* Manuscript. [arxiv](https://arxiv.org/abs/2111.12981)
 
 **Matrix Discrepancy from Quantum Communication.** *Samuel B. Hopkins, Prasad Raghavendra, Abhishek Shetty.* Manuscript. [arxiv](https://arxiv.org/pdf/2110.10099.pdf)
 
-**Counterexamples to New Circular Security Assumptions Underlying iO.** *Samuel B. Hopkins, Aayush Jain, Rachel Lin.* Crypto 2021. [eprint](https://eprint.iacr.org/2021/889) [slides](lattice-reunion-talk.pdf)
+#### 2021
+
+**Counterexamples to New Circular Security Assumptions Underlying iO.** *Samuel B. Hopkins, Aayush Jain, Rachel Lin.* Crypto 2021. [eprint](https://eprint.iacr.org/2021/889) [slides](lattice-reunion-talk.pdf) [talk](https://www.youtube.com/watch?v=ulb7UMJLBok&t=624s)
 
 **Statistical Query Algorithms and Low-Degree Tests Are Almost Equivalent.** *Matthew Brennan, Guy Bresler, Samuel B. Hopkins, Jerry Li, Tselil Schramm.* COLT 2021. *Best paper runner-up*. [arxiv](https://arxiv.org/abs/2009.06107)
 
@@ -18,15 +22,13 @@
 
 **Smoothed Complexity of 2-Player Nash Equilibria.** *Shant Boodaghians, Joshua Brakensiek, Samuel B. Hopkins, Aviad Rubinstein.* FOCS 2020. [arxiv](https://arxiv.org/abs/2007.10857)
 
-**Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* FOCS 2020. [arxiv](https://arxiv.org/abs/2005.06417) (Conference version to be merged with [this](https://arxiv.org/abs/2005.02970) paper.)
-
+**Robustly Learning any Clusterable Mixture of Gaussians.** *Ilias Diakonikolas, Samuel B. Hopkins, Daniel Kane, Sushrut Karmalkar.* FOCS 2020. [arxiv](https://arxiv.org/abs/2005.06417) (Conference version to be merged with [this](https://arxiv.org/abs/2005.02970) paper.) [talk (Simons seminar)](https://www.youtube.com/watch?v=uxrthnm1fzY&list=PL3ccavLyVwBd36Ta3_VXx1yvu_Cgv1yWW&index=5)
 
 **Subexponential LPs Approximate Max-Cut.** *Samuel B. Hopkins, Tselil Schramm, Luca Trevisan.* FOCS 2020. [arxiv](https://arxiv.org/abs/1911.10304)
 
-**Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* STOC 2020. [arxiv](https://arxiv.org/abs/1912.11071)
+**Algorithms for Heavy-Tailed Statistics: Regression, Covariance Estimation, and Beyond.** *Yeshwanth Cherapanamjeri, Samuel B. Hopkins, Tarun Kathuria, Prasad Raghavendra, Nilesh Tripuraneni.* STOC 2020. [arxiv](https://arxiv.org/abs/1912.11071) [talk (Simons workshop)](https://www.youtube.com/watch?v=3wp8g0QCooE&list=PL3ccavLyVwBd36Ta3_VXx1yvu_Cgv1yWW&index=4&t=628s)
 
 **Mean Estimation with Sub-Gaussian Rates in Polynomial Time.** *Samuel B. Hopkins.* Annals of Statistics, 2020. [arxiv](https://arxiv.org/abs/1809.07425) [talk (MIFODS seminar)](https://www.youtube.com/watch?v=DPemSReTqWQ&feature=youtu.be)
-
 
 #### 2019
 
@@ -43,7 +45,6 @@
 **Statistical Inference and the Sum of Squares Method.** *Samuel B. Hopkins.* Dissertation. Recipient of **Cornell CS Doctoral Dissertation Award**. [pdf](thesis.pdf)
 
 **Mixture Models, Robustness, and Sum of Squares Proofs.** *Samuel B. Hopkins, Jerry Li.* STOC 2018. [arxiv](https://arxiv.org/abs/1711.07454) [talk 1 (BIRS)](http://www.birs.ca/events/2017/5-day-workshops/17w5133/videos/watch/201711151031-Hopkins.html) [talk 2 (STOC)](https://dl.acm.org/ft_gateway.cfm?id=3188748&type=mp4&path=%2F3190000%2F3188748%2F7B-1%2Emp4)
-
 
 #### 2017
 
@@ -63,5 +64,3 @@
 
 #### 2013
 **Kolmogorov Complexity, Circuits, and the Strength of Formal Theories of Arithmetic** *Eric Allender, George Davie, Luke Friedman, Samuel B. Hopkins, Iddo Tzameret.* Chicago Journal of Theoretical Computer Science. [eccc](https://eccc.weizmann.ac.il/report/2012/028/)
-
-
