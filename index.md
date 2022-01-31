@@ -6,11 +6,9 @@
 
 *algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles. he/him.*
 
-I am a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, where I am hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](http://people.eecs.berkeley.edu/~luca/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory), advised by [David Steurer](http://www.dsteurer.org/).
+I am an Assistant Professor at MIT, in the [Theory of Computing](https://toc.csail.mit.edu/) group in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/). If you are interested in working with me as a PhD student, please [apply](https://www.eecs.mit.edu/academics-admissions/graduate-program/admissions) to MIT's EECS PhD program!
 
-**In the 2021-2022 academic year I will join MIT as an Assistant Professor in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/).**
-
-If you are interested in working with me as a PhD student, please [apply](https://www.eecs.mit.edu/academics-admissions/graduate-program/admissions) to MIT's EECS PhD program!
+Previously, I was a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](http://people.eecs.berkeley.edu/~luca/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory), advised by [David Steurer](http://www.dsteurer.org/).
 
 [CV (pdf)](cv.pdf) [Google Scholar](https://scholar.google.com/citations?user=E_a3VB4AAAAJ&hl=en) [YouTube](https://www.youtube.com/channel/UC0SsR6PPN3SuO7IzFc1Bhfg)
 
@@ -34,7 +32,7 @@ PC Member: RANDOM 2020, ITCS 2021, STOC 2022
 
 ### Notes
 
-Currently I am supported by a Simons Postdoctoral Fellowship Fellowship at UC Berkeley. In the past, I have received support from a Miller Postdoctoral Fellowship, a Microsoft PhD Fellowship, an NSF Graduate Research Fellowship, and a Cornell University Fellowship.
+I have been supported by a Simons Postdoctoral Fellowship and a Miller Postdoctoral Fellowship, bot at UC Berkeley. As a PhD student, I received support from a  Microsoft PhD Fellowship, an NSF Graduate Research Fellowship, and a Cornell University Fellowship.
 
 I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http://www-users.math.umn.edu/~shopkins/)?
 
@@ -47,8 +45,6 @@ I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http:
 
 
 
-
-
 ### Contact
-6th Floor, Soda Hall\
-*hopkins at berkeley.edu*
+Office: G666, Stata Center (Building 32), MIT\
+*samhop at mit.edu*
