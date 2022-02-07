@@ -4,9 +4,9 @@
 
 #### 2022+
 
-**Efficient Mean Estimation with Pure Differential Privacy via a Sum-of-Squares Exponential Mechanism.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid.* Manuscript. [arxiv](https://arxiv.org/abs/2111.12981)
+**Efficient Mean Estimation with Pure Differential Privacy via a Sum-of-Squares Exponential Mechanism.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid.* STOC 2022. [arxiv](https://arxiv.org/abs/2111.12981)
 
-**Matrix Discrepancy from Quantum Communication.** *Samuel B. Hopkins, Prasad Raghavendra, Abhishek Shetty.* Manuscript. [arxiv](https://arxiv.org/pdf/2110.10099.pdf)
+**Matrix Discrepancy from Quantum Communication.** *Samuel B. Hopkins, Prasad Raghavendra, Abhishek Shetty.* STOC 2022. [arxiv](https://arxiv.org/pdf/2110.10099.pdf)
 
 #### 2021
 
