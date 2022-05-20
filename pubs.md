@@ -4,6 +4,8 @@
 
 #### 2022+
 
+**The Franz-Parisi Criterion and Computational Trade-offs in High Dimensional Statistics.** *Afonso S. Bandeira, Ahmed El Alaoui, Samuel B. Hopkins, Tselil Schramm, Alexander S. Wein, Ilias Zadik.* Manuscript. [arxiv](https://arxiv.org/abs/2205.09727)
+
 **Efficient Mean Estimation with Pure Differential Privacy via a Sum-of-Squares Exponential Mechanism.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid.* STOC 2022. [arxiv](https://arxiv.org/abs/2111.12981)
 
 **Matrix Discrepancy from Quantum Communication.** *Samuel B. Hopkins, Prasad Raghavendra, Abhishek Shetty.* STOC 2022. [arxiv](https://arxiv.org/pdf/2110.10099.pdf)
