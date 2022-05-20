@@ -28,7 +28,7 @@ Slides from a high-level introduction to SoS for cryptographers, from this [work
 
 ### Service
 
-PC Member: RANDOM 2020, ITCS 2021, STOC 2022
+PC Member: RANDOM 2020, ITCS 2021, STOC 2022, SODA 2023
 
 ### Notes
 
