@@ -1,6 +1,7 @@
 # Sam Hopkins -- Publications
 
-#### [Home](index.html) &nbsp; &nbsp; &nbsp; [Publications](pubs.html) &nbsp; &nbsp; &nbsp; [Teaching](teaching.html)
+
+#### ( [Home](index.html) &nbsp; &nbsp; &nbsp; [Publications](pubs.html) &nbsp; &nbsp; &nbsp; [Teaching](teaching.html) &nbsp; &nbsp; &nbsp; [Grab Bag](other.html) ){.navbar}
 
 
 #### 2022+

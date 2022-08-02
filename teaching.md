@@ -1,7 +1,6 @@
 # Sam Hopkins -- Teaching
 
-#### [Home](index.html) &nbsp; &nbsp; &nbsp; [Publications](pubs.html) &nbsp; &nbsp; &nbsp; [Teaching](teaching.html)
-
+#### ( [Home](index.html) &nbsp; &nbsp; &nbsp; [Publications](pubs.html) &nbsp; &nbsp; &nbsp; [Teaching](teaching.html) &nbsp; &nbsp; &nbsp; [Grab Bag](other.html) ){.navbar}
 
 Fall 2022: [6.S977 -- The Sum of Squares Method](sos-fall-22.html)
 

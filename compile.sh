@@ -12,6 +12,8 @@ pandoc -s -o grad_advice.html -c pandoc.css grad_advice.md
 pandoc -s -o restaurants.html -c pandoc.css restaurants.md
 pandoc -s -o teaching.html -c pandoc.css teaching.md
 pandoc -s -o sos-fall-22.html -c pandoc.css sos-fall-22.md
+pandoc -s -o other.html -c pandoc.css other.md
+
 
 
 

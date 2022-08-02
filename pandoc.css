@@ -11,12 +11,12 @@ html {
 
 body {
   color: #444;
-  font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+  font-family: Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
   font-size: 12px;
   line-height: 1.7;
   padding: 1em;
   margin: auto;
-  max-width: 42em;
+  max-width: 60em;
   background: #fefefe;
 }
 
@@ -79,6 +79,14 @@ h1, h2, h3, h4, h5, h6 {
 h4, h5, h6 {
   font-weight: bold;
 }
+
+.navbar {
+  border-radius: 25px;
+  background: #d9d9d9;
+  padding: 20px;
+  max-width: 60%
+}
+
 
 h1 {
   font-size: 2.5em;
@@ -329,11 +337,11 @@ table td {
 
 .headshot {
   float:right;
-  width: 40%;
+  width: 25%;
   float: top;
   margin-top: 4em;
   border: solid;
-  border-width: 5px;
+  border-width: 0px;
   margin: 0.5em;
 }
 
