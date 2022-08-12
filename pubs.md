@@ -10,7 +10,7 @@
 
 **Efficient Mean Estimation with Pure Differential Privacy via a Sum-of-Squares Exponential Mechanism.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid.* STOC 2022. [arxiv](https://arxiv.org/abs/2111.12981)
 
-**Matrix Discrepancy from Quantum Communication.** *Samuel B. Hopkins, Prasad Raghavendra, Abhishek Shetty.* STOC 2022. [arxiv](https://arxiv.org/pdf/2110.10099.pdf)
+**Matrix Discrepancy from Quantum Communication.** *Samuel B. Hopkins, Prasad Raghavendra, Abhishek Shetty.* STOC 2022. Invited to special issue. [arxiv](https://arxiv.org/pdf/2110.10099.pdf)
 
 #### 2021
 
@@ -57,7 +57,7 @@
 **Efficient Bayesian estimation from few samples: community detection and related problems.** *Samuel B. Hopkins, David Steurer.* FOCS 2017. [arxiv](https://arxiv.org/abs/1710.00264)
 
 #### 2016
-**A nearly tight sum-of-squares lower bound for the planted clique problem.** *Boaz Barak, Samuel B. Hopkins, Jonathan Kelner, Pravesh K. Kothari, Ankur Moitra, Aaron Potechin.* FOCS 2016, inivted to special issue. [arxiv](https://arxiv.org/abs/1604.03084) [video](http://techtalks.tv/talks/a-nearly-tight-sum-of-squares-lower-bound-for-the-planted-clique-problem/62950/) [slides (pdf)](focs-2016-talk.pdf)
+**A nearly tight sum-of-squares lower bound for the planted clique problem.** *Boaz Barak, Samuel B. Hopkins, Jonathan Kelner, Pravesh K. Kothari, Ankur Moitra, Aaron Potechin.* FOCS 2016, invited to special issue. [arxiv](https://arxiv.org/abs/1604.03084) [video](http://techtalks.tv/talks/a-nearly-tight-sum-of-squares-lower-bound-for-the-planted-clique-problem/62950/) [slides (pdf)](focs-2016-talk.pdf)
 
 **Fast spectral algorithms from sum-of-squares proofs: tensor decomposition and planted sparse vectors.** *Samuel B. Hopkins, Tselil Schramm, Jonathan Shi, David Steurer.* STOC 2016. [arxiv](https://arxiv.org/abs/1512.02337) [slides (pptx)](stoc-2016-talk.pptx)
 
