@@ -1,6 +1,4 @@
-# Sam Hopkins -- Grab Bag
-
-#### ( [Home](index.html) &nbsp; &nbsp; &nbsp; [Publications](pubs.html) &nbsp; &nbsp; &nbsp; [Teaching](teaching.html) &nbsp; &nbsp; &nbsp; [Grab Bag](other.html) ){.navbar}
+## Grab Bag
 
 
 [Advice](fellowship_advice.html) on applying for fellowships.

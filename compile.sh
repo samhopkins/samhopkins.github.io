@@ -5,16 +5,13 @@
 # -S -- smart html generation, gets em and en dashes right
 # -c -- specify css file
 
-pandoc -s -o index.html -c pandoc.css index.md
-pandoc -s -o pubs.html -c pandoc.css pubs.md
-pandoc -s -o fellowship_advice.html -c pandoc.css fellowship_advice.md
-pandoc -s -o grad_advice.html -c pandoc.css grad_advice.md
-pandoc -s -o restaurants.html -c pandoc.css restaurants.md
-pandoc -s -o teaching.html -c pandoc.css teaching.md
-pandoc -s -o sos-fall-22.html -c pandoc.css sos-fall-22.md
-pandoc -s -o other.html -c pandoc.css other.md
+pandoc -s -o index.html -c styling.css --include-before-body=navbar.html index.md
+pandoc -s -o pubs.html -c styling.css --include-before-body=navbar.html pubs.md
+pandoc -s -o fellowship_advice.html -c styling.css --include-before-body=navbar.html fellowship_advice.md
+pandoc -s -o grad_advice.html -c styling.css --include-before-body=navbar.html grad_advice.md
+pandoc -s -o restaurants.html -c styling.css --include-before-body=navbar.html restaurants.md
+pandoc -s -o other.html -c styling.css --include-before-body=navbar.html other.md
 
-
-
-
-
+# teaching files
+pandoc -s -o teaching.html -c styling.css --include-before-body=navbar.html teaching.md
+pandoc -s -o teaching/sos-fall-22.html -c ../styling.css --mathjax teaching/sos-fall-22.md

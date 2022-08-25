@@ -1,10 +1,9 @@
-![](sam_headshot_new.jpeg){.headshot}
 
-# Sam Hopkins -- Home
-
-#### ( [Home](index.html) &nbsp; &nbsp; &nbsp; [Publications](pubs.html) &nbsp; &nbsp; &nbsp; [Teaching](teaching.html) &nbsp; &nbsp; &nbsp; [Grab Bag](other.html) ){.navbar}
 
 *algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles. he/him.*
+
+
+![](sam_headshot_new.jpeg){.headshot}
 
 I am a mathematician and computer scientist. I am employed as an Assistant Professor at MIT, in the [Theory of Computing](https://toc.csail.mit.edu/) group in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/). If you are interested in working with me as a PhD student, please [apply](https://www.eecs.mit.edu/academics-admissions/graduate-program/admissions) to MIT's EECS PhD program!
 
