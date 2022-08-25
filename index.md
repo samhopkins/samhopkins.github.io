@@ -1,7 +1,5 @@
 
-
-*algorithms, theoretical machine learning, semidefinite programming, sum of squares optimization, convex hierarchies, bicycles. he/him.*
-
+*algorithms, theory of machine learning, semidefinite programming, sum of squares method, bicycles. he/him.*
 
 ![](sam_headshot_new.jpeg){.headshot}
 
