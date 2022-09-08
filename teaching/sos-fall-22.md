@@ -6,7 +6,7 @@ In this course we will study of algorithms and computational complexity through 
 
 **Meeting time:** Fridays, 9:30am -- 12:30am.
 
-**Location:** 1-150 (THIS MAY CHANGE -- PLEASE CHECK BACK HERE)
+**Location:** 3-333 (WEEK ONE ONLY, CHECK BACK FOR UPDATES)
 
 **Instructor:** [Sam Hopkins](../index.html)
 
