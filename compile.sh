@@ -15,3 +15,4 @@ pandoc -s -o other.html -c styling.css --include-before-body=navbar.html other.m
 # teaching files
 pandoc -s -o teaching.html -c styling.css --include-before-body=navbar.html teaching.md
 pandoc -s -o teaching/sos-fall-22.html -c ../styling.css --mathjax teaching/sos-fall-22.md
+pandoc -s -o teaching/global-correlation-rounding.html -c ../styling.css --mathjax teaching/global-correlation-rounding.md

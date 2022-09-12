@@ -6,7 +6,7 @@ In this course we will study of algorithms and computational complexity through 
 
 **Meeting time:** Fridays, 9:30am -- 12:30am.
 
-**Location:** REVERTED TO 1-150, NOT 3-333 (sorry for last minute snafu!)
+**Location:** 1-150
 
 **Instructor:** [Sam Hopkins](../index.html)
 
@@ -16,7 +16,7 @@ In this course we will study of algorithms and computational complexity through 
 
 **Evaluation:** Students will be expected to complete two problem sets and a research-oriented course project, which may consist of original research (theoretical and/or experimental!) and/or an exposition of 1 or 2 recent research papers. Tentatively, weight for your final grade will be split as follows: 25% pset 1, 25% pset 2, 50% course project.
 
-**Sick/Absence Policy and Lecture Recordings:** By default, video recordings of lectures *will not be provided.* This is a deliberate choice to strongly encourage in-person attendance -- the course material is challenging, and for most students learning it is likely to require the back-and-forth discussion which works best in a classroom. If you must miss lecture, due to illness, religious observance, travel for an academic conference, or any other reason, please *inform me as soon as possible*. I will do my best to provide you with a recording.
+**Sick/Absence Policy and Lecture Recordings:** I will make a best effort to provide lecture recordings, using the lightweight lecture capture system in the room. If the capture system fails we will be out of luck. I will also provide links to resources which cover the material in each lecture (either external sources or lecture notes).
 
 **Feedback:** Please offer any anonymous feedback you'd like to [here](https://docs.google.com/forms/d/e/1FAIpQLSc6Ti6xH5qqSfRKri9PuaQzLQ8DrNeQEGRBOU-K10zu54fcKA/viewform?usp=pp_url). Non-anonymous feedback can be emailed to me.
 
@@ -34,8 +34,8 @@ In this course we will study of algorithms and computational complexity through 
 
 No.              Date       Topics                                                            Notes/References
 -----------      ----       ------                                                            ----------------
-1                Sept. 9    optimization on the hypercube, max-cut
-2                Sept. 16   global correlation rounding
+1                Sept. 9    optimization on the hypercube, max-cut                            sections 1.1, 1.2, and 2.1 of [Barak-Steurer](https://www.sumofsquares.org/public/index.html)
+2                Sept. 16   global correlation rounding                                       [notes](global-correlation-rounding.html)
 3                Sept. 30   refuting random CSPs
 4                Oct. 7     beyond the hypercube, robust mean estimation
 5                Oct. 14    clustering mixture models
