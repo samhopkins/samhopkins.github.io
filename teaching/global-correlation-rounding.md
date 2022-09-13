@@ -192,7 +192,7 @@ The following lemma relates covariance to information (and is the reason we swit
 *Proof:* See [Raghavendra-Tan](https://arxiv.org/pdf/1110.1064.pdf), Fact B.5.
 
 
-**Lemma (Local-to-Global):** Let $\pE$ be a degree-$2$ pseudoexpectation, $G$ a $\Delta$-regular graph with normalized adjacency matrix $A_G$ whose eigenvalues are $1 = \lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_n$. Then $\text{local-corr} \leq \text{global-corr} + O(\lambda_2)$.
+**Lemma (Local-to-Global):** Let $\pE$ be a degree-$4$ pseudoexpectation, $G$ a $\Delta$-regular graph with normalized adjacency matrix $A_G$ whose eigenvalues are $1 = \lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_n$. Then $\text{local-corr} \leq \text{global-corr} + O(\lambda_2)$.
 
 In the process of proving the local-to-global lemma, we'll see a new kind of SoS proof, built out of the eigenvalues/eigenvectors of a PSD matrix. The following argument will use some basic spectral graph theory -- [Dan Spielman's book](http://cs-www.cs.yale.edu/homes/spielman/sagt/sagt.pdf) is an excellent reference for this material.
 
@@ -222,9 +222,11 @@ where $v(y,y')$ is the vector-valued polynomial given by $v(y,y')_i = (y_i - \pE
 
 Finally, we'll use the following claim, established below: 
 $$
-\proves_2 \frac 1 n \sum_{1 < j \leq n} \lambda_j(A_G) \iprod{v(y,y'),w_j}^2 \leq O(\lambda_2).
+\proves_4 \frac 1 n \sum_{1 < j \leq n} \lambda_j(A_G) \iprod{v(y,y'),w_j}^2 \leq O(\lambda_2).
 $$
 All together, we've obtained $\text{local-corr} \leq \text{global-corr} + O(\lambda_2)$.
+
+*Proof sketch of claim:* Use PSDness of $\lambda_2 I - \sum_{1< j \leq n} \lambda_j(A_G) w_j w_j^\top$ together with $\proves_4 \|v(y,y')\|^2 \leq n$.
 
 Now let's put things together to prove Theorem 2. 
 
