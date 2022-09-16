@@ -10,24 +10,19 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\iprod}[1]{\langle #1 \rangle}
 \newcommand{\Brac}[1]{\left [ #1 \right ]}
+\newcommand{\poly}{\text{poly}}
 
 We will describe another approach for rounding pseudoexpectations. By contrast to the Gaussian rounding strategy used for max-cut, this time we will make use of higher-order moments of $\pE$. We will continue to use max-cut as our running example, but the ideas we will see are useful well beyond the setting of max-cut. 
 
 Recall that for an $n$-vertex graph $G$, we have defined $G(x) = \sum_{i \sim j} (x_i - x_j)^2$ to be the function which counts the number of edges of $G$ cut by some $0/1$ vector $x$. 
-Our first goal will be to prove the following theorem:
+Our goal will be to prove the following theorem:
 
-**Theorem 1 (Barak-Raghavendra-Steurer):** For every $n$-vertex graph $G$ and even $d \in \N$, $\proves_d G(x) \leq \max_y G(y) + O(n^2 / \sqrt{d})$.
+**Theorem 1 (Barak-Raghavendra-Steurer):** Let $G$ be an $n$-vertex graph containing $\Omega(n^2)$ edges. Then for $d \gg 1/\e^{O(1)}$, $\proves_d G(x) \leq (1+\e)\max_y G(y)$.
 
-Here we have introduced a new notational shorthand: $\proves_d f \leq g$ is shorthand for $\proves_d f - g \geq 0$.
+Here we have introduced a new notational shorthand: $\proves_d f \leq g$ is shorthand for $\proves_d g - f \geq 0$.
 
-Let us compare Theorem 1 to the theorem we previously proved for degree-2 SoS upper bounds on $G$: we have traded the constant $1/0.878$ for the constant $1$, at the cost of the additive term $O(n^2 / \sqrt{d})$. When is this a good trade? Well, if $G$ is *dense* -- i.e., has $\Omega(n^2)$ edges -- then $\max_y G(y) = \Theta(n^2)$. By choosing $d = O(1/\e^2)$ large enough that the additive error is at most $\e n^2$, this shows that the SoS algorithm provides a $(1+O(\e))$-approximation to the max-cut value in dense graphs in $n^{O(1/\epsilon^2)}$ time.
-
-(Once again, implicit in the proof will be an algorithm for actually finding such a cut, rather than just approximating the max-cut value.)
-
-To avoid some technicalities, we will prove a slightly weaker result, which still implies a $(1+\epsilon)$ approximation to max-cut in dense graphs in $n^{\poly(1/\epsilon)}$ time:
-
-**Theorem 1'** For every $n$-vertex graph $G$ with $\Omega(n^2)$ edges and even $d \in \N$, $\proves_d G(x) \leq \max_y G(y) + n^2 / d^{\Omega(1)}$.
-
+Let us compare Theorem 1 to the theorem we previously proved for degree-2 SoS upper bounds on $G$: we have traded the constant $1/0.878$ for $1+\e$, at the expense of using SoS proofs of somewhat higher degree, $\poly(1/\e)$, and a fairly strong assumption on the graph $G$, that it is dense. Later, we will see how to weaken the second assumption.
+Once again, implicit in the proof will be an algorithm for actually finding cut which is at most $(1+\e)$ times the size of the maximum cut, rather than just approximating the max-cut value.
 
 ### Pseudoexpectations, Local Distributions, and Conditioning
 
@@ -58,7 +53,7 @@ For some intuition, let us sanity check that $\pE[\cdot \, | \, x_i = 1]$ "acts 
 
 ### Independent Rounding
 
-To prove Theorem 1, we will describe an algorithm which takes a pseudoexpectation $\pE$ of degree $d$ and finds $y \in \{0,1\}^n$ such that $G(y) \geq \pE G(x) - O(n^2/ \sqrt{d})$. As before, we will need a "rounding strategy" to do this.
+To prove Theorem 1, we will describe an algorithm which takes a pseudoexpectation $\pE$ of degree $d$ and finds $y \in \{0,1\}^n$ such that $G(y) \geq (1-\e)\pE G(x)$. As before, we will need a "rounding strategy" to do this.
 
 Here's an even simpler idea than the Gaussian rounding approach we tried before. The pseudoexpectation $\pE$ specifies $1$-wise marginal distributions for each coordinate, where coordinate $i$ is $1$ with probability $\pE x_i$ and otherwise $0$. (Exercise: sanity check that $\pE x_i \in [0,1]$ so that this is well defined.) We could simply sample each coordinate independently from according to these distributions. (This is not so dumb as it seems: in fact, many "randomized rounding" schemes for linear programs have this flavor and lead to nontrivial algorithms.)
 
@@ -72,7 +67,7 @@ Here, $|\cdot |_{TV}$ denotes total variation distance, and $\mu_i \otimes \mu_j
 Let's look at what happens when we use the independent rounding strategy on $\pE$.
 
 \begin{align*}
-E_y G(y) & = \sum_{i \sim j} \Pr(y_i \neq y_j)\\
+\E_y G(y) & = \sum_{i \sim j} \Pr(y_i \neq y_j)\\
 & = \sum_{i \sim j} \Pr_{x \sim \mu_i \otimes \mu_j}(x_i \neq x_j) \\
 & \geq \sum_{i \sim j} \Pr_{x \sim \mu_{ij}}(x_i \neq x_j) - |\mu_{ij} - \mu_i \otimes \mu_j|_{TV} \\
 & \geq \sum_{i \sim j} \Pr_{x \sim \mu_{ij}}(x_i \neq x_j) - \delta n^2 \\
@@ -126,7 +121,7 @@ $$\phi^{(s)} := \E \E_{i \in [n]}  H(X_i^{(s)}).$$
 $$\phi^{(s)} - \phi^{(s+1)} \leq \Omega(\E \text{global}_{s}).$$
 
 We know $0 \leq \phi^{(s)} \leq 1$, using $H(X) \in [0,1]$ for a binary random variable. So,
-$$1 \geq \phi^{(0)} - \phi^{(d-2)} \geq \sum_{s \leq d-2} \E \text{global}_s.$$ Finally, since mutual information is nonnegative, $\text{global}_s \geq 0$ for all $s$. So, some term in the sum is at most $O(1/d)$.
+$$1 \geq \phi^{(0)} - \phi^{(d-2)} \geq \Omega \left ( \sum_{s \leq d-2} \E \text{global}_s \right ).$$ Finally, since mutual information is nonnegative, $\text{global}_s \geq 0$ for all $s$. So, some term in the sum is at most $O(1/d)$.
 QED
 
 *Proof of claim:* By definition, $I(X_i^{(s-1)};X_j^{(s-1)}) = H(X_i^{(s-1)}) - H(X_i^{(s-1)} \, | \, X_j^{(s-1)})$. In the $s$-th step, we choose some index $j_s$ to condition on, having already conditioned on indices $j_1,\ldots,j_{s-1}$. So,
@@ -154,7 +149,7 @@ Choosing $\alpha = 1/d^{1/4}$, there is $\pE'$ with local distributions $\mu'$ s
 $$
 \sum_{i,j \leq n} |\mu'_{ij} - \mu_i' \otimes \mu_j'|_{TV} \leq O(n^2/d^{1/4})
 $$
-and $\pE' G(x) \geq (1-d^{-1/4}) \pE G(x)$. Putting this together with our previous analysis of independent rounding, we can see that independent rounding produces a cut $y$ with $E G(y) \geq \pE G(x) - O(n^2 / d^{1/4})$. QED.
+and $\pE' G(x) \geq (1-d^{-1/4}) \pE G(x)$. Putting this together with our previous analysis of independent rounding, we can see that independent rounding produces a cut $y$ with $\E G(y) \geq \pE G(x) - O(n^2 / d^{1/4})$. QED.
 
 ## Local-to-Global: Extending to Expanders
 
