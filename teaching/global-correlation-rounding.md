@@ -44,7 +44,6 @@ Similarly, if $\pE[(1-x_i)] > 0$, we can define
 
 $$\pE[ x^S \, | \, x_i = 0] := \frac{\pE[x^S (1-x_i)]}{\pE[(1-x_i)]}$$
 
-
 **Lemma 3 (Conditioning):** $\pE[\cdot \, | \, x_i = 1]$ and $\pE[\cdot \, | \, x_i = 0]$ are pseudoexpectations of degree $d-2$.
 
 *Proof:* Exercise (just check the definition of a pseudoexpectation).
@@ -55,7 +54,7 @@ For some intuition, let us sanity check that $\pE[\cdot \, | \, x_i = 1]$ "acts 
 
 To prove Theorem 1, we will describe an algorithm which takes a pseudoexpectation $\pE$ of degree $d$ and finds $y \in \{0,1\}^n$ such that $G(y) \geq (1-\e)\pE G(x)$. As before, we will need a "rounding strategy" to do this.
 
-Here's an even simpler idea than the Gaussian rounding approach we tried before. The pseudoexpectation $\pE$ specifies $1$-wise marginal distributions for each coordinate, where coordinate $i$ is $1$ with probability $\pE x_i$ and otherwise $0$. (Exercise: sanity check that $\pE x_i \in [0,1]$ so that this is well defined.) We could simply sample each coordinate independently from according to these distributions. (This is not so dumb as it seems: in fact, many "randomized rounding" schemes for linear programs have this flavor and lead to nontrivial algorithms.)
+Here's an even simpler idea than the Gaussian rounding approach we tried before. The pseudoexpectation $\pE$ specifies $1$-wise marginal distributions for each coordinate, where coordinate $i$ is $1$ with probability $\pE x_i$ and otherwise $0$. (Exercise: sanity check that $\pE x_i \in [0,1]$ so that this is well defined.) We could simply sample each coordinate independently according to these distributions. (This is not so dumb as it seems: in fact, many "randomized rounding" schemes for linear programs have this flavor and lead to nontrivial algorithms.)
 
 Of course, the resulting random vector $y$ will not necessarily have the same higher-order correlations as $\pE$ -- that is, the joint distributions $(y_i,y_j)$ will have independent coordinates, while the joint (2-local) distributions $\mu_{ij}$ coming from $\pE$ need not be. (Expressing the same concept in terms of pseudoexpectation values rather than local distributions: we expect $\E y_i y_j = \E y_i \E y_j$ and $\pE x_i x_j$ to be different.)
 
@@ -80,11 +79,16 @@ In this case (still a thought experiment), independent rounding has gone well, i
 
 The following lemma captures the key idea we'll use to arrange for $\pE$ to satisfy the condition needed for independent rounding. It was discovered independently by Montanari, in the context of statistical physics and later by Barak, Raghavendra, Steurer, and Tan, in the SoS context. The name "pinning lemma" comes from the statistical physics literature, where the act of conditioning on an event $x_i = 1$ is referred to as "pinning" the value of $x_i$ to $1$.
 
-**Lemma 4 (Pinning Lemma):** Let $\pE$ be a degree-$d$ pseudoexpectation on $n$ variables, with $d \ll n$. There exists $t \leq d-2$ such that if $S \subseteq [n]$ is a random set of coordinates with $|S| = t$ and $y_S$ is a sample from the local distribution $\mu_T$ induced on $\{0,1\}^t$ by $\pE$, 
+**Lemma 4 (Pinning Lemma):** Let $\pE$ be a degree-$2d$ pseudoexpectation on $n$ variables, with $d \ll n$. There exists $t \leq d-2$ such that if $S \subseteq [n]$ is a random set of coordinates with $|S| = t$ and $y_S$ is a sample from the local distribution $\mu_T$ induced on $\{0,1\}^t$ by $\pE$, 
 
 $$\E_{S,y_S} \sum_{i, j} | \mu_{ij \, | \, y_S} - \mu_{i \, | \, y_S} \otimes \mu_{j \, | \, y_S} |_{TV} \leq O(n^2 / \sqrt{d}),$$
 
-where $\mu_{T \, | \, y_S}$ denotes the local distribution on $T$ of the conditional pseudoexpectation $\pE[\cdot \, | \, x_S = y_S]$ (which we define by conditioning iteratively on the coordinates).
+where $\mu_{T \, | \, y_S}$ denotes the local distribution on $T$ of the conditional pseudoexpectation $\pE[\cdot \, | \, x_S = y_S]$.
+
+*Exercise* Show that the conditional pseudoexpectation $\pE [ \cdot \, | \, x_S = y_S ]$ can be defined either of the following ways (and the definitions agree):
+
+- by conditioning iteratively on the coordinates in $S$
+- by conditioning "in one shot," namely, by taking $\pE[p(x) \, | \, x_S = y_S] = \frac{\pE p(x) 1(x_S = y_S)}{\pE 1(x_S = y_S)}$, where $1(x_S = y_S)$ denotes the $0/1$ indicator function that $x_S = y_S$, which is in particular a degree-$|S|$ polynomial.
 
 *Proof idea:* Before we prove the lemma, let's explain the main idea, as usual drawing on intuition we cultivate by thinking of $\pE$ as representing the moments of an actual distribution. Suppose we have such a distribution $\mu$, and that the coordinates of $\mu$ are quite correlated, $\sum_{i,j} |\mu_{ij} - \mu_i \otimes \mu_j|_{TV} \gg \delta n^2$. We can rewrite this as
 
@@ -118,7 +122,7 @@ If, for some $s$, we have $\E \text{global}_s \leq \delta$, then by convexity of
 We introduce the following potential function tracking the amount of entropy in $1$-local distributions:
 $$\phi^{(s)} := \E \E_{i \in [n]}  H(X_i^{(s)}).$$
 (The outer expectation averages over all the randomness in the choice of $s$ and the values to be conditioned on.) The key claim, proved below, is that for $d \ll n$,:
-$$\phi^{(s)} - \phi^{(s+1)} \leq \Omega(\E \text{global}_{s}).$$
+$$\phi^{(s)} - \phi^{(s+1)} \geq \Omega(\E \text{global}_{s}).$$
 
 We know $0 \leq \phi^{(s)} \leq 1$, using $H(X) \in [0,1]$ for a binary random variable. So,
 $$1 \geq \phi^{(0)} - \phi^{(d-2)} \geq \Omega \left ( \sum_{s \leq d-2} \E \text{global}_s \right ).$$ Finally, since mutual information is nonnegative, $\text{global}_s \geq 0$ for all $s$. So, some term in the sum is at most $O(1/d)$.
@@ -126,7 +130,7 @@ QED
 
 *Proof of claim:* By definition, $I(X_i^{(s-1)};X_j^{(s-1)}) = H(X_i^{(s-1)}) - H(X_i^{(s-1)} \, | \, X_j^{(s-1)})$. In the $s$-th step, we choose some index $j_s$ to condition on, having already conditioned on indices $j_1,\ldots,j_{s-1}$. So,
 \begin{align*}
-\phi^{(s-1)} - \phi^{(s)} & = \E_{j_1,\ldots,j_{s-1}} \E_{j \sim [n]\setminus j_1,\ldots,j_{s-1}} \E_{i \sim [n]} H(X_i^{(s-1)} - H(X_i^{(s-1)} | X_j^{(s-1)}) \\
+\phi^{(s-1)} - \phi^{(s)} & = \E_{j_1,\ldots,j_{s-1}} \E_{j \sim [n]\setminus j_1,\ldots,j_{s-1}} \E_{i \sim [n]} H(X_i)^{(s-1)} - H(X_i^{(s-1)} | X_j^{(s-1)}) \\
 & = \E_{j_1,\ldots,j_{s-1}} \E_{i \sim [n] \setminus j_1,\ldots,j_{s-1}} I(X_i^{(s-1)}; X_j^{(s-1)}) \\
 & \leq \frac n {n-(s-1)} \E \text{global}_{s-1}.
 \end{align*}
@@ -135,7 +139,7 @@ QED.
 ### Putting it together
 Now we're ready to prove Theorem 1.
 
-*Proof of Theorem 1*  Suppose $\pE$ is a degree-$d$ pseudoexpectation. Following the procedure in Lemma 4, we know that we can obtain a (random) conditional pseudoexpectation $\pE'$, with local distributions $\mu'$ satisfying
+*Proof of Theorem 1:*  Suppose $\pE$ is a degree-$d$ pseudoexpectation. Following the procedure in Lemma 4, we know that we can obtain a (random) conditional pseudoexpectation $\pE'$, with local distributions $\mu'$ satisfying
 $$
 \E \sum_{i,j \leq n} |\mu'_{ij} - \mu_i' \otimes \mu_j'|_{TV} \leq O(n^2/\sqrt{d}).
 $$
@@ -232,6 +236,6 @@ Now let's put things together to prove Theorem 2.
 
 The first point implies that $\E_{i,j \in [n]} Cov_{ij}^2 \leq d^{-\Omega(1)}$, so by the local-to-global lemma, $\E_{i \sim j} Cov_{ij}^2 \leq d^{-\Omega(1)} + O(\lambda_2)$. 
 
-Exercise: show that $|\mu'_{ij} - \mu'_i \otimes \mu'_j|_{TV} \leq Cov_{ij}^{\Omega(1)}$.
+Exercise: show that $|\mu'_{ij} - \mu'_i \otimes \mu'_j|_{TV} \leq |Cov_{ij}|^{\Omega(1)}$.
 
 Given this exercise, independent rounding produces a cut $y$ such that $\E G(y) \geq (1-poly(1/d,\lambda_2)) \pE G(x)$, which is what we wanted to show.
