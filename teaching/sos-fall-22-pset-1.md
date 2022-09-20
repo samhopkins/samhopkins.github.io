@@ -76,7 +76,7 @@ It turns out that the ideas to prove this result can be combined with an extensi
 **Problem 4, 10 pts** *(Fun with SoS Proofs):* 
 
 *Part A (Cauchy-Schwarz):* For every family of degree-$d$ polynomials $p_1(x),\ldots,p_m(x), q_1(x),\ldots,q_m(x)$, show that 
-$$\proves_{4d} (\sum_{i \leq n} p_i(x)^2 )(\sum_{i \leq n} q_i(x)^2) - (\sum_{i \leq n} p_i(x) q_i(x))^2 \geq 0.$$
+$$\proves_{4d} (\sum_{i \leq m} p_i(x)^2 )(\sum_{i \leq m} q_i(x)^2) - (\sum_{i \leq m} p_i(x) q_i(x))^2 \geq 0.$$
 
 *Part B (Cauchy-Schwarz, Pseudoexpectation version):* Show that for every degree-$d$ pseudoexpectation $\pE$ and every degree $d/2$ polynomials $p,q$, $\pE pq \leq \sqrt{\pE p^2 \cdot \pE q^2}$. 
 
