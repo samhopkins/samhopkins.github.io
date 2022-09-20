@@ -41,7 +41,7 @@ You may assume that there is a polynomial-time separation oracle for the set of 
 
 **Problem 2, 10 pts** *(Max cut in almost-bipartite graphs):* Show that there is a polynomial-time algorithm with the following guarantee: given a graph $G = (V,E)$ such that there is a cut which cuts $(1-\e)|E|$ edges, the algorithm outputs a cut which cuts $(1-\tilde{O}(\sqrt{\e}))|E|$ edges. $(\tilde{O}$ can hide factors of $\log(1/\e)$, though this is not strictly necessary.)
 
-You may use the following basic anticoncentration fact for Gaussians: if $Z \sim N(0,1)$, then $Pr(|Z| \leq \delta) = O(\delta)$. (Convincing numerical evidence can be submitted instead of a proof for full credit.)
+You may use the following basic anticoncentration fact for Gaussians: if $Z \sim N(0,1)$, then $Pr(|Z| \leq \delta) = O(\delta)$.
 
 <details>
 <summary>Hint 1 (click to expand)</summary>
