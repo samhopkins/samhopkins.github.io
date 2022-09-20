@@ -52,23 +52,10 @@ No.              Date       Topics                                              
 
 ### Assignments
 
-<details>
-<summary>Problem Set 1 (not yet posted) -- tentatively due Oct. 7</summary>
+[Problem Set 1](sos-fall-22-pset-1.html) (not yet posted) -- tentatively due Oct. 14
 
-Please turn in solutions typeset using LaTeX.
+Problem Set 2 (not yet posted) -- tentatively due Nov. 4
 
-\newcommand{\pE}{\tilde{\mathbb E}}
-
-1. *foo* 
-
-2. *bar*
-
-</details>
-
-<details>
-<summary>Problem Set 2 (not yet posted) -- tentatively due Nov. 4</summary>
-*baz*
-</details>
 
 
 <details>
