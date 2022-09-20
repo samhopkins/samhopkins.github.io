@@ -52,7 +52,7 @@ No.              Date       Topics                                              
 
 ### Assignments
 
-[Problem Set 1](sos-fall-22-pset-1.html) (not yet posted) -- tentatively due Oct. 14
+[Problem Set 1](sos-fall-22-pset-1.html) -- tentatively due Oct. 14
 
 Problem Set 2 (not yet posted) -- tentatively due Nov. 4
 
