@@ -54,18 +54,17 @@ What is the probability that a 2-variable Gaussian distribution $(g,h)$ with $\E
 </details>
 
 
-**Problem 3, 10 pts** *(Min Bisection):* Min-bisection is the following optimization problem on graphs. Given a graph $G = (V,E)$, with $|V|$ an even number, the goal is to find
-$$ \min_{S \subset V, |S| = n/2} E(S,\overline{S})$$
+**Problem 3, 10 pts** *(Max Bisection):* Max-bisection is the following optimization problem on graphs. Given a graph $G = (V,E)$, with $|V|$ an even number, the goal is to find
+$$ \max_{S \subset V, |S| = n/2} E(S,\overline{S})$$
 where $E(S,\overline{S})$ denotes the set of edges crossing the cut $(S,\overline{S})$.
 
-In this exercise, we will see another application of the *low global correlation* idea to round pseudoexpectations for min bisection. The goal will be to prove the following theorem:
+In this exercise, we will see another application of the *low global correlation* idea to round pseudoexpectations for max bisection. The goal will be to prove the following theorem:
 
-*Theorem:* For every $\e > 0$, there is an algorithm running in time $n^{(1/\e)^{O(1)}}$ which $(1+\e)$-approximates the min-bisection value in dense graphs.
+*Theorem:* For every $\e > 0$, there is an algorithm running in time $n^{(1/\e)^{O(1)}}$ which $(1+\e)$-approximates the max-bisection value in dense graphs.
 
-It turns out that the ideas to prove this result can be combined with an extension of the ideas in Problem 2 to prove the following stronger theorem (which is not conceptually different but requires more technical work to prove): there is a polynomial time algorithm which, given a graph in which the min-bisection value is at most $\e |E|$, returns a bisection cutting $O(\sqrt{\e})|E|$ edges.
+It turns out that the ideas to prove this result can be combined with an extension of the ideas in Problem 2 to prove the following stronger theorem (which is not conceptually different but requires more technical work to prove): there is a polynomial time algorithm which, given a graph in which the max-bisection value is at least $(1-\e) |E|$, returns a bisection cutting $(1-O(\sqrt{\e}))|E|$ edges.
 
-
-*Constrained pseudoexpectations:* You may assume that there is an $n^{O(d)}$-time algorithm for the following problem: given a graph $G$, find a pseudoexpectation $\pE$ of degree $d$ minimizing $\pE \sum_{i \sim j} (x_i - x_j)^2$ among all $\pE$ with the following "balance" property: for all polynomials $p$ of degree at most $d-1$, $\pE p(x) \cdot \sum_{i \leq n} x_i = \tfrac n 2 \pE p(x)$. (We are ignoring some minor numerical issues here.) Notice that this property would be satisfied by $\E_\mu p(x)$ for any distribution $\mu$ on bisections; that is, on Boolean vectors with $\sum_{i \leq n} x_i = n/2$.
+*Constrained pseudoexpectations:* You may assume that there is an $n^{O(d)}$-time algorithm for the following problem: given a graph $G$, find a pseudoexpectation $\pE$ of degree $d$ maximizing $\pE \sum_{i \sim j} (x_i - x_j)^2$ among all $\pE$ with the following "balance" property: for all polynomials $p$ of degree at most $d-1$, $\pE p(x) \cdot \sum_{i \leq n} x_i = \tfrac n 2 \pE p(x)$. (We are ignoring some minor numerical issues here.) Notice that this property would be satisfied by $\E_\mu p(x)$ for any distribution $\mu$ on bisections; that is, on Boolean vectors with $\sum_{i \leq n} x_i = n/2$.
 
 *Part A:* Prove that if $\pE$ is a degree-$d$ pseudoexpectation satisfying the balance property above, and if $\pE'$ is the result of conditioning $\pE$ on the values of $t \ll d$ variables, then $\pE'$ also satisfies the balance property.
 
