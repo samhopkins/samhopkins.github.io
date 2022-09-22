@@ -80,9 +80,9 @@ $$\proves_{4d} (\sum_{i \leq m} p_i(x)^2 )(\sum_{i \leq m} q_i(x)^2) - (\sum_{i 
 *Part B (Cauchy-Schwarz, Pseudoexpectation version):* Show that for every degree-$d$ pseudoexpectation $\pE$ and every degree $d/2$ polynomials $p,q$, $\pE pq \leq \sqrt{\pE p^2 \cdot \pE q^2}$. 
 
 *Part C (Approximate Triangle Inequalities):* Show that there is a constant $C$ (indep. of $m$) such that for vectors of polynomials $p_1(x),\ldots,p_m(x), q_1,(x),\ldots,q_m(x)$,
-$$ \proves_{O(1)} C (\|p\|_2^2 + \|q\|_2^2) - \| p + q \|_2^2 \geq 0$$
+$$ \proves_{O(\max \{ \deg p_i, \deg q_i \}_{i \leq m})} C (\|p\|_2^2 + \|q\|_2^2) - \| p + q \|_2^2 \geq 0$$
 and in fact for every even $t$, there is $C_t$ such that
-$$ \proves_{O(t)} C_t (\|p\|_t^t + \|q\|_t^t) - \|p+q\|_t^t \geq 0.$$
+$$ \proves_{O(t \cdot \max \{ \deg p_i, \deg q_i \}_{i \leq m})} C_t (\|p\|_t^t + \|q\|_t^t) - \|p+q\|_t^t \geq 0.$$
 
 
 **Problem 5, 10 pts** *(Finding hidden cliques):* 
