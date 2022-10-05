@@ -10,11 +10,11 @@
 \newcommand{\Brac}[1]{\left [ #1 \right ]}
 \newcommand{\poly}{\text{poly}}
 
-Please turn in a PDF of typeset solutions solutions using LaTeX. (Turn-in instructions TBA.)
+Please turn in a PDF of typeset solutions solutions using LaTeX. Please turn in the pset by emailing me this pdf.
 
 *This pset may have bugs! Please email me, or reach out on Piazza, if you think there is a bug in a problem!*
 
-Due: October 14
+Due: October 14, 11:59pm Eastern time.
 
 You may use external resources such as Wikipedia to look up material which would reasonably be a prerequisite for this course (undergraduate-level algebra, linear algebra, probability, etc.). These exercises are designed to teach you something interesting about SoS and to acquaint you with an idea we won't have time to cover in lecture. As such, solutions to some of them may appear in the research literature or in reference material for this course. Please avoid using such solutions, and if you find you have already read one, please set aside the corresponding problem for a few days before working on it again.
 

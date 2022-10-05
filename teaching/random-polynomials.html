@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>random-polynomials</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../styling.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="random-polynomials-and-random-csps">Random Polynomials and Random CSPs</h2>
+<p><strong>Alert: these notes are a work in progress, and have not been subjected to the usual scrutiny reserved for formal publications!</strong></p>
+<p>We have seen examples of worst-case analysis as well as how SoS can exploit strucure to improve on its worst-case performance.</p>
+<p>Today’s theme: random polynomials.</p>
+<p>First question: what upper bound can SoS certify on a random polynomial over the cube?</p>
+<p>Most convenient today to work over the <span class="math inline">\(\{\pm 1\}\)</span> hypercube.</p>
+<p>Question 1: Let <span class="math inline">\(f(x) = \sum_{\alpha \subseteq [n]} g_\alpha x^\alpha\)</span> where <span class="math inline">\(g_\alpha \sim \mathcal{N}(0,1)\)</span>, with <span class="math inline">\(|\alpha| = k\)</span>. Let <span class="math inline">\(d \geq k\)</span> an integer. What is the least <span class="math inline">\(c = c_n\)</span> such that (whp) <span class="math inline">\(\vdash_d f(x) \leq c\)</span>?</p>
+<p>(We’ll assume every term appears only once in the sum above.)</p>
+<p>Most important cases: <span class="math inline">\(k = 2,3,4\)</span>.</p>
+<p>Applications later in lecture: random CSPs, finding optimum of random polynomial, tensor completion.</p>
+<p>(There are other applications: privacy, robust stats,…)</p>
+<h3 id="k1"><span class="math inline">\(k=1\)</span></h3>
+<p>When <span class="math inline">\(k=1\)</span>, have a linear function – should be easy. True opt is <span class="math inline">\(\sum |g_i|\)</span>, and degree-2 SoS certifies this via <span class="math inline">\(x_i \leq 1\)</span>.</p>
+<h3 id="k2"><span class="math inline">\(k=2\)</span></h3>
+<p>Quadratic optimization problem. Not hard to show that OPT is of order <span class="math inline">\(\Theta(n^{1.5})\)</span>. (sqrt <span class="math inline">\(n\)</span> standard deviations, Gaussian of variance <span class="math inline">\(n^2\)</span>.)</p>
+<p>Certificate: opportunity to use spectral to SoS lemma. (which we have seen implicitly before).</p>
+<p><em>Lemma:</em> Suppose <span class="math inline">\(f(x) = (x^{\otimes d})^\top M x^{\otimes d}\)</span>, <span class="math inline">\(M\)</span> symmetric$. Then <span class="math inline">\(\vdash_d f \leq \|M\| \cdot n^d\)</span>.</p>
+<p><em>Proof:</em> <span class="math inline">\(\|M\| I - M \succeq 0\)</span>. QED</p>
+<p>Now we’d like to give an SoS certificate that whp, <span class="math inline">\(f(x) \leq O(n^{1.5})\)</span> for degree-2 Gaussian <span class="math inline">\(f\)</span>.</p>
+<p>We will construct a random matrix <span class="math inline">\(M\)</span> out of the coefficients of <span class="math inline">\(f\)</span>.</p>
+<p>Need some insight into random matrices.</p>
+<p><em>Singular values and norms, refresher:</em> for an <span class="math inline">\(s \times t\)</span> matrix <span class="math inline">\(M\)</span>, with <span class="math inline">\(s \leq t\)</span>, have <span class="math inline">\(\leq s\)</span> positive singular values. $|M|_F^2 = $ sum of squared entries of <span class="math inline">\(M\)</span>, also <span class="math inline">\(\|M\|_F^2 = \sum \sigma_i^2\)</span>. And <span class="math inline">\(\|M\| = \sigma_{\max}\)</span>.</p>
+<p><em>Random matrix rule of thumb:</em> if <span class="math inline">\(M\)</span> is an unstructured random matrix, there are no extreme singular values –&gt; <span class="math inline">\(\sigma_\max^2 \approx \frac 1 s \|M\|_{F}^2\)</span>.</p>
+<p>Lots of tools for making this formal in various cases. Our main tool today: Matrix Bernstein inequality.</p>
+<p><em>Matrix Bernstein:</em> Let <span class="math inline">\(A_1,\ldots,A_n \in \mathbb{R}^{d \times d}\)</span> indepedent, symmetric, <span class="math inline">\(\mathbb EA_i = 0\)</span>, <span class="math inline">\(\|A_i\| \leq R\)</span> w.p. 1. Then <span class="math inline">\(\mathbb E\|\sum A_i\| \leq O(\| \sum \mathbb EA_i^2 \|^{1/2} \sqrt{\log d} + R \log d)\)</span>.</p>
+<p>Now to show <span class="math inline">\(\vdash_2 f(x) \leq O(n^{1.5} \log n)\)</span>.</p>
+<p><em>Lemma:</em> If <span class="math inline">\(M \in \mathbb{R}^{n \times n}\)</span> has iid <span class="math inline">\(N(0,1)\)</span> entries (subject to symmetry), <span class="math inline">\(\mathbb E\|M\| \leq O(\sqrt{n \log n})\)</span>.</p>
+<p><em>Proof:</em> Write <span class="math inline">\(M\)</span> as a sum of independent matrices <span class="math inline">\(A_{ij}\)</span>. <span class="math inline">\(\mathbb EA_{ij}^2 = E_{ii} + E_{jj}\)</span>. So <span class="math inline">\(\sum \mathbb EA_{ij}^2 = O(n I)\)</span>. Furthermore, can condition on <span class="math inline">\(\|A_{ij}\| \leq O(\log n)\)</span>. So w.p. 0.99 have <span class="math inline">\(\|M\| \leq O(\sqrt{n \log n} + \log n) = O(\sqrt{n \log n})\)</span>. QED.</p>
+<p>This immediately proves that <span class="math inline">\(\vdash_2 f(x) \leq O(n^{1.5} \sqrt{\log n})\)</span>.</p>
+<p>Maximum of degree-<span class="math inline">\(2\)</span> polynomial over hypercube can be certified by eigenvalues of associated random matrix, up to logarithmic factor. (Can be removed.)</p>
+<h3 id="even-k.">Even <span class="math inline">\(k\)</span>.</h3>
+<p>In general, optimum value is now seen to be <span class="math inline">\(\Theta(n^{(k+1)/2})\)</span>. But, <span class="math inline">\(\vdash_{O(k)} f(x) \leq O(n^{(k+1)/2})\)</span>?</p>
+<p><em>Lemma:</em> For even <span class="math inline">\(k\)</span>, <span class="math inline">\(\vdash_{O(k)} f(x) \leq n^{3k/4}\)</span>.</p>
+<p><em>Proof:</em> Treat <span class="math inline">\(f(x)\)</span> as a degree-<span class="math inline">\(2\)</span> polynomial in <span class="math inline">\(N = n^{k/2}\)</span> variables. Apply <span class="math inline">\(k=2\)</span> case to get the bound <span class="math inline">\(N^{1.5} = n^{3k/4}\)</span>.</p>
+<p>Natural question: can you do better? For degree-<span class="math inline">\(O(k)\)</span> SoS, answer is no. (We will see related ideas later in the course.) Can any algorithm do better? We also believe no though evidence is thinner.</p>
+<h3 id="odd-k.">Odd <span class="math inline">\(k\)</span>.</h3>
+<p>Optimum value still <span class="math inline">\(n^{(k+1)/2}\)</span>. Turns out still have <span class="math inline">\(\vdash_{O(k)} f(x) \leq n^{3k/4}\)</span>, but needs additional idea to prove this.</p>
+<p>Consider <span class="math inline">\(k=3\)</span>. For <span class="math inline">\(k=2\)</span> and <span class="math inline">\(k=4\)</span>, there are square matrices we can associate to the random polynomial <span class="math inline">\(f\)</span> – <span class="math inline">\(n \times n\)</span> and <span class="math inline">\(n^2 \times n^2\)</span>, which have maximum singular value comparable to average singular value. What about for <span class="math inline">\(k=3\)</span>? Pattern matching suggests we want an <span class="math inline">\(n^{1.5} \times n^{1.5}\)</span> random matrix to spread out the coefficients of <span class="math inline">\(f\)</span>.</p>
+<p>Natural approach: <span class="math inline">\(f(x) = x^\top M x^{\otimes 2}\)</span>, where <span class="math inline">\(M \in \mathbb{R}^{n \times n^2}\)</span> has <span class="math inline">\(M_{i,jk} = g_{ijk}\)</span>. Problem: this matrix is rectangular – will only have <span class="math inline">\(n\)</span> nonzero singular values in which to spread out the Frobenius mass. What is the best bound we could hope to certify with this matrix? Best-case scenario: top singular value will is <span class="math inline">\(\Theta(n)\)</span>. Best we could hope to certify is <span class="math inline">\(f(x) \leq \|M\| \|x\|^{1.5} = \|M\| \cdot n^{3/2} \approx n^{10/4}\)</span> (assuming we prove a non-square version of the spectral upper bound lemma). We’re looking for <span class="math inline">\(n^{9/4}\)</span> – might seem like a small difference, but translates to a big difference in e.g. how many entries of a tensor are needed to complete it (as we will see later in lecture).</p>
+<p>Let’s look for a polynomial which upper-bounds <span class="math inline">\(f\)</span> and which has an associated square matrix with nice singular values.</p>
+<p><span class="math display">\[\begin{align*}
+f(x)^2 &amp; = \left ( \sum_{ijk} g_{ijk} x_i x_j x_k \right )^2\\
+&amp; = \left ( \sum_i x_i \sum_{jk} g_{ijk} x_j x_k \right )^2\\
+&amp; \preceq \left ( \sum_i x_i^2 \right ) \left (  \sum_i (\sum_{jk} g_{ijk} x_j x_k)^2 \right )\\
+&amp; = n \cdot \left (  \sum_i (\sum_{jk} g_{ijk} x_j x_k)^2 \right )
+\end{align*}\]</span></p>
+<p>(Notation <span class="math inline">\(\preceq\)</span> means RHS - LHS is an SoS.)</p>
+<p>Now look at <span class="math inline">\(\sum_{jk, j&#39;k&#39;} x_j x_k x_{j&#39;} x_{k&#39;} \sum_i g_{ijk} g_{ij&#39;k&#39;}\)</span>. We can build a <span class="math inline">\(n^2 \times n^2\)</span> matrix (square!) out of it, <span class="math inline">\(M_{jk, j&#39;k&#39;} = \sum_{i} g_{ijk} g_{i j&#39;k&#39;}\)</span>. But this matrix has rank <span class="math inline">\(n\)</span>, at most <span class="math inline">\(n\)</span> singular values – bad news! Can write it as <span class="math inline">\(M =\sum_i g_i g_i^\top\)</span>.</p>
+<p>Cool trick: switch some indices! <span class="math inline">\(M_{jk, j&#39;k&#39;} = \sum_i g_{ijj&#39;} g_{ikk&#39;}\)</span> still has <span class="math inline">\(x^{\otimes 2} M x^{\otimes 2} = \sum_i (\sum_{jk} g_{ijk} x_j x_k)^2\)</span>, but now doesn’t have this rank-<span class="math inline">\(n\)</span> factorization.</p>
+<p>We can visualize this transformation a bit: the polynomial <span class="math inline">\(f\)</span> can be viewed as a tensor, then the <span class="math inline">\(g_{i,\cdot,\cdot}\)</span> are matrix slices of this tensor. The degree-4 form <span class="math inline">\(\langle x, g_i x \rangle^2\)</span> can be written as <span class="math inline">\((x^{\otimes 2})^\top (g_i^{flat} (g_i^{flat})^\top) x^{\otimes 2}\)</span> or as <span class="math inline">\(x^{\otimes 2} (g_i \otimes g_i) x^{\otimes 2}\)</span>.</p>
+<p>Since it’s “unstructured”, we can hope that the rule of thumb applies. Computing the Frobenius norm – each entry is like <span class="math inline">\(\sqrt{n}\)</span> and there are <span class="math inline">\(n^4\)</span> entries, so get <span class="math inline">\(n^{5}\)</span>. <span class="math inline">\(n^2\)</span> singular vals so hopefully <span class="math inline">\(\|M\| \approx n^{1.5}\)</span>. (This is true; you can prove it with Matrix Bernstein; can shave log factors if you want using fancier methods.)</p>
+<p>So get <span class="math inline">\(\vdash_{2(k+1)} f(x)^2 \leq n \cdot n^{1.5} \cdot n^2 = n^{9/2}\)</span>. Looking good! Just need to get rid of the square.</p>
+<p><em>Lemma:</em> if <span class="math inline">\(\vdash_{2d} f^2 \leq B\)</span> then <span class="math inline">\(\vdash_d f \leq \sqrt{B}\)</span>. <em>Proof:</em> <span class="math inline">\(f = f \tfrac 1 {B^{1/4}} B^{1/4} \preceq \tfrac 12 (f^2/{\sqrt{B}} + \sqrt{B})\)</span>, then compose with hypothesis.</p>
+<p>This completes the proof that w.p. <span class="math inline">\(0.99\)</span>, for <span class="math inline">\(k=3\)</span>, <span class="math inline">\(\vdash_{O(1)} f(x) \leq n^{9/4} (\log n)^{O(1)}\)</span>.</p>
+<h2 id="getting-past-constant-degree-sos-kikuchi-matrices">Getting past constant-degree SoS: Kikuchi matrices</h2>
+<p>What can we do with higher degree SoS proofs here? Let’s return to <span class="math inline">\(k=4\)</span> for concreteness.</p>
+<p><em>Theorem:</em> For degree-<span class="math inline">\(4\)</span> random <span class="math inline">\(f\)</span>, for all <span class="math inline">\(d\)</span>, whp <span class="math inline">\(\vdash_{O(d)} f(x) \leq n^3 / \sqrt{d} \cdot (\log n)^{O(1)}\)</span>.</p>
+<p>(This can be extended to other degrees <span class="math inline">\(k\)</span> in the natural way.)</p>
+<p>We need to spread <span class="math inline">\(f\)</span> out into a bigger matrix.</p>
+<p>Several approaches to do this – one approach is to take a high power of <span class="math inline">\(f\)</span>, say <span class="math inline">\(f^d\)</span>, expand into a matrix, and then play tricks with coefficients somewhat analogous to what we did with <span class="math inline">\(d=3\)</span>, exploiting the power to average over all permutations of <span class="math inline">\([d]\)</span>.</p>
+<p>A simpler approach: Kikuchi matrices.</p>
+<p>We need to relate <span class="math inline">\(f\)</span> to some higher-degree polynomial. We choose</p>
+<p><span class="math display">\[f(x) = \sum_{ijk \ell} \mathbb E_{S \sim [n]^{(d-4)/2}} g_{ijk\ell} x_i x_j x_k x_\ell x^{2S}\]</span></p>
+<p>which we can alternatively write as</p>
+<p><span class="math display">\[f(x) = \frac 1 {\binom{n}{(d-4)/2}} (x^{\otimes d/2})^\top \sum_{ijk \ell} g_{ijk\ell}  A_{ijk\ell} x^{\otimes d/2}\]</span></p>
+<p>where <span class="math inline">\(A_{ijk \ell}[S,T] = 1\)</span> if <span class="math inline">\(S \Delta T = \{ijk \ell\}\)</span> and otherwise <span class="math inline">\(0\)</span>.</p>
+<p><span class="math inline">\(\sum_{ijk\ell} g_{ijk\ell} A_{ijk\ell}\)</span> is the <em>Kikuchi matrix</em> associated to <span class="math inline">\(f\)</span>.</p>
+<p>Computation shows that <span class="math inline">\(A_{ijk\ell} A_{ijk\ell}^\top\)</span> is diagonal, with <span class="math inline">\(1\)</span> on the diagonal only if <span class="math inline">\(S\)</span> contains some <span class="math inline">\(2\)</span> of <span class="math inline">\(\{ijk\ell\}\)</span>. So <span class="math inline">\(\sum_{ijk\ell} A_{ijk\ell}A_{ijk\ell}^\top \preceq d^2 n^2 I\)</span>.</p>
+</body>
+</html>

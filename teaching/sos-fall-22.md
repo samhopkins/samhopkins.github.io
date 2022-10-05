@@ -36,9 +36,9 @@ No.              Date       Topics                                              
 -----------      ----       ------                                                            ----------------
 1                Sept. 9    optimization on the hypercube, max-cut                            sections 1.1, 1.2, and 2.1 of [Barak-Steurer](https://www.sumofsquares.org/public/index.html)
 2                Sept. 16   global correlation rounding                                       [notes](global-correlation-rounding.html) [Raghavendra notes on hyperfinite graphs](https://github.com/nrprasad/webpage_files/raw/main/spring2021/sos-intro.pdf) [slides](sos-course-lec-2.pdf) [video](https://mit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7ec2214f-b58a-4891-9923-af0f015a5bd1)
-3                Sept. 30   refuting random CSPs
-4                Oct. 7     beyond the hypercube, robust mean estimation
-5                Oct. 14    clustering mixture models
+3                Sept. 30   refuting random CSPs                                              [notes](refuting-random-csps.html)
+4                Oct. 7     beyond the hypercube, robust mean estimation                      [Barak Steurer notes](https://www.sumofsquares.org/public/lec-definitions-general.html) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/00-proofs-to-algs.pdf)
+5                Oct. 14    clustering mixture models                                         [notes](http://www.samuelbhopkins.com/clustering.pdf) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/04-clustering-gaussians.pdf)
 6                Oct. 21    tensor decomposition
 7                Oct. 28    differential privacy
 8                Nov. 4     fast algorithms 1: spectral methods

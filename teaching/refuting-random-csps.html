@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>refuting-random-csps</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../styling.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="refuting-random-csps">Refuting Random CSPs</h1>
+<p>Lecturer: Sam Hopkins Scribe: Benjamin Qi</p>
+<p><strong>Alert: these notes are a work in progress, and have not been subjected to the usual scrutiny reserved for formal publications!</strong></p>
+<p><span class="math display">\[
+\newcommand{\O}{\mathcal O}
+\newcommand{\TO}{\tilde{\mathcal O}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\pE}{\tilde{\mathbb E}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\vphi}{\varphi}
+\newcommand{\proves}{\vdash}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\iprod}[1]{\langle #1 \rangle}
+\newcommand{\Brac}[1]{\left [ #1 \right ]}
+\newcommand{\paren}[1]{\left ( #1 \right )}
+\newcommand{\poly}{\text{poly}}
+\newcommand{\vmag}[1]{\left \| #1 \right \|}
+\]</span></p>
+<p>We’ve already seen how SOS can provide better worst-case guarantees for max-cut. Today we’ll take our first foray into random instances.</p>
+<!-- The key is going to be constraint satisfication. We're going to generalize past max-cut as our sandbox. (?) -->
+<h2 id="constraint-satisfication-problems">Constraint Satisfication Problems</h2>
+<p>For this lecture, we will consider the hypercube over <span class="math inline">\(\{-1,1\}^n\)</span> rather than <span class="math inline">\(\{0,1\}^n\)</span>.</p>
+<p><strong>Definition (Constraint):</strong> We define a constraint to be a predicate of the form <span class="math inline">\(\phi \colon \{\pm 1\}^k\to \{0,1\}.\)</span> The constraint is said to be satisfied if it evaluates to <span class="math inline">\(1\)</span>. Throughout this lecture we assume that <span class="math inline">\(k\)</span> is constant, and that the constraint is non-trivial: there exists <span class="math inline">\(z\in \{\pm 1\}^k\)</span> such that <span class="math inline">\(\phi(z)=0\)</span>.</p>
+<p><strong>Definition (Constraint Satisfication Problem).</strong> An instance <span class="math inline">\(\vphi\in \text{CSP}_{\phi}^{n,m}\)</span> on <span class="math inline">\(n\)</span> variables <span class="math inline">\(x_1,\dots,x_n\in \{\pm 1\}\)</span> and <span class="math inline">\(m\)</span> constraints can be written as <span class="math inline">\(\vphi(x)=\sum_{i=1}^m\phi(x_{S_i}\circ y_i).\)</span> The constraints are represented by tuples <span class="math inline">\(S_1,\dots, S_m\in [n]^k\)</span> and <span class="math inline">\(y_1,\dots, y_m\in \{\pm 1\}^k\)</span>, which specify whether the variables will be negated in each constraint.</p>
+<p><em>Note on Notation:</em> If <span class="math inline">\(S=(1,2)\)</span> and <span class="math inline">\(y=(+1, -1)\)</span> then <span class="math inline">\(x_S\circ y=(x_1,-x_2)\)</span>.</p>
+<p>We can express interesting combinatorial objects as instances of CSPs. Some examples: - max-cut: <span class="math inline">\(\phi(x_1,x_2)=\Brac{x_1\neq x_2}\)</span>. - SAT: <span class="math inline">\(\phi(x_1,\dots,x_k)=\text{OR}(x_1,\dots,x_k)\)</span> - NAE-SAT (NAE stands for “not all equal”): <span class="math inline">\(\phi=1\)</span> if at least one <span class="math inline">\(x_i\)</span> is <span class="math inline">\(1\)</span> and not all <span class="math inline">\(x_i\)</span> are <span class="math inline">\(1\)</span>.</p>
+<h2 id="random-csps">Random CSPs</h2>
+<p>CSPs also give us an interesting class of optimization problems. Specifically, how can we find a satisfying assignment or an assignment that satisfies as many constraints as possible? Formally, given <span class="math inline">\(\vphi \sim \text{CSP}_{\phi}^{n,m}\)</span>, what is <span class="math inline">\(\max_{x\in \{\pm 1\}^n}\vphi(x)\)</span>?</p>
+<p>In the worst case, CSPs are hard. By the PCP Theorem, there exists <span class="math inline">\(\e&gt;0\)</span> such that distinguishing between satisfiable 3SAT formulas and 3SAT formulas where at most <span class="math inline">\(1-\e\)</span> of the clauses can be satisfied (Gap-3SAT<span class="math inline">\([1-\e, 1]\)</span>) is NP-Hard. But some SAT-solvers (e.g., <a href="https://en.wikipedia.org/wiki/Z3_Theorem_Prover">Z3</a>) do well in practice. Worst-case analysis isn’t telling us the whole story. Sometimes analyzing behavior on random instances is more useful.</p>
+<!-- Maybe behavior on random instances is more useful than worst-case instances. Sometimes useful to have problems that are average-case hard. -->
+<!-- Worst-case CSPs are NP-Hard $\to$ "choked-off" from algorithm design?? -->
+<p><em>Standard model of random CSPs:</em> An instance of CSP with <span class="math inline">\(m\)</span> clauses <span class="math inline">\(S_{1\dots m}, y_{1\dots m}\)</span>, where each <span class="math inline">\(S_i\)</span> and <span class="math inline">\(y_i\)</span> is chosen and independently and uniformly at random.</p>
+<p>The model we consider today is slightly different than the standard one; it makes the math easier but is essentially the same. Specifically, we include every possible <span class="math inline">\(S\in [n]^k\)</span> independently with probability <span class="math inline">\(m/n^k\)</span>. We refer to this probability as the clause density, and it is typically much less than <span class="math inline">\(1\)</span>.</p>
+<hr />
+<!-- If you just want to output the number, just compute:
+
+$$\max_{x}\vphi(x)\approx \E_{\vphi}\max_x\vphi(x).$$
+
+But this is not very useful.
+
+
+What if we want to find $x$?
+ -->
+<p>There are several regimes depending on how <span class="math inline">\(m\)</span> compares to <span class="math inline">\(n\)</span>. - <span class="math inline">\(m\gg n\implies\)</span> no “interesting” <span class="math inline">\(x\)</span>’s. <span class="math inline">\(\max_{x}\vphi(x)\approx \E_{\vphi}\max_x\vphi(x)\)</span>. - <span class="math inline">\(m\ll n \implies\)</span> many <span class="math inline">\(x\)</span>’s such that <span class="math inline">\(\vphi(x)=m\)</span>. Use local search (not particularly interesting). - <span class="math inline">\(m=\Theta(n)\)</span>: studied heavily in statistical physics. There are interesting algorithmic ideas (belief propagation and survey propagation, for instance).</p>
+<!-- In between, we don't know how to do better than local search. -->
+<h2 id="refutations">Refutations</h2>
+<p><strong>Definition (Refutation):</strong> An algorithm <span class="math inline">\(\text{ALG}\)</span> that given <span class="math inline">\(\vphi\in \text{CSP}_{\phi}^{n,m}\)</span>, outputs <span class="math inline">\(\text{ALG}(\vphi)\in [0,m]\)</span> such that:</p>
+<ol type="1">
+<li><span class="math inline">\(\text{ALG}(\vphi)\ge \max_x\vphi(x)\)</span> for any <span class="math inline">\(\vphi\)</span></li>
+<li><span class="math inline">\(\E\Brac{\text{ALG}(\vphi)} \le (1-\delta)m\)</span> where <span class="math inline">\(\delta=\Omega(1)\)</span>. This is known as <em>strong</em> refutation.</li>
+</ol>
+<p>This is interesting in the regime where <span class="math inline">\(m\gg n\)</span>.</p>
+<p>Note that if <span class="math inline">\(\text{ALG}\)</span> runs in polynomial time and <span class="math inline">\(\text{ALG}(\vphi)\le (1-\Omega(1))m\)</span>, then <span class="math inline">\(\text{ALG}\)</span> is a “proof system” for <span class="math inline">\(\vphi\)</span>. Specifically, the computation trace of <span class="math inline">\(\text{ALG}\)</span> (i.e., the list of Turing machine moves when executed on <span class="math inline">\(\vphi\)</span>) provides a proof (a <span class="math inline">\(\text{poly}(|\vphi|)\)</span>-length string) that <span class="math inline">\(\text{ALG}(\vphi)\le (1-\Omega(1))m\)</span>, and hence that <span class="math inline">\(\max_x \phi(x) \leq (1-\Omega(1))m\)</span>. So if a polynomial-time <span class="math inline">\(\text{ALG}\)</span> exists, then proofs for most <span class="math inline">\(\vphi\)</span> will exist.</p>
+<!-- *Claim:* If we design an algorithm that runs in polynomial time, we have a proof system.
+
+(TODO: figure out what this means) -->
+<p><em>Question:</em> How big does <span class="math inline">\(m=m(n)\)</span> need to be so that such <span class="math inline">\(\text{ALG}\)</span> exists? The intution is that the more clauses there are, the easier it should be to refute the existence of highly satisfying assignments.</p>
+<!-- Last time, we used SOS of degree 2 to refute max-cuts. -->
+<hr />
+<p>Potential <span class="math inline">\(\text{ALG}\)</span>: For <span class="math inline">\(d\in \N\)</span>: find the least <span class="math inline">\(c\)</span> such that <span class="math inline">\(\proves_d \phi(x)\le c\)</span> in <span class="math inline">\(n^{O(d)}\)</span> time.</p>
+<p><strong>Theorem:</strong> <span class="math inline">\(\forall \phi\)</span>, if <span class="math inline">\(m\gg n^{k/2}\cdot (\log n)^{O(1)}\)</span>, <span class="math inline">\(\exists \delta&gt;0\)</span> such that whp, <span class="math inline">\(\proves_{O(k)}\vphi(x)\le (1-\delta)m\)</span>.</p>
+<p><strong>Proof:</strong> We will show that we can reduce general <span class="math inline">\(\phi\)</span> to the case of <span class="math inline">\(k\)</span>-XOR. <span class="math inline">\(k\)</span>-XOR is defined as</p>
+<p><span class="math display">\[\phi(z)=\begin{cases}
++1 &amp; \prod_{i=1}^kz_i=1 \\
+0 &amp; \prod_{i=1}^kz_i=-1
+\end{cases}.\]</span></p>
+<p>Note that when <span class="math inline">\(\phi\)</span> represents <span class="math inline">\(k\)</span>-XOR, <span class="math inline">\(\phi(x_{S_i}\circ y_i)\)</span> depends only on <span class="math inline">\(\prod_{j\in S_i} x_j\cdot \prod_{j\le k}y_{ij}\)</span>, so we can replace the list of signs <span class="math inline">\(y_{i,1\dots k}\)</span> with a single sign <span class="math inline">\(a_i\in \{\pm 1\}\)</span>.</p>
+<p><em>Definition:</em> Assume that <span class="math inline">\(\phi\)</span> represents <span class="math inline">\(k\)</span>-XOR (where <span class="math inline">\(k&gt;0\)</span>). Given <span class="math inline">\(\vphi\in \text{CSP}_{\phi}^{n,m}\)</span>, define <span class="math inline">\(\psi(x)\triangleq \sum_{i=1}^ma_i \prod_{j\in S_i}x_j=(\#\text{ sat})-(\#\text{ unsat})\)</span>.</p>
+<hr />
+<p>Now let’s return to the case of general <span class="math inline">\(\phi\)</span>. We can decompose <span class="math inline">\(\phi\)</span> into its fourier coefficients: <span class="math inline">\(\phi(z)=\sum_{T\subseteq [k]}\hat{\phi}_T\cdot z_T\)</span>. Given any instance <span class="math inline">\(\vphi\sim \text{CSP}_{\phi}^{n,m}\)</span>, we may decompose it into <span class="math inline">\(2^k\)</span> <span class="math inline">\(k&#39;\)</span>-XOR instances with <span class="math inline">\(0\le k&#39;\le k\)</span> like so:</p>
+<p><span class="math display">\[\vphi(x)=\sum \phi(x_{S_i}\circ y_i)=\sum_{T\subseteq [k]}\hat{\phi}_T\sum_{i}\prod_{j\in T}y_{ij}\prod_{j\in T}(x_{S_i})_j=\hat{\phi}_{\emptyset}+\sum_{\emptyset\neq T\subseteq [k]}\hat{\phi}_T\psi_T(x).\]</span></p>
+<hr />
+<p>Observe that each <span class="math inline">\(\psi_T\)</span> is a random instance of <span class="math inline">\(k&#39;\)</span>-XOR for <span class="math inline">\(0&lt; k&#39;\le k\)</span>. If we can show <span class="math inline">\(\proves_{O(k)}\psi_T(x)\le \e \cdot m\)</span> and <span class="math inline">\(\proves_{O(k)}-\psi_T(x)\le \e \cdot m\)</span> for all <span class="math inline">\(T\)</span>, then</p>
+<p><span class="math display">\[\begin{align*}
+\proves_{O(k)}\vphi(x)&amp;\le \hat{\phi}_{\emptyset}+\sum_{T\subseteq [k], T\neq \emptyset}\hat{\phi}_T \psi_T(x)\\
+&amp;\le (\hat{\phi}_{\emptyset}+\O(2^k\e))m.
+\end{align*}\]</span></p>
+<p>If <span class="math inline">\(\e \ll 2^{-k}\)</span>, we’ve refuted <span class="math inline">\(\vphi(x)\)</span>, since <span class="math inline">\(\hat{\phi_\emptyset} &lt; 1\)</span> by our assumption that <span class="math inline">\(\phi(z) = 0\)</span> for some choice of <span class="math inline">\(z \in \{ \pm 1\}^k\)</span>.</p>
+<p><em>Note:</em> if the max degree over all nonzero coefficients in the Fourier expansion of <span class="math inline">\(\phi\)</span> is <span class="math inline">\(k&#39;&lt;k\)</span>, then we only need <span class="math inline">\(m\ge \tilde{\Omega}\paren{n^{k&#39;/2}}\)</span> rather than <span class="math inline">\(m\ge \tilde{\Omega}\paren{n^{k/2}}\)</span>. For example, 3-NAE-SAT has <span class="math inline">\(\hat{\phi}_{\{1,2,3\}}=0\)</span>, so it can be refuted with <span class="math inline">\(m\le \TO(n^{2/2})=\TO(n)\)</span>. Here, the tilde hides factors of <span class="math inline">\(\log n\)</span>.</p>
+<h2 id="refutation-for-xor">Refutation for XOR</h2>
+<p>It remains to tackle the case of <span class="math inline">\(k\)</span>-XOR. <em>Weakly</em> refuting <span class="math inline">\(k\)</span>-XOR is actually easy – treating a <span class="math inline">\(k\)</span>-XOR instance as a set of linear equations over <span class="math inline">\(\mathbb{F}_2\)</span>, you can use Gaussian elimination to check if there is an assignment <span class="math inline">\(x \in \{\pm 1\}^n\)</span> which satisfies all the equations; if there isn’t, you know that <span class="math inline">\(\psi(x) \leq m - 1\)</span>. But we need a much stronger refutation: <span class="math inline">\(\psi(x) \leq \e m\)</span> for some tiny <span class="math inline">\(\e\)</span>. That is, we want a proof that no assignment satisfies more than a <span class="math inline">\((1/2 + \e)\)</span>-fraction of the clauses – note that this is the best we can hope for, since a random assignment satisfies <span class="math inline">\(1/2\)</span> of the clauses.</p>
+<p>The main tools we use are as follows:</p>
+<ol type="1">
+<li><p>Spectral SoS certificates.</p>
+<p><em>Claim:</em> Let <span class="math inline">\(d\)</span> be even and let <span class="math inline">\(f \, : \, \{-1,1\}^n \rightarrow \R\)</span>. Suppose <span class="math inline">\(f(x)\)</span> has <span class="math inline">\(f(x) = (x^{\otimes d/2})^T M x^{\otimes d/2}\)</span> over <span class="math inline">\(x\in \{\pm 1\}^n\)</span>, where <span class="math inline">\(M\)</span> is a symmetric matrix. Then <span class="math inline">\(\proves_d f(x)\le n^{d/2}\vmag{M}\)</span>.</p>
+<p><em>Proof:</em></p>
+<p><span class="math display">\[\begin{align*}
+\vmag{M}I-M\succeq 0 \implies 0&amp;\preceq (x^{\otimes d/2})^T(\vmag{M}I-M)x^{\otimes d/2} \\
+&amp;=\vmag{M}\cdot \vmag{x}_2^d-f(x)\\
+&amp;=\vmag{M}n^{d/2}-f(x).
+\end{align*}\]</span> Here we have used the notation that <span class="math inline">\(g(x) \succeq 0\)</span> for a polynomial <span class="math inline">\(g\)</span> if it is a sum of squares.</p></li>
+<li><p>Matrix Bernstein Inequality.</p>
+<p><em>Aside:</em> The <a href="https://en.wikipedia.org/wiki/Bernstein_inequalities_(probability_theory)">Ordinary Bernstein Inequality</a> is <em>roughly</em> as follows. Given independent random variables <span class="math inline">\(a_1,\dots,a_n\)</span> such that <span class="math inline">\(\E a_i=0\)</span> and <span class="math inline">\(|a_i|\le R\)</span>, <span class="math inline">\(\sum a_i\)</span> is approximately Gaussian with variance <span class="math inline">\(\E[\sum a_i^2]\)</span> close to the origin.</p>
+<p>The matrix version is as follows. Given independent random symmetric matrices <span class="math inline">\(A_1,\dots, A_n\in \R^{d\times d}\)</span> with <span class="math inline">\(\E A_i=0\)</span> and <span class="math inline">\(\vmag{A_i}\le R\)</span> with probability 1,</p>
+<p><span class="math display">\[\E\vmag{\sum A_i}\le \O\paren{\vmag{\E \sum A_i^2}^{1/2}\cdot \sqrt{\log d}+R\log d}.\]</span></p></li>
+</ol>
+<!-- (BREAK 1)
+ -->
+<h3 id="part-1-k2">Part 1: <span class="math inline">\(k=2\)</span></h3>
+<p>Let <span class="math inline">\(a_{ij}\)</span> equal <span class="math inline">\(\pm 1\)</span> (whichever sign is appropriate) if <span class="math inline">\(\phi(\pm x_i,\pm x_j)\)</span> appears as a clause in <span class="math inline">\(\vphi\)</span>, or <span class="math inline">\(0\)</span> otherwise. Then</p>
+<p><span class="math display">\[\psi(x)=\sum_{ij}a_{ij}x_ix_j=x^T\paren{\sum a_{ij} E_{ij}}x.\]</span></p>
+<p>Here <span class="math inline">\(E_{ij}\)</span> is the <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(M\)</span> with <span class="math inline">\(M_{ij}=M_{ji}=\frac{1}{2}\)</span> if <span class="math inline">\(i\neq j\)</span> or <span class="math inline">\(M_{ii}=1\)</span> if <span class="math inline">\(i=j\)</span>, and zeros everywhere else.</p>
+<p><em>Random matrix rule of thumb:</em> Let <span class="math inline">\(M\)</span> be a <span class="math inline">\(D\times D\)</span> symmetric matrix. It is <a href="https://math.stackexchange.com/questions/620870/prove-that-the-square-sum-of-eigenvalues-is-no-more-than-the-frobenius-norm-for">well-known</a> that <span class="math display">\[\vmag{M}_F=(\ell_2\text{ norm of }M)=\sqrt{\sum \lambda_i^2}.\]</span></p>
+<p>If <span class="math inline">\(M\)</span> is “unstructured” (not a well defined notion), then we can hope that <span class="math inline">\(M\)</span>’s largest squared eigenvalue behaves like the average squared eigenvalue, in which case we would have that <span class="math inline">\(\max \lambda_i\approx \frac{\vmag{M}_F}{\sqrt D}\)</span>.</p>
+<p>If this occurs for the matrix <span class="math inline">\(\sum a_{ij} E_{ij}\)</span>, we can see that the spectral norm would be around <span class="math inline">\(\|\sum_{aij} E_{ij}\| \approx \sqrt{m/n}\)</span>. The calculation below shows that this is correct, at least when <span class="math inline">\(m \gg n\)</span>.</p>
+<hr />
+<p>Now let’s try to bound <span class="math inline">\(\vmag{\sum a_{ij}E_{ij}}\)</span>. Observe that <span class="math inline">\(\E \Brac{\sum_{ij} a_{ij}^2 E_{ij}^2}\approx \sum_{ij} \frac{m}{n^2}E_{ij}^2\)</span> and</p>
+<p><span class="math display">\[E_{ij}^2=\begin{pmatrix}
+0 &amp; 1/2 \\
+1/2 &amp; 0
+\end{pmatrix}^2=\begin{pmatrix}
+1/4 &amp; 0\\
+0 &amp; 1/4
+\end{pmatrix}=\frac{1}{4}\paren{E_{ii}+E_{jj}}.\]</span></p>
+<p>So</p>
+<p><span class="math display">\[\begin{align*}
+\sum_{ij} \frac{m}{n^2}E_{ij}^2
+&amp;\preceq \O\paren{\frac{m}{n^2}\sum_{i,j}\paren{E_{ii}+E_{jj} }}\\
+&amp;= \O\paren{m/n^2\cdot n\cdot I_n}\\
+&amp;= \O(m/n\cdot I_n).
+\end{align*}\]</span></p>
+<p>Now by Matrix Bernstein, <span class="math display">\[\E \vmag{\sum a_{ij}E_{ij}}\le \O\paren{\sqrt{m/n}\cdot \sqrt{\log n}+\log n}=\O\paren{\sqrt{m/n}\cdot \sqrt{\log n}}.\]</span></p>
+<p>Furthermore, by Markov’s inequality, we can adjust the constant hidden by the <span class="math inline">\(\O\)</span> such that <span class="math inline">\(\vmag{\sum a_{ij}E_{ij}}\le \O\paren{\sqrt{m/n}\cdot \sqrt{\log n}}\)</span> holds with probability at least <span class="math inline">\(1-\e\)</span> for any constant <span class="math inline">\(\e&gt;0\)</span> of our choice.</p>
+<hr />
+<p>So we’ve shown that whp,</p>
+<p><span class="math display">\[\begin{align*}
+\proves_{2}\psi(x)&amp;=x^T\paren{\sum a_{ij} E_{ij}}x\\
+&amp;\le (\sqrt n)^2 \vmag{\paren{\sum a_{ij} E_{ij}}} \\
+&amp;\le \O\paren{n\cdot \sqrt{m/n}\cdot \sqrt{\log n}}.
+\end{align*}\]</span></p>
+<p>For this to be <span class="math inline">\(\ll \e m\)</span>, we need:</p>
+<p><span class="math display">\[\sqrt n \sqrt{\log n}\ll \e \sqrt m \implies m\gg \frac{n\log n}{\e^2}.\]</span></p>
+<p>As long as the inequality on the right is true, then whp degree-2 SOS refutes 2-XOR.</p>
+<h3 id="k4"><span class="math inline">\(k=4\)</span></h3>
+<p><span class="math display">\[\psi(x)=\sum a_{ijkl}\cdot x_ix_jx_kx_l=\paren{x^{\otimes 2}}^T\overbrace{\paren{\sum a_{ijkl}E_{ij,kl}}}^{n^2\times n^2}x^{\otimes 2}\]</span></p>
+<p>Using a similar heuristic argument as <span class="math inline">\(k=2\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+\vmag{\sum a_{ijkl}E_{ij,kl}}_F^2 \le \O(m) &amp;\implies \vmag{\sum a_{ijkl}E_{ij,kl}}\lesssim \sqrt{\frac{m}{n^2}}=\frac{\sqrt m}{n} \\
+&amp;\implies \proves_{4}\psi(x)\le \TO\paren{n\sqrt m}.
+\end{align*}\]</span></p>
+<p>We conclude that <span class="math inline">\(\psi(x)\)</span> is much less than <span class="math inline">\(m\)</span> if <span class="math inline">\(m\gg n^2\)</span>. The reasoning for larger even <span class="math inline">\(k\)</span> is similar.</p>
+<h3 id="k3"><span class="math inline">\(k=3\)</span></h3>
+<p>This case is trickier than the previous two. Firstly, we can write</p>
+<p><span class="math display">\[\begin{align*}
+\psi(x)&amp;=\sum_{ijk} a_{ijk}x_ix_jx_k\\
+&amp;=x^T \cdot \paren{\overbrace{\sum_{ijk} a_{ijk}E_{i,jk}}^{A}} \cdot x^{\otimes 2},
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(A\)</span> is an <span class="math inline">\(n\times n^2\)</span> matrix. Naively, we could rewrite this expression as:</p>
+<p><span class="math display">\[=(x,x^{\otimes 2})^T\cdot \overbrace{\begin{bmatrix}0_{n\times n} &amp; A/2 \\
+A^T/2 &amp; 0_{n^2\times n^2} \end{bmatrix}}^{M} \cdot (x,x^{\otimes 2})\]</span></p>
+<p>where <span class="math inline">\(M\)</span> is an <span class="math inline">\((n+n^2)\times (n+n^2)\)</span> symmetric matrix, and try to use the same approach as in the even-<span class="math inline">\(k\)</span> case, using the maximum eigenvalue of <span class="math inline">\(M\)</span>. But the maximum eigenvalue of <span class="math inline">\(M\)</span> is much larger than we would like, because even though <span class="math inline">\(M\)</span> is <span class="math inline">\((n+n^2) \times (n+n^2)\)</span>, it has rank at most <span class="math inline">\(2n\)</span>.</p>
+<hr />
+<p>Another approach: using Cauchy-Schwarz,</p>
+<p><span class="math display">\[\begin{align*}
+\psi(x)^2&amp;=\paren{\sum a_{ijk}x_ix_jx_k}^2\\
+&amp;=\paren{\sum_i x_i\cdot \sum_{j,k}a_{ijk}x_jx_k}^2\\
+&amp;\le \paren{\sum_i x_i^2}\cdot \paren{\sum_i \paren{\sum_{j,k}a_{ijk}x_jx_k}^2} \\
+&amp;\triangleq n\cdot \paren{\sum_i (x^TA_ix)^2},
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(A_i\)</span> is the symmetric <span class="math inline">\(n\times n\)</span> matrix such that <span class="math inline">\(A_i(j,k)=\frac{a_{ijk}+a_{ikj}}{2}\)</span>. The next step is to define a matrix <span class="math inline">\(A&#39;\)</span> such that</p>
+<p><span class="math display">\[\sum_i (x^TA_ix)^2=(x^{\otimes 2})^TA&#39;x^{\otimes 2}.\]</span></p>
+<p>We need to choose <span class="math inline">\(A&#39;\)</span> such that <span class="math inline">\(\psi(x)^2=n\paren{x^{\otimes 2}}^TA&#39;x^{\otimes 2} \ll m^2\)</span> when <span class="math inline">\(m\gg n^{1.5}\)</span>. There are several possible ways to define <span class="math inline">\(A&#39;\)</span> given <span class="math inline">\(A_i\)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(A&#39;\triangleq \sum_iA_i^f(A_i^f)^T\)</span></li>
+</ol>
+<ul>
+<li>Here, <span class="math inline">\(A_i^f\in \R^{n^2}\)</span> is a flattened version of <span class="math inline">\(A_i\)</span> where <span class="math inline">\(A_i^f(jk)=A_i(j,k)\)</span>. Then each <span class="math inline">\(A_i^f(A_i^f)^T\)</span> will have rank <span class="math inline">\(1\)</span>, so <span class="math inline">\(A&#39;\)</span> will have rank at most <span class="math inline">\(n\)</span>. As in the naive approach, due to <span class="math inline">\(A&#39;\)</span> having low rank, it can have relatively large eigenvalues, which is bad.</li>
+</ul>
+<ol start="2" type="1">
+<li><span class="math inline">\(A&#39;\triangleq \sum_i A_i\otimes A_i\)</span></li>
+</ol>
+<ul>
+<li>Let’s proceed with this way.</li>
+</ul>
+<p>Define the <span class="math inline">\(n^2\times n^2\)</span> matrix <span class="math inline">\(B_i\)</span> to be equal to <span class="math inline">\(A_i\otimes A_i\)</span>, except with <span class="math inline">\(B_i(jj&#39;,kk&#39;)=0\)</span> whenever <span class="math inline">\(\{j,k\}=\{j&#39;,k&#39;\}\)</span>. Informally, <span class="math inline">\(B_i\)</span> ignores all terms in the summation <span class="math inline">\(\sum_{i}(x^TA_ix)^2\)</span> that are definitely non-negative (that is, of the form <span class="math inline">\(A_i(j,k)^2x_j^2x_k^2\)</span>). Then</p>
+<p><span class="math display">\[A&#39;=\sum_i B_i+\sum_i (A_i\otimes A_i-B_i).\]</span></p>
+<p>The second summation is easy to deal with; for all <span class="math inline">\(x \in \{\pm 1\}^{n}\)</span>,</p>
+<p><span class="math display">\[\proves_4 \paren{x^{\otimes 2}}^T\sum_i (A_i\otimes A_i-B_i)\paren{x^{\otimes 2}}\le  \O\paren{\#\text{ nonzero }a_{ijk}} \le \O\paren {m}\]</span></p>
+<p>whp, where we used <span class="math inline">\(\proves_4 x_i^2 x_j^2 \leq 1\)</span>.</p>
+<p>It remains to deal with the first summation. We can bound <span class="math inline">\(\E\vmag{\sum_{i\le n}B_i}\)</span> using the Matrix Bernstein Inequality. Firstly, note that <span class="math inline">\(\E[B_i]=0\)</span> for all <span class="math inline">\(i\)</span>, because all entries of <span class="math inline">\(B_i\)</span> that weren’t zeroed out are equal to the product of two independently distributed entries of <span class="math inline">\(A_i\)</span>, each with mean zero. Secondly, we bound the operator norm of <span class="math inline">\(B&#39; \triangleq \E\sum_{i\le n}B_i^2\)</span>. By definition of <span class="math inline">\(B&#39;\)</span>, <span class="math display">\[\begin{align*}
+B&#39;(jj&#39;,kk&#39;)&amp;=\sum_{i,l,l&#39;\le n}\E \Brac{B_i(jj&#39;,ll&#39;)B_i(ll&#39;,kk&#39;)}\\
+&amp;=\E\sum_{i,l,l&#39;\le n, \{j,l\}\neq \{j&#39;,l&#39;\}, \{l,k\}\neq \{l&#39;,k&#39;\}}\Brac{A_i({j,l})A_i(j&#39;,l&#39;)A_i(l,k)A_i(l&#39;,k&#39;)}\\
+&amp;=n\cdot \begin{cases}
+\O\paren{(m/n^3)^2\cdot n^2} &amp; \{j,j&#39;\}=\{k,k&#39;\} \\
+0 &amp; \text{otherwise } \\
+\end{cases} \\
+\end{align*}\]</span> so <span class="math inline">\(\vmag{B&#39;}\le \O\paren{n\cdot (m/n^3)^2\cdot n^2}=\O\paren{m^2/n^3}\)</span>. Next, by Matrix Bernstein, <span class="math display">\[\vmag{\sum_{i\le n} B_i}\le \O\paren{\sqrt{m^2/n^3}\sqrt{\log n}+R\log n}.\]</span> From our work for <span class="math inline">\(k=2\)</span>, <span class="math inline">\(\vmag{A_i}\le \TO\paren{\sqrt{m/n^2}+1}\)</span> whp, which in turn implies <span class="math inline">\(\vmag{A_i\otimes A_i}\le \TO\paren{m/n^2+1}\)</span> whp. Therefore we can set <span class="math inline">\(R=\TO\paren{m/n^2+1}\)</span>. It remains to verify that <span class="math display">\[\psi(x)^2=\TO\paren{n\paren{n^2\vmag{\sum_{i\le n} B_i}+m+n^2}} \ll m^2\]</span> when <span class="math inline">\(m\ge \tilde\Omega\paren{n^{1.5}}\)</span>, which is true.</p>
+<!-- 
+We can rewrite 
+\begin{align*}
+A'&=\sum_i \Brac{\E A_i\otimes A_i+\paren{A_i\otimes A_i-\E A_i\otimes A_i}}\\
+&\triangleq \sum_i [\E A_i\otimes A_i+B_i] \\
+&= \sum_i \E A_i\otimes A_i + \sum_i B_i.
+\end{align*}
+
+First, we need to compute $\E A_i\otimes A_i$. Observe that
+  
+$$\E (A_i\otimes A_i)_{jj',kk'}=\E A_i(j,k)A_i(j',k')=\begin{cases}
+\O\paren{m/n^3} & \{j,k\}=\{j',k'\} \\
+0 & \text{otherwise}
+\end{cases}.$$
+
+Therefore,
+
+\begin{align*}
+\sum_{i\le n} (x^{\otimes 2})^T\paren{\E A_i\otimes A_i}x^{\otimes 2}&=\sum_{ i,j,j',k,k'\le n} x_{j}x_{j'}x_kx_{k'}\E A_i(j,k)A_i(j',k')\\
+&= \O\paren{n\cdot \sum_{1\le j,k\le n}\frac{m}{n^3}x_j^2x_k^2}\\
+&= \O\paren{\frac{m}{n^2}\vmag{x}^4}\\
+&= \O\paren{m}
+\end{align*}
+
+Next, let's upper bound $\E\vmag{\sum_{i\le n}B_i}$ using the Matrix Bernstein Inequality. To do so, we first need to bound the operator norm of $B' \triangleq \E\sum_{i\le n}B_i^2$. By definition of $B'$,
+\begin{align*}
+B'(jj',kk')&=\sum_{i,l,l'\le n}\E\Brac{A_i({j,l})A_i(j',l')A_i(l,k)A_i(l',k')}-\E\Brac{A_i({j,l})A_i(j',l')}\E\Brac{A_i(l,k)A_i(l',k'}\\
+&=n\cdot \begin{cases}
+\O\paren{m/n^3\cdot n+(m/n^3)^2\cdot n^2} & j=j'=k=k' \\
+\O\paren{(m/n^3)^2\cdot n^2} & \{j,j'\}=\{k,k'\} \\
+0 & \text{otherwise } \\
+\end{cases} \\
+\end{align*}
+so $\vmag{B'}\le \O\paren{m/n+m^2/n^3}$. Next, by Matrix Bernstein, 
+$$\vmag{\sum_{i\le n} B_i}\le \O\paren{\sqrt{m/n+m^2/n^3}\sqrt{\log n}+R\log n}.$$
+From our work for $k=2$, $\vmag{A_i}\le \TO\paren{\sqrt{m/n^2}+1}$ whp. Therefore we can set $R=\TO\paren{m/n^2+1}$. It remains to check that
+$$n^3\vmag{\sum_{i\le n} B_i} \ll m^2$$
+when $m\ge \tilde\Omega\paren{n^{1.5}}$, but this seems like it's not true ...
+
+Conclusion: $\proves_6 \psi_T(x)\le \e m$ whp if $m\ge n^{1.5}\text{poly}(\log n,1/\e)$. -->
+<hr />
+<p>So we’ve shown that <span class="math inline">\(\proves_6 \psi(x)^2\ll m^2\)</span>. By the following lemma we may conclude that <span class="math inline">\(\proves_6 \psi(x)\ll m\)</span>.</p>
+<p><strong>Fact:</strong> Let <span class="math inline">\(B\)</span> be a positive constant. <span class="math inline">\(\proves_d f^2\le B\implies \proves_d f\le \sqrt B\)</span>.</p>
+<p><em>Proof:</em> Clearly <span class="math display">\[\proves_d (f/B^{1/4}-B^{1/4})^2\ge 0,\]</span></p>
+<p>as the LHS is a square of degree at most <span class="math inline">\(d\)</span>. Expanding the LHS, we get <span class="math display">\[\proves_d f^2/\sqrt B-2f+\sqrt B\ge 0\]</span></p>
+<p><span class="math display">\[\implies \proves_d f\le \frac{f^2/\sqrt B+\sqrt B}{2}.\]</span> Since <span class="math inline">\(\proves_d f^2\le B\)</span> by assumption, the inequality above simplifies to <span class="math inline">\(\proves_d f\le \sqrt B\)</span>, as desired.</p>
+<p>Conclusion: <span class="math inline">\(\proves_6 \psi_T(x)\le \e m\)</span> whp if <span class="math inline">\(m\ge n^{1.5}\text{poly}(\log n,1/\e)\)</span>.</p>
+<!-- (BREAK 2) -->
+<h2 id="application-tensor-completion">Application: Tensor Completion</h2>
+<p>Related to learning theory.</p>
+<p><strong>Matrix Completion Problem (AKA Netflix Problem).</strong> Consider an <span class="math inline">\(n\times m\)</span> matrix <span class="math inline">\(M\)</span> with rows indexed by <span class="math inline">\(n\)</span> users and <span class="math inline">\(m\)</span> columns indexed by movies. You know only a few entries of the matrix, each corresponding to a user rating a movie. For example, <span class="math inline">\(+1\)</span> could represent a user strongly liking a movie, and <span class="math inline">\(-1\)</span> could represent a user strongly disliking a movie. The goal is to recover the rest of <span class="math inline">\(M\)</span>.</p>
+<p><em>Question:</em> Assume that <span class="math inline">\(M\)</span> has low rank <span class="math inline">\(r\)</span>; that is, <span class="math inline">\(M=\sum_{i=1}^r u_iv_i^T\)</span>. How many random entries of <span class="math inline">\(M\)</span> need to be revealed in order to recover the rest of <span class="math inline">\(M\)</span>?</p>
+<p>It turns out that we can do so with <span class="math inline">\(\O(n+m)\)</span> entries, given <span class="math inline">\(r\le \O(1)\)</span> and some other assumptions (including bounds on the magnitudes of <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span>).</p>
+<hr />
+<p><strong>Tensor Completion Problem (AKA Yelp Problem).</strong> Consider an <span class="math inline">\(n\times n\times n\)</span> tensor <span class="math inline">\(T\)</span> indexed by users, restaurants, and time of day. Again, assume <span class="math inline">\(T\)</span> has a low-rank decomposition <span class="math inline">\(\sum_{i=1}^ru_i\otimes v_i\otimes w_i\)</span>. The task is the same: recover <span class="math inline">\(T\)</span> from as few entries as possible.</p>
+<p>Naive solution: Flatten the tensor into an <span class="math inline">\(n\times n^2\)</span> matrix: <span class="math inline">\(T=\sum u_i (v_i\otimes w_i)^T\)</span>. Then run matrix completion. This requires <span class="math inline">\(\Omega(n^2)\)</span> entries to be revealed.</p>
+<hr />
+<p><strong>Theorem (Boaz Barak, Ankur Moitra):</strong> Consider an <span class="math inline">\(n\times n\times n\)</span> tensor <span class="math inline">\(T\)</span> that can be written in the form:</p>
+<p><span class="math display">\[T=\sum_{i=1}^r u_i\otimes u_i\otimes u_i, \vmag{u_i}_{\infty}\le 1.\]</span></p>
+<p>Then there exists a polynomial time algorithm to complete <span class="math inline">\(T\)</span> using <span class="math inline">\(\TO(n^{1.5})\)</span> observed entries. The set of observed entries is given by <span class="math inline">\(\Omega\subseteq [n]^3\)</span>, where <span class="math inline">\(\E |\Omega|=m\)</span> and <span class="math inline">\(\Omega\)</span> was chosen by sampling each entry of <span class="math inline">\(T\)</span> independently with probability <span class="math inline">\(\frac{m}{n^3}\)</span>. The algorithm outputs <span class="math inline">\(X\in \R^{n\times n\times n}\)</span> such that <span class="math inline">\(\E\vmag{X-T}_2^2\le \text{poly}(r)\cdot n^3\cdot \paren{\frac{n^{1.5}\log n}{m}}^{\Omega(1)} + r^{O(1)} n^2\)</span>.</p>
+<p><em>Remark:</em> Interpreting the guarantees here, notice that the entries of <span class="math inline">\(T\)</span> are of order <span class="math inline">\(r\)</span>, so when <span class="math inline">\(m \gg n^{1.5} \log n\)</span> we are finding <span class="math inline">\(X\)</span> such that for typical <span class="math inline">\(i,j,k\)</span>, <span class="math inline">\((X_{ijk} - T_{ijk})^2 \ll T_{ijk}^2\)</span>.</p>
+<p>The <span class="math inline">\(\infty\)</span>-norm assumption, or something like it, is necessary in this context, where it is often referred to as <em>incoherence</em>. The <span class="math inline">\(r^{O(1)} n^2\)</span> term can be removed with a bit of additional work – it shows up here because we won’t worry about correctly completing the entries <span class="math inline">\(T_{ijk}\)</span> where <span class="math inline">\(i,j,k\)</span> are not all distinct.</p>
+<hr />
+<p><em>Approach:</em> Let us associate to <span class="math inline">\(T\)</span> the following probability distribution <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\{ \pm 1\}^n\)</span>. First, sample <span class="math inline">\(i \sim [r]\)</span> uniformly at random. Then, for each <span class="math inline">\(j \leq n\)</span>, independently sample <span class="math inline">\(x_j\)</span> such that <span class="math inline">\(\E x_j = u_i(j)\)</span>.</p>
+<p>For each tuple of indices <span class="math inline">\((i,j,k)\)</span> with <span class="math inline">\(i,j,k\)</span> all distinct, <span class="math inline">\(\frac 1 r T_{ijk} = \E_{x \sim \mu} x_i x_j x_k\)</span>. A natural approach to completing <span class="math inline">\(T\)</span> would be to find the degree <span class="math inline">\(3\)</span> moments of a probability distribution that agrees with the revealed entries of <span class="math inline">\(T\)</span>. We don’t know how to search for such moments in polynomial time, but we can search for pseudo-moments instead.</p>
+<p><strong>Algorithm:</strong> Find a degree 12 <span class="math inline">\(\pE\)</span> such that for all <span class="math inline">\((i,j,k) \in \Omega\)</span> with <span class="math inline">\(i,j,k\)</span> distinct, <span class="math inline">\(\pE x_i x_j x_k = \frac 1 r T_{ijk}\)</span>. Output <span class="math inline">\(\pE x^{\otimes 3}\)</span>.</p>
+<p>It turns out that the success of this algorithm depends on SOS refuting random 3-XOR.</p>
+<p>We haven’t discussed how to implement this kind of algorithm in polynomial time; for today we will take it on faith that finding pseudoexpectations which satisfy some linear equations can be done in polynomial time (up to small numerical error) via semidefinite programming.</p>
+<hr />
+<p><strong>Analysis:</strong> We will combine some standard tricks from statistical learning theory with our theorem on SOS refutation of <span class="math inline">\(k\)</span>-XOR to analyze this algorithm.</p>
+<p>We want to bound</p>
+<p><span class="math display">\[(*) := \sup_{\pE}\Brac{ \E_{ijk}\paren{\tfrac 1 rT_{ijk}-\pE x_i x_j x_k }^2-\frac{1}{\E |\Omega|}\sum_{ijk\sim \Omega}(\tfrac 1 r T_{ijk}-\pE x_ix_jx_k)^2}.\]</span></p>
+<p>Suppose we can show that <span class="math inline">\((*)\)</span> is at most <span class="math inline">\(\delta\)</span>. The <span class="math inline">\(\pE\)</span> found by our algorithm will have the property that <span class="math inline">\(\pE x_i x_j x_k - \frac 1 r T_{ijk} = 0\)</span> for <span class="math inline">\(ijk \in \Omega\)</span> all distinct. So for this <span class="math inline">\(\pE\)</span>,</p>
+<p><span class="math display">\[\begin{align*}
+\frac{1}{\E |\Omega|}\E_\Omega \sum_{ijk \sim \Omega} (\tfrac 1 r T_{ijk} - \pE x_i x_j x_k)^2 &amp;\leq \O(1) \cdot \frac{1}{\E |\Omega|} \cdot \E_\Omega \sum_{ijk \sim \Omega} 1[i,j,k \text{ not all distinct}] \\
+&amp;\leq \O(1/n),
+\end{align*}\]</span></p>
+<p>and hence, again for this <span class="math inline">\(\pE\)</span>,</p>
+<p><span class="math display">\[\E_{\Omega} \, \E_{ijk} \paren{\tfrac 1 r T_{ijk} - \pE x_i x_j x_j}^2 \leq \O(1/n) + \delta,\]</span></p>
+<p>which after rescaling by <span class="math inline">\(r^2 n^3\)</span>, becomes <span class="math inline">\(\|X - T\|_2^2 \leq \O(r^2 n^2) + \delta r^2 n^3.\)</span> Hence, our goal is to obtain <span class="math inline">\(\delta \leq \paren{\tfrac{n^{1.5} \log n}{m}}^{\Omega(1)}\)</span>.</p>
+<hr />
+<p>Next, let’s use “ghost samples;” this is a standard trick in learning theory. Specifically, consider generating a set of samples <span class="math inline">\(\Omega&#39;\)</span> in the same way as <span class="math inline">\(\Omega\)</span>. Then we can rewrite the expected supremum above as</p>
+<p><span class="math display">\[\begin{align*}
+(*)&amp;= \frac{1}{\E |\Omega|} \E_{\Omega}\sup_{\pE}\Brac{\E_{\Omega&#39;}\sum_{ijk\sim \Omega&#39;}\paren{\tfrac 1 rT_{ijk}-\pE x_i x_j x_k }^2-\sum_{ijk\sim \Omega}\paren{\tfrac 1 rT_{ijk}-\pE x_i x_j x_k }^2}\\
+&amp;\le \frac{1}{\E |\Omega|} \E_{\Omega,\Omega&#39;}\sup_{\pE}\Brac{\sum_{ijk\sim \Omega&#39;}\paren{\tfrac 1 rT_{ijk}-\pE x_i x_j x_k }^2-\sum_{ijk\sim \Omega}\paren{\tfrac 1 rT_{ijk}-\pE x_i x_j x_k }^2}\\
+&amp;= \frac{1}{\E |\Omega|}\E_{\Omega,\Omega&#39;,\sigma}\sup_{\pE}\Brac{\sum_{ijk\sim \Omega&#39;}\sigma_{ijk}\paren{\tfrac 1 rT_{ijk}-\pE x_i x_j x_k }^2-\sum_{ijk\sim \Omega}\sigma_{ijk}\paren{\tfrac 1 rT_{ijk}-\pE x_i x_j x_k }^2}\\
+&amp;\le \frac{2}{\E |\Omega|}\E_{\Omega,\sigma}\sup_{\pE}\Brac{\sum_{ijk\sim \Omega}\paren{\tfrac 1 rT_{ijk}-\pE x_i x_j x_k }^2} \\
+&amp;\le \O(1)\cdot \E_{\Omega,\sigma}\sup_{\pE}\E_{ijk\sim \Omega}\sigma_{ijk}\paren{\frac{1}{r}T_{ijk}-\pE x_ix_jx_k}^2
+\end{align*}\]</span></p>
+<p>Here, each <span class="math inline">\(\sigma_{ijk}\)</span> equals <span class="math inline">\(\pm 1\)</span> independently with equal probability; see the note at the end of this document for details. The first inequality follows from Jensen’s inequality, the second follows from the triangle inequality, and the last holds because <span class="math inline">\(|\Omega|\)</span> is within a constant factor of <span class="math inline">\(\E |\Omega|\)</span> whp.</p>
+<hr />
+<p><span class="math display">\[\begin{align*}
+\E_{\Omega,\sigma}&amp;\sup_{\pE}\E_{ijk\sim \Omega} 
+\sigma_{ijk}\paren{\frac{1}{r}T_{ijk}-\pE x_ix_jx_k}^2\\
+&amp;\le \E_{\Omega,\sigma}\Brac{\E_{ijk\sim \Omega}\sigma_{ijk}\paren{\frac{1}{r}T_{ijk}}^2+\sup_{\pE}\E_{ijk\sim \Omega}\sigma_{ijk}\paren{\pE x_ix_jx_k}^2+2\sup_{\pE}\E_{ijk\sim \Omega}\paren{\sigma_{ijk}\cdot \frac{T_{ijk}}{r}\pE x_ix_jx_k}}
+\end{align*}\]</span></p>
+<p>We can deal with the summands independently.</p>
+<ol type="1">
+<li><p>The first summand does not depend on <span class="math inline">\(\pE\)</span>, so by a Chernoff bound it can be shown to be <span class="math inline">\(\le \O\paren{m^{-1/2}}\)</span>.</p></li>
+<li><p>The second summand can be written as <span class="math display">\[\E_{\Omega,\sigma}\sup_{\pE}\E_{ijk\sim \Omega}\sigma_{ijk}\pE \underbrace{x_ix_i&#39;}_{y_i} \underbrace{x_jx_j&#39;}_{y_j}\underbrace{x_kx_{k}&#39;}_{y_k}\le \E_{\Omega,\sigma}\sup_{\pE}\pE \frac{1}{|\Omega|}\sum_{ijk}\sigma_{ijk}y_iy_jy_k.\]</span></p>
+<p>Here, on the LHS <span class="math inline">\(\pE\)</span> is the degree-<span class="math inline">\(12\)</span> pseudoexpectation which results from defining a “product pseudoexpectation” on variables <span class="math inline">\(x_1,\ldots,x_n,x_1&#39;,\ldots,x_n&#39;\)</span>; then we define polynomials <span class="math inline">\(y_i = x_i x_i&#39;\)</span> to obtain a degree-<span class="math inline">\(6\)</span> pseudoexpectation in variables <span class="math inline">\(y_1,\ldots,y_n\)</span>. So by our work for refuting 3-XOR it is bounded above by <span class="math inline">\(\O\paren{\frac{n^{1.5}\log n}{m}}^{\Omega(1)}\)</span> whp.</p></li>
+<li><p>Similarly as the second summand, the third summand can be written as</p>
+<p><span class="math display">\[\E_{\Omega,\sigma}\sup_{\pE}\E_{ijk\in \Omega}\sigma_{ijk}\E_{x&#39;\sim \mu}\pE \underbrace{x_ix&#39;_i}_{z_i}\underbrace{x_jx&#39;_j}_{z_j}\underbrace{x_kx&#39;_k}_{z_k}\le \E_{\Omega,\sigma}\sup_{\pE}\pE \frac{1}{|\Omega|}\sum_{ijk}\sigma_{ijk}y_iy_jy_k,\]</span></p>
+<p>where <span class="math inline">\(\mu\)</span> is the distribution on <span class="math inline">\(\{ \pm 1\}^n\)</span> we associated to <span class="math inline">\(T\)</span>, and <span class="math inline">\(z_i\)</span> is a product pseudoexpectation defined as <span class="math inline">\(z_i=x_ix_i&#39;\)</span>. So it is also bounded above by <span class="math inline">\(\O\paren{\frac{n^{1.5}\log n}{m}}^{\Omega(1)}\)</span> whp.</p></li>
+</ol>
+<p>Thus, <span class="math inline">\(\delta \le (*)\le \O\paren{\frac{n^{1.5}\log n}{m}}^{\Omega(1)}\)</span>, as desired.</p>
+<hr />
+<p><em>Note:</em> The signs <span class="math inline">\(\sigma_{ijk}\)</span> can be introduced via an exchangability argument which goes roughly like this.</p>
+<p>Suppose we have a family of functions <span class="math inline">\(f\colon [n]^3 \rightarrow \R\)</span>. (In this case, the functions are given by pseudoexpectations, and the function <span class="math inline">\(f_{\pE}\)</span> associated to <span class="math inline">\(\pE\)</span> is <span class="math inline">\(f_{\pE}(i,j,k) = \paren{\tfrac 1r T_{ijk} - \pE x_i x_j x_k}^2\)</span>.)</p>
+<p>Look at <span class="math inline">\(\sup_f \Brac{\sum_{ijk \in \Omega} f(ijk) - \sum_{ijk \in \Omega&#39;} f(ijk)}\)</span>. We can rewrite as</p>
+<p><span class="math display">\[\sup_f \Brac{\sum_{ijk} f(ijk) 1(ijk \in \Omega) - \sum_{ijk} f(ijk) 1(ijk \in \Omega&#39;)} = \sup_f \Brac{\sum_{ijk} f(ijk) (1(ijk \in \Omega) - 1(ijk \in \Omega&#39;))}.\]</span></p>
+<p>Now, the random variables <span class="math inline">\(1(ijk \in \Omega)- 1(ijk \in \Omega&#39;)\)</span> are independent for distinct <span class="math inline">\(ijk, i&#39;j&#39;k&#39;\)</span>, and identically distributed to <span class="math inline">\(\sigma_{ijk} (1(ijk \in \Omega) - 1(ijk \in \Omega&#39;))\)</span>, where <span class="math inline">\(\sigma_{ijk}\)</span> are independent random signs. So the whole <span class="math inline">\(\sup\)</span> is identically distributed to <span class="math inline">\(\sup_f \sum_{ijk \in \Omega}\Brac{ \sigma_{ijk} f_{ijk} - \sum_{ijk \in \Omega&#39;} \sigma_{ijk} f_{ijk}}\)</span>. Then we can use the triangle inequality to break this into <span class="math inline">\(2\)</span> identical terms.</p>
+</body>
+</html>
