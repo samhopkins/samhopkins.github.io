@@ -21,7 +21,7 @@ You may use external resources such as Wikipedia to look up material which would
 
 **Problem 1, 10 pts** *(Size of SoS coefficients)*:  In lecture 1, we stated, but did not prove, that SoS proofs of nonnegativity over the hypercube can without loss of generality be taken to have coefficients expressible in a small number of bits. This is an important component of the proof that a polynomial-time algorithm using semidefinite programming can find such SoS proofs, if they exist.
 
-*Part A:* Let $f \, : \, \{0,1\}^n \rightarrow \R$ be a Boolean function on $n$ bits, with $|f(x)| \leq n^{O(d)}$ for all $x$, and let $d \in N$ be even. Suppose that $\proves_d f \geq 0$. Show that there are $p_1,\ldots,p_m \in \R[x]_{\leq d}$ with $m \leq n^{O(d)}$ such that the magnitude of every coefficient of each $p_i$ when written as a multilinear polynomial is at most $n^{O(d)}$.
+*Part A:* Let $f \, : \, \{0,1\}^n \rightarrow \R$ be a Boolean function on $n$ bits, let $d \in \N$ be even, and suppose that $|f(x)| \leq n^{O(d)}$ for all $x$ and that $\proves_d f \geq 0$. Show that there are $p_1,\ldots,p_m \in \R[x]_{\leq d}$ with $m \leq n^{O(d)}$ such that the magnitude of every coefficient of each $p_i$ when written as a multilinear polynomial is at most $n^{O(d)}$.
 
 <details>
 <summary>Hint 1 (click to expand)</summary>
@@ -33,7 +33,7 @@ If $p_1,\ldots,p_m$ witness $\proves_d f \geq 0$, then what can we say about the
 Take $p_1,\ldots,p_m$ to be multilinear. Then what does a bound on $\E_{x \sim \{0,1\}^n} \sum p_i(x)^2$ say about the magnitude of the coefficients of the $p_i$'s?
 </details>
 
-*Part B:* The Ellipsoid algorithm for finding a point in a convex set has the following guarantee. If $\mathcal{C} \subseteq \R^n$ is contained in a ball of radius $R$ and contains a ball of radius $r$, then Ellipsoid returns a point in $\mathcal{C}$ after $O(\log R / r)$ calls to a separation oracle for $\mathcal{C}$.
+*Part B:* The Ellipsoid algorithm for finding a point in a convex set has the following guarantee. If $\mathcal{C} \subseteq \R^n$ is contained in a ball of radius $R$ and contains a ball of radius $r$, then Ellipsoid returns a point in $\mathcal{C}$ after $(n \log R / r)^{O(1)}$ calls to a separation oracle for $\mathcal{C}$.
 
 Show that there is a polynomial-time algorithm which takes as input a degree-$d$ function $f \, : \, \{0,1\}^n \rightarrow \R$, represented as a list of $n^{O(d)}$ rational coefficients of magnitude at most $n^{O(d)}$, and a parameter $\e > 0$, and if $\proves_d f \geq 0$, returns a proof $p_1,\ldots,p_m$ witnessing $\proves_d f + \epsilon \geq 0$, in time $(n^d \cdot \log (1/\e))^{O(1)}$.
 
@@ -68,9 +68,9 @@ It turns out that the ideas to prove this result can be combined with an extensi
 
 *Part A:* Prove that if $\pE$ is a degree-$d$ pseudoexpectation satisfying the balance property above, and if $\pE'$ is the result of conditioning $\pE$ on the values of $t \ll d$ variables, then $\pE'$ also satisfies the balance property.
 
-*Part B:* Consider independent rounding applied to $\pE$ to produce a Boolean vector $y \in \{0,1\}^n$. Show that if the global information of $\pE$ is $\delta$, then $Var(\sum y_i) \leq \delta^{\Omega(1)} n^2$.
+*Part B:* Consider independent rounding applied to $\pE$ to produce a Boolean vector $y \in \{0,1\}^n$. Show that if the global information of $\pE$ is $\delta$, then $Var(\sum y_i) \leq \delta^{\Omega(1)} n^2$. (In fact, you can even show $Var(\sum y_i) \leq O(n)$.)
 
-*Part C:* Prove the above theorem on the min-bisection value in dense graphs. You may appeal to any facts from lecture about global information, correlation rounding, etc.
+*Part C:* Prove the above theorem on the min-bisection value in dense graphs. You may appeal to any facts from lecture about global information, correlation rounding, etc. Your algorithm may be randomized and should succeed with high probability.
 
 **Problem 4, 10 pts** *(Fun with SoS Proofs):* 
 

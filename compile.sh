@@ -14,7 +14,9 @@ pandoc -s -o other.html -c styling.css --include-before-body=navbar.html other.m
 
 # teaching files
 pandoc -s -o teaching.html -c styling.css --include-before-body=navbar.html teaching.md
-pandoc -s -o teaching/sos-fall-22.html -c ../styling.css --mathjax teaching/sos-fall-22.md
-pandoc -s -o teaching/global-correlation-rounding.html -c ../styling.css --mathjax teaching/global-correlation-rounding.md
-pandoc -s -o teaching/refuting-random-csps.html -c ../styling.css --mathjax teaching/refuting-random-csps.md
-pandoc -s -o teaching/sos-fall-22-pset-1.html -c ../styling.css --mathjax teaching/sos-fall-22-pset-1.md
+pandoc -s -o teaching/sos-fall-22/sos-fall-22.html -c ../../styling.css --mathjax teaching/sos-fall-22/sos-fall-22.md
+pandoc -s -o teaching/sos-fall-22/global-correlation-rounding.html -c ../../styling.css --mathjax teaching/sos-fall-22/global-correlation-rounding.md
+pandoc -s -o teaching/sos-fall-22/refuting-random-csps.html -c ../../styling.css --mathjax teaching/sos-fall-22/refuting-random-csps.md
+pandoc -s -o teaching/sos-fall-22/sos-fall-22-pset-1.html -c ../../styling.css --mathjax teaching/sos-fall-22/sos-fall-22-pset-1.md
+pandoc -s -o teaching/sos-fall-22/sos-fall-22-pset-1-solutions.html -c ../../styling.css --mathjax teaching/sos-fall-22/sos-fall-22-pset-1-solutions.md
+
