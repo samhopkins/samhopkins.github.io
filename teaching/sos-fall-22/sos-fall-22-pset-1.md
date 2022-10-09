@@ -101,7 +101,9 @@ You may use the following fact about random graphs. If $G$ is a random graph and
 
 *Part C (recovering a clique):* Consider the following *planted clique* distribution on random graphs: a graph $G$ is sampled uniformly, and then a subset $S$ of vertices of size $k$ is also chosen uniformly at random. Any edges with both endpoints in $S$ are added to $G$, so that $S$ is a clique in $G$. 
 
-Show that there is a polynomial-time algorithm which, with probability at least $0.99$, finds a clique of size $\Omega(\sqrt n)$ in $G$, assuming $k \geq C\sqrt{n}$ for a large-enough constant $C$.
+UPDATED: Show that there is a polynomial time algorithm which, with probability at least $0.99$, finds a subset of $O(\sqrt n)$ vertices of $G$ which contains $99\%$ of $S$.
+
+OPTIONAL: Show that there is a polynomial-time algorithm which, with probability at least $0.99$, finds a clique of size $\Omega(\sqrt n)$ in $G$, assuming $k \geq C\sqrt{n}$ for a large-enough constant $C$.
 
 Show furthermore that this algorithm still finds $S$ even if a monotone adversary removes any non-clique edges from $G$ before your algorithm receives $G$ as input.
 

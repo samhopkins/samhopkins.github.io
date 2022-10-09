@@ -64,13 +64,11 @@
 <p><span class="math display">\[p + SoS = \frac 12 p - SoS - 2 \sum_{i \not \sim j} x_i x_j + 2C\]</span></p>
 <p>which rearranges to the conclusion we want.</p>
 <p><strong>Problem 5B:</strong> Let <span class="math inline">\(G\)</span> be the underlying random graph and <span class="math inline">\(G&#39;\)</span> be the perturbation by a monotone adversary. If <span class="math inline">\(i \not \sim j\)</span> in <span class="math inline">\(G\)</span> then also <span class="math inline">\(i \not \sim j\)</span> in <span class="math inline">\(G&#39;\)</span>, so the same SoS proof which existed for <span class="math inline">\(G\)</span> also exists for <span class="math inline">\(G&#39;\)</span>.</p>
-<p><strong>Problem 5C:</strong> The algorithm is:</p>
+<p><strong>Problem 5C (sketch):</strong> The algorithm is:</p>
 <ul>
 <li>find a <span class="math inline">\(\tilde{\mathbb E}\)</span> as described in the problem statement</li>
-<li><span class="math inline">\(n^{O(1)}\)</span> times, sample <span class="math inline">\(3 \log n\)</span> times from the distribution on <span class="math inline">\([n]\)</span> where <span class="math inline">\(\Pr(i) \propto \tilde{\mathbb E}x_i\)</span> to get a set <span class="math inline">\(S \subseteq [n]\)</span></li>
-<li>if in any trial the set <span class="math inline">\(S\)</span> is a clique in <span class="math inline">\(G\)</span>, extend to a larger clique by taking the joint neighborhood of all the vertices in <span class="math inline">\(S\)</span></li>
-<li>output the largest clique obtained in any of the <span class="math inline">\(n^{O(1)}\)</span> trials</li>
+<li>perform independent rounding on <span class="math inline">\(\tilde{\mathbb E}\)</span> to obtain a vector <span class="math inline">\(y\)</span>; treat <span class="math inline">\(y\)</span> as the indicator vector for a set <span class="math inline">\(S\)</span>.</li>
 </ul>
-<p>To analyze the algorithm, first we observe that, because whp a random graph contains at most a <span class="math inline">\(2 \log n\)</span>-clique,</p>
+<p>By maximality, <span class="math inline">\(\tilde{\mathbb E}\sum_{i \in [n]} x_i \geq C \sqrt{n}\)</span>, while at the same time, applying the SoS proof above to the random graph on vertices <span class="math inline">\([n] \setminus S\)</span>, <span class="math inline">\(\tilde{\mathbb E}\sum_{i \notin S} x_i \leq O(\sqrt n)\)</span>, so <span class="math inline">\(\tilde{\mathbb E}\sum_{i \in [n]} x_i \leq (C + O(1)) \sqrt n\)</span>. Hence, <span class="math inline">\(\tilde{\mathbb E}\sum_{i \in S} x_i \geq (C - O(1)) \sqrt n\)</span>. The conclusion follows by Chernoff bounds.</p>
 </body>
 </html>

@@ -103,3 +103,11 @@ which rearranges to the conclusion we want.
 
 
 **Problem 5B:** Let $G$ be the underlying random graph and $G'$ be the perturbation by a monotone adversary. If $i \not \sim j$ in $G$ then also $i \not \sim j$ in $G'$, so the same SoS proof which existed for $G$ also exists for $G'$.
+
+**Problem 5C (sketch):** The algorithm is:
+
+- find a $\pE$ as described in the problem statement
+- perform independent rounding on $\pE$ to obtain a vector $y$; treat $y$ as the indicator vector for a set $S$.
+
+By maximality, $\pE \sum_{i \in [n]} x_i \geq C \sqrt{n}$, while at the same time, applying the SoS proof above to the random graph on vertices $[n] \setminus S$, $\pE \sum_{i \notin S} x_i \leq O(\sqrt n)$, so $\pE \sum_{i \in [n]} x_i \leq (C + O(1)) \sqrt n$. 
+Hence, $\pE \sum_{i \in S} x_i \geq (C - O(1)) \sqrt n$. The conclusion follows by Chernoff bounds.
