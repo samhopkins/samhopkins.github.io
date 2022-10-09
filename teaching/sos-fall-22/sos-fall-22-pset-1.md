@@ -77,7 +77,7 @@ It turns out that the ideas to prove this result can be combined with an extensi
 *Part A (Cauchy-Schwarz):* For every family of degree-$d$ polynomials $p_1(x),\ldots,p_m(x), q_1(x),\ldots,q_m(x)$, show that 
 $$\proves_{4d} (\sum_{i \leq m} p_i(x)^2 )(\sum_{i \leq m} q_i(x)^2) - (\sum_{i \leq m} p_i(x) q_i(x))^2 \geq 0.$$
 
-*Part B (Cauchy-Schwarz, Pseudoexpectation version):* Show that for every degree-$d$ pseudoexpectation $\pE$ and every degree $d/2$ polynomials $p,q$, $\pE pq \leq \sqrt{\pE p^2 \cdot \pE q^2}$. 
+*Part B (Cauchy-Schwarz, Pseudoexpectation version):* Show that for every degree-$d$ pseudoexpectation $\pE$ and every pair of degree $d/2$ polynomials $p,q$, $\pE pq \leq \sqrt{\pE p^2 \cdot \pE q^2}$. 
 
 *Part C (Approximate Triangle Inequalities):* Show that there is a constant $C$ (indep. of $m$) such that for vectors of polynomials $p_1(x),\ldots,p_m(x), q_1,(x),\ldots,q_m(x)$,
 $$ \proves_{O(\max \{ \deg p_i, \deg q_i \}_{i \leq m})} C (\|p\|_2^2 + \|q\|_2^2) - \| p + q \|_2^2 \geq 0$$
@@ -90,7 +90,7 @@ $$ \proves_{O(t \cdot \max \{ \deg p_i, \deg q_i \}_{i \leq m})} C_t (\|p\|_t^t 
 *Part A:* A random graph $G$ on $n$ vertices (containing each possible edge independently with probability $1/2$) contains, with high probability, a clique of size $(2 -o(1))\log n$, and no clique larger than $(2+ o(1)) \log n$. But, are there SoS proofs of the latter fact? 
 
 Show that the following sort of SoS proof (somwhat different from what we have discussed thus far) exists with high probability over choice of a random $G$:
-$$O(\sqrt n) - \sum_{i \leq n} x_i = \sum_{i,j \leq n, i \not \sim j} p_{ij}(x) x_i x_j + \sum_{i \leq m} q_i(x)^2, \text{ for all } x \in \{0,1\}^n,$$
+$$O(\sqrt n)  - \sum_{i \leq n} x_i = \sum_{i,j \leq n, i \not \sim j} p_{ij}(x) x_i x_j + \sum_{i \leq m} q_i(x)^2, \text{ for all } x \in \{0,1\}^n,$$
 where $p_{ij}, q_i$ are polynomials of degree at most $O(1)$, and $i \not \sim j$ means that $i$ and $j$ are not adjacent in $G$.
 
 (First, argue that the existence of such polynomials rules out cliques in $G$ of size $\gg \sqrt n$.)
@@ -101,7 +101,7 @@ You may use the following fact about random graphs. If $G$ is a random graph and
 
 *Part C (recovering a clique):* Consider the following *planted clique* distribution on random graphs: a graph $G$ is sampled uniformly, and then a subset $S$ of vertices of size $k$ is also chosen uniformly at random. Any edges with both endpoints in $S$ are added to $G$, so that $S$ is a clique in $G$. 
 
-Show that there is a polynomial-time algorithm which, with probability at least $0.99$, finds $S$ given $G$, assuming $k \geq C\sqrt{n}$ for a large-enough constant $C$.
+Show that there is a polynomial-time algorithm which, with probability at least $0.99$, finds a clique of size $\Omega(\sqrt n)$ in $G$, assuming $k \geq C\sqrt{n}$ for a large-enough constant $C$.
 
 Show furthermore that this algorithm still finds $S$ even if a monotone adversary removes any non-clique edges from $G$ before your algorithm receives $G$ as input.
 

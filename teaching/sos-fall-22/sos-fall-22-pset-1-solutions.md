@@ -58,3 +58,48 @@ $$\pE[ p(x) \sum_{i=1}^n x_i \, | \, x_i = 1] = \frac{\pE p(x) \sum_{i=1}^n x_i}
 - Given $G$, find $\pE$ of degree $(1/\e)^{O(1)}$ maximizing $G(x)$ among balanced $\pE$'s.
 - By brute-force search over conditionings of $(1/\e)^{O(1)}$ variables, find a conditioned $\pE'$ such that $\pE' G(x) \geq (1 - \e) \pE G(x)$ having global information $\leq \e^5$ (which exists by the same argument we used in lecture).
 - Apply independent rounding to $\pE'$. With high probability, we obtain $y$ such that $\sum y_i = n/2 \pm O(\sqrt n)$, using independence and a Chernoff bound. We can move any $O(\sqrt{n})$ nodes from one side of the cut to the other to balance it, losing at most $n^{3/2}$ cut edges in the process.
+
+**Problem 4 notation:** We'll write $p \preceq q$ if the polynomial $q - p$ is an SoS.
+
+**Problem 4A:**
+We factor the difference $(\sum_{i \leq m} p_i(x)^2 )(\sum_{i \leq m} q_i(x)^2) - (\sum_{i \leq m} p_i(x) q_i(x))^2$ as $\sum_{i,j} (p_i(x) q_j(x) - p_j(x) q_i(x))^2$.
+
+**Problem 4B:** We write
+$$ pq = p (\pE q^2 / \pE p^2)^{1/4} \cdot q (\pE p^2 / \pE q^2)^{1/4}$$
+and then using $ab \preceq \frac 12 a^2 + \frac 12 b^2$, we have 
+$$
+\pE pq \leq \frac 12 [ \pE p^2 \cdot (\pE q^2 / \pE p^2)^{1/2} + \pE q^2 \cdot (\pE p^2 / \pE q^2)^{1/2}] = \sqrt{\pE p^2 \cdot \pE q^2}.
+$$
+
+**Problem 4C:** For the first statement it's enough to show that $C (a^2 + b^2) - (a+b)^2$ is an SoS, for some choice of $C$. In fact we can choose $C = 2$, and then this reduces to $a^2 + b^2 - 2ab = (a-b)^2$.
+
+For the second statement, it's enough to show that there's $C_t$ such that $C_t (a^t + b^t) - (a+b)^t$ is an SoS. We can prove this by induction on $t$. We already did the base case. For the inductive case, we have
+$$ (a+b)^{t+2} = (a+b)^t (a+b)^2 \preceq C_t (a^t + b^t) (a+b)^2 = C_t (a^{t+2} + b^{t+2} + a^2 b^t + b^2 a^t)$$
+by induction. Another simple induction shows $b^2 a^t \preceq C'_t (a^{t+2} + b^{t+2})$, which completes the proof.
+
+**Problem 5A:** To see that such polynomials rule out the existence of a clique in $G$ of size $\gg \sqrt n$, consider evaluating both sides of the expression at the $0/1$ indicator vector for such a clique. The LHS will be negative, but the first term $\sum_{i \not \sim j} p_{ij}(x) x_i x_j$ on the RHS will be $0$, and the second term will be nonnegative, a contradiction.
+
+Now, let $G$ be a graph such that the adjacency matrix $A_G$ satisfies $\| A_G - \tfrac 12 11^\top \| \leq O(\sqrt n)$. This implies that $O(\sqrt n) \sum_{i \leq n} x_i^2 - \sum_{i \sim j} x_i x_j + \sum_{i \not \sim j} x_i x_j$ is a degree-2 SoS; that is,
+$$O(\sqrt n) \sum_{i \leq n} x_i^2 - \sum_{i \sim j} x_i x_j + \sum_{i \not \sim j} x_i x_j = SoS(x)$$
+
+Subtracting $2 \sum_{i \not \sim j} x_i x_j$ from both sides,
+$$O(\sqrt n) \sum_{i \leq n} x_i^2 - \sum_{i,j} x_i x_j = SoS(x) -2 \sum_{i \not \sim j} x_i x_j,$$
+and over the hypercube this is equal to
+$$O(\sqrt n) \sum_{i \leq n} x_i - (\sum_i x_i)^2 = SoS(x) -2 \sum_{i \not \sim j} x_i x_j.$$
+
+Let $p(x) = \sum_{i \leq n} x_i$. Now we have shown that for some $C = O(\sqrt n)$, over the hypercube, 
+
+$$ p^2 = C p - SoS(x) - 2 \sum_{i \not \sim j} x_i x_j.$$
+
+We also know that for some other SoS polynomial,
+
+$$p + SoS = \frac{p^2}{2C} + 2C$$
+
+so putting these together, we get
+
+$$p + SoS = \frac 12 p - SoS - 2 \sum_{i \not \sim j} x_i x_j + 2C$$
+
+which rearranges to the conclusion we want.
+
+
+**Problem 5B:** Let $G$ be the underlying random graph and $G'$ be the perturbation by a monotone adversary. If $i \not \sim j$ in $G$ then also $i \not \sim j$ in $G'$, so the same SoS proof which existed for $G$ also exists for $G'$.
