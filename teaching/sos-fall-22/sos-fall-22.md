@@ -52,7 +52,7 @@ No.              Date       Topics                                              
 
 ### Assignments
 
-[Problem Set 1](sos-fall-22-pset-1.html) -- tentatively due Oct. 14
+[Problem Set 1](sos-fall-22-pset-1.html) -- ~~tentatively~~ due Oct. 14
 
 Problem Set 2 (not yet posted) -- tentatively due Nov. 4
 
@@ -60,7 +60,7 @@ Problem Set 2 (not yet posted) -- tentatively due Nov. 4
 
 <details>
 <summary>Course project -- tentatively due December 14</summary>
-The course project is an opportunity for you to dive deeper into the SoS research literature, make connections to your own research, and more! There is a great deal of flexibility in choosing your project. However, I need to approve all the project topics before you embark on them! I expect you to schedule a discussion of your project with me **before Thanksgiving.** You may (but are not required to!) work with a partner on your project.
+The course project is an opportunity for you to dive deeper into the SoS research literature, make connections to your own research, and more! There is a great deal of flexibility in choosing your project. However, I need to approve all the project topics before you embark on them! I expect you to schedule a discussion of your project with me **before the end of October.** You may (but are not required to!) work with a partner on your project.
 
 #### Possible approaches to the project:
 
@@ -76,4 +76,45 @@ None of these options are preferred above others -- in particular, original rese
 You should produce a written report on your project activities. For expository projects, this report is your exposition. For research projects, this document should discuss the research problem you decided to investigate, why it merits your attention, how it relates to the subject of the course, and your findings.
 
 Reports may vary in length, but when grading, I promise to read the first 10 pages of your report (typeset in a reasonable font with reasonable margins). I will read further material at my discretion.
+
+#### Sam's Brainstormed List of SoS-Related Papers
+
+This list has a strong bias towards TCS and statistics, because that's my area of expertise. However, other areas related to SoS or with SoS applications are also good fodder for projects -- control theory, quantum information, etc.
+
+- Learning Gaussian Mixtures (some overlapping papers) [paper 1](https://arxiv.org/abs/2005.06417) [paper 2](https://arxiv.org/abs/2005.02970) [paper 3](https://cseweb.ucsd.edu/~dakane/RobustGaussianMixtures.pdf) [paper 4](https://arxiv.org/abs/2011.03622) (you don't have to read all of them)
+
+- Online regression & bandits: [Chen-Koehler-Moitra-Yau](https://arxiv.org/abs/2010.04157)
+
+- Robust stochastic block model recovery: [Ding-d'Orsi-Nasser-Steurer](https://arxiv.org/abs/2111.08568)
+
+- Exact tensor completion: [Potechin-Steurer](https://www.dsteurer.org/paper/tensorcompletion.pdf)
+
+- Best separable state: [Barak-Kothari-Steurer](https://www.dsteurer.org/paper/subexpalg.pdf)
+
+- SDP size lower bounds via SoS: [Lee-Raghavendra-Steurer](https://www.dsteurer.org/paper/sdpsize.pdf)
+
+- Mean-field approximation in Ising models: [Jain-Koehler-Risteski](https://arxiv.org/abs/1808.07226)
+
+- Turan problems (combinatorics): [Raymond-Singh-Thomas](https://arxiv.org/abs/1507.03059)
+
+- topics related to SDPs from Luca Trevisan's beyond worst case analysis class: [notes](https://lucatrevisan.github.io/teaching/bwca17/index.html)
+
+- LP extension complexity: [Chen-Lee-Raghavendra-Steurer](https://arxiv.org/abs/1309.0563), [Rothvoss](https://arxiv.org/abs/1311.2369)
+
+- Approximation algorithms for scheduling: [Levey-Rothvoss](https://arxiv.org/abs/1509.07808) [Davies-Kulkarni-Rothvoss-Tarnawski-Zhang](https://arxiv.org/abs/2004.09682)
+
+- SoS + unique games conjecture: (many possible refs; ask me)
+
+- Faster tensor decomposition: [Schramm-Steurer](https://arxiv.org/abs/1706.08672)
+
+- Random 2CSPs: [Deshpande-Montanari-O'Donnell-Schramm-Sen](https://arxiv.org/abs/1804.05230) [Musipatla-O'Donnell-Schramm-Wu](https://arxiv.org/abs/2108.01038)
+
+- Quantum Max Cut: [Anshu-Gosset-Morenz](https://arxiv.org/abs/2003.14394) (other papers as well; ask me or Google)
+
+- (robust) sparse mean estimation: [Diakonikolas-Kane-Karmalkar-Pensia-Pittas](https://arxiv.org/abs/2206.03441)
+
+- Ideal Membership Problem: [Bulatov-Rafiey](https://arxiv.org/pdf/2011.03700.pdf)
+
+(Of course this is only a partial list -- I just ran out of steam here!)
+
 </details>
