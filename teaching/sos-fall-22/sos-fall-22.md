@@ -39,7 +39,7 @@ No.              Date       Topics                                              
 3                Sept. 30   refuting random CSPs                                              [notes](refuting-random-csps.html)
 4                Oct. 7     beyond the hypercube, robust mean estimation                      [Barak Steurer notes](https://www.sumofsquares.org/public/lec-definitions-general.html) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/00-proofs-to-algs.pdf)
 5                Oct. 14    clustering mixture models                                         [notes](http://www.samuelbhopkins.com/clustering.pdf) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/04-clustering-gaussians.pdf) [video](https://mit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9076b79e-37f6-46a8-aa1d-af2c01287dd5)
-6                Oct. 21    tensor decomposition
+6                Oct. 21    tensor decomposition                                              [notes](http://www.samuelbhopkins.com/tensor-decomp-notes.pdf) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes21/01-tensor-decomposition.pdf) [video](https://mit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7718484a-5ad4-4070-9b9e-af33017ef454)
 7                Oct. 28    differential privacy
 8                Nov. 4     fast algorithms 1: spectral methods
 9                Nov. 18    fast algorithms 2: matrix multiplicative weights
