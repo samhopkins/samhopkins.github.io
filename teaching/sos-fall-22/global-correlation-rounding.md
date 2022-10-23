@@ -143,13 +143,13 @@ Now we're ready to prove Theorem 1.
 $$
 \E \sum_{i,j \leq n} |\mu'_{ij} - \mu_i' \otimes \mu_j'|_{TV} \leq O(n^2/\sqrt{d}).
 $$
-Furthermore, $\E \pE' G(x) = \pE G(x)$, so if we view $\pE' G(x)$ itself as a random variable bounded between $0$ and $n^2$, we have $\Pr( \pE' G(x) < (1-\alpha) \pE G(x))  \leq \alpha \pE G(x) / n^2$, for any $\alpha > 0$.
+Furthermore, $\E \pE' G(x) = \pE G(x)$, so if we view $\pE' G(x)$ itself as a random variable bounded between $0$ and $n^2$ with expectation at least $n^2/2$, we have $\Pr( \pE' G(x) < (1-\alpha) \pE G(x))  \leq 1-\Omega(\alpha)$.
 By Markov's inequality, we can assume the local distributions $\mu'$ satisfy
 $$
 \sum_{i,j \leq n} |\mu'_{ij} - \mu_i' \otimes \mu_j'|_{TV} \leq \frac 1 \alpha \cdot O(n^2/\sqrt{d})
 $$
-with probability $1-\alpha$.
-Choosing $\alpha = 1/d^{1/4}$, there is $\pE'$ with local distributions $\mu'$ such that
+with probability $1-O(\alpha)$.
+Choosing $\alpha = \Theta(1/d^{1/4})$, there is $\pE'$ with local distributions $\mu'$ such that
 $$
 \sum_{i,j \leq n} |\mu'_{ij} - \mu_i' \otimes \mu_j'|_{TV} \leq O(n^2/d^{1/4})
 $$
