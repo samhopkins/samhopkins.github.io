@@ -1,0 +1,821 @@
+\documentclass[12pt]{article}%
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{mathtools}
+\usepackage[colorlinks = True,allcolors=blue]{hyperref}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
+{geometry}
+\usepackage{times}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{mathrsfs}
+\usepackage{stackrel,amssymb}
+\newcommand{\leftrarrows}{\mathrel{\raise.75ex\hbox{\oalign{%
+  $\scriptstyle\leftarrow$\cr
+  \vrule width0pt height.5ex$\hfil\scriptstyle\relbar$\cr}}}}
+\newcommand{\lrightarrows}{\mathrel{\raise.75ex\hbox{\oalign{%
+  $\scriptstyle\relbar$\hfil\cr
+  $\scriptstyle\vrule width0pt height.5ex\smash\rightarrow$\cr}}}}
+\newcommand{\Rrelbar}{\mathrel{\raise.75ex\hbox{\oalign{%
+  $\scriptstyle\relbar$\cr
+  \vrule width0pt height.5ex$\scriptstyle\relbar$}}}}
+\newcommand{\longleftrightarrows}{\leftrarrows\joinrel\Rrelbar\joinrel\lrightarrows}
+\usepackage{graphicx}%
+\setcounter{MaxMatrixCols}{30}
+
+\usepackage{amsthm}
+\usepackage[capitalize, nameinlink]{cleveref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
+%\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newcommand\DistTo{\xrightarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+   
+%Probability Commands
+\newcommand{\expect}{\mathbf{E}}
+\newcommand{\pseudoexpect}{\tilde{\mathbf{E}}}
+\newcommand{\variance}{\mathbf{Var}}
+\newcommand{\pr}{\mathbf{P}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\normal}{\mathcal{N}}
+\date{}
+\author{}
+
+%%%%%%%%% To typeset the header
+
+\def\lecturer{Sam Hopkins}
+\def\coursenum{6.S977, Fall ’22}
+\def\coursename{Sum of Squares}
+
+\newlength{\tpush}
+\setlength{\tpush}{2\headheight}
+\addtolength{\tpush}{\headsep}
+
+
+\newcommand{\lecturenotes}[3]{\noindent\vspace*{-\tpush}\newline\parbox{\textwidth}
+	{\coursenum : \coursename \hfill MIT \newline
+		Lecture #1 (#2) \newline
+		Lecturer: \lecturer \hfill Scribe: #3 \newline
+		\mbox{}\hrulefill\mbox{}}\vspace*{1ex}\mbox{}\newline
+	\bigskip
+	\begin{center}{\Large\bf  Lecture #1, Clustering Mixture Models}\end{center}
+	\bigskip}
+
+% Bibliography
+\usepackage[backend=biber,
+style=numeric,
+maxnames=50
+]{biblatex}
+\addbibresource{clustering-notes-bibliography.bib}
+\begin{document}
+\lecturenotes{5}{October 14}{Nitya Mani \& Kiril Bangachev}
+
+\textbf{Alert: these notes are a work in progress, and have not been subjected to the usual scrutiny reserved for formal publications!}
+
+\section{Introduction to Clustering}
+In a clustering problem, we are given $n$ items and associated information. The goal is to find a good partition of the items into $k$ parts, where the $k$ parts correspond to some underlying similarity between some of the samples. 
+
+\begin{example}
+\normalfont Examples of clustering problems are:
+\begin{itemize}
+    \item Given $G = (V, E)$ with $|V| = n$, we want to cluster the vertices into $k$ disjoints parts 
+    $S_1, S_2, \ldots, S_k,$ so that we minimize edges between different clusters, i.e.
+     $E(S_i, S_j)$ for $i \neq j.$ This intuitively corresponds to identifying a structure of $k$ communities in a graph. 
+    \item Given $n$ vectors $x_1, \ldots, x_n \in \mathbb{R}^d,$ we want to cluster them respecting geometry. This includes clustering based on distance, but also more exotic cases like clustering for meshes (see \cite{Fan2009MeshCB}, for example, for some clustering related to computer vision).
+    \item Clustering in an $n$ point metric space $\{d(x_i, x_j)\}_{i,j \in [n]},$ where clusters are formed by points that are close to each other.
+\end{itemize}
+\end{example}
+\noindent
+There are many interesting clustering-related computational problems, both in theory and in practice. Some that we will \textit{not} discuss include determining what the ``right'' number of clusters is. Today, we focus on the question of clustering when we already know the number of clusters $k$ and that a good clustering of size $k$ exists.\\
+
+\noindent
+Specifically, we consider a clustering problem $\Theta = \{(S_1, \ldots, S_k), X) \}$ where we receive $X$ as an input, $S_1,\ldots,S_k$ are a partition of $[n]$, and our goal is to find $S_1, \ldots, S_k$. ($X$ could be a graph, a set of vectors, etc.) We will assume that $|S_1| = \cdots = |S_k| = n/k$ and that the problem is identifiable. Formally, we require that there exists a map (maybe not efficiently computable)
+$\zeta: X \longrightarrow (T_1, \ldots, T_k)$ such that, for all $(S_1, \ldots, S_k, X)$, we must have $|T_i \cap S_i| \ge (1 -\delta) n/k.$
+
+\begin{example}
+\normalfont
+The main example for today clustering Gaussian mixture models. For $k$ Gaussians distributions $D_1, D_2, \ldots, D_k$ over $\mathbb{R}^d$, given $n$ samples 
+$X_1, X_2, \ldots, X_n,$
+sampled independently from the mixture 
+$\frac{1}{k}\sum_{i = 1}^k D_i,$ we want to (approximately) recover 
+the sets $S_1, S_2, \ldots, S_k,$ where $S_i$ corresponds to the samples drawn from $D_i.$ (We describe this in more detail in 
+\cref{sec:gaussianmixture}
+).
+\end{example}
+
+\noindent
+So how do we cluster with SoS?
+
+\section{Clustering with SoS}
+Here, we describe a meta-algorithm for clustering with SoS. 
+
+\begin{algorithm}
+\label{alg:mainmetaalg}
+Suppose that for some $((S_1,\ldots,S_k),X) \in \Theta$ there exist an input-specific (that is, depending on $X$) axiom set $P_X$ of degree at most $d$ and size $n^{O(d)}$ on variables $\omega_1, \omega_2, \ldots, \omega_n, z$ such that:
+\begin{enumerate}
+    \item $\displaystyle\left\{ \omega_i^2 = \omega_i, \sum_i \omega_i = n/k\right\} \cup P_X \vdash \sum_{i \in S_a, j \in S_b} \omega_i \omega_j \le \delta \left(\frac{n}{k}\right)^2$ holds for any two different true clusters $S_a$ and $S_b.$
+    \item Whenever $\omega$ is the indicator of some true cluster $S_a,$ the axioms $P_X$ are satisfied.
+\end{enumerate}
+Then, by finding a pseudoxpectation $\pseudoexpect$ satisfying $\displaystyle\left\{ w_i^2 = w_i, \sum_i w_i = n/k\right\} \cup P_X$ for which $||\pseudoexpect \omega||_2^2$ is minimized, 
+one can recover in time $n^{O(d)}$ sets $T_1, T_2, \ldots, T_k$ such that $|S_i \cap T_i|\ge (1- \delta k^{O(1)})\frac{n}{k}.$
+\end{algorithm}
+
+\noindent
+Before proving \cref{alg:mainmetaalg}, we give some intuition about it. Note that the condition $\sum_{i \in S_a, j \in S_b} \omega_i \omega_j$ implies that $\omega$ cannot simultaneously assign a lot of weight on two different clusters. Therefore, rounding with respect to $\omega$ or its higher moments (stay tuned!) will allow us to approximately recover the true clusters. As we will show the rounding is simple. Thus, all the ``magic'' in designing clustering SoS algorithms is in 
+finding the right polynomials $P_X.$ We give a very simple example of how to do this.
+
+\begin{example}[When we forget about the sweep line]
+\normalfont
+Suppose that our data $X_1,X_2, \ldots, X_n$ comes from the following model. There are $k$ different unknown unit-length intervals $(a_i, a_i+1)$ on a line, which are at least distance 10 apart (that is, $a_i +11< a_{i+1},$  for all $i$). Then, our $n$ samples are formed by taking $n/k$ points in each interval. Our goal is to recover the sets of points belonging to the same interval. Of course, this is a computationally trivial problem as we can just use a sweep line argument... Nevertheless, it serves as a good example of how to use SoS.\\ 
+
+\noindent
+How do we encode the fact that the distances between points in the same cluster are small, but they are otherwise big?  Imagining that $\omega$ was a true cluster indicator (or a distribution over such!), an intuitive set of axioms $P_X$ is $\{\omega_i\omega_j(X_i - X_j)^2 \leq 1\}_{i\neq j}.$ Indeed, this gives the desired inequality in \cref{alg:mainmetaalg} as 
+$$
+\sum_{i \in S_a, j \in S_b} \omega_i \omega_j \le 
+\sum_{i \in S_a, j \in S_b} \omega_i \omega_j \frac{(X_i - X_j)^2}{100}\le 
+\frac{1}{100}\sum_{i \in S_a, j \in S_b} \omega_i \omega_j {(X_i - X_j)^2} \le 
+$$
+$$
+\frac{1}{100}\sum_{i \in S_a, j \in S_b} 1 = 
+\frac{1}{100}\left(\frac{n}{k}\right)^2.
+$$
+All of the above inequalities follow in SoS. The first simply because $(X_i - X_j)^2>100$ and $\omega_i \omega_j  = \omega_i^2 \omega_j^2$ (in SoS) and the second from the axioms $P_X.$ So, using \cref{alg:mainmetaalg}, we manage to cluster to $99\%$ accuracy... Of course, it might be disappointing that for this trivial problem, our SoS based approach doesn't give $100\%$ accuracy. We can actually fix this by iterating
+$$
+\frac{1}{100}\sum_{i \in S_a, j \in S_b} \omega_i \omega_j {(X_i - X_j)^2} \le 
+\frac{1}{10^4}\sum_{i \in S_a, j \in S_b} \omega_i \omega_j {(X_i - X_j)^4} ...
+$$
+It is easy to show that all of these steps can be done in SoS, but now we move to the less trivial problem of rounding.
+\end{example}
+
+\subsection{The Rounding Procedure}
+Now let's imagine we are given a pseudoexpectation $\pseudoexpect$ in variables $\omega_1,\ldots,\omega_n$ which satisfies $P_X$.
+One seemingly-ideal situation would be that it is actually the low-degree moments of a distribution on cluster indicators which is supported on a single cluster-indicator vector, say $1_{S_a}$, the indicator vector for $S_a$.
+Then $\pseudoexpect \omega = 1_{S_a}$ and we could easily identify $S_a$.
+
+\noindent
+It turns out that there are two main issues with this approach. First, it requires that $\pseudoexpect\omega$ is close to a cluster indicator. However, as we will see in a bit, $\pseudoexpect$ might actually correspond to a nontrivial distribution over cluster indicators.
+Second, even if we get lucky and $\pseudoexpect$ is concentrated on one cluster, what do we do after identifying that one cluster?
+
+An alternative possibility is that $\pseudoexpect$ is the low-degree moments of the uniform distribution on cluster indicators, $1_{S_1},\ldots,1_{S_k}$.
+In this case we can hope that $\pseudoexpect$ contains information about all $S_1,\ldots,S_k$, but we can no longer read that information off of the first moments, as $\pseudoexpect \omega_i = 1/k$ for each $i$.
+
+So, what could we do in this case? We can read the clusters off of the second moments $\pseudoexpect \omega \omega^\top$, since $\pseudoexpect \omega_i \omega_j$ is nonzero if and only if $i,j$ belong to the same $S_a$.
+
+We will make this general strategy work for (almost) any pseudoexpectation $\pseudoexpect$ which satisfies $P_X$, as we know that the very strong condition $\pseudoexpect \sum_{i\in S_a, j \in S_a}\omega_i\omega_j \le \delta \left(\frac{n}{k}\right)^2$ holds, simply because $\pseudoexpect$ satisfies the axioms in \cref{alg:mainmetaalg}. As $\sum \omega_i = \frac{n}{k},$ it must also be the case that within clusters the moments are large. Indeed, 
+$$
+\sum_{a = 1}^k 
+\sum_{i,j\in S_a}\pseudoexpect\omega_i\omega_j = 
+\left(\frac{n}{k}\right)^2
+ - \sum_{a \neq b}
+\sum_{i\in S_a, j \in S_b}\pseudoexpect\omega_i\omega_j \ge
+$$
+$$
+\left(\frac{n}{k}\right)^2 - k^2\delta \left(\frac{n}{k}\right)^2  = 
+n^2 (\frac{1}{k^2}-\delta),
+$$
+which is much larger than $\delta (n/k)^2$ when $\delta \ll \frac{1}{k^{O(1)}}.$\\
+
+In fact, the only thing standing in our way is the first possibility we considered, that $\pseudoexpect$ could be supported on a single cluster indicator (or, say, all but one of them).
+We avoid this situation by requiring $\| \pseudoexpect \omega \|$ to be as small as possible -- this forces $\pseudoexpect$ to spread out over all of the clusters.
+
+\noindent
+So, how do we use these second moments? Intuitively, $\omega$ should be a ``distribution over true cluster indicators''. Thus, conditioning that we are in one of the clusters, we can recover other points in it as well. Formally, one rounding scheme that uses this idea is the following.
+
+\begin{algorithm} Given $\pseudoexpect,$ for $a \in \{1,2,\ldots k\}:$
+\begin{enumerate}
+    \item Pick $i_a$ uniformly among the set of remaining items $R = [n]\backslash \bigcup_{s<a} T_{a}$ and compute the conditional pseudoexpectation $\pseudoexpect[\cdot|\omega_{i_a} = 1].$
+    \item Include each element $j$ of $R$ independently in $T_{a}$ with probability $\pseudoexpect[\omega_j|\omega_{i_a} = 1].$
+\end{enumerate}
+Return the clusters $T_1, T_2, \ldots, T_k.$
+\end{algorithm}
+
+
+\noindent
+We will prove that with high probability, there exists an indexing of $S_1, S_2, \ldots, S_k$ such that 
+$|S_i \cap T_i|\ge \frac{n}{k}(1 - 16\delta k^8)$ holds with high probability. We prove this in several steps.\\
+
+\noindent
+First, minimality of $||\pseudoexpect \omega||_2^2$ implies that $\pseudoexpect \omega_i = \frac{1}{k}$ for each $i.$ Indeed, this is true for the following reason. Since each cluster indicator $1_{S_a}$ satisfies all axioms, the (pseudo)-expectation $\pseudoexpect^a$ defined by $\pseudoexpect^aq(\omega) := q(1_{S_a})$ satisfies the axioms.\footnote{This is a real
+expectation, so it is also a pseudoexpectation.} But
+then so does $\pseudoexpect' := \frac{1}{k}\sum_{a =
+1}^k \pseudoexpect^a.$ Now, $\pseudoexpect'$ satisfies
+$\pseudoexpect \omega_i = \frac{1}{k}$ for all $i.$ Since this clearly minimizes the two-norm $||\pseudoexpect \omega||_2^2$ among all pseudoexpectations for which $\sum_i\pseudoexpect \omega_i = \frac{n}{k},$ the choice of $\pseudoexpect$ implies the desired condition. We continue with two technical lemmas.
+
+\begin{proposition}
+Suppose that $A\subseteq S_a$ is a set such that $|A|\ge \frac{n}{k}(1-\epsilon)$ for some $\epsilon<1/2$ and let $i\in A.$ Then,
+$$
+\expect_{i \sim Unif(A)}
+\pseudoexpect [\sum_{j \in S_a}\omega_j|w_i= 1]\ge \frac{n}{k}(1- \epsilon - 2k^2\delta), \text{ and }
+$$
+$$
+\expect_{i \sim Unif(A)}
+\pseudoexpect [\sum_{j \in [n]\backslash S_a}\omega_j|w_i= 1]\le 2nk\delta
+$$
+\end{proposition}
+\begin{proof}
+First, note that for any $i \in A,$ we have
+$$
+\pseudoexpect[\sum_{j \in [n]}\omega_j |\omega_i = 1] = 
+\frac{n}{k},
+$$
+as $\sum_{j \in [n]}\omega_j = \frac{n}{k}$ is one of the axioms. Thus, the two inequalities above are equivalent.
+On the other hand, note that 
+$$
+\expect_{i \sim Unif(A)}
+\pseudoexpect [\sum_{j \in [n]\backslash S_a}\omega_j|w_i= 1]\le 
+\frac{|S_a|}{|A|}
+\expect_{i \sim Unif(S_a)}
+\pseudoexpect [\sum_{j \in [n]\backslash S_a}\omega_j|w_i= 1] \le 
+$$
+$$
+\frac{1}{1-\epsilon} \frac{k}{n}
+\sum_{i \in S_a}
+\pseudoexpect [\sum_{j \in [n]\backslash S_a}\omega_j|w_i= 1] \le
+$$
+$$
+(1 + 2\epsilon)\frac{k}{n}
+\sum_{b \neq a}\sum_{i \in S_a, j \in S_b}
+\pseudoexpect[\omega_i \omega_j]/\pseudoexpect[\omega_i] = 
+$$
+$$
+(1 + 2\epsilon)\frac{k^2}{n}
+\sum_{b \neq a}\sum_{i \in S_a, j \in S_b}
+\pseudoexpect[\omega_i \omega_j]\le 
+$$
+$$
+(1 + 2\epsilon)\frac{k^2}{n}
+\sum_{b \neq a} \delta \left(\frac{n}{k}\right)^2 \le
+(1 + 2\epsilon)\delta kn\le 
+2\delta k n,
+$$
+where in the last inequality we used the assumptions in \cref{alg:mainmetaalg}, before that the fact that $\pseudoexpect \omega_i = \frac{1}{k},$ and before that the definition of conditional pseudoexpectation.\end{proof}
+
+\noindent
+\begin{proposition}
+\label{prop:highprobversion}
+Suppose that we are at some step $s$ of the rounding algorithm and there are at least $\frac{n}{k}(1-\epsilon)$ elements of some true cluster $S_a$ in $R.$ Conditioned on the fact that $i_s \in S_a,$ with probability at least $\frac{1}{k^2},$ we will add to $T_s$ at least $\frac{n}{k}(1 - 2k^2\epsilon - 
+4k^4\delta
+)$ elements from $S_a$ and at most 
+$\frac{n}{k}4k^4\delta $ that are not in $S_a.$
+\end{proposition}
+\begin{proof}
+We only prove the second statement as the proofs are the same. Note that the previous proposition implies that in expectation, we add to $T_a$ at most 
+$\frac{n}{k}2 k^2\delta$ elements. By Markov's inequality, we add more than $\frac{n}{k}4k^4\delta$ with probability at most $\frac{1}{2k^2}.$ The other statement is equivalent, except that we consider the number of elements of $S_a$ we don't add. Then, we do union bound over the two statements.
+\end{proof}
+
+\noindent
+Using the last proposition, we can easily prove by induction that the following things happen together with high probability as long as $\delta < \frac{1}{k^{10}}.$ For all steps $a,$ the following simultaneously hold:
+\begin{enumerate}
+    \item Each $i_a$ for $a\in [k]$ belongs to a different cluster $S_{\pi(a)}.$
+    \item For each $a\in [k],$ 
+    $\left|\left(S_{\pi(1)}\cup S_{\pi(2)}\cup \cdots S_{\pi(a)}\right)\backslash \left(T_1 \cup T_2 \cdots \cup T_a\right)\right|\le 12\frac{n}{k}a\delta k^7$
+    \item For each $a\in [k],$ 
+     $\left|\left(T_1 \cup T_2 \cdots \cup T_a\right)\right\backslash 
+     \left(S_{\pi(1)}\cup S_{\pi(2)}\cup \cdots S_{\pi(a)}\right)
+     |\le 4\frac{n}{k}a\delta k^4.$
+\end{enumerate}
+
+\noindent
+Indeed, note that if the statements above are satisfied before some step $a,$ then at step $a$ we will choose an item $i_a$ from a new set with probability at least 
+$$
+\frac{\frac{n}{k}(k -a) - 12\frac{n}{k}a\delta k^7}{\frac{n}{k}(k -a)}>
+1 -12\delta k^8,
+$$
+so we proved the first bullet point by induction.
+Then, applying \cref{prop:highprobversion} with 
+$\epsilon = 4(a-1)\delta k^4$ (since at most $\epsilon\frac{n}{k}$ elements of each true cluster that has not been selected have been added before step $a$), we know that
+with probability at least $\frac{1}{k^2},$ we will add to $T_a$ at least $\frac{n}{k}(1 - 4k^4\delta - 8ak^6\delta)> \frac{n}{k}(1 - 12k^7\delta)$ elements of the true cluster of $i_a$ and at most $ 4\frac{n}{k}\delta k^4$ elements not from the cluster (here we use $\delta <\frac{1}{k^{10}}$). 
+Thus, the second and third bullets points continue to hold after step $a.$\\
+
+\noindent
+All that is left to show to complete the proof is that everything happens with high probability simultaneously. Note, however, that we apply \cref{prop:highprobversion} exactly $k$ times. By union bound, 
+with probability at least $1 - k\times \frac{1}{k^2},$ every time the bounds on $|T_a\backslash S_{\pi(a)}|$ and 
+$|S_{\pi(a)}\backslash T_a|$ hold. Similarly, at each step we select a new element with probability at least 
+$1- 12\delta k^8,$ so this happens with probability at least $1- 12\delta k^9.$ Therefore, with probability at least 
+$1 - 12\delta k^9 - k^{-1},$ the statement holds. As $\delta <\frac{1}{k^{10}}$ and $k = \omega(1)$ (as $k$ and $d$ are polynomially related), the induction is complete.\\
+
+
+\noindent
+To finish, note that the last two bullet points clearly imply that 
+$$|S_{\pi(a)} \cap T_a|\ge \frac{n}{k} - |S_a\backslash T_a|\ge
+\frac{n}{k}(1 - 16\delta k^8),
+$$
+as desired. Indeed, at most $12\delta k^7\frac{n}{k}$ of the elements of $S_a$ are in 
+$T_1\cup T_2\cup \cdots \cup T_{a-1}$ by the third bullet point, and at most another $4\delta k^4\frac{n}{k}$ of the elements of $S_a$ are not in 
+$T_1\cup T_2\cup \cdots \cup T_{a_1}\cup T_a$ by the second bullet point, so at worst $T_a$ misses $16\delta k^8\frac{n}{k}$ of the elements of $S_{\pi(a)}.$\\
+
+\noindent
+The analysis of the rounding algorithm is finished.
+
+\section{Gaussian Mixture Models}
+\label{sec:gaussianmixture}
+So far, in \cref{alg:mainmetaalg} we have seen that in order to design an SoS clustering algorithm, it is enough to find well-behaved input-specific polynomials $P_X$ and construct the set of axioms 
+$$
+\{
+\omega_i^2 = \omega_i\; \forall i,\;
+\sum_{i}\omega_i = \frac{n}{k}\}\cup P_X. 
+$$
+This allows us to find an appropriate pseudoexpectation satisfying these axioms and perform our rounding scheme. 
+\noindent
+Now, we turn to the main problem for today - clustering Gaussian mixtures.
+\subsection{Model and Preliminaries}
+\textbf{Set-Up: }In a mixture model, $k$ unknown independent distributions $\D_1, \D_2, \ldots, \D_k$ over $\mathbb{R}^d$ are given. In our set-up, we focus on $\D_i = \normal(\mu_i, \Sigma_i).$ The problem of interest is the following. 
+The input $X_1, X_2, \ldots, X_n,$ consists of $n$ independent variables distributed according to
+$\frac{1}{k}\sum_i \D_i.$ That is, for each $j \in [n]$ an independent cluster indicator $c_j \sim Unif(\{1,2,\ldots, k\})$ is sampled and then $X_j$ is sampled independently from $\D_{c_j}.$ The task is the following. Let $S_c = \{j \in [n]\; : \: c_j  = c\}$ for $c\in [k]$ be the true clusters. We need to recover (approximately) the sets $S_1, S_2, \ldots, S_k.$ The input consists of the samples $X_1, X_2, \ldots, X_n.$\\
+
+
+\noindent
+Different regularity assumptions imposed on this problem are studied. For this lecture, we assume a second-moment bound $\Sigma_i \preceq I.$ We also make the simplifying assumption that every true cluster contains exactly $\frac{n}{k}$ samples. This condition can be easily removed using concentration inequalities for the random variables $|S_c|.$ Implicit today will also be a polynomial relationship between the dimension and number of clusters, that is 
+$k = d^{\Theta(1)}.$\\
+
+\noindent
+Clearly, distances between means will play a crucial role. If two of the means, say $\mu_1$ and $\mu_2$ are nearly the same, it is information theoretically impossible to distinguish\footnote{See, for example \href{http://ai.stanford.edu/~jduchi/projects/general\_notes.pdf}{p.13 here} for the KL divergence between two Gaussians.} 
+$\normal(\mu_a, I)$ and $\normal(\mu_b, I).$ Thus, we introduce the parameters 
+$\Delta_{a,b} = \mu_a - \mu_b.$ Central to the analysis will be a lower bound $\Delta$ on 
+$\min_{a\neq b}||\Delta_{a,b}||_2. $\\
+
+\noindent
+This immediately leads us to a first idea about an SoS clustering method.\\
+
+
+\noindent
+\textbf{A First Naive Approach: } We can repeat the same idea as in the SoS proof of identifying interval clustering on a line by encoding the fact that 
+$||X_i - X_j||$ is large if and only if $X_i$ and $X_j$ are in different clusters. Explicitly, we form the axioms
+$\{\omega_i\omega_j||X_i - X_j||^2\le c\}$ for an appropriately chosen $c$ (so that with high probability, distances between pairs of samples from different clusters are greater than distances between pairs of samples from the same cluster).
+It turns out that this is indeed a viable approach, but it only works whenever $\Delta_{a,b}>>k^{1/4}$ holds for any $a\neq b.$ Can we do better?\\
+
+\noindent
+It turns out that we can. A purely information-theoretic result (leading to an exponential time algorithm) is the following.
+
+\noindent
+\begin{theorem}[\cite{expclustering}]
+There exists an (exponential time) algorithm with the following guarantee.
+If $\Delta \gg \sqrt{\log k},$ using $(dk)^{O(1)}$ samples, one can cluster to 99$\%$ accuracy.
+\end{theorem}
+
+\noindent
+What about polynomial-time algorithms? A very recent result establishes that the above guarantee is actually efficiently achievable for spherical Gaussians.
+
+\begin{theorem}[\cite{LiuLi}]
+For any positive constant $c>0,$ one can cluster with 
+$99\%$ accuracy
+a mixture of $k$ spherical Gaussians (that is, Gaussians with covariance $I$) for which 
+$\Delta > (\log k )^{\frac{1}{2}+c}$
+in time $poly(d,k)$ when $n = poly(d,k).$ 
+\end{theorem}
+
+\noindent
+When we allow for a quasipolynomial time, we can again achieve $\sqrt{\log k}$, even assuming only $\Sigma_a \preceq I$.
+
+\begin{theorem}[\cite{Kothari2018RobustME,HopkinsLi,diakonikolas2018list}]
+\label{thm:quasi}
+There exists an algorithm using $d^{O(\log k)}$ samples and time which clusters with $99\%$ accuracy when $\Delta \gg \sqrt{\log k}.$
+\end{theorem}
+
+\noindent
+The theorem that we will prove is the following. \cref{thm:quasi} also follows from our proof, if we are a little more careful with parameters.
+
+\begin{theorem}[\cite{Kothari2018RobustME,HopkinsLi,diakonikolas2018list}]
+For any $\epsilon > 0$, if $\Delta >k^\epsilon$, there exists a $poly(n,d)$ clustering algorithm that achieves $99\%$ accuracy.
+\end{theorem}
+
+
+
+\section{Gaussian Clustering with SoS}
+The idea behind improving the naive approach is to use more information about Gaussian random variables. Since Gaussian random variables have very thin tails, the higher moments also behave well. Namely, we have the following fact about single dimensional Gaussians. If $N \sim \mathcal{N}(0,1),$ then it is well known that for any $t,$
+$$
+\expect |N|^t = \frac{2^{t/2}\Gamma(\frac{t+1}{2})}{\sqrt{\pi}} = O(t)^{t/2}.
+$$
+It turns out that a much stronger high-probability version of this equality holds, as we will see in a bit. This motivates the construction of axioms which use the relatively small average $t$-th moment within clusters and the much larger $t$-th moment between different clusters. This leads us to the following axioms.
+
+\subsection{First Set of Axioms and SoS Proof}
+
+\noindent
+\textbf{Axioms $P_{X_1,X_2, \ldots, X_n}:$ }
+For every unit vector $v,$ we have the inequality $A^v_{X_1, X_2, \ldots, X_n}$ given by
+$$
+\frac{k}{n}
+\sum^n_{i=1} \omega_i 
+\langle X_i - \frac{k}{n}\sum_{j = 1}^n \omega_j X_j, 
+v\rangle ^t \le 
+O(t)^{t/2},
+$$
+where $t$ is some parameter which we will choose later.
+At a first glance, we haven't made much progress. 
+We have an uncountable collection of axioms - one inequality for each unit vector $v$ in $\mathbb{R}^d.$ We will deal with this problem later, however, and we will move on to an SoS proof. That is, we need to show two things.\\
+
+\noindent
+\textbf{1. True Clusters Satisfy Axioms:} That is, the true clusters satisfy each inequality
+$$
+\frac{k}{n}
+\sum_i \omega_i 
+\langle X_i - \frac{k}{n}\sum_j \omega_j X_j, 
+v\rangle ^t \le 
+O(t)^{t/2}.
+$$
+We will not prove the statement, but will at least give some intuition what this expression looks like for true clusters. Let $\omega$ be the indicator of some cluster $S_a,$ corresponding to $\normal(\mu_a, \Sigma_a).$ Let $X_i = \mu_a + Y_i$ for $i \in S_a$ where $Y_i \sim \normal(0, \Sigma_a).$ Then, 
+$$
+\frac{k}{n}
+\sum_i \omega_i 
+\langle X_i - \frac{k}{n}\sum_j \omega_j X_j, 
+v\rangle ^t = 
+\frac{k}{n}
+\sum_{i \in S_a}
+\langle Y_i+\mu_a - \frac{k}{n}\sum_{j \in S_a} (Y_j + \mu_a), 
+v\rangle ^t = 
+$$
+$$
+\frac{k}{n}
+\sum_{i \in S_a}
+\langle Y_i- \frac{k}{n}\sum_{j \in S_a} Y_j, 
+v\rangle ^t.
+$$
+This is just the empirical $t$-th moment of a $d$-dimensional Gaussian; standard concentration tools imply that it concentrates to its expectation uniformly for all unit $v$ with $poly(d)$ samples (for constant $t$).
+
+%This is a symmetric function of $\frac{n}{k}$ $d$-dimensional Gaussians. Intuitively, no variable has more influence than others (due to symmetry) and, thus, the gradient is relatively spread out. So, we can use standard tools from Gaussian concentration such as Poincare Inequalities. See \cite[Theorem 2.6]{Kothari2018RobustME} for more details.\\
+
+
+\noindent
+\textbf{2. The Axioms Imply a Small Overlap between Different Clusters:} That is, we need to show that for any two different clusters $S_a$ and $S_b,$ the axioms $P_X$ imply that 
+$$
+\sum_{i \in S_a, j \in S_b}\omega_i\omega_j\le \delta \left( \frac{n}{k}\right)^2 
+$$
+for $\delta = \frac{1}{poly(k)}.$ This can be proved in SoS as follows.\\ 
+
+\noindent
+The first step is to include the geometry of the clustering problem via the $t$-th moments, which we know should be small. Namely, we have 
+$$
+\sum_{i \in S_a, j \in S_b}
+\omega_i\omega_j = 
+\sum_{i \in S_a, j \in S_b}
+\omega_i\omega_j
+\frac{\langle \mu_a - \mu_b, \Delta_{a,b}\rangle^t}{||\Delta_{a,b}||_2^{2t}}.
+$$
+Now, we try to incorporate the fact that 
+all points in a cluster are close to 
+the mean by approximating $\mu_\ell$ by the weighted average defined by $\omega.$ That is, for $\mu(\omega):=\frac{k}{n}\sum_{j}\omega_i X_i,$ we have 
+$$
+\sum_{i \in S_a, j \in S_b}
+\omega_i\omega_j
+\frac{\langle \mu_a - \mu_b, \Delta_{a,b}\rangle^t}{||\Delta_{a,b}||_2^{2t}} = 
+\sum_{i \in S_a, j \in S_b}
+\omega_i\omega_j
+\frac{\langle \mu_a -\mu(\omega) + \mu(\omega)- \mu_b, \Delta_{a,b}\rangle^t}{||\Delta_{a,b}||_2^{2t}}.
+$$
+Now, from the homework, we know that there exists an SoS proof of the triangle inequality\linebreak $||p + q||_s^s\le 
+2^{O(s)}(||p||_s^s + ||q||_s^s).
+$
+Using it, we obtain 
+$$
+\sum_{i \in S_a, j \in S_b}
+\omega_i\omega_j
+\frac{\langle \mu_a -\mu(\omega) + \mu(\omega)- \mu_b, \Delta_{a,b}\rangle^t}{||\Delta_{a,b}||_2^{2t}} \le 
+$$
+$$
+2^{O(t)}
+\sum_{i \in S_a, j \in S_b}
+\omega_i\omega_j
+\frac{\langle \mu_a -\mu(\omega), \Delta_{a,b}\rangle^t + 
+\langle \mu(\omega) - \mu_b, \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}} = 
+$$
+$$
+2^{O(t)}\sum_{j \in S_b}\sum_{i \in S_a} 
+\omega_i\omega_j
+\frac{\langle \mu_a -\mu(\omega), \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}} + 
+2^{O(t)}\sum_{j \in S_a}\sum_{i \in S_b} 
+\omega_i\omega_j
+\frac{\langle \mu_b -\mu(\omega), \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}}.
+$$
+Now, since $\sum_{i}\omega_i = \frac{n}{k},$ for any polynomial $p(\omega),$ there exists an SoS proof that $\sum_i \omega_i p(\omega) = \frac{n}{k}p(\omega),$ again as in the homework. Therefore, the above expression becomes
+$$
+2^{O(t)}\frac{n}{k}\sum_{i \in S_a} 
+\omega_i
+\frac{\langle \mu_a -\mu(\omega), \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}} + 
+2^{O(t)}\frac{n}{k}\sum_{j \in S_b} 
+\omega_j
+\frac{\langle \mu_b -\mu(\omega), \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}}.
+$$
+We only bound the first term due to symmetry. We now want to incorporate our axioms. Again using the triangle inequality, 
+$$
+2^{O(t)}\frac{n}{k}\sum_{i \in S_a} 
+\omega_i
+\frac{\langle \mu_a -\mu(\omega), \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}} = 
+2^{O(t)}\frac{n}{k}\sum_{i \in S_a} 
+\omega_i
+\frac{\langle \mu_a -X_i + X_i - \mu(\omega), \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}}\le
+$$
+$$
+2^{O(t)}\frac{n}{k}\sum_{i \in S_a} 
+\omega_i
+\frac{\langle \mu_a -X_i, \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}}
+ + 
+2^{O(t)}\frac{n}{k}\sum_{i \in S_a} 
+\omega_i
+\frac{\langle X_i - \mu(\omega), \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}}
+$$
+Since the entire expression $\frac{\langle \mu_a -X_i, \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}}
+$ is just a real number, $\omega_i^2 = \omega_i$ clearly proves that 
+$$
+2^{O(t)}\frac{n}{k}\sum_{i \in S_a} 
+\omega_i
+\frac{\langle \mu_a -X_i, \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||_2^{2t}}
+\le 
+2^{O(t)}\frac{n}{k}\sum_{i \in S_a} 
+\frac{\langle \mu_a -X_i, \frac{\Delta_{a,b}}{||\Delta_{a,b}||_2}\rangle^t
+}{||\Delta_{a,b}||_2^{t}}.
+$$
+Using that $\frac{\Delta_{a,b}}{||\Delta_{a,b}||_2} = 1,$ we know that with high probability, each term $\langle \mu_a -X_i, \frac{\Delta_{a,b}}{||\Delta_{a,b}||_2}\rangle^t$ is of order $O(t)^{t/2},$ so the last expression is bounded with high probability by
+$$
+\frac{n}{k}\sum_{i \in S_a} \frac{O(t)^{t/2}}{||\Delta_{a,b}||_2^t} = 
+\left(\frac{n}{k}\right)^2 
+\frac{O(t)^{t/2}}{||\Delta_{a,b}||_2^t}.
+$$
+Similarly, for the other term, the axioms $P_{X_1, X_2, \ldots, X_n}$ directly imply that 
+$$
+2^{O(t)}\frac{n}{k}\sum_{i \in S_a} 
+\omega_i
+\frac{\langle X_i - \mu(\omega), \Delta_{a,b}\rangle^t
+}{||\Delta_{a,b}||^{2t}} = 
+2^{O(t)}\frac{n}{k} ||\Delta_{a,b}||_2^{-t}
+\sum_{i \in S_a} 
+\omega_i
+\langle X_i - \frac{k}{n}\sum_{i=1}^n \omega_i X_i, \frac{\Delta_{a,b}}{||\Delta_{a,b}||_2}\rangle^t\le 
+$$
+$$
+\left(\frac{n}{k}\right)^2 
+\frac{O(t)^{t/2}}{||\Delta_{a,b}||^t_2}.
+$$
+
+\noindent
+Therefore, the entire expression is bounded in SoS by 
+$$
+\left(\frac{n}{k}\right)^2 
+\frac{O(t)^{t/2}}{||\Delta_{a,b}||^t_2}.
+$$
+
+\noindent
+Now, we see that if $||\Delta_{a,b}||> k^\epsilon,$ it is enough to choose $t >> \frac{1}{\epsilon}$ such that 
+$$
+\frac{O(t)^{t/2}}{||\Delta_{a,b}||^t_2} = \frac{1}{poly(k)}.
+$$
+
+\noindent 
+In other words, we have managed to design a $poly(n,d)$ algorithm for separation $\Delta = k^\epsilon$ for any constant $\epsilon,$ improving the $k^{1/4}$ barrier of the naive approach.
+
+
+\subsection{Making the Axiom Space Finite}
+Recall that we constructed an uncountable axiom space to prove that $\sum_{i\in S_a, j \in S_b}\omega_i\omega_j \le \delta \left(\frac{n}{k}\right)^2.$ However, for an efficient algorithm we want the axiom space to be of size $(nd)^{O(1)}.$ How can we do this?\\
+
+\noindent
+A natural idea is to discretize the unit sphere by, say, an $\epsilon$-net and approximate each unit vector $v$ by a (linear) combination of the vectors in the respective net. This, however, will still result in an axiom family of exponential size as $\epsilon$-nets on the unit sphere generally have exponential size.\\
+
+\noindent
+Another idea is to find some polysized family of axioms
+$Q_X$ such that $Q_X\vdash P_X$ (where $P_X$ is the uncountable family constructed in the previous section). How should we do this? We start by exploring the case for small $t.$\\
+
+\noindent
+\textbf{The case $t = 2:$ }We want axioms which imply that
+$$
+\frac{k}{n}
+\sum^n_{i=1} \omega_i 
+\langle X_i - \mu(\omega), 
+v\rangle ^2 \le O(1)
+$$
+holds for any unit $v.$ Note, however, that the above expression is simply 
+$$
+v^T\left[
+\frac{k}{n}
+\sum^n_{i=1} \omega_i
+(X_i - \mu(\omega))
+(X_i - \mu(\omega))^T
+\right]v.
+$$
+Thus, it is enough that the spectral norm of 
+$\displaystyle M = \left[
+\frac{k}{n}
+\sum^n_{i=1} \omega_i
+(X_i - \mu(\omega))
+(X_i - \mu(\omega))^T
+\right]
+$ is at most $O(1).$ But we already know how to encode this condition from the lecture on Robust Mean Estimation 
+\href{https://tselilschramm.org/sos-paradigm/notes22/00-proofs-to-algs.pdf}{Claim 2.7 here}. We simply need to add the matrix of slack variables $B$ and the axiom $$
+\frac{k}{n}
+\sum^n_{i=1} \omega_i
+(X_i - \mu(\omega))
+(X_i - \mu(\omega))^T = 
+O(1)I - BB^T.
+$$
+
+\noindent
+What about the next case, $t = 4?$
+
+\noindent
+\textbf{The case $t = 4:$ }Going through the same logic, we compute
+$$
+\frac{k}{n}
+\sum^n_{i=1} \omega_i 
+\langle X_i - \mu(\omega), 
+v\rangle ^4  = 
+(v^{\otimes 2})^T
+\left[
+\frac{k}{n}
+\sum \omega_i
+\left[(X_i - \mu(\omega))^{\otimes 2}\right]
+\left[(X_i - \mu(\omega))^{\otimes 2}\right]^T
+\right]
+(v^{\otimes 2}).
+$$
+Seems like we just need an SoS axiom implying that 
+$$
+\frac{k}{n}
+\sum \omega_i
+\left[(X_i - \mu(\omega))^{\otimes 2}\right]
+\left[(X_i - \mu(\omega))^{\otimes 2}\right]^T \preceq 
+O(1)I.
+$$
+Except that there is a caveat. This fact does not hold for true clusters. Namely, for an indicator $\omega$ of cluster $a,$ if we set $Y_i = X_i - \frac{k}{n}\sum_{j \in S_a}X_j$ for $i \in S_a,$ the above expression becomes
+$$
+\frac{k}{n}
+\sum_{i \in S_a}
+\left[Y_i^{\otimes 2}\right]
+\left[Y_i^{\otimes 2}\right]^T.
+$$
+Now, consider how this two-form acts on the unit vector $u \in \mathbb{R}^{d\otimes d}$ given by $u_{i,j} = 
+\frac{1[i = j]}{\sqrt{d}}.
+$ The respective quantity is
+$$
+u^t\left[
+\frac{k}{n}
+\sum_{i \in S_a}
+\left[Y_i^{\otimes 2}\right]
+\left[Y_i^{\otimes 2}\right]^T
+\right]u = 
+$$
+$$
+\frac{k}{n}\sum_{i \in S_a, j_1, j_2 \in [d]} Y_{i,j_1}^2Y_{i,j_2}^2\frac{1}{d} = 
+\frac{k}{nd}\sum_{i \in S_a, j_1,j_2 \in [d]}
+(X_{i,j_1} - \frac{k}{n}\sum_{t \in S_a}X_{t,j_1})^2
+(X_{i,j_2} - \frac{k}{n}\sum_{t \in S_a}X_{t,j_2})^2
+.
+$$
+Note that in expectation, (when the covariance matrix is $I$)
+$$\expect((X_{i,j_1} - \frac{k}{n}\sum_{t \in S_a}X_{t,j_1})^2) = 
+(1 - \frac{k}{n})^2 \expect (X_{i,j_1}) + 
+\sum_{t\neq i}\frac{k^2}{n^2}\expect(X_{t,j_1})
+ = \Theta(1).
+$$
+As we are taking the sum of $\frac{n}{k}d^2$ summands of order $1,$ in expectation the above expression evaluates to 
+$\Theta(d) = \omega(1)$ rather than a constant. So, is approach doomed?\\
+
+\noindent
+It turns out that it is not. Even if the matrix 
+$$
+\frac{k}{n}
+\sum_{i \in S_a}
+\left[Y_i^{\otimes 2}\right]
+\left[Y_i^{\otimes 2}\right]^T
+$$
+has singular values of non-constant order, it is still the case that when it acts on unit vectors of the form $v^{\otimes 2},$ its spectral norm is constant with high probability. That is,
+\begin{equation}
+    \label{eq:tensorbound}
+    (v^{\otimes 2})^t\left[
+\frac{k}{n}
+\sum_{i \in S_a}
+\left[Y_i^{\otimes 2}\right]
+\left[Y_i^{\otimes 2}\right]^T
+\right](v^{\otimes 2})\le 1
+\end{equation}
+holds with high probability (we defer this proof to \cref{lem:tensornormfour}).\\
+
+\noindent
+Something more can be show to hold true. \cref{eq:tensorbound} holds in expectation and with high probability
+$$
+\frac{k}{n}
+\sum_{i \in S_a}
+\left[Y_i^{\otimes t/2}\right]
+\left[Y_i^{\otimes t/2}\right]^T \preceq 
+ 2 \expect_{Z \sim \mathcal{N}(0,I_d)^{\otimes \frac{n}{k}}} \left[
+\frac{k}{n} \sum_{s = 1}^{\frac{n}{k}}
+\left[Z_s^{\otimes t/2}\right]
+\left[Z_s^{\otimes t/2}\right]^T \right]\le 
+O(t)^{t/2}
+$$
+Therefore, it is enough to add the slack variables 
+$B \in \mathbb{R}^{d^{\frac{t}{2}}\times d^{\frac{t}{2}}}$ and our axiom $Q_X(\omega, B)$ becomes
+$$
+\frac{k}{n}
+\sum \omega_i
+\left[(X_i - \mu(\omega))^{\otimes t/2}\right]
+\left[(X_i - \mu(\omega))^{\otimes t/2}\right]^T  =
+2 \expect_{Z \sim \mathcal{N}(0,I_d)^{\otimes \frac{n}{k}}} \left[
+\frac{k}{n} \sum_{s = 1}^{\frac{n}{k}}
+\left[Z_s^{\otimes t/2}\right]
+\left[Z_s^{\otimes t/2}\right]^T\right] - 
+BB^T.
+$$
+(Note that $2 \expect_{Z \sim \mathcal{N}(0,I_d)^{\otimes \frac{n}{k}}} \left[
+\frac{k}{n} \sum_{s = 1}^{\frac{n}{k}}
+\left[Z_s^{\otimes t/2}\right]
+\left[Z_s^{\otimes t/2}\right]^T\right]$ is just a real matrix and can be computed in time $d^{O(t)}$).
+This implies that for any tensor $v^{\otimes t/2}$ of a unit vector, we have 
+$$
+(v^{\otimes t/2})^T
+\left[
+\frac{k}{n}
+\sum \omega_i
+\left[(X_i - \mu(\omega))^{\otimes t/2}\right]
+\left[(X_i - \mu(\omega))^{\otimes t/2}\right]^T
+\right]
+(v^{\otimes t/2})
+\le $$
+$$
+(v^{\otimes t/2})^T\left[2 \expect_{Z \sim \mathcal{N}(0,I)^{\otimes \frac{n}{k}}} \left[
+\frac{k}{n} \sum_{s = 1}^{\frac{n}{k}}
+\left[Z_s^{\otimes t/2}\right]
+\left[Z_s^{\otimes t/2}\right]^T \right]\right] 
+v^{\otimes t/2}\le 
+O(t)^{t/2},
+$$
+as desired. The respective SoS proofs are now of the form $(\omega, B).$ We know that with high probability there exists a some $B_a$ for each true cluster 
+$S_a$ such that $(1_{S_a}, B_a)$ satisfies the constructed axioms. 
+
+\printbibliography
+
+\appendix
+
+\section{Omitted Details}
+\begin{lemma}
+\label{lem:tensornormfour}
+Let $(Y_1, Y_2, \ldots, Y_{s}) \sim \normal 0, \Sigma)^{\otimes s},$ where $s = \frac{n}{k}$ and $\Sigma\preceq I.$ Then, for any unit vector $v,$
+$$
+\frac{1}{s}\expect 
+\sum_{i = 1}^s \langle Y_i - \frac{1}{s}\sum_{j = 1}^s
+Y_j, v\rangle^4\le O(1). 
+$$
+\end{lemma}
+\begin{proof}
+First, note that it is enough to consider $\Sigma = I$ as otherwise for standard Gaussian vectors $Z_i,$ we have
+$$
+\langle Y_i - \frac{1}{s}\sum_{j = 1}^s
+Y_j, v\rangle = 
+\langle \Sigma^{1/2} Z_i - \frac{1}{s}\sum_{j = 1}^s
+\Sigma^{1/2}Z_j, v\rangle = 
+\langle Z_i - \frac{1}{s}\sum_{j = 1}^s
+Z_j,\Sigma^{1/2} v\rangle,
+$$
+but $||\Sigma^{1/2} v||\le ||v||\le 1.$ Now, for standard Gaussians, denoting \linebreak $T_i = Y_i - \frac{1}{s}\sum_{j = 1}^s
+Y_j\sim N(0, (1 - o(1))I),$
+we have the expression
+$
+\displaystyle
+\frac{1}{s}\expect 
+\sum_{i = 1}^s \langle T_i, v\rangle^4.
+$
+It is enough to show that $\expect\langle T_i, v\rangle^4 = O(1).$ Note, however, that 
+$$
+\expect\langle T_i, v\rangle^4 = 
+\sum_{p,q,r,\ell}
+(T_i)_p(T_i)_q(T_i)_r(T_i)_\ell v_pv_qv_rv_\ell.
+$$
+Since trivially $(T_i)_p,(T_i)_q$ are independent mean 0 Gaussians whenever $p \neq q,$ the above expression is equivalent to 
+$$
+\sum_{p,q}
+\expect
+(T_i)^2_p(T_i)^2_qv_p^2v_q^2 \le 
+\sum_{p,q}
+v_p^2v_q^2
+= ||v||_2^4\le 1,
+$$
+as desired.
+\end{proof}
+
+\noindent
+Using standard Gaussian concentration results, we also obtain the respective high-probability bounds. Intuitively, this works as 
+$$
+\frac{1}{s}\expect 
+\sum_{i = 1}^s \langle Y_i - \frac{1}{s}\sum_{j = 1}^s
+Y_j, v\rangle^4
+$$
+is a symmetric function of $ds$ iid Gaussians, so its gradient is relatively small. See more in \cite{Kothari2018RobustME}.
+\end{document}

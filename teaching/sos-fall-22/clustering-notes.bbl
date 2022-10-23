@@ -1,0 +1,244 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{diakonikolas2018list}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=e7ee044190b525d3659eaae1cce3086f}{%
+           family={Diakonikolas},
+           familyi={D\bibinitperiod},
+           given={Ilias},
+           giveni={I\bibinitperiod}}}%
+        {{hash=2e7df8218d6243197f479311cdd2db06}{%
+           family={Kane},
+           familyi={K\bibinitperiod},
+           given={Daniel\bibnamedelima M},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=36b5662d732cd89b548539ee37ade190}{%
+           family={Stewart},
+           familyi={S\bibinitperiod},
+           given={Alistair},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a022b893fbc192efbf21fd5726ac85cb}
+      \strng{fullhash}{a022b893fbc192efbf21fd5726ac85cb}
+      \strng{bibnamehash}{a022b893fbc192efbf21fd5726ac85cb}
+      \strng{authorbibnamehash}{a022b893fbc192efbf21fd5726ac85cb}
+      \strng{authornamehash}{a022b893fbc192efbf21fd5726ac85cb}
+      \strng{authorfullhash}{a022b893fbc192efbf21fd5726ac85cb}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 50th Annual ACM SIGACT Symposium on Theory of Computing}
+      \field{title}{List-decodable robust mean estimation and learning mixtures of spherical gaussians}
+      \field{year}{2018}
+      \field{pages}{1047\bibrangedash 1060}
+      \range{pages}{14}
+    \endentry
+    \entry{Fan2009MeshCB}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=33de7167a81bfe07095cf69349a09822}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Fengtao},
+           giveni={F\bibinitperiod}}}%
+        {{hash=b3dbae57f80b39888aaa706476850152}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Fuhua},
+           giveni={F\bibinitperiod}}}%
+        {{hash=015f11fd5b0ed08397b9504d1194c6d5}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Conglin},
+           giveni={C\bibinitperiod}}}%
+        {{hash=78be8ea0cb80e4e1b59bf06100942e90}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yong},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=5b67569da36808e020da6fd903485bd2}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jianzhong},
+           giveni={J\bibinitperiod}}}%
+        {{hash=151bfd3d1cc379350ca051837297d753}{%
+           family={Lai},
+           familyi={L\bibinitperiod},
+           given={Shuhua},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9ff133587dce5033f40f3ccb8a8b5235}
+      \strng{fullhash}{9ff133587dce5033f40f3ccb8a8b5235}
+      \strng{bibnamehash}{9ff133587dce5033f40f3ccb8a8b5235}
+      \strng{authorbibnamehash}{9ff133587dce5033f40f3ccb8a8b5235}
+      \strng{authornamehash}{9ff133587dce5033f40f3ccb8a8b5235}
+      \strng{authorfullhash}{9ff133587dce5033f40f3ccb8a8b5235}
+      \field{sortinit}{F}
+      \field{sortinithash}{fb0c0faa89eb6abae8213bf60e6799ea}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Symposium on Solid and Physical Modeling}
+      \field{title}{Mesh clustering by approximating centroidal Voronoi tessellation}
+      \field{year}{2009}
+    \endentry
+    \entry{HopkinsLi}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=fc4cfa198cc8ef80531702f7e6b984a8}{%
+           family={Hopkins},
+           familyi={H\bibinitperiod},
+           given={Samuel\bibnamedelima B.},
+           giveni={S\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=3b3012e4ca17639feb14b7bd7910c117}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Jerry},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Los Angeles, CA, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{846e4ec7dff5145343e62158c5f55fbc}
+      \strng{fullhash}{846e4ec7dff5145343e62158c5f55fbc}
+      \strng{bibnamehash}{846e4ec7dff5145343e62158c5f55fbc}
+      \strng{authorbibnamehash}{846e4ec7dff5145343e62158c5f55fbc}
+      \strng{authornamehash}{846e4ec7dff5145343e62158c5f55fbc}
+      \strng{authorfullhash}{846e4ec7dff5145343e62158c5f55fbc}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 50th Annual ACM SIGACT Symposium on Theory of Computing}
+      \field{isbn}{9781450355599}
+      \field{series}{STOC 2018}
+      \field{title}{Mixture Models, Robustness, and Sum of Squares Proofs}
+      \field{year}{2018}
+      \field{pages}{1021\bibrangedash 1034}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1145/3188745.3188748
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3188745.3188748
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3188745.3188748
+      \endverb
+    \endentry
+    \entry{Kothari2018RobustME}{article}{}
+      \name{author}{3}{}{%
+        {{hash=6923c3bca207dac7e98a10615711795f}{%
+           family={Kothari},
+           familyi={K\bibinitperiod},
+           given={Pravesh},
+           giveni={P\bibinitperiod}}}%
+        {{hash=fe7a7e80c1857d185d3ab01f15fe584d}{%
+           family={Steinhardt},
+           familyi={S\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=290e41669ebf55dedb8393e995b84822}{%
+           family={Steurer},
+           familyi={S\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{8da4897a93017974804de3bd9a6a6313}
+      \strng{fullhash}{8da4897a93017974804de3bd9a6a6313}
+      \strng{bibnamehash}{8da4897a93017974804de3bd9a6a6313}
+      \strng{authorbibnamehash}{8da4897a93017974804de3bd9a6a6313}
+      \strng{authornamehash}{8da4897a93017974804de3bd9a6a6313}
+      \strng{authorfullhash}{8da4897a93017974804de3bd9a6a6313}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the 50th Annual ACM SIGACT Symposium on Theory of Computing}
+      \field{title}{Robust moment estimation and improved clustering via sum of squares}
+      \field{year}{2018}
+    \endentry
+    \entry{LiuLi}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=31a6608c077838da3e3799962844cc2a}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Allen},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3b3012e4ca17639feb14b7bd7910c117}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Jerry},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{c74200f286f54bce5150c368172178bb}
+      \strng{fullhash}{c74200f286f54bce5150c368172178bb}
+      \strng{bibnamehash}{c74200f286f54bce5150c368172178bb}
+      \strng{authorbibnamehash}{c74200f286f54bce5150c368172178bb}
+      \strng{authornamehash}{c74200f286f54bce5150c368172178bb}
+      \strng{authorfullhash}{c74200f286f54bce5150c368172178bb}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781450392648}
+      \field{series}{STOC 2022}
+      \field{title}{Clustering Mixtures with Almost Optimal Separation in Polynomial Time}
+      \field{year}{2022}
+    \endentry
+    \entry{expclustering}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f945cb644f60f5c1d47ef6bce1233586}{%
+           family={Regev},
+           familyi={R\bibinitperiod},
+           given={Oded},
+           giveni={O\bibinitperiod}}}%
+        {{hash=c4747c73d67e6e8fc74e39f5afc81059}{%
+           family={Vijayaraghavan},
+           familyi={V\bibinitperiod},
+           given={Aravindan},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f5d7153378827d1daeb510aacd4198a}
+      \strng{fullhash}{7f5d7153378827d1daeb510aacd4198a}
+      \strng{bibnamehash}{7f5d7153378827d1daeb510aacd4198a}
+      \strng{authorbibnamehash}{7f5d7153378827d1daeb510aacd4198a}
+      \strng{authornamehash}{7f5d7153378827d1daeb510aacd4198a}
+      \strng{authorfullhash}{7f5d7153378827d1daeb510aacd4198a}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{On Learning Mixtures of Well-Separated Gaussians}
+      \field{year}{2017}
+      \field{pages}{85\bibrangedash 96}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1109/FOCS.2017.17
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
