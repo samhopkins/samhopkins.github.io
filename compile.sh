@@ -19,4 +19,6 @@ pandoc -s -o teaching/sos-fall-22/global-correlation-rounding.html -c ../../styl
 pandoc -s -o teaching/sos-fall-22/refuting-random-csps.html -c ../../styling.css --mathjax teaching/sos-fall-22/refuting-random-csps.md
 pandoc -s -o teaching/sos-fall-22/sos-fall-22-pset-1.html -c ../../styling.css --mathjax teaching/sos-fall-22/sos-fall-22-pset-1.md
 pandoc -s -o teaching/sos-fall-22/sos-fall-22-pset-1-solutions.html -c ../../styling.css --mathjax teaching/sos-fall-22/sos-fall-22-pset-1-solutions.md
+pandoc -s -o teaching/sos-fall-22/sos-fall-22-pset-2.html -c ../../styling.css --mathjax teaching/sos-fall-22/sos-fall-22-pset-2.md
+
 
