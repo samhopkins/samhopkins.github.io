@@ -23,7 +23,7 @@ You may use external resources such as Wikipedia to look up material which would
 $$(x^2 + 1)y = z^2.$$
 Since it implies $y = z^2 / (1+x^2)$, clearly any solution $(x,y,z)$ has $y \geq 0$. We will see if SoS can capture this reasoning.
 
-*Part A:* Show that there is a degree-4 pseudoexpectation $\pE$ in variables $x,y,z$ such that $\pE \vDash (x^2 + 1)y = z^2$ but $\pE y < 0$. (Computer-aided proofs are fine.)
+*Part A:* Show that there is a degree-4 pseudoexpectation $\pE$ in variables $x,y,z$ such that $\pE \vDash (x^2 + 1)y = z^2$ but $\pE y < 0$. (Computer-aided proofs are fine.) In this exercise, take $\pE \vdash (x^2 + 1)y = z^2$, where $\pE$ is degree $4$, to mean that for any degree $\leq 1$ polynomial $p(x,y,z)$, we have $\pE p(x,y,z) (x^2 + 1)y = \pE p(x,y,z) z^2$. (This differs slightly from the definition we gave in class.)
 
 *Part B:* Give an SoS refutation of the following system of inequalities, for any $c > 0$: $\{ (x^2 + 1)y = z^2, y \leq -c \}$.
 
@@ -37,9 +37,9 @@ In this problem you will show that there is a polynomial-time robust mean estima
 
 (i) if $Y_1,\ldots,Y_n$ are an $\e$-corruption of any $X_1,\ldots,X_n$ for which the conclusion of Part A holds, and $w_1,\ldots,w_n$ are the indicators for $i$ such that $X_i = Y_i$, and $X_i' = X_i$, then the auxiliary variables can be set so that $Q$ is satisfied, and
 
-(ii) $Q \cup \{ \|v\|^2 = 1\} \proves_{O(1)} \frac 1 n \sum_{i \leq n} \iprod{w_i X_i' - \mu(w),v}^4 \leq 1.01 \|v\|^2$, where $\mu(w) = \frac 1 n \sum_{i \leq n} w_i X_i'$.
+(ii) $Q \cup \{ \|v\|^2 = 1\} \proves_{O(1)} \frac 1 n \sum_{i \leq n} \iprod{ X_i' - \mu(X'),v}^4 \leq 1.01 \|v\|^2$, where $\mu(X') = \frac 1 n \sum_{i \leq n} X_i'$.
 
-*Part C:* Show that the system of polynomials you constructed in Part B SoS-implies (in constant degree) the inequality $\|\overline{\mu} - \mu(w)\|^t \leq O(\e^{3/4})^t$, for some even $t$. (All whp over the non-corrupted samples $X_1,\ldots,X_n$.)
+*Part C:* Show that the system of polynomials you constructed in Part B SoS-implies (in constant degree) the inequality $\|\overline{\mu} - \mu(X')\|^t \leq O(\e^{3/4})^t$, for some even $t$. (All whp over the non-corrupted samples $X_1,\ldots,X_n$.)
 
 *Part D:* Describe a polynomial-time algorithm which achieves the robust mean estimation guarantee described above. (You don't need to provide a full analysis.)
 
@@ -52,7 +52,7 @@ In this problem you will show that there is a polynomial-time robust mean estima
 
 In this problem we will see a glimpse of how to do better, by constructing a more sophisticated kind of SoS proof.
 
-Let $M$ be an $n \times n$ matrix of rank $r$, $M = \sum_{i=1}^r a_i a_i^\top$, such that $a_1,\ldots,a_r$ are orthonormal and $\|a_i\|_\infty \leq O(1/sqrt n)$. It turns out that, under this assumption, if $\Omega$ is a randomly chosen set of $m \gg r n (\log n)^2$ entries of $M$, then with high probability there exists a symmetric matrix $A$ such that
+Let $M$ be an $n \times n$ matrix of rank $r$, $M = \sum_{i=1}^r a_i a_i^\top$, such that $a_1,\ldots,a_r$ are orthonormal and $\|a_i\|_\infty \leq O(1/\sqrt n)$. It turns out that, under this assumption, if $\Omega$ is a randomly chosen set of $m \gg r n (\log n)^2$ entries of $M$, then with high probability there exists a symmetric matrix $A$ such that
 $$-0.9(I - M) \preceq A - M \preceq 0.9(I - M),$$
 and furthermore, $A$ is nonzero only on entries in $\Omega$. Intuitively, this says that there is a matrix $A$ which is zero off of $\Omega$ and which agrees perfectly with $M$ in directions $a_1,\ldots,a_r$, incurring error only in the orthogonal complement of $a_1,\ldots,a_r$.
 
