@@ -31,7 +31,7 @@ Since it implies $y = z^2 / (1+x^2)$, clearly any solution $(x,y,z)$ has $y \geq
 
 In this problem you will show that there is a polynomial-time robust mean estimation algorithm which takes $\e$-corrupted samples $X_1,\ldots,X_n$ from $D$ and returns $\hat{\mu}$ such that $\|\hat{\mu} - \mu\| \leq O(\e^{3/4})$. (In class we proved only $O(\sqrt \e)$.)
 
-*Part A:* Show that, with high probability over $X_1,\ldots,X_n \sim D$, for $n \leq d^{O(1)}$, $\{\|v\| = 1\} \proves_{O(d)} \frac 1 n \sum_{i \leq n} \iprod{X_i - \overline{\mu},v}^4 \leq 1.01$, where $\overline{\mu} = \frac 1 n \sum_{i \leq n} X_i$.
+*Part A:* Show that, with high probability over $X_1,\ldots,X_n \sim D$, for $n \leq d^{O(1)}$, $\{\|v\| = 1\} \proves_{O(1)} \frac 1 n \sum_{i \leq n} \iprod{X_i - \overline{\mu},v}^4 \leq 1.01$, where $\overline{\mu} = \frac 1 n \sum_{i \leq n} X_i$.
 
 *Part B:* Construct a system of equations $Q_{Y_1,\ldots,Y_n}$ in variables $w_1,\ldots,w_n, X_1',\ldots,X_n'$, and $(nd)^{O(1)}$ auxiliary variables such that 
 
