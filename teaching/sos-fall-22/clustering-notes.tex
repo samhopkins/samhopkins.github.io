@@ -709,17 +709,15 @@ has singular values of non-constant order, it is still the case that when it act
 holds with high probability (we defer this proof to \cref{lem:tensornormfour}).\\
 
 \noindent
-Something more can be show to hold true. \cref{eq:tensorbound} holds in expectation and with high probability
+Something more can be show to hold true: in fact, as long as $n \geq (kd)^{O(1)}$, standard concentration results imply that every entry of the matrix $\tfrac k n \sum_{i \in S_a} \left [ Y_i^{\otimes t/2} \right ] \left [ Y_i^{\otimes t/2} \right ]^\top$ concentrates, and consequently that, with high probability,
 $$
 \frac{k}{n}
 \sum_{i \in S_a}
 \left[Y_i^{\otimes t/2}\right]
 \left[Y_i^{\otimes t/2}\right]^T \preceq 
- 2 \expect_{Z \sim \mathcal{N}(0,I_d)^{\otimes \frac{n}{k}}} \left[
-\frac{k}{n} \sum_{s = 1}^{\frac{n}{k}}
-\left[Z_s^{\otimes t/2}\right]
-\left[Z_s^{\otimes t/2}\right]^T \right]\le 
-O(t)^{t/2}
+ \expect_{Z \sim \mathcal{N}(0,I_d)} \left[
+\left[Z^{\otimes t/2}\right]
+\left[Z^{\otimes t/2}\right]^T \right] + 0.01 I
 $$
 Therefore, it is enough to add the slack variables 
 $B \in \mathbb{R}^{d^{\frac{t}{2}}\times d^{\frac{t}{2}}}$ and our axiom $Q_X(\omega, B)$ becomes
@@ -728,17 +726,15 @@ $$
 \sum \omega_i
 \left[(X_i - \mu(\omega))^{\otimes t/2}\right]
 \left[(X_i - \mu(\omega))^{\otimes t/2}\right]^T  =
-2 \expect_{Z \sim \mathcal{N}(0,I_d)^{\otimes \frac{n}{k}}} \left[
-\frac{k}{n} \sum_{s = 1}^{\frac{n}{k}}
-\left[Z_s^{\otimes t/2}\right]
-\left[Z_s^{\otimes t/2}\right]^T\right] - 
-BB^T.
+\expect_{Z \sim \mathcal{N}(0,I_d)} \left[
+\left[Z^{\otimes t/2}\right]
+\left[Z^{\otimes t/2}\right]^T \right] + 0.01 I - BB^\top
 $$
-(Note that $2 \expect_{Z \sim \mathcal{N}(0,I_d)^{\otimes \frac{n}{k}}} \left[
-\frac{k}{n} \sum_{s = 1}^{\frac{n}{k}}
-\left[Z_s^{\otimes t/2}\right]
-\left[Z_s^{\otimes t/2}\right]^T\right]$ is just a real matrix and can be computed in time $d^{O(t)}$).
-This implies that for any tensor $v^{\otimes t/2}$ of a unit vector, we have 
+(Note that $\expect_{Z \sim \mathcal{N}(0,I_d)} \left[
+\left[Z^{\otimes t/2}\right]
+\left[Z^{\otimes t/2}\right]^T \right]$
+is just a real matrix and can be computed in time $d^{O(t)}$).
+This axiom implies the SoS inequality in additional indeterminates $v = v_1,\ldots,v_d$
 $$
 (v^{\otimes t/2})^T
 \left[
@@ -750,14 +746,13 @@ $$
 (v^{\otimes t/2})
 \le $$
 $$
-(v^{\otimes t/2})^T\left[2 \expect_{Z \sim \mathcal{N}(0,I)^{\otimes \frac{n}{k}}} \left[
-\frac{k}{n} \sum_{s = 1}^{\frac{n}{k}}
-\left[Z_s^{\otimes t/2}\right]
-\left[Z_s^{\otimes t/2}\right]^T \right]\right] 
+(v^{\otimes t/2})^T \left[2 \expect_{Z \sim \mathcal{N}(0,I)} \left[
+\left[Z^{\otimes t/2}\right]
+\left[Z^{\otimes t/2}\right]^T \right] + 0.01 I\right] 
 v^{\otimes t/2}\le 
-O(t)^{t/2},
+O(t)^{t/2} \|v\|_2^t,
 $$
-as desired. The respective SoS proofs are now of the form $(\omega, B).$ We know that with high probability there exists a some $B_a$ for each true cluster 
+as desired. The respective SoS proofs are now in indeterminates $(\omega, B).$ We know that with high probability there exists a some $B_a$ for each true cluster 
 $S_a$ such that $(1_{S_a}, B_a)$ satisfies the constructed axioms. 
 
 \printbibliography
