@@ -1,9 +1,11 @@
 ## Publications
 
 
-#### 2022+
+#### 2022
 
-**The Franz-Parisi Criterion and Computational Trade-offs in High Dimensional Statistics.** *Afonso S. Bandeira, Ahmed El Alaoui, Samuel B. Hopkins, Tselil Schramm, Alexander S. Wein, Ilias Zadik.* Manuscript. [arxiv](https://arxiv.org/abs/2205.09727)
+**Privacy Induces Robustness: Information-Computation Gaps and Sparse Mean Estimation.** *Kristian Georgiev, Samuel B. Hopkins.* NeurIPS 2022. [arxiv](https://arxiv.org/abs/2211.00724)
+
+**The Franz-Parisi Criterion and Computational Trade-offs in High Dimensional Statistics.** *Afonso S. Bandeira, Ahmed El Alaoui, Samuel B. Hopkins, Tselil Schramm, Alexander S. Wein, Ilias Zadik.* NeurIPS 2022, Oral. [arxiv](https://arxiv.org/abs/2205.09727)
 
 **Efficient Mean Estimation with Pure Differential Privacy via a Sum-of-Squares Exponential Mechanism.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid.* STOC 2022. [arxiv](https://arxiv.org/abs/2111.12981)
 

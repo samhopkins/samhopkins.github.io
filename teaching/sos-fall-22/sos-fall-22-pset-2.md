@@ -59,3 +59,14 @@ and furthermore, $A$ is nonzero only on entries in $\Omega$. Intuitively, this s
 (The construction of this matrix is not at all obvious and we will not investigate it here.)
 
 Show the following consequence: if the matrix $A$ exists, then the following implication has a degree $O(1)$ SoS proof. If $B$ is an $n \times r$ matrix of variables, then $\{ (BB^\top)_{ij} = M_{ij} \text{ for } ij \in \Omega, B^\top B = I_{r \times r} \} \proves_{O(1)} \|BB^\top - M\|_F^2 = 0$. This says that the entries $\Omega$ perfectly identify $M$, and furthermore that this identifiability has an SoS proof.
+
+<details>
+<summary>Problem 4 hints</summary>
+
+Hint 1: First of all, it would be enough to give an SoS proof that $\langle M, BB^\top \rangle \geq r$ (prove this!).
+
+Hint 2: Let's think about what the two properties of $A$ allow us to *do* with it. First of all, since $A$ is zero off of $\Omega$, if we have any two matrices $C,D$ whose $\Omega$ entries are identical, $\langle A, C \rangle = \langle A,D \rangle$. Second, $A$ is a proxy for $M$ in the sense that for any PSD matrix $X$, $\langle A, X \rangle = \langle M,X \rangle \pm 0.9 \langle M^\perp, X \rangle$, where $M^\perp = I - M$ is the projector perpendicular to $M$. This is especially  useful if $\langle M^\perp, X \rangle = 0$...
+
+Hint 3: Can you lower-bound $\langle M,BB^\top \rangle$ using $\langle A, BB^\top \rangle$? And then, can you lower bound $\langle A, BB^\top \rangle$ using $\langle A, M \rangle$ ? How big is this last quantity?
+
+</details>

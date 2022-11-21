@@ -11,7 +11,7 @@ My papers on [Google Scholar](https://scholar.google.com/citations?user=E_a3VB4A
 
 [I](pics/tongue.jpg) [like](pics/mtdiablo.jpg) [bikes](pics/snow.jpg).
 
-I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](http://www-users.math.umn.edu/~shopkins/)?
+I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](https://www.samuelfhopkins.com/)?
 
 ### Contact
 Office: G666, Stata Center (Building 32), MIT\
