@@ -1,6 +1,10 @@
 ## Publications
 
 
+#### 2023+
+
+**Robustness Implies Privacy in Statistical Estimation.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid, Shyam Narayanan.* In submission. [arxiv](http://arxiv.org/abs/2212.05015)
+
 #### 2022
 
 **Privacy Induces Robustness: Information-Computation Gaps and Sparse Mean Estimation.** *Kristian Georgiev, Samuel B. Hopkins.* NeurIPS 2022. [arxiv](https://arxiv.org/abs/2211.00724)
