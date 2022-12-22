@@ -40,6 +40,7 @@ In this problem you will show that there is a polynomial-time robust mean estima
 (ii) $Q \cup \{ \|v\|^2 = 1\} \proves_{O(1)} \frac 1 n \sum_{i \leq n} \iprod{ X_i' - \mu(X'),v}^4 \leq 1.01$, where $\mu(X') = \frac 1 n \sum_{i \leq n} X_i'$.
 
 *Part C:* Show that the system of polynomials you constructed in Part B SoS-implies (in constant degree) the inequality $\|\overline{\mu} - \mu(X')\|^t \leq O(\e^{3/4})^t$, for some even $t$. (All whp over the non-corrupted samples $X_1,\ldots,X_n$.)
+UPDATE: there is a small bug in this statement! But you can prove a related inequality which still allows a solution to part D below.
 
 *Part D:* Describe a polynomial-time algorithm which achieves the robust mean estimation guarantee described above. (You don't need to provide a full analysis.)
 

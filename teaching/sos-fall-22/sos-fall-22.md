@@ -41,7 +41,7 @@ No.              Date       Topics                                              
 5                Oct. 14    clustering mixture models                                         [scribe notes](clustering-notes.pdf) [Sam's old notes](http://www.samuelbhopkins.com/clustering.pdf) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/04-clustering-gaussians.pdf) [video](https://mit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9076b79e-37f6-46a8-aa1d-af2c01287dd5)
 6                Oct. 21    tensor decomposition                                              [notes](http://www.samuelbhopkins.com/tensor-decomp-notes.pdf) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes21/01-tensor-decomposition.pdf) [video](https://mit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7718484a-5ad4-4070-9b9e-af33017ef454)
 7                Oct. 28    lower bounds 1: CSPs                                              Barak-Steurer, sections 3.1 and 3.2. [video (no audio)](https://mit.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f04b6b6e-2a88-4133-9143-af3901021001) 
-8                Nov. 4     lower bounds 2: planted clique
+8                Nov. 4     lower bounds 2: planted clique                                    [notes](planted-clique.pdf)
 9                Nov. 18    fast algorithms 1: spectral methods
 10               Dec. 2     fast algorithms 2: matrix multiplicative weights
 11               Dec. 9     differential privacy? best separable state? extension complexity?
