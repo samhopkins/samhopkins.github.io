@@ -1,7 +1,7 @@
 
 *algorithms, theory of machine learning, semidefinite programming, sum of squares method, bicycles. he/him.*
 
-![](sam_headshot_new.jpeg){.headshot}
+![](sam_headshot_professional_circle.jpg){.headshot}
 
 I am a mathematician and computer scientist. I am employed as an Assistant Professor at MIT, in the [Theory of Computing](https://toc.csail.mit.edu/) group in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/). If you are interested in working with me as a PhD student, please [apply](https://www.eecs.mit.edu/academics-admissions/graduate-program/admissions) to MIT's EECS PhD program!
 
@@ -17,6 +17,7 @@ I am Samuel B. Hopkins. Maybe you are looking for [Samuel Francis Hopkins](https
 Office: G666, Stata Center (Building 32), MIT\
 *samhop at mit.edu*
 
+*photo credit: Michael Grimmett*
 
 
 
