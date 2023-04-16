@@ -3,7 +3,7 @@
 
 ![](sam_headshot_professional_circle.jpg){.headshot}
 
-I am a mathematician and computer scientist. I am employed as an Assistant Professor at MIT, in the [Theory of Computing](https://toc.csail.mit.edu/) group in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/). If you are interested in working with me as a PhD student, please [apply](https://www.eecs.mit.edu/academics-admissions/graduate-program/admissions) to MIT's EECS PhD program!
+I am a mathematician and computer scientist. I am employed as an Assistant Professor at MIT, in the [Theory of Computing](https://toc.csail.mit.edu/) group in the [Department of Electrical Engineering and Computer Science](https://www.eecs.mit.edu/), where I hold the Jamieson Career Development Chair.
 
 Previously, I was a [Miller](http://miller.berkeley.edu/) fellow in the [theory group](http://theory.cs.berkeley.edu/) at UC Berkeley, hosted by [Prasad Raghavendra](https://people.eecs.berkeley.edu/~prasad/) and [Luca Trevisan](https://lucatrevisan.github.io/). Before that, I got my PhD at [Cornell](https://www.cs.cornell.edu/research/theory), advised by [David Steurer](http://www.dsteurer.org/).
 
@@ -18,7 +18,3 @@ Office: G666, Stata Center (Building 32), MIT\
 *samhop at mit.edu*
 
 *photo credit: Michael Grimmett*
-
-
-
-
