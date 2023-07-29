@@ -3,6 +3,8 @@
 
 #### 2023+
 
+**The Full Landscape of Robust Mean Testing: Sharp Separations between Oblivious and Adaptive Contamination.** *Cl&#233;ment L. Canonne, Samuel B. Hopkins, Jerry Li, Allen Liu, Shyam Narayanan.* FOCS 2023. [arxiv](https://arxiv.org/abs/2307.10273)
+
 **Fast, Sample-Efficient, Affine-Invariant Private Mean and Covariance Estimation for Subgaussian Distributions.** *Gavin Brown, Samuel B. Hopkins, Adam Smith.* COLT 2023. Best student paper award, shared with [this paper](https://arxiv.org/abs/2301.07078). [arxiv](https://arxiv.org/abs/2301.12250) [blog post](https://differentialprivacy.org/colt23-bsp/)
 
 **Robustness Implies Privacy in Statistical Estimation.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid, Shyam Narayanan.* STOC 2023. [arxiv](http://arxiv.org/abs/2212.05015)
