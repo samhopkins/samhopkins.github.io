@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>lec1-sam</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../../styling.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="course-overview-notes">Course Overview Notes</h2>
+<ul>
+<li><p>Bad news: can’t learn a generic probability distribution in high dimensions with a reasonable number of samples.</p></li>
+<li><p>Where do we go from here? We need to narrow the problem so that it becomes tractable.</p></li>
+<li><p>Next lecture we will see how to a very strong assumption – Gaussian distribution leads to a tractable learning problem.</p></li>
+<li><p>This course is about the interplay of assumptions about the world, what learning and inference questions they make tractable, and what algorithmic strategies we can use to tackle those questions.</p></li>
+<li><p>4 themes</p></li>
+</ul>
+<ol type="1">
+<li><p>language: we need to express nuanced assumptions about what kind of probability distribution/population we are getting data from. “graphical models” for expressing conditional independence assumptions, moment &amp; tail bounds for expressing a priori knowledge about how spread out or concentrated a distribution is.</p></li>
+<li><p>probability: this is a rigorous mathematical course, and we will need to develop a lot of tools from probability (and linear algebra, and optimization) along the way.</p></li>
+<li><p>algorithms: we want solutions to inference problems which use reasonable amounts of data and reasonable amounts of computation. we will explore many algorithmic strategies for inference problems (the meat of the course!)</p></li>
+<li><p>computational complexity: sometimes computational resources are a barrier. we will develop tools to understand when this is the case for problems in high-dimensional learning/inference/statistics.</p></li>
+</ol>
+<ul>
+<li>3 modules</li>
+</ul>
+<ol type="1">
+<li><p>graphical models: language for conditional independence, allows us to express a variety of interesting and useful learning problems, and develop algorithms.</p></li>
+<li><p>weak assumptions and robustness: when we don’t have enough a priori knowledge to make conditional independence assumptions, what can we still learn? heavy-tailed statistics, contamination model. sum of squares algorithms.</p></li>
+<li><p>computational complexity: statistical query lower bounds, reductions from cryptographic problems and planted clique, “low-degree” method.</p></li>
+</ol>
+</body>
+</html>
