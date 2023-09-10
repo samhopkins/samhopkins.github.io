@@ -17,8 +17,8 @@
 
 No.              Date       Topics                                                            Notes/References
 -----------      ----       ------                                                            ----------------
-1                Sept. 7    introduction, uniformity testing on the hypercube                 
-2                Sept. 12   learning high-dimensional gaussians                                
+1                Sept. 7    introduction, uniformity testing on the hypercube                 [uniformity testing](./lec1.pdf) [course overview](./lec1-sam.html)
+2                Sept. 12   learning high-dimensional gaussians                               [notes](./lec2.pdf)
 
 
 ### Assignments
