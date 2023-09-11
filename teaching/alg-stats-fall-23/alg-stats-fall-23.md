@@ -17,8 +17,8 @@
 
 No.              Date       Topics                                                            Notes/References
 -----------      ----       ------                                                            ----------------
-1                Sept. 7    introduction, uniformity testing on the hypercube                 [uniformity testing](./lec1.pdf) [course overview](./lec1-sam.html)
-2                Sept. 12   learning high-dimensional gaussians                               [notes](./lec2.pdf)
+1                Sept. 7    introduction, uniformity testing on the hypercube                 [notes part 1](https://www.dropbox.com/scl/fi/sp52o6sc4upezz1ar3mee/Lecture-1-Intro-Uniformity-Testing.pdf?rlkey=n8r4mc9lk344jgvlz96vwqqwg&dl=0), [notes part 2](./lec1-sam.html)
+2                Sept. 12   learning high-dimensional gaussians                               [notes](https://www.dropbox.com/scl/fi/6plxi4ty005coecythb1f/Lecture-2-Learning-a-Gaussian.pdf?rlkey=bysoymffjgws5e2au1l32d3wg&dl=0), [O'Donnell lecture on Gaussians](https://www.youtube.com/watch?v=hRqhf1edVIo)
 
 
 ### Assignments
