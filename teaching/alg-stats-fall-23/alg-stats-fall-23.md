@@ -1,4 +1,4 @@
-## Algorithmic Statistics, Fall '23, MIT
+## Algorithmic Statistics (6.S896), Fall '23, MIT
 
 **Prerequisites:** Mathematical maturity is the main prerequisite. Familiarity with linear algebra, probability, discrete math, and algorithms at the advanced undergraduate level will be assumed.
 
@@ -6,7 +6,7 @@
 
 **Location:** 32-124
 
-**Instructors:** [Costis Daskalakis](http://people.csail.mit.edu/costis/) and [Sam Hopkins](../index.html)
+**Instructors:** [Costis Daskalakis](http://people.csail.mit.edu/costis/) and [Sam Hopkins](../../index.html)
 
 **Office Hours:** By appointment.
 
