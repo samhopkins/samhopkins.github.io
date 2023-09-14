@@ -19,6 +19,7 @@ No.              Date       Topics                                              
 -----------      ----       ------                                                            ----------------
 1                Sept. 7    introduction, uniformity testing on the hypercube                 [notes part 1](https://www.dropbox.com/scl/fi/sp52o6sc4upezz1ar3mee/Lecture-1-Intro-Uniformity-Testing.pdf?rlkey=n8r4mc9lk344jgvlz96vwqqwg&dl=0), [notes part 2](./lec1-sam.html)
 2                Sept. 12   learning high-dimensional gaussians                               [notes](https://www.dropbox.com/scl/fi/uefdpycaob9zj351r38ss/Lecture-2-Learning-a-Gaussian.pdf?rlkey=7yh4gs7pnqgeu9dfxdvoqe010&dl=0), [O'Donnell lecture on Gaussians](https://www.youtube.com/watch?v=hRqhf1edVIo)
+3                Sept. 14   undirected graphical models                                       [notes](https://www.dropbox.com/scl/fi/ka2uas3prwr27fx207aa9/Lecture-3.pdf?rlkey=zxaei54se7syq2h1rk5432d2a&dl=0)
 
 
 ### Assignments
