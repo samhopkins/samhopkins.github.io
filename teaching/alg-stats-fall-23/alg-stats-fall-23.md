@@ -1,5 +1,16 @@
 ## Algorithmic Statistics (6.S896), Fall '23, MIT
 
+# Update: Course website moved!
+
+[new website](https://hackmd.io/@QkEI9EXuQp2xal2TYj7T2w/SklMHfUkT)
+
+
+
+
+# Old Course Website Below
+
+
+
 **Prerequisites:** Mathematical maturity is the main prerequisite. Familiarity with linear algebra, probability, discrete math, and algorithms at the advanced undergraduate level will be assumed.
 
 **Meeting time:** Tuesdays and Thursdays, 2:30pm-4:00pm
