@@ -3,13 +3,17 @@
 
 #### 2023+
 
+**A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi. Manuscript.
+
+**Beyond Catoni: Sharper Rates for Heavy-Tailed and Robust Mean Estimation.** Shivam Gupta, Samuel B. Hopkins, Eric Price. Manuscript. [arxiv](https://arxiv.org/abs/2311.13010)
+
 **Towards Practical Robustness Auditing for Linear Regression.** *Daniel Freund, Samuel B. Hopkins.* Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
 
 **The Full Landscape of Robust Mean Testing: Sharp Separations between Oblivious and Adaptive Contamination.** *Cl&#233;ment L. Canonne, Samuel B. Hopkins, Jerry Li, Allen Liu, Shyam Narayanan.* FOCS 2023. [arxiv](https://arxiv.org/abs/2307.10273)
 
 **Fast, Sample-Efficient, Affine-Invariant Private Mean and Covariance Estimation for Subgaussian Distributions.** *Gavin Brown, Samuel B. Hopkins, Adam Smith.* COLT 2023. Best student paper award, shared with [this paper](https://arxiv.org/abs/2301.07078). [arxiv](https://arxiv.org/abs/2301.12250) [blog post](https://differentialprivacy.org/colt23-bsp/)
 
-**Robustness Implies Privacy in Statistical Estimation.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid, Shyam Narayanan.* STOC 2023. [arxiv](http://arxiv.org/abs/2212.05015)
+**Robustness Implies Privacy in Statistical Estimation.** *Samuel B. Hopkins, Gautam Kamath, Mahbod Majid, Shyam Narayanan.* STOC 2023. [arxiv](http://arxiv.org/abs/2212.05015). Oral presentation at TPDP 2023.
 
 #### 2022
 
