@@ -3,9 +3,7 @@
 
 #### 2023+
 
-**A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi. Manuscript.
-
-**Beyond Catoni: Sharper Rates for Heavy-Tailed and Robust Mean Estimation.** Shivam Gupta, Samuel B. Hopkins, Eric Price. Manuscript. [arxiv](https://arxiv.org/abs/2311.13010)
+**A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi. Manuscript. [arxiv](https://arxiv.org/abs/2311.17840)
 
 **Towards Practical Robustness Auditing for Linear Regression.** *Daniel Freund, Samuel B. Hopkins.* Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
 
