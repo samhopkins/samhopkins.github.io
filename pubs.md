@@ -1,11 +1,16 @@
 ## Publications
 
 
-#### 2023+
+#### 2024+
+
+**Adversarially-Robust Inference on Trees via Belief Propagation.** Samuel B. Hopkins, Anqi Li. Manuscript. [arxiv]https://arxiv.org/abs/2404.00768
 
 **A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi. Manuscript. [arxiv](https://arxiv.org/abs/2311.17840)
 
 **Towards Practical Robustness Auditing for Linear Regression.** *Daniel Freund, Samuel B. Hopkins.* Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
+
+
+#### 2023
 
 **The Full Landscape of Robust Mean Testing: Sharp Separations between Oblivious and Adaptive Contamination.** *Cl&#233;ment L. Canonne, Samuel B. Hopkins, Jerry Li, Allen Liu, Shyam Narayanan.* FOCS 2023. [arxiv](https://arxiv.org/abs/2307.10273)
 
