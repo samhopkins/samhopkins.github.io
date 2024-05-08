@@ -1,5 +1,7 @@
 ## Teaching
 
+Spring 2024: 6.1210 -- Introduction to Algorithms
+
 Fall 2023: [6.S896 -- Algorithmic Statistics](https://hackmd.io/@QkEI9EXuQp2xal2TYj7T2w/SklMHfUkT)
 
 Spring 2023: 6.1210 -- Introduction to Algorithms
