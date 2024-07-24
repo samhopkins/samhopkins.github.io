@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>sos-fall-24</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../../styling.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="the-sum-of-squares-method-mit-6.s977-fall-24">The Sum of Squares Method (MIT 6.S977), Fall ’24</h2>
+<p>In this course we will study of algorithms and computational complexity through the lens of the Sum of Squares method (SoS), a powerful approach to algorithm design generalizing linear programming and spectral methods. We will choose some specific sub-topics based on student input, potentially including algorithms for combinatorial and continuous optimization (graphs, constraint satisfaction problems, unique games conjecture), applications to high-dimensional algorithmic statistics (robustness, privacy, method of moments), applications to quantum information, and an SoS perspective on computational complexity (of NP-hard problems and/or of statistical inference).</p>
+<p><strong>Prerequisites:</strong> Mathematical maturity is the main prerequisite. Familiarity with linear algebra, probability, discrete math, and algorithms at the advanced undergraduate level will be assumed.</p>
+<p><strong>Meeting time:</strong> Tuesdays and Thursdays, 9:30am – 11:00am</p>
+<p><strong>Location:</strong> 3-442</p>
+<p><strong>Instructor:</strong> <a href="../index.html">Sam Hopkins</a></p>
+<p><strong>Office Hours:</strong> By appointment.</p>
+<p><strong>Evaluation:</strong> Students will be expected to complete several problem sets and a research-oriented course project, which may consist of original research (theoretical and/or experimental!) and/or an exposition of 1 or 2 recent research papers. Weight for your final grade will be split: 50% psets, 50% course project.</p>
+<p><strong>Resources:</strong> Some of the material in this course has been covered in other excellent courses and books. Here is a partial list:</p>
+<ul>
+<li>A <a href="https://www.sumofsquares.org/public/index.html">book-in-progress</a> by Barak and Steurer</li>
+<li>A <a href="https://tselilschramm.org/sos-paradigm/sos-paradigm.html">course</a> by Tselil Schramm on SoS and statistics</li>
+<li>A <a href="https://eccc.weizmann.ac.il/report/2019/106/">book</a> by Fleming, Kothari, and Pitassi</li>
+<li>Course <a href="https://www.youtube.com/playlist?list=PL3NB_Sd9CrX-6CeApf12demgpe2PO4k8c">videos</a> by Kothari</li>
+<li>An <a href="../sos-fall-22/sos-fall-22.html">iteration of this course</a> from two years ago</li>
+</ul>
+<h3 id="lectures-lecture-notes">Lectures + Lecture Notes</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">No.</th>
+<th>Date</th>
+<th>Topics</th>
+<th>Notes/References</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td>9/5</td>
+<td>Linear proofs and quadratic proofs</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="assignments">Assignments</h3>
+<details>
+<summary>
+Course project – due some time in December
+</summary>
+<p>The course project is an opportunity for you to dive deeper into the SoS research literature, make connections to your own research, and more! There is a great deal of flexibility in choosing your project. However, I need to approve all the project topics before you embark on them! I expect you to schedule a discussion of your project with me <strong>before the end of October.</strong> You may (but are not required to!) work with a partner on your project.</p>
+<h4 id="possible-approaches-to-the-project">Possible approaches to the project:</h4>
+<ul>
+<li>Formulate a research question related to the course (and possibly also related to your main area of research) and investigate it.</li>
+<li>Read one or more papers from the SoS literature and write an exposition of them at a level understandable by the students of 6.S977. Optionally, extend one or more of the result in these papers.</li>
+<li>Implement one or more algorithms from the SoS literature and study their performance empirically.</li>
+<li>Combinations of any of the above.</li>
+</ul>
+<p>None of these options are preferred above others – in particular, original research is <em>not</em> a requirement for a successful project. (That said, it does of course carry many potential rewards – it is not uncommon for MIT course projects to end up as published papers!)</p>
+<h4 id="deliverables">Deliverables:</h4>
+<p>You should produce a written report on your project activities. For expository projects, this report is your exposition. For research projects, this document should discuss the research problem you decided to investigate, why it merits your attention, how it relates to the subject of the course, and your findings.</p>
+Reports may vary in length, but when grading, I promise to read the first 10 pages of your report (typeset in a reasonable font with reasonable margins). I will read further material at my discretion.
+</details>
+</body>
+</html>

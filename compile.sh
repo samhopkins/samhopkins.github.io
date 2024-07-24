@@ -23,3 +23,5 @@ pandoc -s -o teaching/sos-fall-22/sos-fall-22-pset-2.html -c ../../styling.css -
 
 pandoc -s -o teaching/alg-stats-fall-23/alg-stats-fall-23.html -c ../../styling.css --mathjax teaching/alg-stats-fall-23/alg-stats-fall-23.md
 pandoc -s -o teaching/alg-stats-fall-23/lec1-sam.html -c ../../styling.css --mathjax teaching/alg-stats-fall-23/lec1-sam.md
+
+pandoc -s -o teaching/sos-fall-24/sos-fall-24.html -c ../../styling.css --mathjax teaching/sos-fall-24/sos-fall-24.md
