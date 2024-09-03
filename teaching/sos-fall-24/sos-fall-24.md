@@ -8,12 +8,13 @@ In this course we will study of algorithms and computational complexity through 
 
 **Location:** 3-442
 
-**Instructor:** [Sam Hopkins](../index.html)
+**Instructor:** [Sam Hopkins](../../index.html)
 
-**Office Hours:** By appointment.
+**Office Hours:** Tuesdays, 11:15am -- 12:15pm
 
 **Evaluation:** Students will be expected to complete several problem sets and a research-oriented course project, which may consist of original research (theoretical and/or experimental!) and/or an exposition of 1 or 2 recent research papers.
-Weight for your final grade will be split: 50% psets, 50% course project.
+In addition, students will participate in grading each others' problem sets via a peer grading and feedback system.
+Weight for your final grade will be split: 50% psets, 10%  peer grading, 40% course project.
 
 **Resources:** Some of the material in this course has been covered in other excellent courses and books. Here is a partial list:
 
@@ -28,40 +29,38 @@ Weight for your final grade will be split: 50% psets, 50% course project.
 
 No.              Date       Topics                                                            Notes/References
 -----------      ----       ------                                                            ----------------
-1                9/5        Linear proofs and quadratic proofs                
-2                
-3                
-4                
-5                
-6                
-7                
-8                
-9                
-10               
-11               
+1                9/5        Linear proofs and quadratic proofs                                [lecture 1 notes](lecture-1.pdf)
+2                9/10       Goemans-Williamson rounding                                       [Barak-Steurer notes](https://www.sumofsquares.org/public/lec02-1_maxcut)
+3                9/12       Grothendieck inequality                                           [Barak-Steurer notes](https://www.sumofsquares.org/public/lec02-3_grothendieck)
+4                9/17
+5                9/19
+6                9/24
+7                9/26
+8                10/1
+9                10/3
+10               10/8
+11               10/10
+12               10/17
+13               10/22
+14               10/24
+15               10/29
+16               10/31
+17               11/5
+18               11/7
+19               11/12
+20               11/14
+21               11/19
+22               11/21
+23               11/26
+24               12/3
+25               12/5
+26               12/10
 
 
 
 
-### Assignments
+### Assignments 
 
+- [Problem Set 1](pset1.pdf)
 
-<details>
-<summary>Course project -- due some time in December</summary>
-The course project is an opportunity for you to dive deeper into the SoS research literature, make connections to your own research, and more! There is a great deal of flexibility in choosing your project. However, I need to approve all the project topics before you embark on them! I expect you to schedule a discussion of your project with me **before the end of October.** You may (but are not required to!) work with a partner on your project.
-
-#### Possible approaches to the project:
-
-- Formulate a research question related to the course (and possibly also related to your main area of research) and investigate it.
-- Read one or more papers from the SoS literature and write an exposition of them at a level understandable by the students of 6.S977. Optionally, extend one or more of the result in these papers.
-- Implement one or more algorithms from the SoS literature and study their performance empirically.
-- Combinations of any of the above.
-
-None of these options are preferred above others -- in particular, original research is *not* a requirement for a successful project. (That said, it does of course carry many potential rewards --  it is not uncommon for MIT course projects to end up as published papers!)
-
-#### Deliverables:
-
-You should produce a written report on your project activities. For expository projects, this report is your exposition. For research projects, this document should discuss the research problem you decided to investigate, why it merits your attention, how it relates to the subject of the course, and your findings.
-
-Reports may vary in length, but when grading, I promise to read the first 10 pages of your report (typeset in a reasonable font with reasonable margins). I will read further material at my discretion.
-</details>
+- [Course Project (subject to revision)](project.pdf)
