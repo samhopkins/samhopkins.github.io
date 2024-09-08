@@ -10,11 +10,18 @@ In this course we will study of algorithms and computational complexity through 
 
 **Instructor:** [Sam Hopkins](../../index.html)
 
-**Office Hours:** Tuesdays, 11:15am -- 12:15pm
+**Office Hours:** Tuesdays, 11:15am -- 12:15pm, 32-G666.
 
 **Evaluation:** Students will be expected to complete several problem sets and a research-oriented course project, which may consist of original research (theoretical and/or experimental!) and/or an exposition of 1 or 2 recent research papers.
-In addition, students will participate in grading each others' problem sets via a peer grading and feedback system.
-Weight for your final grade will be split: 50% psets, 10%  peer grading, 40% course project.
+In addition, students will provide peer reviews for each others' problem set solutions and course projects.
+Weight for your final grade will be split: 40% psets, 20% peer reviews, 40% course project.
+
+[Instructions](grading.pdf) for peer review.
+
+**Collaboration policy:** You may collaborate with your peers on your problem sets in the following manner. You can have meetings to discuss and solve problems. At the end of a meeting, all records from the meeting must be destroyed. (No written notes, no whiteboard/chalkboard photos, etc.) Then, you must write your solutions on your own.
+
+The course project can be done in groups of $2$.
+
 
 **Resources:** Some of the material in this course has been covered in other excellent courses and books. Here is a partial list:
 
