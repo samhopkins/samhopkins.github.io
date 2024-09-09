@@ -22,6 +22,12 @@ Weight for your final grade will be split: 40% psets, 20% peer reviews, 40% cour
 
 The course project can be done in groups of $2$.
 
+**Collaborating with Google and AI Chatbots:** While doing psets, you can ask Google/ChatGPT/Claude/Llama/etc questions about background material but not detailed questions about a particular problem. This will be policed on the honor system, i.e. not at all. 
+
+Example question which is within bounds: *What is the expected value of $\exp(-g^2 t^2)$ when $g$ is a standard Gaussian?*
+
+Example question which is out of bounds: *How do I prove that pinning reduces global correlation?*
+
 
 **Resources:** Some of the material in this course has been covered in other excellent courses and books. Here is a partial list:
 
@@ -30,6 +36,7 @@ The course project can be done in groups of $2$.
 - A [book](https://eccc.weizmann.ac.il/report/2019/106/) by Fleming, Kothari, and Pitassi
 - Course [videos](https://www.youtube.com/playlist?list=PL3NB_Sd9CrX-6CeApf12demgpe2PO4k8c) by Kothari
 - An [iteration of this course](../sos-fall-22/sos-fall-22.html) from two years ago
+
 
 
 ### Lectures + Lecture Notes
