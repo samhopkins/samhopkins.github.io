@@ -43,10 +43,10 @@ Example question which is out of bounds: *How do I prove that pinning reduces gl
 
 No.              Date       Topics                                                            Notes/References
 -----------      ----       ------                                                            ----------------
-1                9/5        Linear proofs and quadratic proofs                                [lecture 1 notes](lecture-1.pdf)
-2                9/10       Goemans-Williamson rounding                                       [Barak-Steurer notes](https://www.sumofsquares.org/public/lec02-1_maxcut)
-3                9/12       Grothendieck inequality                                           [Barak-Steurer notes](https://www.sumofsquares.org/public/lec02-3_grothendieck)
-4                9/17
+1                9/5        Linear proofs and quadratic proofs                                [lecture notes](lecture-1.pdf)
+2                9/10       Pseudoexpectations                                                [lecture notes](lecture-1.pdf)
+3                9/12       Gaussian rounding                                                 [Barak-Steurer notes](https://www.sumofsquares.org/public/lec02-3_grothendieck)
+4                9/17       Ellipsoid algorithm and other quadratic programming               [Barak-Steurer notes](https://www.sumofsquares.org/public/lec02-3_grothendieck), [Charikar-Wirth](https://web.archive.org/web/20170809104118id_/http://courses.cs.washington.edu/courses/cse522/05au/charikargrothendieck.pdf) on Max-Cut Gain, [Shmoys-Williamson book](https://www.designofapproxalgs.com/book.pdf) for PSD quadratic programming, [lecture notes](lecture-1.pdf) for ellipsoid
 5                9/19
 6                9/24
 7                9/26
