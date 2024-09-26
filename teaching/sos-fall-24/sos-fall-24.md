@@ -48,8 +48,8 @@ No.              Date       Topics                                              
 3                9/12       Gaussian rounding                                                 [Barak-Steurer notes](https://www.sumofsquares.org/public/lec02-3_grothendieck)
 4                9/17       Ellipsoid algorithm and other quadratic programming               [Barak-Steurer notes](https://www.sumofsquares.org/public/lec02-3_grothendieck), [Charikar-Wirth](https://web.archive.org/web/20170809104118id_/http://courses.cs.washington.edu/courses/cse522/05au/charikargrothendieck.pdf) on Max-Cut Gain, [Shmoys-Williamson book](https://www.designofapproxalgs.com/book.pdf) for PSD quadratic programming, [lecture notes](lecture-1.pdf) for ellipsoid
 5                9/19       SoS over general domains, and beyond quadratics                   [Barak-Steurer notes](https://www.sumofsquares.org/public/lec-definitions-general)
-6                9/24       Dense CSPs, Part 1
-7                9/26       Dense CSPs, Part 2
+6                9/24       Dense CSPs, Part 1                                                [lecture notes](global-correlation-rounding.pdf) (work in progress)
+7                9/26       Dense CSPs, Part 2                                                [lecture notes](global-correlation-rounding.pdf) (work in progress)
 8                10/1
 9                10/3
 10               10/8
