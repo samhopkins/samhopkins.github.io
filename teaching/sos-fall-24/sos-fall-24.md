@@ -50,7 +50,7 @@ No.              Date       Topics                                              
 5                9/19       SoS over general domains, and beyond quadratics                   [Barak-Steurer notes](https://www.sumofsquares.org/public/lec-definitions-general)
 6                9/24       Dense CSPs, Part 1                                                [lecture notes](global-correlation-rounding.pdf) (work in progress)
 7                9/26       Dense CSPs, Part 2                                                [lecture notes](global-correlation-rounding.pdf) (work in progress)
-8                10/1
+8                10/1       Complexity of CSPs                                                Barak-Steurer, chapter 3
 9                10/3
 10               10/8
 11               10/10
