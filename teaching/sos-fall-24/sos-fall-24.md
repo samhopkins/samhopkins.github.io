@@ -51,7 +51,7 @@ No.              Date       Topics                                              
 6                9/24       Dense CSPs, Part 1                                                [lecture notes](global-correlation-rounding.pdf) (work in progress)
 7                9/26       Dense CSPs, Part 2                                                [lecture notes](global-correlation-rounding.pdf) (work in progress)
 8                10/1       Complexity of CSPs                                                Barak-Steurer, chapter 3
-9                10/3
+9                10/3       Random CSPs, Part 1                                               [scribe notes from 2022](../sos-fall-22/refuting-random-csps.html)
 10               10/8
 11               10/10
 12               10/17
