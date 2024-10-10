@@ -52,8 +52,8 @@ No.              Date       Topics                                              
 7                9/26       Dense CSPs, Part 2                                                [lecture notes](global-correlation-rounding.pdf) (work in progress)
 8                10/1       Complexity of CSPs                                                Barak-Steurer, chapter 3
 9                10/3       Random CSPs, Part 1                                               [scribe notes from 2022](../sos-fall-22/refuting-random-csps.html)
-10               10/8
-11               10/10
+10               10/8       Random CSPs, Part 2
+11               10/10      Robust mean estimation                                            [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/00-proofs-to-algs.pdf)
 12               10/17
 13               10/22
 14               10/24
