@@ -1,6 +1,10 @@
 ## Publications
 
+Author ordering is alphabetical unless otherwise noted.
+
 #### 2024+
+
+**Robustness Auditing for Linear Regression: To Singularity and Beyond.** _Ittai Rubinstein, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2410.07916) (Author ordering by contribution.)
 
 **Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
 
