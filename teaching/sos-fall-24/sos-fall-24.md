@@ -54,8 +54,8 @@ No.              Date       Topics                                              
 9                10/3       Random CSPs, Part 1                                               [scribe notes from 2022](../sos-fall-22/refuting-random-csps.html)
 10               10/8       Random CSPs, Part 2
 11               10/10      Robust mean estimation                                            [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/00-proofs-to-algs.pdf)
-12               10/17
-13               10/22
+12               10/17      Robust mean estimation, continued                                 [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/00-proofs-to-algs.pdf)
+13               10/22      Robust regression                                                 [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/08-robust-regression.pdf)
 14               10/24
 15               10/29
 16               10/31
@@ -78,5 +78,7 @@ No.              Date       Topics                                              
 - [Problem Set 1](pset1.pdf)
 
 - [Problem Set 2](pset2.pdf)
+
+- [Problem Set 3](pset3.pdf)
 
 - [Course Project (subject to revision)](project.pdf)
