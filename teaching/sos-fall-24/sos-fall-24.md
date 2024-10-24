@@ -56,8 +56,8 @@ No.              Date       Topics                                              
 11               10/10      Robust mean estimation                                            [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/00-proofs-to-algs.pdf)
 12               10/17      Robust mean estimation, continued                                 [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/00-proofs-to-algs.pdf)
 13               10/22      Robust regression                                                 [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/08-robust-regression.pdf)
-14               10/24
-15               10/29
+14               10/24      Mixture models                                                    [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/04-clustering-gaussians.pdf) [Hopkins notes](https://www.samuelbhopkins.com/clustering.pdf)
+15               10/29      Certifiable moments
 16               10/31
 17               11/5
 18               11/7
