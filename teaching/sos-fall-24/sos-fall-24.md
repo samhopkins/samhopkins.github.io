@@ -58,17 +58,18 @@ No.              Date       Topics                                              
 13               10/22      Robust regression                                                 [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/08-robust-regression.pdf)
 14               10/24      Mixture models                                                    [Schramm notes](https://tselilschramm.org/sos-paradigm/notes22/04-clustering-gaussians.pdf) [Hopkins notes](https://www.samuelbhopkins.com/clustering.pdf)
 15               10/29      Certifiable moments                                               [original paper](https://arxiv.org/abs/2410.21194)
-16               10/31
-17               11/5
-18               11/7
-19               11/12
-20               11/14
-21               11/19
-22               11/21
-23               11/26
-24               12/3
-25               12/5
-26               12/10
+16               10/31      Tensor decomposition, Part 1                                      [old video](https://mit.hosted.panopto.com/Panopto/Pages/Auth/Login.aspx?Auth=SessionView&panoptoState=e015f434-204d-4513-b5e7-b21e016998f8)
+17               11/5       Tensor decomposition, Part 2                                      [notes](https://www.samuelbhopkins.com/tensor-decomp-notes.pdf) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes21/01-tensor-decomposition.pdf)
+18               11/7       Tensor decomposition, Part 3?                                     [notes](https://www.samuelbhopkins.com/tensor-decomp-notes.pdf) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes21/01-tensor-decomposition.pdf)
+
+19               11/12      Guest lecture (Sidhanth Mohanty)
+20               11/14      Best separable state?
+21               11/19      Best separable state?
+22               11/21      Guest lecture (Allen Liu)
+23               11/26      Multiplicative weights?
+24               12/3       Multiplicative weights?
+25               12/5       Project presentations
+26               12/10      Project presentations
 
 
 
