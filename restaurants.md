@@ -2,6 +2,49 @@
 
 Sometimes people ask me where to eat in places I've lived at various times. Here is a partial and opinionated and disorganized list.
 
+## Cambridge/Somerville/Boston
+
+This list is current as of November 2024
+
+### (Relatively) convenient to MIT campus
+
+*Area Four* Reasonable Neapolitan pizza.
+
+*Mamaleh's* Jewish deli.
+
+*Row 34* If you want New England-style seafood, go here. Skip Legal Sea Foods across the street.
+
+### Less convenient to MIT campus
+
+*Amba* Mediterranean.
+
+*Giulia* Best Italian in Cambridge/Somerville.
+
+*Cicada* Vietnamese.
+
+*Mahoniyom* Outstanding Thai.
+
+*Mountain House* Outstanding Szechuan.
+
+*Exodus Bagels* Best Bagels in Boston area. Also least convenient.
+
+*Red Bones* BBQ.
+
+*Yume Ga Arukara* Udon.
+
+*Michette* French baked goods.
+
+*Clear Flour* American/French baked goods. Not to be confused with Flour, which is worse.
+
+*Ebi* Sushi.
+
+*Third Time* Best ice cream in Cambridge/Somerville.
+
+*Sofra* Mediterranean pastries and lunch.
+
+*Viale* Only recommended for one-dollar oyster, served 5-7pm.
+
+
 
 ## Berkeley
 
