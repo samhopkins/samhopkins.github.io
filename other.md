@@ -17,6 +17,6 @@ Slides from a high-level introduction to SoS for cryptographers, from this [work
 
 [Resources](santa-fe-2018.html) from a workshop at the Santa Fe institute in 2018, hosted by the [Cris Moore](https://sites.santafe.edu/~moore/)
 
-[Where](restaurants.html) to eat in Berkeley or Ithaca
+[Where](restaurants.html) to eat in Cambridge/Boston/Somerville, Berkeley, or Ithaca
 
 
