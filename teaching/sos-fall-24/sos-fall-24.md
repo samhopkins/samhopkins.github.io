@@ -81,4 +81,6 @@ No.              Date       Topics                                              
 
 - [Problem Set 3](pset3.pdf)
 
+- [Problem Set 4](pset4.pdf)
+
 - [Course Project (subject to revision)](project.pdf)
