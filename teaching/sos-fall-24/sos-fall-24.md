@@ -64,7 +64,7 @@ No.              Date       Topics                                              
 19               11/12      Planted Clique I                                                  TBA
 20               11/14      Planted Clique II                                                 TBA
 21               11/19      Low-degree lower bounds                                           TBA
-22               11/21      Guest lecture (Allen Liu)                                         TBA
+22               11/21      Mixture models, revisited (Allen Liu)                             TBA
 23               11/26      Best separable state I                                            TBA
 24               12/3       Best separable state II                                           TBA
 25               12/5       Project presentations                                             TBA
