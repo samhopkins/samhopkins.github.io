@@ -63,7 +63,7 @@ No.              Date       Topics                                              
 18               11/7       Tensor decomposition, Part 3?                                     [notes](https://www.samuelbhopkins.com/tensor-decomp-notes.pdf) [Schramm notes](https://tselilschramm.org/sos-paradigm/notes21/01-tensor-decomposition.pdf)
 19               11/12      Planted Clique I                                                  TBA
 20               11/14      Planted Clique II                                                 TBA
-21               11/19      Low-degree lower bounds                                           TBA
+21               11/19      Low-degree lower bounds                                           [Sidhanth's notes](ldlr.pdf)
 22               11/21      Mixture models, revisited (Allen Liu)                             TBA
 23               11/26      Best separable state I                                            TBA
 24               12/3       Best separable state II                                           TBA
