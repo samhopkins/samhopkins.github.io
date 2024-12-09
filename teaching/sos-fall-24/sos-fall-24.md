@@ -65,8 +65,8 @@ No.              Date       Topics                                              
 20               11/14      Planted Clique II                                                 TBA
 21               11/19      Low-degree lower bounds                                           [Sidhanth's notes](ldlr.pdf)
 22               11/21      Mixture models, revisited (Allen Liu)                             TBA
-23               11/26      Best separable state I                                            TBA
-24               12/3       Best separable state II                                           TBA
+23               11/26      Best separable state I                                            [notes](best-separable-state.pdf)
+24               12/3       Best separable state II                                           [notes](best-separable-state.pdf)
 25               12/5       Project presentations                                             TBA
 26               12/10      Project presentations                                             TBA
 
