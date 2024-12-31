@@ -4,6 +4,8 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2024+
 
+**SoS Certificates for Sparse Singular Values and Their Applications: Robust Statistics, Subspace Distortion, and More.** _Ilias Diakonikolas, Samuel B. Hopkins, Ankit Pensia, Stefan Tiegel._ Manuscript. [arxiv](https://arxiv.org/abs/2412.21203)
+
 **SoS Certifiability of Subgaussian Distributions and its Algorithmic Applications.** _Ilias Diakonikolas, Samuel B. Hopkins, Ankit Pensia, Stefan Tiegel._ Manuscript. [arxiv](https://arxiv.org/abs/2410.21194)
 
 **Robustness Auditing for Linear Regression: To Singularity and Beyond.** _Ittai Rubinstein, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2410.07916) (Author ordering by contribution.)
