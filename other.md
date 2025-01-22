@@ -5,7 +5,7 @@
 
 [Advice](grad_advice.html) on PhD applications.
 
-[Research](research_statement.pdf) and [teaching](teaching_statement.pdf) statements from my 2019-2020 academic job search.
+[Research statement](research_statement.pdf), [teaching statement](teaching_statement.pdf), and [job talk slides (pptx)](job_talk_2020.pptx) from my 2019-2020 academic job search.
 
 Blog posts I wrote on clustering and learning high-dimensional mixture models using the SoS method (originally appeared on [Windows on Theory](https://windowsontheory.org/). [pdf](clustering.pdf)
 
