@@ -2,17 +2,20 @@
 
 Author ordering is alphabetical unless otherwise noted.
 
-#### 2024+
+#### 2025+
 
 **SoS Certificates for Sparse Singular Values and Their Applications: Robust Statistics, Subspace Distortion, and More.** _Ilias Diakonikolas, Samuel B. Hopkins, Ankit Pensia, Stefan Tiegel._ Manuscript. [arxiv](https://arxiv.org/abs/2412.21203)
 
 **SoS Certifiability of Subgaussian Distributions and its Algorithmic Applications.** _Ilias Diakonikolas, Samuel B. Hopkins, Ankit Pensia, Stefan Tiegel._ Manuscript. [arxiv](https://arxiv.org/abs/2410.21194)
 
-**Robustness Auditing for Linear Regression: To Singularity and Beyond.** _Ittai Rubinstein, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2410.07916) (Author ordering by contribution.)
+**A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** _Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi._ Manuscript. [arxiv](https://arxiv.org/abs/2311.17840)
 
 **Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
 
-**A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** _Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi._ Manuscript. [arxiv](https://arxiv.org/abs/2311.17840)
+**Robustness Auditing for Linear Regression: To Singularity and Beyond.** _Ittai Rubinstein, Samuel B. Hopkins._ ICLR 2025. [arxiv](https://arxiv.org/abs/2410.07916) (Author ordering by contribution.)
+
+
+#### 2024
 
 **Beyond Catoni: Sharper Rates for Heavy-Tailed and Robust Mean Estimation.** _Shivam Gupta, Samuel B. Hopkins, Eric Price._ COLT 2024. [arxiv](https://arxiv.org/pdf/2311.13010)
 
