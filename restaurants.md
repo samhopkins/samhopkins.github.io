@@ -44,7 +44,9 @@ This list is current as of November 2024
 
 *Viale* Only recommended for one-dollar oyster, served 5-7pm.
 
+*Asaro* Jewish bakery near Harvard
 
+*Donut Villa Diner* Excellent donuts
 
 ## Berkeley
 
