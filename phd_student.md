@@ -1,0 +1,22 @@
+# Thoughts on Being a PhD Student
+
+Things I sometimes say to PhD students in computer science. Read them at your own risk.
+
+#### On What Constitutes a Successful PhD
+Don't let me define a successful PhD for you -- success is your own to define, and depends on why you are doing a PhD and what you want to do afterwards. That said, a common goal in addition to doing great research is to graduate with the kind of CV and recognition in the research community which gets you an academic job. There is no single recipe to achieve this, but there are themes. I am only qualified to talk about theoretical computer science here.
+
+Top-tier computer science departments don't count publications of faculty job applicants, for the most part. Of course, you need to have enough publications, in good enough venues, to convince a hiring committee that you are productive. One or two papers is too few. But a CV with 20 publications, or even 10, is definitely not necessary!
+
+Instead, what matters is your "story" -- what was the big question you addressed during your PhD, how did you address it, what was the key insight, how did addressing this question move the field forward? A story could build over many papers, or could emerge in just one or two very strong papers. Many people are hired on the basis of just one exceptional contribution, with a couple of others playing a backing role in the story. A good story makes for a better hiring case than a list of many unrelated papers, even if the individual papers are strong.
+
+#### On Progress and Timing
+Especially at MIT, we always have at least a few PhD students who got started in research very early (e.g., somehow they knew when they were college freshmen to seek out research opportunities in TCS, they were prepared for these by doing math competitions in high school, they went to colleges which had the resources to provide such research opportunities to undergraduates, etc.). These students are sometimes able to publish first-rate papers in the first and second years of their PhDs. I sometimes worry that living and working in proximity to such students can make everyone else feel that they are way behind schedule if they are not publishing first-rate papers so early on.
+
+But different people get their publication train rolling at different times in their PhDs, and, within reason, it does not really matter when. By "within reason" here, I do mean that I would expect a student headed for academia probably to submit some paper by the end of their second year and definitely have a publication or two by their fourth year. (Even here, I am probably being influenced by "MIT timelines".) But submitting something in your first year is absolutely not mandatory.
+
+I submitted the first paper of my PhD in February of my 2nd year, to COLT. The next successful paper I submitted was to SODA, in the summer after my 2nd year. I first had a successful STOC/FOCS paper submitted in Fall of my 3rd year, to STOC.
+
+Very often (though not always), once the train is rolling, students find that they produce a sequence of papers one after another, and the papers pile up fast! The struggle is getting the train going in the first place.
+
+#### On Academia as a Foreign Place
+Like many professions, academia has a tendency to be a family business. I am an example of this phenomenon: my father and aunt are professors at the University of Washington and my brother, as I write this, is a postdoc at the Institute for Advanced Study working on, you guessed it, theoretical computer science. (No, sadly, we haven't written a paper together.) This gave me the advantage that many of academia's strange rites were not so strange to me when I started as a PhD student -- the basic mechanics of RAing, TAing, and fellowships, travel to conferences, attending seminars, advising meetings, and so on. But if you didn't grow up with it, all this is foreign! That's ok! When in doubt about how to function in the academic world -- do I go to this or that talk? how many conferences should I attend? should I be focused on giving talks or writing papers? what is a "summer school"/"winter school" and should I go? -- ask your advisor! And find a couple other senior mentors, too, beyond your advisor. Many professors are more than happy to hear themselves talk if you ask their advice.
