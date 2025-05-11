@@ -4,9 +4,9 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2025+
 
-**A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** _Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi._ Manuscript. [arxiv](https://arxiv.org/abs/2311.17840)
-
 **Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
+
+**A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** _Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi._ COLT 2025. [arxiv](https://arxiv.org/abs/2311.17840)
 
 **SoS Certificates for Sparse Singular Values and Their Applications: Robust Statistics, Subspace Distortion, and More.** _Ilias Diakonikolas, Samuel B. Hopkins, Ankit Pensia, Stefan Tiegel._ STOC 2025. [arxiv](https://arxiv.org/abs/2412.21203)
 
