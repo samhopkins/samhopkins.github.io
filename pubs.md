@@ -4,6 +4,8 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2025+
 
+**Rescaled Influence Functions: Accurate Data Attribution in High Dimension.** _Ittai Rubinstein, Samuel B. Hopkins._ [arxiv](https://arxiv.org/abs/2506.06656) (Author ordering by contribution.)
+
 **Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
 
 **A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** _Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi._ COLT 2025. [arxiv](https://arxiv.org/abs/2311.17840)
