@@ -4,11 +4,11 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2025+
 
-**Additive Approximation Schemes for Low-Dimensional Embeddings.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2509.09652)
-
-**Rescaled Influence Functions: Accurate Data Attribution in High Dimension.** _Ittai Rubinstein, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2506.06656) (Author ordering by contribution.)
-
 **Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
+
+**Additive Approximation Schemes for Low-Dimensional Embeddings.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ SODA 2026. [arxiv](https://arxiv.org/abs/2509.09652)
+
+**Rescaled Influence Functions: Accurate Data Attribution in High Dimension.** _Ittai Rubinstein, Samuel B. Hopkins._ NeurIPS 2025. [arxiv](https://arxiv.org/abs/2506.06656) (Author ordering by contribution.)
 
 **A quasi-polynomial time algorithm for Multi-Dimensional Scaling via LP hierarchies.** _Ainesh Bakshi, Vincent Cohen-Addad, Rajesh Jayram, Samuel B. Hopkins, Silvio Lattanzi._ COLT 2025. [arxiv](https://arxiv.org/abs/2311.17840)
 
