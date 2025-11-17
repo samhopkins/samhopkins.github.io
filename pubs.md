@@ -4,6 +4,8 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2025+
 
+**Faster MAX-CUT on Bounded Threshold Rank Graphs.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman, David Steurer._ Manuscript. [arxiv](https://arxiv.org/abs/2511.11499)
+
 **Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
 
 **Additive Approximation Schemes for Low-Dimensional Embeddings.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ SODA 2026. [arxiv](https://arxiv.org/abs/2509.09652)
