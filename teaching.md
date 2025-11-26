@@ -1,6 +1,6 @@
 ## Teaching
 
-Fall 2025: 6.S896 -- Algorithmic Statistics
+Fall 2025: [6.S896 -- Algorithmic Statistics](https://www.algorithmicstatistics.org/)
 
 Spring 2025: 6.1210 -- Introduction to Algorithms
 
