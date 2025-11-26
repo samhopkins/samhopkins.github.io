@@ -107,6 +107,6 @@ Author ordering is alphabetical unless otherwise noted.
 
 **Kolmogorov Complexity, Circuits, and the Strength of Formal Theories of Arithmetic** _Eric Allender, George Davie, Luke Friedman, Samuel B. Hopkins, Iddo Tzameret._ Chicago Journal of Theoretical Computer Science. [eccc](https://eccc.weizmann.ac.il/report/2012/028/)
 
-#### sssh, these manuscripts are sleeping
+#### Ssh, These Manuscripts Are Sleeping
 
 **Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
