@@ -2,13 +2,13 @@
 
 Author ordering is alphabetical unless otherwise noted.
 
-#### 2025+
+#### 2026+
 
 **Faster MAX-CUT on Bounded Threshold Rank Graphs.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman, David Steurer._ Manuscript. [arxiv](https://arxiv.org/abs/2511.11499)
 
-**Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
-
 **Additive Approximation Schemes for Low-Dimensional Embeddings.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ SODA 2026. [arxiv](https://arxiv.org/abs/2509.09652)
+
+#### 2025
 
 **Rescaled Influence Functions: Accurate Data Attribution in High Dimension.** _Ittai Rubinstein, Samuel B. Hopkins._ NeurIPS 2025. [arxiv](https://arxiv.org/abs/2506.06656) (Author ordering by contribution.)
 
@@ -106,3 +106,7 @@ Author ordering is alphabetical unless otherwise noted.
 #### 2013
 
 **Kolmogorov Complexity, Circuits, and the Strength of Formal Theories of Arithmetic** _Eric Allender, George Davie, Luke Friedman, Samuel B. Hopkins, Iddo Tzameret._ Chicago Journal of Theoretical Computer Science. [eccc](https://eccc.weizmann.ac.il/report/2012/028/)
+
+#### sssh, these manuscripts are sleeping
+
+**Towards Practical Robustness Auditing for Linear Regression.** _Daniel Freund, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2307.16315)
