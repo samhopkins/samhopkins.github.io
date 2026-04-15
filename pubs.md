@@ -33,7 +33,7 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2023
 
-**The Full Landscape of Robust Mean Testing: Sharp Separations between Oblivious and Adaptive Contamination.** _Cl&#233;ment L. Canonne, Samuel B. Hopkins, Jerry Li, Allen Liu, Shyam Narayanan._ FOCS 2023. [arxiv](https://arxiv.org/abs/2307.10273)
+**The Full Landscape of Robust Mean Testing: Sharp Separations between Oblivious and Adaptive Contamination.** _Cl&#233;ment L. Canonne, Samuel B. Hopkins, Jerry Li, Allen Liu, Shyam Narayanan._ FOCS 2023; SIAM Journal on Computing, 2026. [siam j comp](https://epubs.siam.org/doi/abs/10.1137/24M1636435?journalCode=smjcat) [arxiv](https://arxiv.org/abs/2307.10273)
 
 **Fast, Sample-Efficient, Affine-Invariant Private Mean and Covariance Estimation for Subgaussian Distributions.** _Gavin Brown, Samuel B. Hopkins, Adam Smith._ COLT 2023. Best student paper award, shared with [this paper](https://arxiv.org/abs/2301.07078). [arxiv](https://arxiv.org/abs/2301.12250) [blog post](https://differentialprivacy.org/colt23-bsp/)
 
