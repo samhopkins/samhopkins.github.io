@@ -9,11 +9,21 @@ Previously, I was a [Miller](http://miller.berkeley.edu/) fellow in the [theory 
 
 My papers on [Google Scholar](https://scholar.google.com/citations?user=E_a3VB4AAAAJ&hl=en) and some talks on [YouTube](https://www.youtube.com/channel/UC0SsR6PPN3SuO7IzFc1Bhfg)
 
-I am proud to advise:
+My group:
 
-- [Prashanti Anderson](https://prashantianderson.github.io/)
-- [Amit Rajaraman](https://amitrajaraman.github.io/)
-- [Ittai Rubinstein](https://ittairubinstein.wixsite.com/ittai-rubinstein)
+Current:
+
+- [Prashanti Anderson](https://prashantianderson.github.io/) (PhD)
+- [Amit Rajaraman](https://amitrajaraman.github.io/) (PhD)
+- [Ittai Rubinstein](https://ittairubinstein.wixsite.com/ittai-rubinstein) (PhD)
+- Arushi Mantri (Masters)
+- Dheepthi Mohanraj (Undergraduate)
+- [Stefan Tiegel](https://stefantiegel.com/) (Postdoc)
+
+Alumni:
+
+- Chris Ge (Undergraduate)
+- [Sidhanth Mohanty](https://sidhanthm.com/) (Postdoc; Now: Assistant Professor at Northwestern University)
 
 [I](pics/tongue.jpg) [like](pics/mtdiablo.jpg) [bikes](pics/snow.jpg).
 
