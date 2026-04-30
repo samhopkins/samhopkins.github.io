@@ -15,7 +15,7 @@ Current:
 
 - [Prashanti Anderson](https://prashantianderson.github.io/) (PhD)
 - [Amit Rajaraman](https://amitrajaraman.github.io/) (PhD)
-- [Ittai Rubinstein](https://ittairubinstein.wixsite.com/ittai-rubinstein) (PhD)
+- [Ittai Rubinstein](https://ittairubinstein.bitbucket.io/) (PhD)
 - Arushi Mantri (Masters)
 - Dheepthi Mohanraj (Undergraduate)
 - [Stefan Tiegel](https://stefantiegel.com/) (Postdoc)

@@ -6,7 +6,7 @@ Author ordering is alphabetical unless otherwise noted.
 
 **Entrywise Low-Rank Approximation and Matrix $p \rightarrow q$ Norms via Global Correlation Rounding.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2604.22699)
 
-**On the Accuracy of Newton Step and Influence Function Data Attributions.** _Ittai Rubinstein, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2512.12572) (Author ordering by contribution.)
+**On the Accuracy of Newton Step and Influence Function Data Attributions.** _Ittai Rubinstein, Samuel B. Hopkins._ ICML 2026, Spotlight. [arxiv](https://arxiv.org/abs/2512.12572) (Author ordering by contribution.)
 
 **Faster MAX-CUT on Bounded Threshold Rank Graphs.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman, David Steurer._ Manuscript. [arxiv](https://arxiv.org/abs/2511.11499)
 
