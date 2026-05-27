@@ -4,11 +4,13 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2026+
 
+**Algorithms with Polynomially-Improved Approximation Factors for the $2 \rightarrow q$ Norm, and Applications.** _Samuel B. Hopkins, Stefan Tiegel._ Manuscript. [arxiv](https://arxiv.org/abs/2605.25303)
+
 **Entrywise Low-Rank Approximation and Matrix $p \rightarrow q$ Norms via Global Correlation Rounding.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2604.22699)
 
-**On the Accuracy of Newton Step and Influence Function Data Attributions.** _Ittai Rubinstein, Samuel B. Hopkins._ ICML 2026, Spotlight. [arxiv](https://arxiv.org/abs/2512.12572) (Author ordering by contribution.)
-
 **Faster MAX-CUT on Bounded Threshold Rank Graphs.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman, David Steurer._ Manuscript. [arxiv](https://arxiv.org/abs/2511.11499)
+
+**On the Accuracy of Newton Step and Influence Function Data Attributions.** _Ittai Rubinstein, Samuel B. Hopkins._ ICML 2026, Spotlight. [arxiv](https://arxiv.org/abs/2512.12572) (Author ordering by contribution.)
 
 **Additive Approximation Schemes for Low-Dimensional Embeddings.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ SODA 2026. [arxiv](https://arxiv.org/abs/2509.09652)
 
