@@ -1,0 +1,162 @@
+1:"$Sreact.fragment"
+2:I[39756,["/rademacher-exposition/_next/static/chunks/158myu8e_yme3.js"],"default"]
+3:I[37457,["/rademacher-exposition/_next/static/chunks/158myu8e_yme3.js"],"default"]
+4:I[28128,["/rademacher-exposition/_next/static/chunks/158myu8e_yme3.js","/rademacher-exposition/_next/static/chunks/3lo_uae8shr8v.js"],"default"]
+9:I[68027,["/rademacher-exposition/_next/static/chunks/158myu8e_yme3.js"],"default",1]
+:HL["/rademacher-exposition/_next/static/chunks/1505fa8op7ozy.css","style"]
+:HC["/",""]
+5:T1669,/-
+Copyright (c) 2026 random-matrices-lean contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: random-matrices-lean contributors
+-/
+import Mathlib.Probability.Combinatorics.BinomialRandomGraph.Defs
+import Mathlib.Analysis.Matrix.Normed
+import Mathlib.Combinatorics.SimpleGraph.AdjMatrix
+import Mathlib.Logic.Equiv.Fin.Rotate
+
+/-!
+# Independent Rademacher matrices
+
+This file states the operator-norm bound for a symmetric Rademacher matrix:
+the diagonal is zero and the entries above the diagonal are independent
+uniform signs.
+-/
+
+open MeasureTheory
+open scoped Matrix.Norms.L2Operator
+open scoped unitInterval
+
+namespace RandomMatrices.IndependentRademacher
+
+/-- The zero-diagonal signed adjacency matrix of a simple graph. -/
+noncomputable def signedAdjacencyMatrix {n : ℕ} (G : SimpleGraph (Fin n)) :
+    Matrix (Fin n) (Fin n) ℝ := by
+  classical
+  exact 2 • G.adjMatrix ℝ -
+    (SimpleGraph.completeGraph (Fin n)).adjMatrix ℝ
+
+/-- The symmetric Rademacher law on zero-diagonal matrices. -/
+noncomputable def symmetricRademacherMeasure (n : ℕ) :
+    Measure (SimpleGraph (Fin n)) :=
+  SimpleGraph.binomialRandom (Fin n)
+    (⟨1 / 2, by norm_num⟩ : I)
+
+/-- A cyclic vertex sequence with the given number of steps. -/
+abbrev ClosedWalk (n length : ℕ) := Fin length → Fin n
+
+/-- The unordered edge crossed at one step of a cyclic walk. -/
+def traversedEdge {n length : ℕ}
+    (walk : ClosedWalk n length) (step : Fin length) : Sym2 (Fin n) :=
+  s(walk step, walk (finRotate length step))
+
+/-- How often a cyclic walk traverses an unordered edge. -/
+def edgeMultiplicity {n length : ℕ}
+    (walk : ClosedWalk n length) (edge : Sym2 (Fin n)) : ℕ :=
+  Fintype.card {step : Fin length // traversedEdge walk step = edge}
+
+/-- A closed walk with no loops in which every edge is used an even number
+of times. These are exactly the walks surviving Rademacher averaging. -/
+def IsDoubleCovered {n length : ℕ} (walk : ClosedWalk n length) : Prop :=
+  (∀ step, walk step ≠ walk (finRotate length step)) ∧
+    ∀ edge, Even (edgeMultiplicity walk edge)
+
+instance instDecidableIsDoubleCovered {n length : ℕ}
+    (walk : ClosedWalk n length) : Decidable (IsDoubleCovered walk) := by
+  unfold IsDoubleCovered
+  infer_instance
+
+/-- Closed walks surviving Rademacher averaging. -/
+abbrev DoubleCoveredClosedWalk (n length : ℕ) :=
+  {walk : ClosedWalk n length // IsDoubleCovered walk}
+
+/-- The expected operator norm of the symmetric Rademacher matrix. -/
+noncomputable def expectedOperatorNorm (n : ℕ) : ℝ :=
+  ∫ graph, ‖signedAdjacencyMatrix graph‖ ∂symmetricRademacherMeasure n
+
+/-- Its expected even trace power. -/
+noncomputable def expectedTracePower (n momentOrder : ℕ) : ℝ :=
+  ∫ graph, Matrix.trace
+      ((signedAdjacencyMatrix graph) ^ (2 * momentOrder))
+    ∂symmetricRademacherMeasure n
+
+/-- An even trace-moment bound implies the corresponding expected
+operator-norm bound. -/
+lemma expectedOperatorNorm_le_of_expectedTracePower_le
+    (n momentOrder : ℕ) (hpositive : 0 < momentOrder)
+    (bound : ℝ) (hbound : 0 ≤ bound)
+    (htrace :
+      expectedTracePower n momentOrder ≤ bound ^ (2 * momentOrder)) :
+    expectedOperatorNorm n ≤ bound := by
+  sorry
+
+/-- Expanding the trace and averaging signs leaves exactly the loopless
+closed walks in which every edge has even multiplicity. -/
+lemma expectedTracePower_eq_card_doubleCoveredClosedWalk
+    (n momentOrder : ℕ) (hpositive : 0 < momentOrder) :
+    expectedTracePower n momentOrder =
+      Fintype.card (DoubleCoveredClosedWalk n (2 * momentOrder)) := by
+  sorry
+
+/-- Pairing equal edge occurrences bounds the surviving walks: such a walk
+uses at most `momentOrder + 1` vertices, and the remaining factor counts
+pairing and orientation choices. -/
+lemma card_doubleCoveredClosedWalk_le
+    (n momentOrder : ℕ) (hpositive : 0 < momentOrder) :
+    (Fintype.card
+        (DoubleCoveredClosedWalk n (2 * momentOrder)) : ℝ) ≤
+      (n : ℝ) * (n - 1) * n ^ (momentOrder - 1) *
+        (4 * momentOrder) ^ momentOrder := by
+  sorry
+
+/-- At logarithmic moment order, the combinatorial estimate has the desired
+`sqrt n * sqrt (log n)` scale. -/
+lemma logarithmicMomentEstimate (n : ℕ) :
+    let momentOrder := Nat.log 2 n + 1
+    (n : ℝ) * (n - 1) * n ^ (momentOrder - 1) *
+        (4 * momentOrder) ^ momentOrder ≤
+      (8 * Real.sqrt n * Real.sqrt (Real.log n)) ^
+        (2 * momentOrder) := by
+  sorry
+
+/-- The expected operator norm of an `n × n` symmetric Rademacher matrix is
+bounded by a universal constant times `sqrt n * sqrt (log n)`. -/
+theorem expected_operatorNorm_le_const_sqrt_mul_sqrt_log :
+    ∃ C : ℝ, 0 < C ∧
+      ∀ n : ℕ,
+        expectedOperatorNorm n ≤
+          C * Real.sqrt (n : ℝ) *
+            Real.sqrt (Real.log (n : ℝ)) := by
+  refine ⟨8, by norm_num, fun n ↦ ?_⟩
+  let momentOrder := Nat.log 2 n + 1
+  have hpositive : 0 < momentOrder := by
+    simp [momentOrder]
+  apply expectedOperatorNorm_le_of_expectedTracePower_le
+    n momentOrder hpositive
+    (8 * Real.sqrt n * Real.sqrt (Real.log n)) <;> try positivity
+  calc
+    expectedTracePower n momentOrder =
+        Fintype.card
+          (DoubleCoveredClosedWalk n (2 * momentOrder)) :=
+      expectedTracePower_eq_card_doubleCoveredClosedWalk
+        n momentOrder hpositive
+    _ ≤ (n : ℝ) * (n - 1) * n ^ (momentOrder - 1) *
+          (4 * momentOrder) ^ momentOrder :=
+      card_doubleCoveredClosedWalk_le n momentOrder hpositive
+    _ ≤ (8 * Real.sqrt n * Real.sqrt (Real.log n)) ^
+          (2 * momentOrder) := by
+      simpa only [momentOrder] using logarithmicMomentEstimate n
+
+end RandomMatrices.IndependentRademacher
+0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/rademacher-exposition/_next/static/chunks/1505fa8op7ozy.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/rademacher-exposition/_next/static/chunks/158myu8e_yme3.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":[["$","$L4",null,{"source":"$5"}],["$L6"],"$L7"]}],{},null,false,null]},null,false,null],"$L8",false]],"m":"$undefined","G":["$9",["$La"]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"8x99COfh8p7jI_NyPCfqH"}
+b:I[97367,["/rademacher-exposition/_next/static/chunks/158myu8e_yme3.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+e:I[97367,["/rademacher-exposition/_next/static/chunks/158myu8e_yme3.js"],"ViewportBoundary"]
+10:I[97367,["/rademacher-exposition/_next/static/chunks/158myu8e_yme3.js"],"MetadataBoundary"]
+6:["$","script","script-0",{"src":"/rademacher-exposition/_next/static/chunks/3lo_uae8shr8v.js","async":true,"nonce":"$undefined"}]
+7:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
+8:["$","$1","h",{"children":[null,["$","$Le",null,{"children":"$Lf"}],["$","div",null,{"hidden":true,"children":["$","$L10",null,{"children":["$","$c",null,{"name":"Next.Metadata","children":"$L11"}]}]}],null]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/rademacher-exposition/_next/static/chunks/1505fa8op7ozy.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+d:null
+11:[["$","title","0",{"children":"Independent Rademacher Matrices · Lean ↔ Mathematics"}],["$","meta","1",{"name":"description","content":"A synchronized formal and mathematical exposition of a trace-moment argument."}]]
