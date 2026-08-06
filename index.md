@@ -16,8 +16,10 @@ Current:
 - [Prashanti Anderson](https://prashantianderson.github.io/) (PhD)
 - [Amit Rajaraman](https://amitrajaraman.github.io/) (PhD)
 - [Ittai Rubinstein](https://ittairubinstein.bitbucket.io/) (PhD)
-- Arushi Mantri (Masters)
+- Arushi Mantri (MEng)
+- [Inimai Subramanian](https://inimai-s.github.io/) (MEng)
 - Dheepthi Mohanraj (Undergraduate)
+- [Vaidehi Srinivas](https://vaidehi8913.github.io/) (Postdoc)
 - [Stefan Tiegel](https://stefantiegel.com/) (Postdoc)
 
 Alumni:
