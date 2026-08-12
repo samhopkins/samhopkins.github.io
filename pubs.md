@@ -4,6 +4,8 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2026+
 
+**A Simple Algorithm for Best Separable State.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman._ Manuscript. [arxiv](https://arxiv.org/abs/2608.10147)
+
 **Algorithms with Polynomially-Improved Approximation Factors for the $2 \rightarrow q$ Norm, and Applications.** _Samuel B. Hopkins, Stefan Tiegel._ Manuscript. [arxiv](https://arxiv.org/abs/2605.25303)
 
 **Entrywise Low-Rank Approximation and Matrix $p \rightarrow q$ Norms via Global Correlation Rounding.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ Manuscript. [arxiv](https://arxiv.org/abs/2604.22699)
