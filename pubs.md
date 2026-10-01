@@ -2,7 +2,7 @@
 
 Author ordering is alphabetical unless otherwise noted.
 
-#### 2026+
+#### 2027+
 
 **A Simple Algorithm for Best Separable State.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman._ Manuscript. [arxiv](https://arxiv.org/abs/2608.10147)
 
@@ -11,6 +11,8 @@ Author ordering is alphabetical unless otherwise noted.
 **Algorithms with Polynomially-Improved Approximation Factors for the $2 \rightarrow q$ Norm, and Applications.** _Samuel B. Hopkins, Stefan Tiegel._ SODA 2027. [arxiv](https://arxiv.org/abs/2605.25303)
 
 **Entrywise Low-Rank Approximation and Matrix $p \rightarrow q$ Norms via Global Correlation Rounding.** _Prashanti Anderson, Ainesh Bakshi, Samuel B. Hopkins._ SODA 2027. [arxiv](https://arxiv.org/abs/2604.22699)
+
+#### 2026
 
 **Private Linear Regression via a Down-Sensitivity to Privacy Reduction.** _Ittai Rubinstein, Chris Ge, Samuel B. Hopkins._ COLT 2026. (Author ordering by contribution.)
 

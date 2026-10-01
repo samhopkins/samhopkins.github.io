@@ -96,6 +96,7 @@ Teaching materials extensively use LaTeX math notation, which Pandoc converts to
 Publications in `pubs.md` follow this format:
 - Keep active manuscripts at the top, before all accepted or published papers. When a manuscript is accepted, move it below the remaining manuscripts. Preserve the separate "Ssh, These Manuscripts Are Sleeping" section at the bottom.
 - Organize accepted or published papers by year (reverse chronological).
+- Use an open-ended heading such as `2027+` for the newest year, with active manuscripts first and that year's accepted papers below. When adding a newer year, remove the `+` from the previous year's heading and move active manuscripts to the new top section.
 - Include: Title (bold), authors, venue, and arxiv link
 - Alphabetical author ordering unless noted otherwise
 - Special note when author ordering is by contribution
