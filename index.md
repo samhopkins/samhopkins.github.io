@@ -16,14 +16,16 @@ Current:
 - [Prashanti Anderson](https://prashantianderson.github.io/) (PhD)
 - [Amit Rajaraman](https://amitrajaraman.github.io/) (PhD)
 - [Ittai Rubinstein](https://ittairubinstein.bitbucket.io/) (PhD)
-- Arushi Mantri (MEng)
 - [Inimai Subramanian](https://inimai-s.github.io/) (MEng)
+- Sofia Dominguez (Undergraduate)
+- Amy He (Undergraduate)
 - Dheepthi Mohanraj (Undergraduate)
 - [Vaidehi Srinivas](https://vaidehi8913.github.io/) (Postdoc)
 - [Stefan Tiegel](https://stefantiegel.com/) (Postdoc)
 
 Alumni:
 
+- Arushi Mantri (MEng)
 - Chris Ge (Undergraduate)
 - [Sidhanth Mohanty](https://sidhanthm.com/) (Postdoc; Now: Assistant Professor at Northwestern University)
 
