@@ -4,9 +4,9 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2027+
 
-**A Simple Algorithm for Best Separable State.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman._ Manuscript. [arxiv](https://arxiv.org/abs/2608.10147)
-
 **Faster MAX-CUT on Bounded Threshold Rank Graphs.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman, David Steurer._ Manuscript. [arxiv](https://arxiv.org/abs/2511.11499)
+
+**A Simple Algorithm for Best Separable State.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman._ ITCS 2027. [arxiv](https://arxiv.org/abs/2608.10147)
 
 **Algorithms with Polynomially-Improved Approximation Factors for the $2 \rightarrow q$ Norm, and Applications.** _Samuel B. Hopkins, Stefan Tiegel._ SODA 2027. [arxiv](https://arxiv.org/abs/2605.25303)
 
