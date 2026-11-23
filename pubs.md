@@ -4,6 +4,8 @@ Author ordering is alphabetical unless otherwise noted.
 
 #### 2027+
 
+**Optimal Robust Community Detection.** _Samuel B. Hopkins, Yiding Hua, Sidhanth Mohanty, Amit Rajaraman, David Steurer._ Manuscript. [arxiv](https://arxiv.org/abs/2611.25157)
+
 **Faster MAX-CUT on Bounded Threshold Rank Graphs.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman, David Steurer._ Manuscript. [arxiv](https://arxiv.org/abs/2511.11499)
 
 **A Simple Algorithm for Best Separable State.** _Prashanti Anderson, Samuel B. Hopkins, Amit Rajaraman._ ITCS 2027. [arxiv](https://arxiv.org/abs/2608.10147)
